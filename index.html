@@ -86,6 +86,39 @@ section{padding:80px 24px}
 }
 .hero p{font-size:1.15rem;color:var(--text-2);max-width:600px;margin:0 auto 40px;line-height:1.7}
 
+/* Curation manifesto */
+.curation{
+  max-width:640px;margin:0 auto 48px;text-align:left;
+  padding:32px 36px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.curation::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+}
+.curation .cur-lead{
+  font-size:0.95rem;color:var(--text-2);line-height:1.8;margin-bottom:20px;
+}
+.curation .cur-lead strong{color:var(--text);font-weight:700}
+.curation .cur-stats{
+  font-size:0.88rem;font-family:var(--mono);color:var(--primary);
+  font-weight:700;margin-bottom:24px;line-height:1.8;
+}
+.curation .cur-why{
+  font-size:0.82rem;color:var(--text-3);font-style:italic;
+  margin-bottom:4px;text-transform:uppercase;letter-spacing:0.06em;
+  font-style:normal;font-weight:600;
+}
+.curation .cur-lines{
+  font-size:0.92rem;color:var(--text-2);line-height:2;margin-bottom:20px;
+}
+.curation .cur-lines em{font-style:normal;color:var(--text);font-weight:600}
+.curation .cur-stamp{
+  font-size:0.95rem;font-weight:800;color:var(--primary);
+  letter-spacing:-0.01em;line-height:1.8;
+}
+
 /* Stats Row */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:720px;margin:0 auto}
 .stat{text-align:center}
@@ -390,7 +423,29 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Systems Online</div>
     <h1>Real Compute. Real Objects.<br><span class="gradient">Real Signal.</span></h1>
-    <p>Vertical AI models, sovereign edge compute, and an agent economy — built from 1.2 million training pairs, cooked on 128 RTX PRO 6000 GPUs we own. We own the racks. We cook the rails.</p>
+
+    <div class="curation">
+      <div class="cur-lead">
+        <strong>Vertical AI.</strong><br>
+        <strong>Sovereign compute.</strong><br>
+        <strong>Agent-native infrastructure.</strong>
+      </div>
+      <div class="cur-stats">
+        1.2M curated pairs.<br>
+        128 RTX PRO 6000 GPUs.
+      </div>
+      <div class="cur-why">Why curation?</div>
+      <div class="cur-lines">
+        Because <em>scale without discipline</em> is noise.<br>
+        Because <em>evals don't fix</em> bad inputs.<br>
+        Because <em>signal must be assembled.</em>
+      </div>
+      <div class="cur-stamp">
+        We own the racks.<br>
+        We cook the rails.
+      </div>
+    </div>
+
     <div class="stats">
       <div class="stat">
         <div class="stat-value">1.2M</div>
