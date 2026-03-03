@@ -239,6 +239,34 @@ section{padding:80px 24px}
 .arch-diagram .comp{color:var(--accent)}
 .arch-diagram .dim{color:var(--text-3)}
 
+/* Built With */
+.built-with{text-align:center}
+.stack-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;
+  max-width:960px;margin:0 auto;
+}
+.stack-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:left;transition:border-color 0.2s,transform 0.2s;
+}
+.stack-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.stack-card .sc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stack-card .sc-icon{font-size:1.3rem}
+.stack-card .sc-name{font-size:0.95rem;font-weight:700}
+.stack-card .sc-tag{
+  font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:8px;
+  background:rgba(245,158,11,0.1);color:var(--primary);font-family:var(--mono);
+  margin-left:auto;
+}
+.stack-card .sc-desc{font-size:0.78rem;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+.stack-card .sc-models{font-size:0.7rem;color:var(--text-3);font-family:var(--mono);line-height:1.7}
+.stack-card .sc-models span{color:var(--accent)}
+.stack-card a{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.75rem;font-weight:600;color:var(--primary);margin-top:8px;transition:gap 0.2s;
+}
+.stack-card a:hover{gap:8px}
+
 /* Contact */
 .contact{text-align:center}
 .contact-form{
@@ -332,8 +360,6 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <span class="sep">|</span>
   <a href="https://swarmandbee.com/cre">CRE Platform</a>
   <span class="sep">|</span>
-  <a href="https://gold.swarmandbee.com">Gold Vault</a>
-  <span class="sep">|</span>
   <a href="https://router.swarmandbee.com">API</a>
   <span class="sep">|</span>
   <a href="https://github.com/SudoSuOps">GitHub</a>
@@ -390,9 +416,9 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 <section class="products" id="products">
   <div class="container">
     <div class="section-label">Ecosystem</div>
-    <h2 class="section-title">Two Verticals. One Stack.</h2>
-    <p class="section-sub">Each product line is powered by its own fine-tuned model, quality-gated by SwarmJudge, and served through the same infrastructure.</p>
-    <div class="product-grid">
+    <h2 class="section-title">One Vertical. One Stack.</h2>
+    <p class="section-sub">Powered by its own fine-tuned model fleet, quality-gated by SwarmJudge, and served through sovereign infrastructure.</p>
+    <div class="product-grid" style="grid-template-columns:1fr;max-width:560px;margin:0 auto">
 
       <a href="https://swarmandbee.com/cre" class="product-card">
         <div class="bar" style="background:var(--primary)"></div>
@@ -405,19 +431,6 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
           <div class="card-stat"><strong>9B</strong> model</div>
         </div>
         <span class="card-link">Open Platform &rarr;</span>
-      </a>
-
-      <a href="https://gold.swarmandbee.com" class="product-card">
-        <div class="bar" style="background:linear-gradient(90deg,var(--primary),var(--accent))"></div>
-        <div class="icon">&#128737;</div>
-        <h3>Gold Vault</h3>
-        <p>Platinum-grade training data — every pair survives the 8-step SwarmCurator pipeline. Unappeallable quality gate across CRE, medical, aviation, and legal.</p>
-        <div class="card-stats">
-          <div class="card-stat"><strong>1.2M</strong> pairs</div>
-          <div class="card-stat"><strong>85+</strong> specialties</div>
-          <div class="card-stat"><strong>5</strong> buckets</div>
-        </div>
-        <span class="card-link">Explore Vault &rarr;</span>
       </a>
 
     </div>
@@ -667,6 +680,115 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   </div>
 </section>
 
+<!-- Built With -->
+<section class="built-with" id="built-with">
+  <div class="container">
+    <div class="section-label">Powered By</div>
+    <h2 class="section-title">Built With</h2>
+    <p class="section-sub">The open-source foundation under every model we ship.</p>
+    <div class="stack-grid">
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#129302;</span>
+          <span class="sc-name">Qwen3.5</span>
+          <span class="sc-tag">BASE</span>
+        </div>
+        <div class="sc-desc">Alibaba's Qwen3.5 family — Mamba-Transformer hybrids and MoE architectures. The base brain for every SwarmCRE model.</div>
+        <div class="sc-models">
+          <span>Qwen3.5-122B</span> · CEO, fp8, 2 GPUs<br>
+          <span>Qwen3.5-9B</span> · Mamba-Transformer flagship<br>
+          <span>Qwen3.5-4B</span> · Compact edge<br>
+          <span>Qwen2.5-3B</span> · BeeMini router<br>
+          <span>Qwen3.5-0.8B</span> · Nano, CPU inference
+        </div>
+        <a href="https://huggingface.co/Qwen">Qwen on HuggingFace &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#9889;</span>
+          <span class="sc-name">Unsloth</span>
+          <span class="sc-tag">TRAIN</span>
+        </div>
+        <div class="sc-desc">1.5x faster fine-tuning, 50% less VRAM. Every LoRA adapter in the fleet is trained with Unsloth on Blackwell GPUs.</div>
+        <div class="sc-models">
+          <span>bf16 LoRA r=64</span> · full precision<br>
+          <span>packing=True</span> · 6x throughput<br>
+          <span>FA2</span> · Flash Attention 2<br>
+          <span>5GB VRAM</span> · min for Qwen3.5-2B LoRA
+        </div>
+        <a href="https://github.com/unslothai/unsloth">GitHub &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128038;</span>
+          <span class="sc-name">llama.cpp</span>
+          <span class="sc-tag">SERVE</span>
+        </div>
+        <div class="sc-desc">GGUF quantization and inference for edge deployment. Every model ships as Q4_K_M for BeeBox, Jetson, and desktop.</div>
+        <div class="sc-models">
+          <span>Q4_K_M</span> · primary quant format<br>
+          <span>llama-server</span> · GPU inference<br>
+          <span>llama-quantize</span> · model export<br>
+          <span>sm_86 / sm_120</span> · Ampere + Blackwell
+        </div>
+        <a href="https://github.com/ggerganov/llama.cpp">GitHub &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#9729;</span>
+          <span class="sc-name">Cloudflare</span>
+          <span class="sc-tag">EDGE</span>
+        </div>
+        <div class="sc-desc">Workers, D1, R2, Vectorize, Pages. The entire API layer and data plane runs on Cloudflare's edge network.</div>
+        <div class="sc-models">
+          <span>Workers</span> · SwarmSkills runtime<br>
+          <span>D1</span> · events, entities, memory<br>
+          <span>R2</span> · Gold Vault storage<br>
+          <span>Vectorize</span> · BGE-Base embeddings
+        </div>
+        <a href="https://developers.cloudflare.com">Cloudflare Docs &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128640;</span>
+          <span class="sc-name">Together.ai</span>
+          <span class="sc-tag">COOK</span>
+        </div>
+        <div class="sc-desc">Serverless inference API for data cooking. Generates and judges millions of pairs through the SwarmCurator pipeline.</div>
+        <div class="sc-models">
+          <span>Qwen3-Next-80B-A3B</span> · generation<br>
+          <span>Qwen3-235B-A22B</span> · quality rewrite<br>
+          <span>Llama-4-Maverick</span> · judge verdicts<br>
+          <span>15 workers</span> · per cook run
+        </div>
+        <a href="https://www.together.ai">together.ai &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128187;</span>
+          <span class="sc-name">NVIDIA</span>
+          <span class="sc-tag">GPU</span>
+        </div>
+        <div class="sc-desc">128 RTX PRO 6000 Blackwell GPUs. 96GB each. 12,288GB total VRAM. We own the racks. We cook the rails.</div>
+        <div class="sc-models">
+          <span>RTX PRO 6000</span> · 96GB, sm_120<br>
+          <span>RTX 3090 Ti</span> · 24GB, sm_86<br>
+          <span>Jetson Orin Nano</span> · 8GB, edge<br>
+          <span>CUDA 12.8+</span> · Blackwell support
+        </div>
+        <a href="https://www.nvidia.com">nvidia.com &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Contact -->
 <section class="contact" id="contact">
   <div class="container">
@@ -756,7 +878,6 @@ async function submitContact(e){
       <a href="https://swarmandbee.com">swarmandbee.com</a>
       <a href="https://router.swarmandbee.com">API</a>
       <a href="https://swarmandbee.com/cre">CRE</a>
-      <a href="https://gold.swarmandbee.com">Gold Vault</a>
     </div>
     <div style="margin-bottom:12px;font-size:0.78rem">
       <a href="mailto:build@swarmandbee.com" style="color:var(--primary)">build@swarmandbee.com</a>
