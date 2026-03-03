@@ -1,0 +1,69 @@
+# Swarm & Bee — swarmandbee.ai
+# LLM-readable site description
+
+> Swarm & Bee builds vertical AI models and curates platinum-grade training data.
+
+## Company
+- Name: Swarm & Bee
+- Website: https://swarmandbee.ai
+- Email: build@swarmandbee.com
+- Phone: 561-532-7120
+- GitHub: https://github.com/SudoSuOps
+- HuggingFace: https://huggingface.co/SwarmandBee
+- X/Twitter: https://x.com/swarmandbee
+- Discord: https://discord.gg/sHXNzNhscc
+
+## Two Verticals
+
+### 1. Build — LLM
+We fine-tune vertical AI models on sovereign compute. The SwarmCRE franchise covers commercial real estate intelligence from 0.8B edge to 122B Founder.
+
+Models:
+- SwarmCRE-122B "Founder FTW" — 122B params, fp8, 2 GPUs. Full-stack CRE reasoning and portfolio strategy.
+- SwarmCRE-9B "Morey" — 9.5B params, Mamba-Transformer hybrid. The flagship CRE analyst. Chat & voice. Trained on 643K CRE pairs.
+- SwarmCRE-4B — Compact edge CRE model. Fits Jetson Orin Nano and BeeBox.
+- SwarmCRE-2B — Ultra-light CRE analyst. 2GB VRAM. Desktop and mobile.
+- SwarmCRE-0.8B — Nano model. CPU inference. Embedded and IoT.
+- BeeMini-3B — Skill router. 98.3% valid JSON. 1.8GB Q4_K_M.
+
+### 2. Curation
+Every training pair passes an 8-step SwarmCurator pipeline with unappeallable verdicts:
+1. Source — Raw generation via Together.ai and domain grinders
+2. Grind — Specialty tagging and domain formatting
+3. Schema — Structural validation and field completeness
+4. CoVe — Chain of Verification, 5 criteria scored 1-10
+5. Judge — SwarmJudge PASS/FAIL verdict
+6. Trajectory — Multi-step reasoning verification
+7. Cross-Val — Deduplication, consistency, adversarial probing
+8. Platinum — Final unappeallable promotion
+
+Stats: 1.2M platinum pairs, 85+ specialties, 0% override rate.
+
+We offer Custom Curation Builds: you define the domain, specialties, task types, and volume. We run the full 8-step pipeline on 128 GPUs. You receive platinum JSONL with CoVe scores, trajectory labels, and train/eval splits.
+
+## Compute
+- 128 RTX PRO 6000 Blackwell GPUs
+- 96GB VRAM each
+- 12,288GB (12TB) total VRAM
+- We own the racks. We cook the rails.
+
+## SwarmSkills (19 live)
+broker_senior, broker_junior, intelligence_query, bookmaker, deal_tracker, developer, signal_scraper, investor, exchange_1031, market_report, lead_scorer, email_composer, comp_analyzer, rent_roll_analyzer, debt_analyzer, tax_assessor, site_selector, portfolio_optimizer, news_digest
+
+API: POST /skill/{name} at router.swarmandbee.com
+
+## BeeBox
+Sovereign edge AI appliance. BeeMini-3B router + SwarmCRE-4B quality gate locally. 72% local inference, 28% fleet escalation. Target price $499.
+
+## Built With
+- Qwen3.5 (base models)
+- Unsloth (training — 1.5x faster, 50% less VRAM)
+- llama.cpp (GGUF quantization and inference)
+- Cloudflare (Workers, D1, R2, Vectorize, Pages)
+- Together.ai (data cooking and generation)
+- NVIDIA (RTX PRO 6000 Blackwell, Jetson Orin Nano)
+- Supabase (Postgres backend, training run tracking)
+
+## Morey — SwarmCRE-9B
+Morey is the SwarmCRE-9B AI CRE analyst. Chat and voice interface. Capabilities: underwriting, IC memo drafting, deal analysis, debt sizing, rent roll analysis, 1031 exchange guidance, market intelligence, lead scoring, site selection.
+URL: https://swarmandbee.ai/morey
