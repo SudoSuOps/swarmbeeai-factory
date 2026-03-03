@@ -30,9 +30,38 @@ a{color:inherit;text-decoration:none}
 .ambient{
   position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(ellipse at 20% 0%,rgba(245,158,11,0.04) 0%,transparent 50%),
-    radial-gradient(ellipse at 80% 100%,rgba(16,185,129,0.03) 0%,transparent 50%);
+    radial-gradient(ellipse at 20% 0%,rgba(245,158,11,0.05) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 100%,rgba(16,185,129,0.04) 0%,transparent 50%),
+    radial-gradient(circle at 50% 50%,rgba(245,158,11,0.02) 0%,transparent 70%);
 }
+.ambient::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 100px,rgba(245,158,11,0.015) 100px,rgba(245,158,11,0.015) 101px);
+}
+
+/* Mobile banner */
+.mobile-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  display:none;align-items:center;justify-content:center;gap:10px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(16,185,129,0.1));
+  border-top:1px solid rgba(245,158,11,0.25);
+  backdrop-filter:blur(20px);
+  animation:slideUp 0.5s ease;
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mobile-banner .mb-icon{font-size:1.2rem}
+.mobile-banner .mb-text{font-size:0.82rem;font-weight:600;color:var(--text)}
+.mobile-banner .mb-text span{color:var(--gold)}
+.mobile-banner .mb-badge{
+  padding:3px 10px;border-radius:10px;font-size:0.68rem;font-weight:700;
+  background:var(--gold);color:#000;text-transform:uppercase;letter-spacing:0.04em;
+}
+.mobile-banner .mb-close{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--text-3);font-size:1rem;cursor:pointer;
+}
+@media(max-width:768px){.mobile-banner{display:flex}}
 
 /* Top Bar */
 .topbar{
@@ -85,24 +114,51 @@ a{color:inherit;text-decoration:none}
   padding:60px 20px;flex:1;gap:24px;
 }
 .welcome-avatar{
-  width:80px;height:80px;border-radius:50%;
+  width:88px;height:88px;border-radius:50%;
   background:linear-gradient(135deg,var(--gold),var(--emerald));
   display:flex;align-items:center;justify-content:center;
-  font-size:2rem;font-weight:900;color:#000;
+  font-size:2.2rem;font-weight:900;color:#000;
   box-shadow:0 0 60px var(--gold-glow),0 0 120px rgba(245,158,11,0.06);
   animation:float 6s ease-in-out infinite;
+  position:relative;
 }
+.welcome-avatar::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid rgba(245,158,11,0.2);animation:ringPulse 3s infinite;
+}
+@keyframes ringPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(1.08)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .welcome h2{
-  font-size:1.8rem;font-weight:900;letter-spacing:-0.03em;
+  font-size:2rem;font-weight:900;letter-spacing:-0.03em;
   background:linear-gradient(135deg,var(--gold),var(--text));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
+.welcome .subtitle{
+  font-size:0.88rem;color:var(--gold);font-family:var(--mono);
+  letter-spacing:0.02em;margin-top:-4px;margin-bottom:8px;
+}
 .welcome .tagline{
-  font-size:1rem;color:var(--text-2);max-width:480px;line-height:1.7;
+  font-size:1rem;color:var(--text-2);max-width:520px;line-height:1.7;
 }
 .welcome .tagline strong{color:var(--gold);font-weight:600}
+
+/* Morey stats bar */
+.morey-stats{
+  display:flex;gap:24px;margin-top:16px;margin-bottom:4px;
+  padding:12px 24px;border-radius:10px;
+  background:var(--surface-2);border:1px solid var(--border);
+}
+.morey-stat{text-align:center}
+.morey-stat .ms-val{font-size:1rem;font-weight:800;color:var(--gold);font-family:var(--mono)}
+.morey-stat .ms-lbl{font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px}
+
+/* Persona quote */
+.persona-quote{
+  font-size:0.82rem;color:var(--text-3);font-style:italic;
+  max-width:400px;line-height:1.6;margin-top:8px;
+  border-left:2px solid var(--gold);padding-left:12px;text-align:left;
+}
 .welcome-traits{
   display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px;
 }
@@ -241,24 +297,40 @@ a{color:inherit;text-decoration:none}
 .input-hint a:hover{opacity:0.7}
 
 /* Responsive */
+/* 3-col starters on desktop */
+@media(min-width:769px){
+  .starters{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:768px){
   .topbar{padding:12px 16px}
-  .chat-area{padding:16px}
-  .input-area{padding:12px 16px 20px}
+  .chat-area{padding:16px;padding-bottom:60px}
+  .input-area{padding:12px 16px 64px}
   .starters{grid-template-columns:1fr}
   .welcome h2{font-size:1.4rem}
   .welcome-traits{gap:8px}
   .trait{padding:6px 12px;font-size:0.72rem}
+  .morey-stats{gap:16px;padding:10px 16px}
+  .morey-stat .ms-val{font-size:0.88rem}
+  .persona-quote{font-size:0.75rem}
 }
 @media(max-width:480px){
   .topbar-right .status-text{display:none}
   .morey-tag{display:none}
+  .morey-stats{gap:12px;flex-wrap:wrap}
 }
 </style>
 </head>
 <body>
 
 <div class="ambient"></div>
+
+<!-- Mobile Coming Soon Banner -->
+<div class="mobile-banner" id="mobileBanner">
+  <span class="mb-icon">&#128241;</span>
+  <span class="mb-text">Morey on <span>iOS & Android</span></span>
+  <span class="mb-badge">Coming Soon</span>
+  <button class="mb-close" onclick="document.getElementById('mobileBanner').style.display='none'">&times;</button>
+</div>
 
 <!-- Top Bar -->
 <div class="topbar">
@@ -283,10 +355,17 @@ a{color:inherit;text-decoration:none}
   <div class="welcome" id="welcome">
     <div class="welcome-avatar">M</div>
     <h2>Talk to Morey.</h2>
+    <p class="subtitle">SwarmCRE-9B &middot; Mamba-Transformer &middot; 9.5B params</p>
     <p class="tagline">
       Your CRE analyst that never sleeps. Trained on <strong>643,000 intelligence pairs</strong> across
-      underwriting, deal flow, lease analysis, and market signals. Type or talk — Morey runs the numbers.
+      underwriting, deal flow, lease analysis, and market signals. <strong>10 specialties. Zero hallucination tolerance.</strong> Type or talk — Morey runs the numbers.
     </p>
+    <div class="morey-stats">
+      <div class="morey-stat"><div class="ms-val">643K</div><div class="ms-lbl">CRE Pairs</div></div>
+      <div class="morey-stat"><div class="ms-val">10</div><div class="ms-lbl">Specialties</div></div>
+      <div class="morey-stat"><div class="ms-val">22</div><div class="ms-lbl">tok/s</div></div>
+      <div class="morey-stat"><div class="ms-val">Q4</div><div class="ms-lbl">Edge Ready</div></div>
+    </div>
     <div class="welcome-traits">
       <span class="trait"><span class="t-icon">&#128200;</span> Underwriting</span>
       <span class="trait"><span class="t-icon">&#128203;</span> IC Memos</span>
@@ -294,6 +373,11 @@ a{color:inherit;text-decoration:none}
       <span class="trait"><span class="t-icon">&#128202;</span> Market Intel</span>
       <span class="trait"><span class="t-icon">&#127974;</span> Debt Sizing</span>
       <span class="trait"><span class="t-icon">&#128205;</span> Site Selection</span>
+      <span class="trait"><span class="t-icon">&#128259;</span> 1031 Exchange</span>
+      <span class="trait"><span class="t-icon">&#127919;</span> Lead Scoring</span>
+    </div>
+    <div class="persona-quote">
+      "Give me the address, the rent roll, and 30 seconds. I'll tell you if it's a deal or a dog."
     </div>
     <div class="starters">
       <div class="starter" onclick="sendStarter(this)">
@@ -311,6 +395,14 @@ a{color:inherit;text-decoration:none}
       <div class="starter" onclick="sendStarter(this)">
         <div class="s-label">Debt Analysis</div>
         Size a CMBS loan on a stabilized 200-unit multifamily at $185K/door, 92% occupancy
+      </div>
+      <div class="starter" onclick="sendStarter(this)">
+        <div class="s-label">Rent Roll</div>
+        Analyze this 40-tenant retail rent roll — flag below-market leases and near-term rollover risk
+      </div>
+      <div class="starter" onclick="sendStarter(this)">
+        <div class="s-label">1031 Exchange</div>
+        I'm selling a $4.2M NNN asset with $1.8M gain — what are my 1031 exchange options and timelines?
       </div>
     </div>
   </div>
@@ -389,9 +481,11 @@ function sendMessage(){
     const t=document.getElementById('typing');
     if(t)t.remove();
     const responses = [
-      "I'm running those numbers now. SwarmCRE-9B is currently in training — once deployed, I'll have full underwriting, deal analysis, and market intelligence capabilities backed by 643K CRE intelligence pairs. Stay tuned.",
-      "Good question. When I'm live, I'll pull from 10 CRE specialties — from NNN lease abstracts to investment-grade underwriting. The fleet is cooking right now on Blackwell GPUs.",
-      "I see you. That's exactly the kind of analysis I'm built for. SwarmCRE-9B training is in progress — Phase 2 on RTX PRO 6000. I'll be ready to run those numbers soon.",
+      "I hear you. I'm trained on 643K CRE intelligence pairs — underwriting, IC memos, lease analysis, market signals, the whole playbook. Right now I'm still in the oven on Blackwell GPUs, but when I'm live? Give me the rent roll and 30 seconds.",
+      "That's my lane. 10 specialties — NNN, multifamily, industrial, flex, cold storage, data centers, you name it. SwarmCRE-9B is finishing Phase 2 training right now. I'll be running those numbers for you soon.",
+      "Good question. I don't guess — I run the math. 643,000 pairs of CRE training data, every one quality-gated by SwarmJudge. I'm almost done cooking. Hang tight.",
+      "Deal or dog — that's what I'm built to answer. I'm SwarmCRE-9B, training on RTX PRO 6000 Blackwell right now. When I come online, you type the address, I'll run the numbers. Mobile app coming soon too.",
+      "I see you. That's exactly the kind of analysis where I shine — no fluff, just numbers. The fleet is cooking right now. Phase 2 on Blackwell. I'll be ready to underwrite, size debt, and draft IC memos real soon.",
     ];
     appendMsg('morey', responses[Math.floor(Math.random()*responses.length)]);
   },1500+Math.random()*1000);
