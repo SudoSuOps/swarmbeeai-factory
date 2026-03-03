@@ -220,6 +220,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
 <!-- Ecosystem Bar -->
 <div class="eco-bar">
+  <a href="/morey" style="color:#f59e0b">Morey</a>
+  <span class="sep">|</span>
   <a href="https://swarmandbee.com/cre">CRE Platform</a>
   <span class="sep">|</span>
   <a href="https://roi.swarmandbee.com">ROI Thesis</a>
@@ -236,6 +238,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="nav-inner">
     <a href="/" class="logo">swarm<span>&</span>bee</a>
     <div class="nav-links" id="navLinks">
+      <a href="/morey" style="color:var(--primary)">Morey</a>
       <a href="#products">Products</a>
       <a href="#fleet">Fleet</a>
       <a href="#skills">Skills</a>
@@ -289,7 +292,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <div class="card-stats">
           <div class="card-stat"><strong>643K</strong> pairs</div>
           <div class="card-stat"><strong>10</strong> specialties</div>
-          <div class="card-stat"><strong>35B</strong> model</div>
+          <div class="card-stat"><strong>9B</strong> model</div>
         </div>
         <span class="card-link">Open Platform &rarr;</span>
       </a>
@@ -329,31 +332,39 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="section-label">Model Fleet</div>
     <h2 class="section-title">The Fleet</h2>
-    <p class="section-sub">Purpose-built models from 0.6B to 35B parameters. Each trained on domain-specific data, quality-gated, and deployable from cloud to edge.</p>
+    <p class="section-sub">The SwarmCRE franchise — four sizes from edge to fleet. Same CRE brain, same quality gate, deployable anywhere.</p>
     <div class="fleet-grid">
+
+      <a href="/morey" class="fleet-card" style="border-color:var(--primary)">
+        <div class="model-icon">&#128081;</div>
+        <h4>SwarmCRE-9B "Morey"</h4>
+        <div class="params">9.5B · Mamba-Transformer</div>
+        <div class="role">The flagship. CRE underwriting, IC memos, deal analysis. Chat &amp; voice. The workhorse.</div>
+        <span class="tag tag-train">Training</span>
+      </a>
 
       <div class="fleet-card">
         <div class="model-icon">&#9878;</div>
-        <h4>SwarmJudge-9B</h4>
-        <div class="params">9.5B · Mamba-Transformer</div>
-        <div class="role">Quality gate for all verticals. PASS/FAIL verdicts on every skill call. The workhorse.</div>
+        <h4>SwarmCRE-4B</h4>
+        <div class="params">4B · Compact</div>
+        <div class="role">Edge-grade CRE intelligence. Fits Jetson Orin Nano and BeeBox. Full quality gate.</div>
         <span class="tag tag-train">Training</span>
       </div>
 
       <div class="fleet-card">
-        <div class="model-icon">&#127959;</div>
-        <h4>SwarmCRE-35B</h4>
-        <div class="params">35B-A3B · MoE</div>
-        <div class="role">CRE underwriting, IC memos, lease analysis. 643K pairs, 10 specialties.</div>
-        <span class="tag tag-done">v1 Shipped</span>
+        <div class="model-icon">&#128640;</div>
+        <h4>SwarmCRE-2B</h4>
+        <div class="params">2B · Micro</div>
+        <div class="role">Ultra-light CRE analyst. Runs on 2GB VRAM. Desktop and mobile ready.</div>
+        <span class="tag tag-train">Training</span>
       </div>
 
       <div class="fleet-card">
-        <div class="model-icon">&#128138;</div>
-        <h4>SwarmPharma-35B</h4>
-        <div class="params">35B-A3B · MoE</div>
-        <div class="role">Drug interaction detection, 5-step trajectory reasoning. Zero quantization loss.</div>
-        <span class="tag tag-done">v1 Shipped</span>
+        <div class="model-icon">&#128029;</div>
+        <h4>SwarmCRE-0.6B</h4>
+        <div class="params">0.6B · Nano</div>
+        <div class="role">Smallest CRE model. CPU inference. Embedded devices, IoT, on-prem appliances.</div>
+        <span class="tag tag-train">Queued</span>
       </div>
 
       <div class="fleet-card">
@@ -362,14 +373,6 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <div class="params">3B · Router</div>
         <div class="role">Skill routing, domain classification. 98.3% valid JSON, 1.8GB Q4. Runs on anything.</div>
         <span class="tag tag-live">Live</span>
-      </div>
-
-      <div class="fleet-card">
-        <div class="model-icon">&#128640;</div>
-        <h4>SwarmJudge-4B</h4>
-        <div class="params">4B · Compact Judge</div>
-        <div class="role">Edge-grade quality gate. Fits Jetson Orin Nano and BeeBox devices.</div>
-        <span class="tag tag-train">Training</span>
       </div>
 
     </div>
@@ -460,7 +463,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
              <span class="dim">Cloudflare Workers · D1 · R2 · Vectorize</span>
 
 <span class="layer">FLEET</span>        SwarmHQ · 3 rigs · 12× RTX PRO 6000 (1,152GB)
-             <span class="comp">SwarmJudge-9B</span> × 9  ·  SwarmCRE-35B  ·  SwarmPharma-35B
+             <span class="comp">SwarmCRE-9B</span> × 9  ·  4B · 2B · 0.6B edge fleet
              <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM</span>
 
 <span class="layer">DATA</span>         Gold Vault · 1.2M pairs · 85+ specialties
