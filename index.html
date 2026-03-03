@@ -230,6 +230,38 @@ section{padding:80px 24px}
 .verdict-bar .vb-fail{color:#ef4444;font-weight:700}
 .verdict-bar .vb-gold{color:var(--primary);font-weight:700}
 
+/* Custom Builds */
+.custom-build{
+  max-width:800px;margin:48px auto 0;
+  background:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(16,185,129,0.04));
+  border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius);
+  padding:36px 32px;position:relative;overflow:hidden;
+}
+.custom-build::before{
+  content:'CUSTOM BUILD';position:absolute;top:16px;right:20px;
+  font-size:0.62rem;font-weight:800;letter-spacing:0.1em;
+  color:var(--primary);font-family:var(--mono);
+  background:rgba(245,158,11,0.1);padding:4px 10px;border-radius:8px;
+}
+.custom-build h3{font-size:1.2rem;font-weight:800;margin-bottom:8px;letter-spacing:-0.02em}
+.custom-build .cb-sub{font-size:0.92rem;color:var(--text-2);line-height:1.7;margin-bottom:24px}
+.custom-build .cb-sub strong{color:var(--primary)}
+.cb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.cb-item{
+  background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:16px;
+}
+.cb-item .cb-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.cb-item .cb-val{font-size:0.85rem;color:var(--text);font-weight:600;line-height:1.5}
+.cb-item .cb-desc{font-size:0.72rem;color:var(--text-3);margin-top:4px;line-height:1.5}
+.cb-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;border-radius:var(--radius-sm);
+  background:var(--primary);color:#000;font-weight:700;font-size:0.88rem;
+  border:none;cursor:pointer;transition:background 0.2s;text-decoration:none;
+}
+.cb-cta:hover{background:var(--primary-dim)}
+
 /* Skills */
 .skills{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
@@ -367,6 +399,9 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   .pipe-desc{display:none}
   .curator-stats{gap:20px}
   .verdict-bar{font-size:0.68rem;padding:16px}
+  .cb-grid{grid-template-columns:1fr}
+  .custom-build{padding:24px 20px}
+  .custom-build::before{position:static;display:inline-block;margin-bottom:12px}
   .contact-row{flex-direction:column;gap:14px}
   section{padding:60px 16px}
   .section-title{font-size:1.6rem}
@@ -584,6 +619,30 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   verdict: <span class="vb-pass">PLATINUM PROMOTED</span>  │  override: <span class="vb-fail">DENIED</span>
   status:  unappeallable  │  ships to training
     </div>
+
+    <div class="custom-build">
+      <h3>Custom Curation Builds</h3>
+      <p class="cb-sub">You bring the model spec. We build the dataset. Same 8-step SwarmCurator pipeline, tuned to <strong>your vertical, your taxonomy, your quality bar</strong>. Platinum pairs delivered — ready to train.</p>
+      <div class="cb-grid">
+        <div class="cb-item">
+          <div class="cb-label">You Define</div>
+          <div class="cb-val">Domain, specialties, task types, volume</div>
+          <div class="cb-desc">Tell us the vertical, the model size, and what the pairs need to do.</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">We Build</div>
+          <div class="cb-val">Generate, grind, validate, judge, promote</div>
+          <div class="cb-desc">Full 8-step pipeline on our 128-GPU sovereign compute. No third-party data.</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">You Ship</div>
+          <div class="cb-val">Platinum pairs, eval sets, training configs</div>
+          <div class="cb-desc">Delivered as JSONL with CoVe scores, trajectory labels, and train/eval splits.</div>
+        </div>
+      </div>
+      <a href="#contact" class="cb-cta">Request a Custom Build &rarr;</a>
+    </div>
+
   </div>
 </section>
 
