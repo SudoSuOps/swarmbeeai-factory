@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swarm & Bee — Infrastructure for Intelligence</title>
+<meta name="description" content="The single front door to the Swarm & Bee ecosystem. CRE intelligence, model fleet, SwarmSkills, and sovereign edge AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--surface:#111;--surface-2:#0a0a0a;--border:#222;
+  --primary:#f59e0b;--primary-dim:#d97706;--accent:#10b981;--accent-dim:#059669;
+  --text:#fff;--text-2:#d4d4d4;--text-3:#737373;
+  --max-w:1200px;--radius:12px;--radius-sm:8px;
+  --font:Inter,system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Ecosystem Bar */
+.eco-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:36px;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  font-size:0.75rem;color:var(--text-3);backdrop-filter:blur(12px);
+}
+.eco-bar a{transition:color 0.2s}
+.eco-bar a:hover{color:var(--primary)}
+.eco-bar .sep{opacity:0.3}
+
+/* Nav */
+nav{
+  position:fixed;top:36px;left:0;right:0;z-index:99;
+  height:64px;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;max-width:100%;
+}
+.nav-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+/* Sections */
+section{padding:80px 24px}
+.container{max-width:var(--max-w);margin:0 auto}
+.section-label{
+  text-transform:uppercase;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.08em;color:var(--accent);margin-bottom:12px;text-align:center;
+}
+.section-title{font-size:2rem;font-weight:800;text-align:center;margin-bottom:12px;letter-spacing:-0.02em}
+.section-sub{
+  font-size:1.05rem;color:var(--text-2);text-align:center;
+  max-width:640px;margin:0 auto 48px;line-height:1.7;
+}
+
+/* Hero */
+.hero{
+  padding:172px 24px 80px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(245,158,11,0.08) 0%,transparent 60%);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--surface);border:1px solid var(--border);
+  padding:6px 16px;border-radius:20px;font-size:0.82rem;
+  color:var(--accent);margin-bottom:24px;
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4rem);font-weight:900;line-height:1.1;
+  letter-spacing:-0.03em;margin-bottom:20px;
+}
+.hero h1 .gradient{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{font-size:1.15rem;color:var(--text-2);max-width:600px;margin:0 auto 40px;line-height:1.7}
+
+/* Stats Row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:720px;margin:0 auto}
+.stat{text-align:center}
+.stat-value{font-size:1.8rem;font-weight:800;color:var(--primary);letter-spacing:-0.02em}
+.stat-label{font-size:0.78rem;color:var(--text-3);margin-top:2px;text-transform:uppercase;letter-spacing:0.04em}
+
+/* Product Cards */
+.products{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.product-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px 24px;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;
+}
+.product-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.product-card .bar{position:absolute;top:0;left:0;right:0;height:3px}
+.product-card .icon{font-size:1.8rem;margin-bottom:16px}
+.product-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.product-card p{font-size:0.88rem;color:var(--text-2);line-height:1.6;margin-bottom:20px}
+.product-card .card-stats{display:flex;gap:16px;margin-bottom:20px}
+.product-card .card-stat{font-size:0.75rem;color:var(--text-3)}
+.product-card .card-stat strong{color:var(--text);font-weight:700;display:block;font-size:0.95rem}
+.card-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.85rem;font-weight:600;color:var(--primary);transition:gap 0.2s;
+}
+.card-link:hover{gap:10px}
+
+/* Fleet */
+.fleet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.fleet-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:center;transition:border-color 0.2s,transform 0.2s;
+}
+.fleet-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.fleet-card .model-icon{font-size:1.4rem;margin-bottom:10px}
+.fleet-card h4{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+.fleet-card .params{font-size:0.75rem;color:var(--primary);font-family:var(--mono);margin-bottom:8px}
+.fleet-card .role{font-size:0.78rem;color:var(--text-3);line-height:1.5}
+.fleet-card .tag{
+  display:inline-block;margin-top:10px;padding:3px 10px;border-radius:12px;
+  font-size:0.7rem;font-weight:600;
+}
+.tag-train{background:rgba(245,158,11,0.15);color:var(--primary)}
+.tag-live{background:rgba(16,185,129,0.15);color:var(--accent)}
+.tag-done{background:rgba(212,212,212,0.1);color:var(--text-3)}
+
+/* Skills */
+.skills{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.skill-chip{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px 16px;font-size:0.82rem;font-weight:500;
+  display:flex;align-items:center;gap:8px;transition:border-color 0.2s;
+}
+.skill-chip:hover{border-color:var(--primary)}
+.skill-chip .sk-icon{font-size:1rem;flex-shrink:0}
+.skill-chip .sk-name{font-family:var(--mono);font-size:0.78rem;color:var(--text-2)}
+
+/* BeeBox */
+.beebox{text-align:center}
+.beebox-visual{
+  max-width:640px;margin:0 auto 40px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;font-family:var(--mono);font-size:0.82rem;line-height:1.8;
+  color:var(--text-2);text-align:left;
+}
+.beebox-visual .hl{color:var(--primary)}
+.beebox-visual .acc{color:var(--accent)}
+.beebox-specs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:560px;margin:0 auto;
+}
+.beebox-spec{text-align:center}
+.beebox-spec .val{font-size:1.4rem;font-weight:800;color:var(--primary)}
+.beebox-spec .lbl{font-size:0.75rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em}
+
+/* Architecture */
+.arch{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.arch-diagram{
+  max-width:800px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;font-family:var(--mono);font-size:0.78rem;line-height:1.9;
+  color:var(--text-2);overflow-x:auto;white-space:pre;
+}
+.arch-diagram .layer{color:var(--primary);font-weight:700}
+.arch-diagram .comp{color:var(--accent)}
+.arch-diagram .dim{color:var(--text-3)}
+
+/* Footer */
+footer{
+  padding:48px 24px;border-top:1px solid var(--border);
+  text-align:center;font-size:0.82rem;color:var(--text-3);
+}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+footer a{transition:color 0.2s}
+footer a:hover{color:var(--primary)}
+footer .copyright{font-size:0.75rem;opacity:0.5}
+
+/* Responsive */
+@media(max-width:768px){
+  .eco-bar{gap:12px;font-size:0.68rem;padding:0 12px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:64px;left:0;right:0;
+    background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);
+    padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);
+  }
+  .hero{padding:132px 16px 60px}
+  .hero h1{font-size:2rem}
+  .stats{grid-template-columns:repeat(2,1fr);gap:16px}
+  .product-grid{grid-template-columns:1fr}
+  .fleet-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .beebox-specs{grid-template-columns:1fr}
+  section{padding:60px 16px}
+  .section-title{font-size:1.6rem}
+}
+@media(max-width:480px){
+  .eco-bar{display:none}
+  nav{top:0}
+  .hero{padding:108px 12px 48px}
+  .hero h1{font-size:1.7rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .fleet-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Ecosystem Bar -->
+<div class="eco-bar">
+  <a href="https://swarmandbee.com/cre">CRE Platform</a>
+  <span class="sep">|</span>
+  <a href="https://roi.swarmandbee.com">ROI Thesis</a>
+  <span class="sep">|</span>
+  <a href="https://gold.swarmandbee.com">Gold Vault</a>
+  <span class="sep">|</span>
+  <a href="https://router.swarmandbee.com">API</a>
+  <span class="sep">|</span>
+  <a href="https://github.com/SudoSuOps">GitHub</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">swarm<span>&</span>bee</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#skills">Skills</a>
+      <a href="#beebox">BeeBox</a>
+      <a href="#architecture">Stack</a>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Systems Online</div>
+    <h1>Infrastructure for<br><span class="gradient">Intelligence</span></h1>
+    <p>Vertical AI models, sovereign edge compute, and an agent economy — built from 1.2 million training pairs and shipped on hardware you own.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">1.2M</div>
+        <div class="stat-label">Training Pairs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">19</div>
+        <div class="stat-label">SwarmSkills</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Models</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">3</div>
+        <div class="stat-label">GPU Rigs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-label">Ecosystem</div>
+    <h2 class="section-title">Three Verticals. One Stack.</h2>
+    <p class="section-sub">Each product line is powered by its own fine-tuned model, quality-gated by SwarmJudge, and served through the same infrastructure.</p>
+    <div class="product-grid">
+
+      <a href="https://swarmandbee.com/cre" class="product-card">
+        <div class="bar" style="background:var(--primary)"></div>
+        <div class="icon">&#127959;</div>
+        <h3>CRE Intelligence</h3>
+        <p>Commercial real estate underwriting, deal analysis, and market intelligence. The new CoStar — API-first, agent-native.</p>
+        <div class="card-stats">
+          <div class="card-stat"><strong>643K</strong> pairs</div>
+          <div class="card-stat"><strong>10</strong> specialties</div>
+          <div class="card-stat"><strong>35B</strong> model</div>
+        </div>
+        <span class="card-link">Open Platform &rarr;</span>
+      </a>
+
+      <a href="https://roi.swarmandbee.com" class="product-card">
+        <div class="bar" style="background:var(--accent)"></div>
+        <div class="icon">&#128200;</div>
+        <h3>ROI Thesis</h3>
+        <p>The investment case for vertical AI infrastructure. Economics of model training, data moats, and edge deployment at scale.</p>
+        <div class="card-stats">
+          <div class="card-stat"><strong>$0.00004</strong> per call</div>
+          <div class="card-stat"><strong>72%</strong> local</div>
+          <div class="card-stat"><strong>3 rigs</strong> fleet</div>
+        </div>
+        <span class="card-link">Read Thesis &rarr;</span>
+      </a>
+
+      <a href="https://gold.swarmandbee.com" class="product-card">
+        <div class="bar" style="background:linear-gradient(90deg,var(--primary),var(--accent))"></div>
+        <div class="icon">&#128737;</div>
+        <h3>Gold Vault</h3>
+        <p>Curated, verified training data across medical, aviation, CRE, and legal verticals. Every pair quality-gated through SwarmJudge.</p>
+        <div class="card-stats">
+          <div class="card-stat"><strong>1.2M</strong> pairs</div>
+          <div class="card-stat"><strong>85+</strong> specialties</div>
+          <div class="card-stat"><strong>5</strong> buckets</div>
+        </div>
+        <span class="card-link">Explore Vault &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Fleet -->
+<section class="fleet-section" id="fleet">
+  <div class="container">
+    <div class="section-label">Model Fleet</div>
+    <h2 class="section-title">The Fleet</h2>
+    <p class="section-sub">Purpose-built models from 0.6B to 35B parameters. Each trained on domain-specific data, quality-gated, and deployable from cloud to edge.</p>
+    <div class="fleet-grid">
+
+      <div class="fleet-card">
+        <div class="model-icon">&#9878;</div>
+        <h4>SwarmJudge-9B</h4>
+        <div class="params">9.5B · Mamba-Transformer</div>
+        <div class="role">Quality gate for all verticals. PASS/FAIL verdicts on every skill call. The workhorse.</div>
+        <span class="tag tag-train">Training</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#127959;</div>
+        <h4>SwarmCRE-35B</h4>
+        <div class="params">35B-A3B · MoE</div>
+        <div class="role">CRE underwriting, IC memos, lease analysis. 643K pairs, 10 specialties.</div>
+        <span class="tag tag-done">v1 Shipped</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128138;</div>
+        <h4>SwarmPharma-35B</h4>
+        <div class="params">35B-A3B · MoE</div>
+        <div class="role">Drug interaction detection, 5-step trajectory reasoning. Zero quantization loss.</div>
+        <span class="tag tag-done">v1 Shipped</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128301;</div>
+        <h4>BeeMini-3B</h4>
+        <div class="params">3B · Router</div>
+        <div class="role">Skill routing, domain classification. 98.3% valid JSON, 1.8GB Q4. Runs on anything.</div>
+        <span class="tag tag-live">Live</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128640;</div>
+        <h4>SwarmJudge-4B</h4>
+        <div class="params">4B · Compact Judge</div>
+        <div class="role">Edge-grade quality gate. Fits Jetson Orin Nano and BeeBox devices.</div>
+        <span class="tag tag-train">Training</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SwarmSkills -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Agent Economy</div>
+    <h2 class="section-title">19 SwarmSkills</h2>
+    <p class="section-sub">Each skill is schema-validated, quality-gated by SwarmJudge, and callable via a single API endpoint. Every output becomes training data.</p>
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="sk-icon">&#128188;</span><span class="sk-name">broker_senior</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128100;</span><span class="sk-name">broker_junior</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128269;</span><span class="sk-name">intelligence_query</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127922;</span><span class="sk-name">bookmaker</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128203;</span><span class="sk-name">deal_tracker</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128187;</span><span class="sk-name">developer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128225;</span><span class="sk-name">signal_scraper</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128176;</span><span class="sk-name">investor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128259;</span><span class="sk-name">exchange_1031</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128202;</span><span class="sk-name">market_report</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127919;</span><span class="sk-name">lead_scorer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#9993;</span><span class="sk-name">email_composer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128200;</span><span class="sk-name">comp_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128196;</span><span class="sk-name">rent_roll_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127974;</span><span class="sk-name">debt_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128181;</span><span class="sk-name">tax_assessor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128205;</span><span class="sk-name">site_selector</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128640;</span><span class="sk-name">portfolio_optimizer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128240;</span><span class="sk-name">news_digest</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BeeBox -->
+<section class="beebox" id="beebox">
+  <div class="container">
+    <div class="section-label">Edge Compute</div>
+    <h2 class="section-title">BeeBox</h2>
+    <p class="section-sub">A sovereign AI appliance on your desk. Local inference, plug-and-play skills, and fleet escalation when you need it.</p>
+    <div class="beebox-visual">
+<span class="hl">┌─────────────────────────────────────────────┐</span>
+<span class="hl">│</span>  <span class="acc">BeeBox</span>  ·  Sovereign Edge AI                <span class="hl">│</span>
+<span class="hl">├─────────────────────────────────────────────┤</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">BeeMini-3B</span>   → Routes every request        <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">Judge-4B</span>     → Quality gate (local)        <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">Skill Store</span>  → Plug-and-play skills        <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  72% local  ·  28% fleet escalation         <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  ─── fleet call ──→ <span class="hl">SwarmHQ (9B+)</span>           <span class="hl">│</span>
+<span class="hl">│</span>  ←── response ────  <span class="hl">GPU Cluster</span>             <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">└─────────────────────────────────────────────┘</span>
+    </div>
+    <div class="beebox-specs">
+      <div class="beebox-spec">
+        <div class="val">$499</div>
+        <div class="lbl">Target Price</div>
+      </div>
+      <div class="beebox-spec">
+        <div class="val">2-4B</div>
+        <div class="lbl">Local Models</div>
+      </div>
+      <div class="beebox-spec">
+        <div class="val">16 TOPS</div>
+        <div class="lbl">NPU Accel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="arch" id="architecture">
+  <div class="container">
+    <div class="section-label">Infrastructure</div>
+    <h2 class="section-title">The Stack</h2>
+    <p class="section-sub">From raw data to edge inference — every layer is purpose-built.</p>
+    <div class="arch-diagram"><span class="layer">EDGE</span>         BeeBox · Jetson · Mac Mini · Zima
+             BeeMini-3B router → Judge-4B gate
+             <span class="dim">Q4_K_M GGUF · 2-6GB VRAM · USB4/10GbE</span>
+
+<span class="layer">API</span>          router.swarmandbee.com
+             <span class="comp">POST /skill/{name}</span> → route → execute → judge → store
+             <span class="dim">Cloudflare Workers · D1 · R2 · Vectorize</span>
+
+<span class="layer">FLEET</span>        SwarmHQ · 3 rigs · 12× RTX PRO 6000 (1,152GB)
+             <span class="comp">SwarmJudge-9B</span> × 9  ·  SwarmCRE-35B  ·  SwarmPharma-35B
+             <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM</span>
+
+<span class="layer">DATA</span>         Gold Vault · 1.2M pairs · 85+ specialties
+             <span class="comp">R2 buckets</span>: sb-cre · sb-medical · sb-aviation · sb-core · sb-drone
+             <span class="dim">CoVe verification · SwarmJudge PASS/FAIL · trajectory labels</span>
+
+<span class="layer">TRAIN</span>        Factory · Together.ai cooks · Blackwell training
+             <span class="comp">Phase pipeline</span>: generate → judge → promote → train → eval
+             <span class="dim">Qwen3.5 base · LoRA r=64 · packing · multi-phase</span></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/SudoSuOps">GitHub</a>
+      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+      <a href="https://router.swarmandbee.com">API</a>
+      <a href="https://swarmandbee.com/cre">CRE</a>
+      <a href="https://roi.swarmandbee.com">ROI</a>
+      <a href="https://gold.swarmandbee.com">Gold Vault</a>
+    </div>
+    <div class="copyright">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
+  </div>
+</footer>
+
+</body>
+</html>
