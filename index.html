@@ -131,6 +131,71 @@ section{padding:80px 24px}
 .tag-train{background:rgba(245,158,11,0.15);color:var(--primary)}
 .tag-live{background:rgba(16,185,129,0.15);color:var(--accent)}
 .tag-done{background:rgba(212,212,212,0.1);color:var(--text-3)}
+.tag-ceo{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(16,185,129,0.15));color:var(--primary);border:1px solid rgba(245,158,11,0.25)}
+
+/* SwarmCurator */
+.curator{text-align:center}
+.curator-headline{
+  font-size:1.1rem;color:var(--text-2);max-width:680px;margin:0 auto 48px;line-height:1.7;text-align:center;
+}
+.curator-headline strong{color:var(--primary);font-weight:700}
+.curator-headline em{color:var(--accent);font-style:normal;font-weight:600}
+
+/* Pipeline */
+.pipeline{
+  display:flex;align-items:stretch;gap:0;max-width:960px;margin:0 auto 48px;
+  position:relative;
+}
+.pipe-step{
+  flex:1;text-align:center;padding:20px 8px;position:relative;
+  border:1px solid var(--border);background:var(--surface);
+  transition:border-color 0.3s,background 0.3s;
+}
+.pipe-step:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.pipe-step:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.pipe-step:hover{border-color:var(--primary);background:var(--surface-2)}
+.pipe-step:not(:last-child)::after{
+  content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+  width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;
+  border-left:8px solid var(--border);z-index:2;
+}
+.pipe-step:hover::after{border-left-color:var(--primary)}
+.pipe-num{
+  font-size:0.65rem;font-weight:800;color:var(--primary);font-family:var(--mono);
+  background:rgba(245,158,11,0.1);width:20px;height:20px;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:6px;
+}
+.pipe-icon{font-size:1.1rem;display:block;margin-bottom:4px}
+.pipe-name{font-size:0.72rem;font-weight:700;color:var(--text);display:block}
+.pipe-desc{font-size:0.62rem;color:var(--text-3);display:block;margin-top:2px;line-height:1.4}
+
+/* Final stamp */
+.pipe-step.platinum{
+  background:linear-gradient(180deg,rgba(245,158,11,0.08),rgba(245,158,11,0.02));
+  border-color:var(--primary);
+}
+.pipe-step.platinum .pipe-num{background:var(--primary);color:#000}
+
+/* Curator stats */
+.curator-stats{
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+  padding:24px 0;
+}
+.cur-stat{text-align:center}
+.cur-stat .cs-val{font-size:1.3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
+.cur-stat .cs-lbl{font-size:0.68rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px}
+
+/* Verdict bar */
+.verdict-bar{
+  max-width:640px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 28px;font-family:var(--mono);font-size:0.78rem;
+  text-align:left;color:var(--text-2);line-height:1.8;
+}
+.verdict-bar .vb-pass{color:var(--accent);font-weight:700}
+.verdict-bar .vb-fail{color:#ef4444;font-weight:700}
+.verdict-bar .vb-gold{color:var(--primary);font-weight:700}
 
 /* Skills */
 .skills{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -202,6 +267,12 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   .fleet-grid{grid-template-columns:repeat(2,1fr)}
   .skills-grid{grid-template-columns:repeat(2,1fr)}
   .beebox-specs{grid-template-columns:1fr}
+  .pipeline{flex-wrap:wrap;gap:4px}
+  .pipe-step{flex:0 0 calc(25% - 3px);border-radius:var(--radius-sm) !important}
+  .pipe-step::after{display:none}
+  .pipe-desc{display:none}
+  .curator-stats{gap:20px}
+  .verdict-bar{font-size:0.68rem;padding:16px}
   section{padding:60px 16px}
   .section-title{font-size:1.6rem}
 }
@@ -213,6 +284,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   .stats{grid-template-columns:repeat(2,1fr)}
   .fleet-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
+  .pipe-step{flex:0 0 calc(50% - 2px)}
 }
 </style>
 </head>
@@ -240,6 +312,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <div class="nav-links" id="navLinks">
       <a href="/morey" style="color:var(--primary)">Morey</a>
       <a href="#products">Products</a>
+      <a href="#curator">Curator</a>
       <a href="#fleet">Fleet</a>
       <a href="#skills">Skills</a>
       <a href="#beebox">BeeBox</a>
@@ -265,7 +338,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <div class="stat-label">SwarmSkills</div>
       </div>
       <div class="stat">
-        <div class="stat-value">5</div>
+        <div class="stat-value">7</div>
         <div class="stat-label">Models</div>
       </div>
       <div class="stat">
@@ -314,7 +387,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <div class="bar" style="background:linear-gradient(90deg,var(--primary),var(--accent))"></div>
         <div class="icon">&#128737;</div>
         <h3>Gold Vault</h3>
-        <p>Curated, verified training data across medical, aviation, CRE, and legal verticals. Every pair quality-gated through SwarmJudge.</p>
+        <p>Platinum-grade training data — every pair survives the 8-step SwarmCurator pipeline. Unappeallable quality gate across CRE, medical, aviation, and legal.</p>
         <div class="card-stats">
           <div class="card-stat"><strong>1.2M</strong> pairs</div>
           <div class="card-stat"><strong>85+</strong> specialties</div>
@@ -327,13 +400,103 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   </div>
 </section>
 
+<!-- SwarmCurator -->
+<section class="curator" id="curator">
+  <div class="container">
+    <div class="section-label">Data Quality</div>
+    <h2 class="section-title">SwarmCurator</h2>
+    <p class="curator-headline">
+      Every pair in the Gold Vault passes an <strong>8-step curation pipeline</strong>.
+      No shortcuts. No overrides. The final verdict is <em>unappeallable</em> —
+      if it doesn't hit Platinum, it doesn't ship.
+    </p>
+
+    <div class="pipeline">
+      <div class="pipe-step">
+        <span class="pipe-num">1</span>
+        <span class="pipe-icon">&#128268;</span>
+        <span class="pipe-name">Source</span>
+        <span class="pipe-desc">Raw generation via Together.ai cooks &amp; domain grinders</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">2</span>
+        <span class="pipe-icon">&#9881;</span>
+        <span class="pipe-name">Grind</span>
+        <span class="pipe-desc">Specialty tagging, domain formatting, task typing</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">3</span>
+        <span class="pipe-icon">&#128203;</span>
+        <span class="pipe-name">Schema</span>
+        <span class="pipe-desc">Structural validation, JSON schema, field completeness</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">4</span>
+        <span class="pipe-icon">&#128270;</span>
+        <span class="pipe-name">CoVe</span>
+        <span class="pipe-desc">Chain of Verification — 5 criteria, scored 1-10</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">5</span>
+        <span class="pipe-icon">&#9878;</span>
+        <span class="pipe-name">Judge</span>
+        <span class="pipe-desc">SwarmJudge PASS/FAIL verdict on every pair</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">6</span>
+        <span class="pipe-icon">&#128736;</span>
+        <span class="pipe-name">Trajectory</span>
+        <span class="pipe-desc">Multi-step reasoning path verified end-to-end</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">7</span>
+        <span class="pipe-icon">&#128256;</span>
+        <span class="pipe-name">Cross-Val</span>
+        <span class="pipe-desc">Dedup, consistency check, adversarial probing</span>
+      </div>
+      <div class="pipe-step platinum">
+        <span class="pipe-num">8</span>
+        <span class="pipe-icon">&#128081;</span>
+        <span class="pipe-name">Platinum</span>
+        <span class="pipe-desc">Final promotion. Unappeallable. Ships to training.</span>
+      </div>
+    </div>
+
+    <div class="curator-stats">
+      <div class="cur-stat"><div class="cs-val">1.2M</div><div class="cs-lbl">Platinum Pairs</div></div>
+      <div class="cur-stat"><div class="cs-val">8</div><div class="cs-lbl">Pipeline Steps</div></div>
+      <div class="cur-stat"><div class="cs-val">5</div><div class="cs-lbl">CoVe Criteria</div></div>
+      <div class="cur-stat"><div class="cs-val">85+</div><div class="cs-lbl">Specialties</div></div>
+      <div class="cur-stat"><div class="cs-val">0%</div><div class="cs-lbl">Override Rate</div></div>
+    </div>
+
+    <div class="verdict-bar">
+<span class="vb-gold">SwarmCurator</span> verdict pipeline:
+  accuracy       <span class="vb-pass">9.2</span>  │  completeness  <span class="vb-pass">9.4</span>
+  structure      <span class="vb-pass">9.7</span>  │  relevance     <span class="vb-pass">9.1</span>
+  sft_quality    <span class="vb-pass">9.5</span>  │  trajectory    <span class="vb-pass">VERIFIED</span>
+  ──────────────────────────────────────────
+  verdict: <span class="vb-pass">PLATINUM PROMOTED</span>  │  override: <span class="vb-fail">DENIED</span>
+  status:  unappeallable  │  ships to training
+    </div>
+  </div>
+</section>
+
 <!-- Fleet -->
 <section class="fleet-section" id="fleet">
   <div class="container">
     <div class="section-label">Model Fleet</div>
     <h2 class="section-title">The Fleet</h2>
-    <p class="section-sub">The SwarmCRE franchise — four sizes from edge to fleet. Same CRE brain, same quality gate, deployable anywhere.</p>
+    <p class="section-sub">The SwarmCRE franchise — from 0.8B edge to 122B CEO. Same CRE brain, same quality gate, deployable anywhere.</p>
     <div class="fleet-grid">
+
+      <div class="fleet-card" style="border-color:rgba(245,158,11,0.4);background:linear-gradient(180deg,#111,#0a0a0a)">
+        <div class="model-icon">&#127775;</div>
+        <h4>SwarmCRE-122B</h4>
+        <div class="params">122B · fp8 · 2 GPUs</div>
+        <div class="role">The CEO. Full-stack CRE reasoning, multi-document synthesis, portfolio-level strategy. Runs on 2× RTX PRO 6000.</div>
+        <span class="tag tag-ceo">CEO</span>
+      </div>
 
       <a href="/morey" class="fleet-card" style="border-color:var(--primary)">
         <div class="model-icon">&#128081;</div>
@@ -482,10 +645,16 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <div class="footer-links">
       <a href="https://github.com/SudoSuOps">GitHub</a>
       <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+      <a href="https://x.com/swarmandbee">X / Twitter</a>
       <a href="https://router.swarmandbee.com">API</a>
       <a href="https://swarmandbee.com/cre">CRE</a>
       <a href="https://roi.swarmandbee.com">ROI</a>
       <a href="https://gold.swarmandbee.com">Gold Vault</a>
+    </div>
+    <div style="margin-bottom:12px;font-size:0.78rem">
+      <a href="mailto:build@swarmandbee.com" style="color:var(--primary)">build@swarmandbee.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+15615327120" style="color:var(--text-2)">561-532-7120</a>
     </div>
     <div class="copyright">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
   </div>
