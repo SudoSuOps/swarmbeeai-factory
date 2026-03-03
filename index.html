@@ -327,23 +327,23 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Systems Online</div>
     <h1>Infrastructure for<br><span class="gradient">Intelligence</span></h1>
-    <p>Vertical AI models, sovereign edge compute, and an agent economy — built from 1.2 million training pairs and shipped on hardware you own.</p>
+    <p>Vertical AI models, sovereign edge compute, and an agent economy — built from 1.2 million training pairs, cooked on 128 RTX PRO 6000 GPUs we own. We own the racks. We cook the rails.</p>
     <div class="stats">
       <div class="stat">
         <div class="stat-value">1.2M</div>
         <div class="stat-label">Training Pairs</div>
       </div>
       <div class="stat">
+        <div class="stat-value">128</div>
+        <div class="stat-label">RTX 6000 GPUs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">12TB</div>
+        <div class="stat-label">VRAM</div>
+      </div>
+      <div class="stat">
         <div class="stat-value">19</div>
         <div class="stat-label">SwarmSkills</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">7</div>
-        <div class="stat-label">Models</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">3</div>
-        <div class="stat-label">GPU Rigs</div>
       </div>
     </div>
   </div>
@@ -376,9 +376,9 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <h3>ROI Thesis</h3>
         <p>The investment case for vertical AI infrastructure. Economics of model training, data moats, and edge deployment at scale.</p>
         <div class="card-stats">
-          <div class="card-stat"><strong>$0.00004</strong> per call</div>
-          <div class="card-stat"><strong>72%</strong> local</div>
-          <div class="card-stat"><strong>3 rigs</strong> fleet</div>
+          <div class="card-stat"><strong>128</strong> GPUs</div>
+          <div class="card-stat"><strong>12TB</strong> VRAM</div>
+          <div class="card-stat"><strong>Owned</strong> racks</div>
         </div>
         <span class="card-link">Read Thesis &rarr;</span>
       </a>
@@ -487,14 +487,14 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="section-label">Model Fleet</div>
     <h2 class="section-title">The Fleet</h2>
-    <p class="section-sub">The SwarmCRE franchise — from 0.8B edge to 122B CEO. Same CRE brain, same quality gate, deployable anywhere.</p>
+    <p class="section-sub">The SwarmCRE franchise — from 0.8B edge to 122B CEO. 128 RTX PRO 6000 GPUs. 12TB VRAM. We own the racks. We cook the rails.</p>
     <div class="fleet-grid">
 
       <div class="fleet-card" style="border-color:rgba(245,158,11,0.4);background:linear-gradient(180deg,#111,#0a0a0a)">
         <div class="model-icon">&#127775;</div>
         <h4>SwarmCRE-122B</h4>
         <div class="params">122B · fp8 · 2 GPUs</div>
-        <div class="role">The CEO. Full-stack CRE reasoning, multi-document synthesis, portfolio-level strategy. Runs on 2× RTX PRO 6000.</div>
+        <div class="role">The CEO. Full-stack CRE reasoning, multi-document synthesis, portfolio-level strategy. Runs on our own racks.</div>
         <span class="tag tag-ceo">CEO</span>
       </div>
 
@@ -625,9 +625,13 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
              <span class="comp">POST /skill/{name}</span> → route → execute → judge → store
              <span class="dim">Cloudflare Workers · D1 · R2 · Vectorize</span>
 
-<span class="layer">FLEET</span>        SwarmHQ · 3 rigs · 12× RTX PRO 6000 (1,152GB)
-             <span class="comp">SwarmCRE-9B</span> × 9  ·  4B · 2B · 0.8B edge fleet
-             <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM</span>
+<span class="layer">COMPUTE</span>      128× RTX PRO 6000 Blackwell · 96GB each · 12,288GB VRAM
+             <span class="comp">We own the racks. We cook the rails.</span>
+             <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM · fp8 inference</span>
+
+<span class="layer">FLEET</span>        SwarmCRE-122B CEO · 9B × 9 · 4B · 2B · 0.8B edge
+             <span class="comp">SwarmCurator</span> 8-step pipeline → Platinum pairs only
+             <span class="dim">Mamba-Transformer · MoE · Q4_K_M GGUF · sovereign</span>
 
 <span class="layer">DATA</span>         Gold Vault · 1.2M pairs · 85+ specialties
              <span class="comp">R2 buckets</span>: sb-cre · sb-medical · sb-aviation · sb-core · sb-drone
