@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(245,158,11,0.12)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#000"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#g1)"/>
+  <text x="600" y="200" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="72" letter-spacing="-2" fill="#fff">swarm<tspan fill="#f59e0b">&amp;</tspan>bee</text>
+  <text x="600" y="290" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="36" letter-spacing="-1" fill="#fff">Real Compute. Real Objects.</text>
+  <text x="600" y="340" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="36" letter-spacing="-1" fill="url(#g1)">Real Signal.</text>
+  <text x="200" y="480" text-anchor="middle" font-family="monospace" font-weight="700" font-size="32" fill="#f59e0b">1.2M</text>
+  <text x="200" y="510" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="14" fill="#737373" letter-spacing="1">PLATINUM PAIRS</text>
+  <text x="450" y="480" text-anchor="middle" font-family="monospace" font-weight="700" font-size="32" fill="#f59e0b">128</text>
+  <text x="450" y="510" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="14" fill="#737373" letter-spacing="1">RTX 6000 GPUs</text>
+  <text x="700" y="480" text-anchor="middle" font-family="monospace" font-weight="700" font-size="32" fill="#f59e0b">12TB</text>
+  <text x="700" y="510" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="14" fill="#737373" letter-spacing="1">VRAM</text>
+  <text x="950" y="480" text-anchor="middle" font-family="monospace" font-weight="700" font-size="32" fill="#f59e0b">19</text>
+  <text x="950" y="510" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="14" fill="#737373" letter-spacing="1">SWARMSKILLS</text>
+  <text x="600" y="595" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="16" fill="#737373">swarmandbee.ai — Vertical AI &amp; Platinum Data Curation</text>
+</svg>

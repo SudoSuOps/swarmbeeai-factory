@@ -18,6 +18,10 @@
 <meta property="og:description" content="Vertical AI models and platinum-grade data curation. 128 RTX PRO 6000 GPUs, 1.2M curated pairs, 19 SwarmSkills. SwarmCRE commercial real estate intelligence from 0.8B edge to 122B Founder.">
 <meta property="og:url" content="https://swarmandbee.ai/">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://swarmandbee.ai/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Swarm & Bee — Real Compute. Real Objects. Real Signal. 1.2M Platinum Pairs, 128 RTX 6000 GPUs, 12TB VRAM, 19 SwarmSkills">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -25,6 +29,8 @@
 <meta name="twitter:creator" content="@swarmandbee">
 <meta name="twitter:title" content="Swarm & Bee — Real Compute. Real Objects. Real Signal.">
 <meta name="twitter:description" content="Vertical AI models and platinum-grade data curation. 128 RTX PRO 6000 GPUs, 12TB VRAM, 1.2M curated pairs. We own the racks. We cook the rails.">
+<meta name="twitter:image" content="https://swarmandbee.ai/og-image.svg">
+<meta name="twitter:image:alt" content="Swarm & Bee — Real Compute. Real Objects. Real Signal.">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -90,6 +96,63 @@
   "description": "Custom platinum-grade training data curation for any vertical. 8-step SwarmCurator pipeline, 128 RTX PRO 6000 GPUs, delivered as JSONL with CoVe scores and trajectory labels.",
   "serviceType": "AI Data Curation",
   "areaServed": "Worldwide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Swarm & Bee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Swarm & Bee builds vertical AI models and curates platinum-grade training data. We own 128 RTX PRO 6000 Blackwell GPUs (12TB VRAM) and run the full stack — from data generation to model training to edge deployment. Our first vertical is commercial real estate (SwarmCRE), with medical, aviation, and custom verticals available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is SwarmCRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SwarmCRE is a commercial real estate AI franchise — a family of models from 0.8B (edge/IoT) to 122B (Founder FTW). The flagship is SwarmCRE-9B Morey, a Mamba-Transformer hybrid trained on 643K platinum CRE pairs. It handles underwriting, IC memos, deal analysis, debt sizing, 1031 exchanges, market intelligence, and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Swarm & Bee training data different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every training pair passes an 8-step SwarmCurator pipeline: Source, Grind, Schema, CoVe (Chain of Verification), Judge (PASS/FAIL), Trajectory, Cross-Validation, and Platinum promotion. The final verdict is unappeallable — 0% override rate across 1.2M pairs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you build custom training data for my vertical?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Swarm & Bee offers Custom Curation Builds for any domain — CRE, pharma, aviation, legal, finance, or something new. You define the specialties, task types, and volume. We run the full 8-step pipeline on 128 GPUs. You receive platinum JSONL with CoVe scores, trajectory labels, and train/eval splits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is BeeBox?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BeeBox is a sovereign edge AI appliance that runs BeeMini-3B (skill router) and SwarmCRE-4B (quality gate) locally. It handles 72% of requests on-device and escalates 28% to the SwarmHQ GPU fleet. Target price: $499."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do SwarmSkills work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 19 live skills covering CRE tasks from broker analysis to portfolio optimization. Every skill output is quality-gated by SwarmJudge."
+      }
+    }
+  ]
 }
 </script>
 
@@ -249,10 +312,72 @@ section{padding:80px 24px}
   display:inline-block;margin-top:10px;padding:3px 10px;border-radius:12px;
   font-size:0.7rem;font-weight:600;
 }
-.tag-train{background:rgba(245,158,11,0.15);color:var(--primary)}
+.tag-early{background:rgba(245,158,11,0.15);color:var(--primary)}
 .tag-live{background:rgba(16,185,129,0.15);color:var(--accent)}
-.tag-done{background:rgba(212,212,212,0.1);color:var(--text-3)}
+.tag-soon{background:rgba(212,212,212,0.1);color:var(--text-3)}
 .tag-ceo{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(16,185,129,0.15));color:var(--primary);border:1px solid rgba(245,158,11,0.25)}
+
+/* Hero CTAs */
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin:36px 0 48px;flex-wrap:wrap}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border-radius:var(--radius-sm);
+  font-size:0.92rem;font-weight:700;transition:all 0.2s;text-decoration:none;
+}
+.hero-cta.primary{background:var(--primary);color:#000;border:2px solid var(--primary)}
+.hero-cta.primary:hover{background:var(--primary-dim);border-color:var(--primary-dim)}
+.hero-cta.secondary{background:transparent;color:var(--text);border:2px solid var(--border)}
+.hero-cta.secondary:hover{border-color:var(--primary);color:var(--primary)}
+
+/* Who We Are */
+.founders{
+  text-align:center;padding:48px 24px;
+  border-top:1px solid var(--border);
+}
+.founders-inner{
+  max-width:640px;margin:0 auto;
+  font-size:0.95rem;color:var(--text-2);line-height:1.8;
+}
+.founders-inner strong{color:var(--text);font-weight:700}
+.founders-inner .founder-name{
+  display:block;margin-top:16px;font-size:1rem;font-weight:800;
+  color:var(--primary);letter-spacing:-0.01em;
+}
+.founders-inner .founder-title{
+  font-size:0.78rem;color:var(--text-3);text-transform:uppercase;
+  letter-spacing:0.06em;font-weight:600;
+}
+
+/* Social Proof */
+.proof{text-align:center;padding:48px 24px;border-top:1px solid var(--border)}
+.proof-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;
+  max-width:840px;margin:0 auto;
+}
+.proof-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:left;
+}
+.proof-card .pf-quote{font-size:0.85rem;color:var(--text-2);line-height:1.7;margin-bottom:12px;font-style:italic}
+.proof-card .pf-stat{font-size:1.3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
+.proof-card .pf-label{font-size:0.72rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px}
+
+/* FAQ */
+.faq{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  font-size:0.95rem;font-weight:700;color:var(--text);cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--primary);font-weight:400;transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;
+  font-size:0.88rem;color:var(--text-2);line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:300px;padding-top:12px}
 
 /* SwarmCurator */
 .curator{text-align:center}
@@ -535,6 +660,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="#skills">Skills</a>
       <a href="#beebox">BeeBox</a>
       <a href="#architecture">Stack</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
@@ -569,6 +695,11 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         We own the racks.<br>
         We cook the rails.
       </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="/morey" class="hero-cta primary">Talk to Morey &rarr;</a>
+      <a href="#contact" class="hero-cta secondary">Request a Build</a>
     </div>
 
     <div class="stats">
@@ -712,7 +843,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
     <div class="custom-build">
       <h3>Custom Curation Builds</h3>
-      <p class="cb-sub">You bring the model spec. We build the dataset. Same 8-step SwarmCurator pipeline, tuned to <strong>your vertical, your taxonomy, your quality bar</strong>. Platinum pairs delivered — ready to train.</p>
+      <p class="cb-sub">CRE, pharma, aviation, legal, finance — <strong>any vertical</strong>. You bring the model spec. We build the dataset. Same 8-step SwarmCurator pipeline, tuned to <strong>your domain, your taxonomy, your quality bar</strong>. Platinum pairs delivered — ready to train.</p>
       <div class="cb-grid">
         <div class="cb-item">
           <div class="cb-label">You Define</div>
@@ -757,7 +888,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <h4>SwarmCRE-9B "Morey"</h4>
         <div class="params">9.5B · Mamba-Transformer</div>
         <div class="role">The flagship. CRE underwriting, IC memos, deal analysis. Chat &amp; voice. The workhorse.</div>
-        <span class="tag tag-train">Training</span>
+        <span class="tag tag-early">Early Access</span>
       </a>
 
       <div class="fleet-card">
@@ -765,7 +896,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <h4>SwarmCRE-4B</h4>
         <div class="params">4B · Compact</div>
         <div class="role">Edge-grade CRE intelligence. Fits Jetson Orin Nano and BeeBox. Full quality gate.</div>
-        <span class="tag tag-train">Training</span>
+        <span class="tag tag-early">Early Access</span>
       </div>
 
       <div class="fleet-card">
@@ -773,7 +904,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <h4>SwarmCRE-2B</h4>
         <div class="params">2B · Micro</div>
         <div class="role">Ultra-light CRE analyst. Runs on 2GB VRAM. Desktop and mobile ready.</div>
-        <span class="tag tag-train">Training</span>
+        <span class="tag tag-early">Early Access</span>
       </div>
 
       <div class="fleet-card">
@@ -781,7 +912,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <h4>SwarmCRE-0.8B</h4>
         <div class="params">0.8B · Nano</div>
         <div class="role">Smallest CRE model. CPU inference. Embedded devices, IoT, on-prem appliances.</div>
-        <span class="tag tag-train">Queued</span>
+        <span class="tag tag-soon">Coming Soon</span>
       </div>
 
       <div class="fleet-card">
@@ -1022,6 +1153,90 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   </div>
 </section>
 
+<!-- Who We Are -->
+<section class="founders" id="team">
+  <div class="container">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Builder-Owned. Signal-Obsessed.</h2>
+    <div class="founders-inner">
+      We don't rent GPUs by the hour. We <strong>own the racks</strong>, <strong>build the models</strong>, and <strong>curate every pair</strong> ourselves.
+      Swarm & Bee was founded to prove that vertical AI wins when you control the full stack — from raw data to edge inference.
+      No middlemen. No synthetic shortcuts. Just disciplined signal at scale.
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof / By the Numbers -->
+<section class="proof">
+  <div class="container">
+    <div class="section-label">By the Numbers</div>
+    <h2 class="section-title">The Signal Is Real</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="pf-stat">643K</div>
+        <div class="pf-label">CRE Platinum Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"Math-verified. Every underwriting calc checked."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">432K</div>
+        <div class="pf-label">Medical Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"85 specialties. Trajectory-enhanced. DDI-verified."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">45K</div>
+        <div class="pf-label">Aviation Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"157 specialties. Operational relevance scored."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">0%</div>
+        <div class="pf-label">Override Rate</div>
+        <div class="pf-quote" style="margin-top:8px">"The SwarmJudge verdict is final. Unappeallable."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is Swarm & Bee?</div>
+        <div class="faq-a">Swarm & Bee builds vertical AI models and curates platinum-grade training data. We own 128 RTX PRO 6000 Blackwell GPUs (12TB VRAM) and run the full stack — from data generation to model training to edge deployment. Our first vertical is commercial real estate (SwarmCRE), with medical, aviation, and custom verticals available.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is SwarmCRE?</div>
+        <div class="faq-a">SwarmCRE is our commercial real estate AI franchise — a family of models from 0.8B (edge/IoT) to 122B (Founder FTW). The flagship is SwarmCRE-9B "Morey," a Mamba-Transformer hybrid trained on 643K platinum CRE pairs. It handles underwriting, IC memos, deal analysis, debt sizing, 1031 exchanges, market intelligence, and more via chat or voice.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What makes your training data different?</div>
+        <div class="faq-a">Every training pair passes our 8-step SwarmCurator pipeline: Source, Grind, Schema, CoVe (Chain of Verification — 5 criteria scored 1-10), Judge (PASS/FAIL verdict), Trajectory (multi-step reasoning), Cross-Validation (dedup + adversarial probing), and Platinum promotion. The final verdict is unappeallable — 0% override rate across 1.2M pairs.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Can you build custom training data for my vertical?</div>
+        <div class="faq-a">Yes. We offer Custom Curation Builds for any domain — CRE, pharma, aviation, legal, finance, or something new. You define the specialties, task types, and volume. We run the full 8-step pipeline on 128 GPUs. You receive platinum JSONL with CoVe scores, trajectory labels, and train/eval splits. Contact us to scope a build.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is BeeBox?</div>
+        <div class="faq-a">BeeBox is our sovereign edge AI appliance — a plug-and-play device that runs BeeMini-3B (skill router) and SwarmCRE-4B (quality gate) locally. It handles 72% of requests on-device and escalates 28% to the SwarmHQ GPU fleet. Target price: $499. Designed for brokerages, investors, and teams who want CRE AI without cloud dependency.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">How do SwarmSkills work?</div>
+        <div class="faq-a">SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 19 live skills covering CRE tasks from broker analysis to portfolio optimization. Every skill output is quality-gated by SwarmJudge and becomes training data for the next model generation.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Contact -->
 <section class="contact" id="contact">
   <div class="container">
@@ -1039,7 +1254,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <option value="Morey (Chat/Voice)">Morey — Chat & Voice</option>
         <option value="API Access">API Access</option>
         <option value="BeeBox Edge Device">BeeBox Edge Device</option>
-        <option value="Gold Vault Data">Gold Vault — Training Data</option>
+        <option value="Custom Curation Build">Custom Curation Build</option>
         <option value="Partnership">Partnership / Integration</option>
         <option value="Investment">Investment</option>
         <option value="Other">Other</option>
