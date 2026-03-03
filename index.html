@@ -239,6 +239,39 @@ section{padding:80px 24px}
 .arch-diagram .comp{color:var(--accent)}
 .arch-diagram .dim{color:var(--text-3)}
 
+/* Contact */
+.contact{text-align:center}
+.contact-form{
+  max-width:560px;margin:0 auto;
+  display:flex;flex-direction:column;gap:14px;
+}
+.contact-form input,.contact-form textarea,.contact-form select{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px 16px;color:var(--text);font-family:var(--font);font-size:0.88rem;
+  outline:none;transition:border-color 0.2s;width:100%;
+}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--primary)}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-3)}
+.contact-form select{appearance:none;cursor:pointer;color:var(--text-2)}
+.contact-form select option{background:var(--surface);color:var(--text)}
+.contact-row{display:flex;gap:14px}
+.contact-form textarea{resize:vertical;min-height:100px;line-height:1.6}
+.btn-submit{
+  padding:14px 32px;border-radius:var(--radius-sm);border:none;
+  background:var(--primary);color:#000;font-family:var(--font);
+  font-size:0.9rem;font-weight:700;cursor:pointer;
+  transition:background 0.2s,transform 0.1s;
+}
+.btn-submit:hover{background:var(--primary-dim)}
+.btn-submit:active{transform:scale(0.98)}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed}
+.form-status{
+  font-size:0.82rem;font-family:var(--mono);padding:12px;
+  border-radius:var(--radius-sm);display:none;
+}
+.form-status.success{display:block;background:rgba(16,185,129,0.1);color:var(--accent);border:1px solid rgba(16,185,129,0.2)}
+.form-status.error{display:block;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
+
 /* Footer */
 footer{
   padding:48px 24px;border-top:1px solid var(--border);
@@ -273,6 +306,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   .pipe-desc{display:none}
   .curator-stats{gap:20px}
   .verdict-bar{font-size:0.68rem;padding:16px}
+  .contact-row{flex-direction:column;gap:14px}
   section{padding:60px 16px}
   .section-title{font-size:1.6rem}
 }
@@ -317,6 +351,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="#skills">Skills</a>
       <a href="#beebox">BeeBox</a>
       <a href="#architecture">Stack</a>
+      <a href="#contact">Contact</a>
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
   </div>
@@ -642,6 +677,84 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
              <span class="dim">Qwen3.5 base · LoRA r=64 · packing · multi-phase</span></div>
   </div>
 </section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Build With Us</h2>
+    <p class="section-sub">Interested in SwarmCRE, the API, BeeBox, or joining the fleet? Drop a line.</p>
+    <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+      <div class="contact-row">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <select name="interest" required>
+        <option value="" disabled selected>What are you interested in?</option>
+        <option value="SwarmCRE Platform">SwarmCRE Platform</option>
+        <option value="Morey (Chat/Voice)">Morey — Chat & Voice</option>
+        <option value="API Access">API Access</option>
+        <option value="BeeBox Edge Device">BeeBox Edge Device</option>
+        <option value="Gold Vault Data">Gold Vault — Training Data</option>
+        <option value="Partnership">Partnership / Integration</option>
+        <option value="Investment">Investment</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea name="message" placeholder="Tell us what you're building..." rows="4" required></textarea>
+      <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+<script>
+async function submitContact(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('formStatus');
+  const data=Object.fromEntries(new FormData(form));
+
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  status.className='form-status';
+  status.style.display='none';
+
+  try{
+    const embed={
+      title:'New Contact — swarmandbee.ai',
+      color:0xf59e0b,
+      fields:[
+        {name:'Name',value:data.name,inline:true},
+        {name:'Email',value:data.email,inline:true},
+        {name:'Interest',value:data.interest,inline:false},
+        {name:'Message',value:data.message,inline:false}
+      ],
+      timestamp:new Date().toISOString(),
+      footer:{text:'swarmandbee.ai contact form'}
+    };
+    const res=await fetch('https://discord.com/api/webhooks/1477682298408144946/Dmh9GtX3bvDgX_NMC4MSTejpAEVBgSLvBGXhDO9e4diehcx16xWIJdJEbr4_YoB8iOjn',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({embeds:[embed]})
+    });
+    if(res.ok||res.status===204){
+      status.className='form-status success';
+      status.textContent='Message sent. We\'ll be in touch.';
+      status.style.display='block';
+      form.reset();
+    }else{
+      throw new Error('Discord returned '+res.status);
+    }
+  }catch(err){
+    status.className='form-status error';
+    status.textContent='Failed to send. Email us at build@swarmandbee.com';
+    status.style.display='block';
+  }
+  btn.disabled=false;
+  btn.textContent='Send Message';
+}
+</script>
 
 <!-- Footer -->
 <footer>
