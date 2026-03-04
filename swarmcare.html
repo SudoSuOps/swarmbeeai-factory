@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwarmCare — Continuous AI Signal Infrastructure | Swarm & Bee</title>
+<meta name="description" content="SwarmCare: Continuous AI signal infrastructure. Vertical dataset curation, trajectory validation, LoRA fine-tuning, PASS/FAIL evaluation gates, drift monitoring, edge deployment. Built on 128 RTX PRO 6000 GPUs.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Swarm & Bee">
+<meta name="theme-color" content="#f59e0b">
+<link rel="canonical" href="https://swarmandbee.ai/swarmcare">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Swarm & Bee">
+<meta property="og:title" content="SwarmCare — Continuous AI Signal Infrastructure">
+<meta property="og:description" content="Models drift. Data decays. Signal degrades quietly. SwarmCare ensures your AI stays sharp — not just launched, but disciplined.">
+<meta property="og:url" content="https://swarmandbee.ai/swarmcare">
+<meta property="og:image" content="https://swarmandbee.ai/og-image.svg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SwarmCare — Continuous AI Signal Infrastructure">
+<meta name="twitter:description" content="Vertical dataset curation, trajectory validation, LoRA fine-tuning, evaluation gates, drift monitoring. We don't sell training runs. We engineer signal.">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #f59e0b;
+  --gold-dim: #b47a08;
+  --emerald: #10b981;
+  --emerald-dim: #0a7d56;
+  --bg: #000;
+  --surface: #0a0a0a;
+  --surface-2: #111;
+  --surface-3: #1a1a1a;
+  --border: #222;
+  --text: #e5e5e5;
+  --text-dim: #888;
+  --text-mute: #555;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; }
+
+/* Nav */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-brand { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
+.topbar-brand span { color: var(--gold); }
+.topbar-links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+.topbar-links a { color: var(--text-dim); }
+.topbar-links a:hover { color: var(--gold); }
+.topbar-links a.active { color: var(--gold); }
+
+/* Hero */
+.hero {
+  padding: 10rem 2rem 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(245,158,11,0.3); border-radius: 100px;
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1.1; margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--gold), var(--emerald));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-dim);
+  max-width: 640px; margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 3rem;
+  font-family: var(--mono); font-size: 0.8rem;
+  color: var(--text-mute); margin-top: 3rem;
+}
+.hero-stats .val { color: var(--gold); font-size: 1.3rem; font-weight: 600; display: block; margin-bottom: 0.2rem; }
+
+/* Sections */
+.section { padding: 5rem 2rem; max-width: 960px; margin: 0 auto; }
+.section-dark { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 100%; }
+.section-dark .section-inner { max-width: 960px; margin: 0 auto; }
+.section h2 {
+  font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.section h2 span { color: var(--gold); }
+.section-lead {
+  color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+/* Manifesto */
+.manifesto {
+  max-width: 640px; margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.manifesto p {
+  font-size: 1.1rem; color: var(--text-dim);
+  margin-bottom: 1.5rem; line-height: 1.8;
+}
+.manifesto p strong {
+  color: var(--text); font-weight: 600;
+}
+.manifesto .break {
+  display: block; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 2.5rem 0;
+}
+
+/* What We Do */
+.capabilities {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; margin-top: 2rem;
+}
+.cap-item {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem;
+  transition: border-color 0.3s;
+}
+.cap-item:hover { border-color: var(--gold-dim); }
+.cap-item h3 {
+  font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.cap-item p {
+  font-size: 0.85rem; color: var(--text-dim); line-height: 1.5;
+}
+.cap-icon {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--emerald); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.8rem; display: block;
+}
+
+/* Plans */
+.plans {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem; margin-top: 2rem;
+}
+.plan {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2rem 1.5rem;
+  position: relative; transition: border-color 0.3s, transform 0.3s;
+}
+.plan:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.plan.featured {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(245,158,11,0.04) 0%, var(--surface-2) 100%);
+}
+.plan-tag {
+  position: absolute; top: -10px; right: 1.5rem;
+  background: var(--gold); color: #000;
+  font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
+  padding: 0.2rem 0.6rem; border-radius: 4px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.plan-name {
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.plan-title {
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
+}
+.plan-price {
+  font-family: var(--mono); font-size: 1.1rem; font-weight: 600;
+  color: var(--emerald); margin-bottom: 1rem;
+}
+.plan-desc {
+  font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.plan-features {
+  list-style: none; padding: 0;
+}
+.plan-features li {
+  font-size: 0.82rem; color: var(--text-dim);
+  padding: 0.4rem 0; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.plan-features li::before {
+  content: '';
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--emerald); flex-shrink: 0;
+}
+.plan-tagline {
+  font-size: 0.8rem; color: var(--text-mute);
+  font-style: italic; margin-top: 1.5rem;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+}
+
+/* Sovereign */
+.sovereign-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; margin-top: 2rem;
+}
+.sov-item {
+  text-align: center; padding: 2rem 1rem;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.sov-val {
+  font-family: var(--mono); font-size: 1.8rem; font-weight: 700;
+  color: var(--gold); display: block; margin-bottom: 0.3rem;
+}
+.sov-label {
+  font-size: 0.8rem; color: var(--text-dim);
+}
+.sov-neg {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; margin-top: 1.5rem;
+}
+.sov-neg-item {
+  text-align: center; padding: 1rem;
+  font-family: var(--mono); font-size: 0.75rem;
+  color: var(--text-mute); letter-spacing: 0.05em;
+}
+.sov-neg-item .strike {
+  text-decoration: line-through; color: #444;
+  display: block; margin-bottom: 0.3rem;
+}
+
+/* CTA */
+.cta-block {
+  text-align: center; padding: 5rem 2rem;
+}
+.cta-block h2 {
+  font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.cta-block p {
+  color: var(--text-dim); font-size: 1rem; margin-bottom: 2rem;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--gold); color: #000;
+  font-family: var(--mono); font-size: 0.85rem; font-weight: 600;
+  padding: 0.8rem 2rem; border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.2s;
+}
+.cta-btn:hover { background: #fbbf24; color: #000; transform: translateY(-1px); }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem; text-align: center;
+}
+.footer-links {
+  display: flex; justify-content: center; gap: 2rem;
+  font-size: 0.8rem; margin-bottom: 1rem;
+}
+.footer-links a { color: var(--text-mute); }
+.footer-copy {
+  font-size: 0.75rem; color: var(--text-mute);
+  font-family: var(--mono);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 8rem 1.5rem 4rem; }
+  .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  .plans { grid-template-columns: 1fr; }
+  .sovereign-grid { grid-template-columns: 1fr; }
+  .sov-neg { grid-template-columns: 1fr; }
+  .topbar-links { gap: 1rem; font-size: 0.8rem; }
+  .section { padding: 3rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .topbar { padding: 0 1rem; }
+  .topbar-links { gap: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topbar">
+  <div class="topbar-brand">swarm<span>&</span>bee</div>
+  <div class="topbar-links">
+    <a href="/">Hub</a>
+    <a href="/morey">Morey</a>
+    <a href="/swarmcare" class="active">SwarmCare</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">Continuous AI Signal Infrastructure</div>
+  <h1>Vertical AI.<br>Sovereign compute.<br><em>Maintained intelligence.</em></h1>
+  <p class="hero-sub">
+    Built from 1.2 million curated training pairs.<br>
+    Cooked on 128 RTX PRO 6000 GPUs &mdash; owned, not rented.
+  </p>
+  <div style="font-family: var(--mono); font-size: 0.85rem; color: var(--text-mute); margin-top: 2rem; line-height: 2;">
+    We don't rent the cloud.<br>
+    We own the racks.<br>
+    We cook the rails.
+  </div>
+  <div class="hero-stats">
+    <div><span class="val">1.2M</span>Curated Pairs</div>
+    <div><span class="val">128</span>RTX PRO 6000</div>
+    <div><span class="val">12TB</span>VRAM</div>
+    <div><span class="val">19</span>SwarmSkills</div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="manifesto">
+  <h2 style="text-align: center; margin-bottom: 2.5rem;">Why SwarmCare Exists</h2>
+
+  <p><strong>Anyone can fine-tune a model.</strong></p>
+  <p>Very few can maintain one.</p>
+
+  <div class="break"></div>
+
+  <p>Models drift.<br>Data decays.<br>Signal degrades quietly.</p>
+
+  <p>Compute scales noise.<br><strong>Curation scales signal.</strong></p>
+
+  <div class="break"></div>
+
+  <p>SwarmCare ensures your AI stays sharp &mdash; not just launched, but <strong>disciplined</strong>.</p>
+</section>
+
+<!-- What We Do -->
+<div class="section-dark">
+  <section class="section section-inner">
+    <h2>What We <span>Do</span></h2>
+    <p class="section-lead">We don't sell training runs. We engineer signal.</p>
+    <div class="capabilities">
+      <div class="cap-item">
+        <span class="cap-icon">01 &mdash; Curate</span>
+        <h3>Vertical Dataset Curation</h3>
+        <p>Domain-specific pair assembly with math verification, deduplication, and quality gates.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">02 &mdash; Validate</span>
+        <h3>Trajectory Validation</h3>
+        <p>Multi-step reasoning chains verified against domain ground truth. No hallucination passes.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">03 &mdash; Tune</span>
+        <h3>LoRA Fine-Tuning</h3>
+        <p>Precision adaptation on sovereign compute. bf16 LoRA, phase-gated training, reproducible runs.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">04 &mdash; Gate</span>
+        <h3>PASS / FAIL Evaluation Gates</h3>
+        <p>SwarmJudge enforcement. Every output scored, every regression caught, every phase gated.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">05 &mdash; Monitor</span>
+        <h3>Drift Monitoring</h3>
+        <p>Continuous signal tracking. Score degradation triggers automatic reinforcement cycles.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">06 &mdash; Reinforce</span>
+        <h3>Continuous Reinforcement</h3>
+        <p>Production outputs become training data. The model improves from its own verified work.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">07 &mdash; Deploy</span>
+        <h3>Edge-Ready Deployment</h3>
+        <p>GGUF quantization, BeeBox appliance integration. Your model runs where your data lives.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Plans -->
+<section class="section">
+  <h2>SwarmCare <span>Plans</span></h2>
+  <p class="section-lead">Designed for builders, operators, and vertical AI teams.</p>
+
+  <div class="plans">
+    <!-- Foundation -->
+    <div class="plan">
+      <div class="plan-name">SwarmCare</div>
+      <div class="plan-title">Foundation</div>
+      <div class="plan-price">Free</div>
+      <p class="plan-desc">Launch your first agent with signal discipline.</p>
+      <ul class="plan-features">
+        <li>Dataset review</li>
+        <li>Mini tune-up (LoRA or system refinement)</li>
+        <li>Evaluation snapshot</li>
+        <li>Starter Clawbot deployment</li>
+      </ul>
+      <p class="plan-tagline">Start clean. Build correctly.</p>
+    </div>
+
+    <!-- Culture -->
+    <div class="plan">
+      <div class="plan-name">SwarmCare</div>
+      <div class="plan-title">Culture</div>
+      <div class="plan-price">$49 / month</div>
+      <p class="plan-desc">Maintain 1&ndash;5 agents with continuous reinforcement.</p>
+      <ul class="plan-features">
+        <li>Ongoing evaluation refresh</li>
+        <li>Skills updates</li>
+        <li>Drift monitoring</li>
+        <li>Minor dataset injections</li>
+      </ul>
+      <p class="plan-tagline">Your agents evolve with your business. Signal stays aligned.</p>
+    </div>
+
+    <!-- Moat -->
+    <div class="plan featured">
+      <div class="plan-tag">Most Popular</div>
+      <div class="plan-name">SwarmCare</div>
+      <div class="plan-title">Moat</div>
+      <div class="plan-price">$99 / month</div>
+      <p class="plan-desc">Turn your domain into defended intelligence.</p>
+      <ul class="plan-features">
+        <li>Custom LoRA fine-tune</li>
+        <li>Vertical trajectory assembly</li>
+        <li>Monthly reinforcement cycle</li>
+        <li>SwarmJudge evaluation gates</li>
+        <li>Private model weights</li>
+      </ul>
+      <p class="plan-tagline">Your model becomes your competitive advantage.</p>
+    </div>
+
+    <!-- By Design -->
+    <div class="plan">
+      <div class="plan-name">SwarmCare</div>
+      <div class="plan-title">By Design</div>
+      <div class="plan-price">Custom</div>
+      <p class="plan-desc">Enterprise-grade vertical AI infrastructure.</p>
+      <ul class="plan-features">
+        <li>Dedicated rails</li>
+        <li>Full dataset curation pipelines</li>
+        <li>Custom evaluation harness</li>
+        <li>Edge appliance integration</li>
+        <li>Agent economy architecture</li>
+      </ul>
+      <p class="plan-tagline">For teams building AI as core infrastructure. <a href="mailto:build@swarmandbee.com">Contact us.</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Sovereign -->
+<div class="section-dark">
+  <section class="section section-inner">
+    <h2>Built on <span>Sovereign</span> Infrastructure</h2>
+    <div class="sovereign-grid">
+      <div class="sov-item">
+        <span class="sov-val">128</span>
+        <span class="sov-label">RTX PRO 6000 GPUs</span>
+      </div>
+      <div class="sov-item">
+        <span class="sov-val">12TB</span>
+        <span class="sov-label">Total VRAM</span>
+      </div>
+      <div class="sov-item">
+        <span class="sov-val">3</span>
+        <span class="sov-label">Dedicated Rails</span>
+      </div>
+    </div>
+    <div class="sov-neg">
+      <div class="sov-neg-item">
+        <span class="strike">Burst pricing</span>
+        Never.
+      </div>
+      <div class="sov-neg-item">
+        <span class="strike">Shared tenancy</span>
+        Never.
+      </div>
+      <div class="sov-neg-item">
+        <span class="strike">Black-box dependency</span>
+        Never.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA -->
+<section class="cta-block">
+  <h2>Continuous.</h2>
+  <p>Real Compute. Real Objects. Real Signal.</p>
+  <a href="mailto:build@swarmandbee.com" class="cta-btn">Get Started</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="/">Hub</a>
+    <a href="/morey">Morey</a>
+    <a href="https://github.com/SudoSuOps" target="_blank">GitHub</a>
+    <a href="https://huggingface.co/SwarmandBee" target="_blank">HuggingFace</a>
+    <a href="https://x.com/swarmandbee" target="_blank">X</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Swarm & Bee. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
