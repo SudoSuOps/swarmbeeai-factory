@@ -22,6 +22,9 @@
 /signal.html
   Cache-Control: public, max-age=3600
 
+/curator.html
+  Cache-Control: public, max-age=3600
+
 /sitemap.xml
   Content-Type: application/xml
   Cache-Control: public, max-age=86400

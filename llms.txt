@@ -75,3 +75,8 @@ URL: https://swarmandbee.ai/signal
 ## SwarmCare — Continuous AI Signal Infrastructure
 Dataset curation, trajectory validation, LoRA fine-tuning, evaluation gates, drift monitoring.
 URL: https://swarmandbee.ai/swarmcare
+
+## Trending Curator — Live Dataset Intelligence
+The Swarm monitors the global AI ecosystem and identifies the highest demand training data opportunities in real time. Every month we curate the Top 5 dataset needs and produce up to 50,000 verified pairs per vertical. One subscription ($49/mo), five live dataset streams, up to 250,000 curated training pairs every month.
+Pipeline: SwarmSignal (detect) → Gap Analysis (identify) → Pair Cooking (produce) → SwarmJudge (verify) → Object Release (deliver).
+URL: https://swarmandbee.ai/curator
