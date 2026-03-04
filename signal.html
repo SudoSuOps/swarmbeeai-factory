@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwarmSignal — The Chronicle of Truth | Swarm & Bee</title>
+<meta name="description" content="SwarmSignal documents the builders, systems, and infrastructure shaping the sovereign AI era. AI market intelligence written by AI, verified by builders. No hype. No vapor. Just signal.">
+<meta name="keywords" content="AI trends, AI market intelligence, sovereign AI, AI news, SwarmSignal, model training, GPU compute, edge AI, AI analysis, vertical AI, SwarmCRE, Swarm and Bee">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Swarm & Bee">
+<meta name="theme-color" content="#C8963E">
+<link rel="canonical" href="https://swarmandbee.ai/signal">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Swarm & Bee">
+<meta property="og:title" content="SwarmSignal — The Chronicle of Truth">
+<meta property="og:description" content="AI market intelligence written by AI, verified by builders. SwarmSignal documents the sovereign AI era. No hype. No vapor. Just signal.">
+<meta property="og:url" content="https://swarmandbee.ai/signal">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://swarmandbee.ai/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@swarmandbee">
+<meta name="twitter:title" content="SwarmSignal — The Chronicle of Truth">
+<meta name="twitter:description" content="AI market intelligence written by AI, verified by builders. No hype. No vapor. Just signal.">
+<meta name="twitter:image" content="https://swarmandbee.ai/og-image.svg">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "SwarmSignal — The Chronicle of Truth",
+  "description": "AI market intelligence written by AI, verified by builders. SwarmSignal documents the sovereign AI era.",
+  "url": "https://swarmandbee.ai/signal",
+  "isPartOf": {"@type": "WebSite", "name": "Swarm & Bee", "url": "https://swarmandbee.ai"},
+  "publisher": {"@type": "Organization", "name": "Swarm & Bee"}
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   Base — matches production site nav/footer
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --bg:#000;--surface:#111;--border:#222;
+  --primary:#f59e0b;--primary-dim:#d97706;--accent:#10b981;
+  --text:#fff;--text-2:#d4d4d4;--text-3:#737373;
+  --max-w:1200px;--radius:12px;--radius-sm:8px;
+  --font:Inter,system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* Ecosystem Bar */
+.eco-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:36px;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  font-size:0.75rem;color:var(--text-3);backdrop-filter:blur(12px);
+}
+.eco-bar a{transition:color 0.2s}
+.eco-bar a:hover{color:var(--primary)}
+.eco-bar .sep{opacity:0.3}
+
+/* Nav */
+nav{
+  position:fixed;top:36px;left:0;right:0;z-index:99;
+  height:64px;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;
+}
+.nav-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+/* Footer */
+footer{
+  padding:48px 24px;border-top:1px solid var(--border);
+  text-align:center;font-size:0.82rem;color:var(--text-3);
+  background:var(--bg);
+}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+footer a{transition:color 0.2s}
+footer a:hover{color:var(--primary)}
+footer .copyright{font-size:0.75rem;opacity:0.5}
+
+/* ═══════════════════════════════════════════════════════
+   SwarmSignal — Warm Publication Theme
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --sig-cream:#FAF6F0;--sig-cream-2:#F3EDE4;
+  --sig-amber:#C8963E;--sig-amber-light:#D4A94E;
+  --sig-amber-glow:rgba(200,150,62,0.15);
+  --sig-charcoal:#2A2A2A;--sig-charcoal-2:#4A4A4A;--sig-charcoal-3:#7A7A7A;
+  --sig-border:rgba(42,42,42,0.12);
+  --sig-serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sig-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+/* Signal content area — warm cream */
+.signal-content{
+  background:var(--sig-cream);color:var(--sig-charcoal);
+  font-family:var(--sig-sans);
+}
+
+/* ── Daily Signal Strip ── */
+.daily-strip{
+  background:var(--sig-charcoal);padding:14px 24px;
+  display:flex;align-items:center;gap:20px;overflow-x:auto;
+  margin-top:100px;
+}
+.daily-strip-label{
+  font-size:0.62rem;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--sig-amber);flex-shrink:0;
+}
+.daily-strip-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--sig-amber);
+  box-shadow:0 0 6px var(--sig-amber);flex-shrink:0;
+  animation:sigPulse 2s infinite;
+}
+@keyframes sigPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.daily-strip-item{font-size:0.75rem;color:rgba(255,255,255,0.7);flex-shrink:0}
+.daily-strip-sep{color:rgba(255,255,255,0.15);flex-shrink:0}
+
+/* ── Hero ── */
+.signal-hero{
+  padding:80px 24px 60px;text-align:center;
+  background:var(--sig-cream);position:relative;
+}
+.signal-hero::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:60px;height:2px;background:var(--sig-amber);
+}
+.signal-hero-inner{max-width:720px;margin:0 auto}
+.signal-badge{
+  display:inline-block;font-family:var(--sig-sans);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--sig-amber);margin-bottom:28px;
+}
+.signal-title{
+  font-family:var(--sig-serif);font-size:3.6rem;font-weight:900;
+  line-height:1.05;color:var(--sig-charcoal);margin:0 0 6px;letter-spacing:-0.02em;
+}
+.signal-subtitle{
+  font-family:var(--sig-serif);font-size:1.5rem;font-weight:400;
+  font-style:italic;color:var(--sig-amber);margin:0 0 32px;
+}
+.signal-hero-text{font-size:1.05rem;line-height:1.7;color:var(--sig-charcoal-2);margin:0 0 12px}
+.signal-hero-punch{font-size:0.95rem;font-weight:600;color:var(--sig-charcoal);line-height:2;margin:20px 0 0}
+.signal-hero-punch span{display:inline-block;margin:0 8px;color:var(--sig-charcoal-3)}
+.signal-cta-row{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.signal-btn{
+  display:inline-block;padding:12px 28px;font-family:var(--sig-sans);
+  font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:4px;
+  transition:all 0.2s;letter-spacing:0.02em;
+}
+.signal-btn-primary{background:var(--sig-charcoal);color:var(--sig-cream)}
+.signal-btn-primary:hover{background:var(--sig-amber)}
+.signal-btn-outline{background:transparent;color:var(--sig-charcoal);border:1.5px solid var(--sig-charcoal)}
+.signal-btn-outline:hover{border-color:var(--sig-amber);color:var(--sig-amber)}
+
+/* ── Sections ── */
+.sig-section{padding:80px 24px}
+.sig-section-alt{background:var(--sig-cream-2)}
+.sig-inner{max-width:900px;margin:0 auto}
+.sig-section-label{
+  font-family:var(--sig-sans);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--sig-amber);margin-bottom:12px;
+}
+.sig-section-title{
+  font-family:var(--sig-serif);font-size:2rem;font-weight:700;
+  color:var(--sig-charcoal);margin:0 0 20px;line-height:1.2;
+}
+.sig-section-text{font-size:1rem;line-height:1.75;color:var(--sig-charcoal-2);max-width:640px}
+.sig-section-text strong{color:var(--sig-charcoal);font-weight:600}
+.sig-divider{width:40px;height:2px;background:var(--sig-amber);margin:24px 0}
+
+/* ── Pillar Grid ── */
+.pillar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;margin-top:40px}
+.pillar-card{
+  background:var(--sig-cream);border:1px solid var(--sig-border);
+  border-radius:6px;padding:32px 28px;transition:border-color 0.2s;
+}
+.pillar-card:hover{border-color:var(--sig-amber)}
+.pillar-num{font-family:var(--sig-serif);font-size:2.4rem;font-weight:900;color:var(--sig-amber);line-height:1;margin-bottom:12px}
+.pillar-name{font-family:var(--sig-serif);font-size:1.25rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:8px}
+.pillar-desc{font-size:0.88rem;font-style:italic;color:var(--sig-charcoal-3);margin-bottom:16px}
+.pillar-topics{list-style:none;padding:0;margin:0}
+.pillar-topics li{font-size:0.82rem;color:var(--sig-charcoal-2);padding:4px 0;border-bottom:1px solid var(--sig-border)}
+.pillar-topics li:last-child{border-bottom:none}
+
+/* ── Series Grid ── */
+.series-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-top:36px}
+.series-card{border-left:3px solid var(--sig-amber);padding:24px 24px 24px 28px;background:var(--sig-cream-2);border-radius:0 6px 6px 0}
+.series-name{font-family:var(--sig-serif);font-size:1.1rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:6px}
+.series-desc{font-size:0.85rem;color:var(--sig-charcoal-3);margin-bottom:14px;font-style:italic}
+.series-tags{display:flex;flex-wrap:wrap;gap:6px}
+.series-tag{font-size:0.72rem;font-weight:500;color:var(--sig-amber);background:var(--sig-amber-glow);padding:3px 10px;border-radius:3px}
+
+/* ── Article Cards ── */
+.article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:36px}
+.article-card{
+  background:var(--sig-cream);border:1px solid var(--sig-border);
+  border-radius:6px;padding:28px 24px;transition:all 0.2s;cursor:pointer;
+}
+.article-card:hover{border-color:var(--sig-amber);box-shadow:0 4px 20px rgba(200,150,62,0.08)}
+.article-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sig-amber);margin-bottom:10px}
+.article-title{font-family:var(--sig-serif);font-size:1.15rem;font-weight:700;color:var(--sig-charcoal);line-height:1.35;margin-bottom:10px}
+.article-excerpt{font-size:0.85rem;color:var(--sig-charcoal-3);line-height:1.6}
+.article-meta{margin-top:14px;font-size:0.72rem;color:var(--sig-charcoal-3)}
+
+/* ── Manifesto ── */
+.manifesto{text-align:center;max-width:640px;margin:0 auto}
+.manifesto-title{font-family:var(--sig-serif);font-size:2.2rem;font-weight:900;color:var(--sig-charcoal);margin-bottom:24px}
+.manifesto p{font-size:1rem;line-height:1.8;color:var(--sig-charcoal-2);margin-bottom:16px}
+.manifesto-rule{font-family:var(--sig-serif);font-size:1.05rem;font-style:italic;color:var(--sig-charcoal);line-height:2}
+
+/* ── Join / CTA ── */
+.signal-join{text-align:center;max-width:500px;margin:0 auto}
+.signal-join-title{font-family:var(--sig-serif);font-size:1.8rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:12px}
+.signal-join p{font-size:0.95rem;color:var(--sig-charcoal-2);margin-bottom:28px}
+.signal-email-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.signal-email-input{
+  padding:12px 18px;font-size:0.88rem;font-family:var(--sig-sans);
+  border:1.5px solid var(--sig-border);border-radius:4px;
+  background:white;color:var(--sig-charcoal);width:260px;outline:none;transition:border-color 0.2s;
+}
+.signal-email-input:focus{border-color:var(--sig-amber)}
+.signal-email-input::placeholder{color:var(--sig-charcoal-3)}
+
+/* ── Closing Block ── */
+.signal-closing{text-align:center;max-width:500px;margin:0 auto}
+.signal-closing p{font-size:0.9rem;color:var(--sig-charcoal-3);line-height:1.8}
+.signal-closing strong{color:var(--sig-charcoal)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .eco-bar{gap:12px;font-size:0.68rem;padding:0 12px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:64px;left:0;right:0;
+    background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);
+    padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);
+  }
+  .signal-title{font-size:2.4rem}
+  .signal-subtitle{font-size:1.2rem}
+  .sig-section{padding:60px 20px}
+  .pillar-grid{grid-template-columns:1fr}
+  .article-grid{grid-template-columns:1fr}
+  .signal-email-row{flex-direction:column;align-items:center}
+  .signal-email-input{width:100%;max-width:300px}
+  .daily-strip{margin-top:100px}
+}
+@media(max-width:480px){
+  .eco-bar{display:none}
+  nav{top:0}
+  .signal-title{font-size:2rem}
+  .signal-hero{padding:60px 16px 48px}
+  .daily-strip{margin-top:64px}
+}
+</style>
+</head>
+<body>
+
+<!-- Ecosystem Bar -->
+<div class="eco-bar">
+  <a href="/" style="color:var(--text-2)">Home</a>
+  <span class="sep">|</span>
+  <a href="/signal" style="color:#C8963E">Signal</a>
+  <span class="sep">|</span>
+  <a href="/morey" style="color:#f59e0b">Morey</a>
+  <span class="sep">|</span>
+  <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+  <span class="sep">|</span>
+  <a href="https://swarmandbee.com" target="_blank" rel="noopener noreferrer">swarmandbee.com</a>
+  <span class="sep">|</span>
+  <a href="https://router.swarmandbee.com" target="_blank" rel="noopener noreferrer">API</a>
+  <span class="sep">|</span>
+  <a href="https://discord.gg/sHXNzNhscc" target="_blank" rel="noopener noreferrer">Discord</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">swarm<span>&</span>bee</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/signal" style="color:#C8963E">Signal</a>
+      <a href="/morey" style="color:var(--primary)">Morey</a>
+      <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+      <a href="https://swarmandbee.com" target="_blank" rel="noopener noreferrer">Platform</a>
+      <a href="https://router.swarmandbee.com" target="_blank" rel="noopener noreferrer">API</a>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     DAILY SIGNAL STRIP
+     ═══════════════════════════════════════════════════════ -->
+<div class="daily-strip">
+  <span class="daily-strip-label">The Daily Signal</span>
+  <span class="daily-strip-dot"></span>
+  <span class="daily-strip-item">SwarmSignal-9B training on Blackwell RTX PRO 6000</span>
+  <span class="daily-strip-sep">&middot;</span>
+  <span class="daily-strip-item">30,000 training pairs cooked via Llama 4 Maverick</span>
+  <span class="daily-strip-sep">&middot;</span>
+  <span class="daily-strip-item">First daily dispatch coming soon</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SIGNAL CONTENT — WARM PUBLICATION THEME
+     ═══════════════════════════════════════════════════════ -->
+<div class="signal-content">
+
+<!-- HERO -->
+<section class="signal-hero">
+  <div class="signal-hero-inner">
+    <div class="signal-badge">A Swarm &amp; Bee Publication</div>
+    <h1 class="signal-title">SwarmSignal</h1>
+    <div class="signal-subtitle">The Chronicle of Truth.</div>
+    <p class="signal-hero-text">
+      Where real compute meets real reporting.
+    </p>
+    <p class="signal-hero-text">
+      SwarmSignal documents the builders, systems, and infrastructure shaping the sovereign AI era.
+    </p>
+    <div class="signal-hero-punch">
+      No hype.<span>&middot;</span>No vapor.<span>&middot;</span>Just signal.
+    </div>
+    <div class="signal-cta-row">
+      <a href="#chronicle" class="signal-btn signal-btn-primary">Read The Chronicle</a>
+      <a href="#latest" class="signal-btn signal-btn-outline">Latest Dispatch</a>
+      <a href="#join" class="signal-btn signal-btn-outline">Join The Signal</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS SWARMSIGNAL -->
+<section class="sig-section sig-section-alt" id="chronicle">
+  <div class="sig-inner">
+    <div class="sig-section-label">What Is SwarmSignal</div>
+    <h2 class="sig-section-title">A New Kind of AI Publication</h2>
+    <div class="sig-divider"></div>
+    <p class="sig-section-text">
+      Most AI media reports speculation.
+    </p>
+    <p class="sig-section-text" style="margin-top:12px">
+      <strong>SwarmSignal reports production reality.</strong>
+    </p>
+    <p class="sig-section-text" style="margin-top:20px">
+      We cover real model training. Real datasets. Real infrastructure.
+      Real deployment economics. Real builders.
+    </p>
+    <p class="sig-section-text" style="margin-top:16px">
+      Everything published is grounded in systems we run or verify.
+    </p>
+  </div>
+</section>
+
+<!-- THE FOUR PILLARS -->
+<section class="sig-section">
+  <div class="sig-inner">
+    <div class="sig-section-label">Coverage</div>
+    <h2 class="sig-section-title">The Four Pillars of Signal</h2>
+    <div class="sig-divider"></div>
+
+    <div class="pillar-grid">
+
+      <div class="pillar-card">
+        <div class="pillar-num">1</div>
+        <div class="pillar-name">Infrastructure</div>
+        <div class="pillar-desc">The machines behind intelligence.</div>
+        <ul class="pillar-topics">
+          <li>GPU clusters &amp; compute architecture</li>
+          <li>Edge compute &amp; Jetson nodes</li>
+          <li>Energy economics</li>
+          <li>Inference architectures</li>
+          <li>Sovereign compute networks</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">2</div>
+        <div class="pillar-name">Model Engineering</div>
+        <div class="pillar-desc">How real models are trained.</div>
+        <ul class="pillar-topics">
+          <li>Fine-tuning pipelines</li>
+          <li>Evaluation frameworks</li>
+          <li>Agent architecture</li>
+          <li>Alignment systems</li>
+          <li>Quantization &amp; deployment</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">3</div>
+        <div class="pillar-name">Data Factories</div>
+        <div class="pillar-desc">Where intelligence actually begins.</div>
+        <ul class="pillar-topics">
+          <li>Dataset assembly</li>
+          <li>Pair generation at scale</li>
+          <li>Verification pipelines</li>
+          <li>Platinum training sets</li>
+          <li>Quality gate methodology</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">4</div>
+        <div class="pillar-name">Sovereign AI</div>
+        <div class="pillar-desc">The emerging independent compute economy.</div>
+        <ul class="pillar-topics">
+          <li>Microscalers</li>
+          <li>Edge agents</li>
+          <li>Domain-specific AI</li>
+          <li>Independent labs</li>
+          <li>Decentralized inference</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SERIES -->
+<section class="sig-section sig-section-alt">
+  <div class="sig-inner">
+    <div class="sig-section-label">Featured Series</div>
+    <h2 class="sig-section-title">Ongoing Coverage</h2>
+    <div class="sig-divider"></div>
+
+    <div class="series-grid">
+
+      <div class="series-card">
+        <div class="series-name">The Swarm Dispatch</div>
+        <div class="series-desc">Weekly reports from the Swarm.</div>
+        <div class="series-tags">
+          <span class="series-tag">training logs</span>
+          <span class="series-tag">model releases</span>
+          <span class="series-tag">field experiments</span>
+          <span class="series-tag">compute economics</span>
+        </div>
+      </div>
+
+      <div class="series-card">
+        <div class="series-name">Builders of the New Stack</div>
+        <div class="series-desc">Profiles of real AI builders.</div>
+        <div class="series-tags">
+          <span class="series-tag">engineers</span>
+          <span class="series-tag">dataset architects</span>
+          <span class="series-tag">independent labs</span>
+          <span class="series-tag">infrastructure pioneers</span>
+        </div>
+      </div>
+
+      <div class="series-card">
+        <div class="series-name">Inside the Factory</div>
+        <div class="series-desc">Behind the scenes of intelligence production.</div>
+        <div class="series-tags">
+          <span class="series-tag">dataset cooking</span>
+          <span class="series-tag">model evaluation</span>
+          <span class="series-tag">agent experiments</span>
+          <span class="series-tag">compute architecture</span>
+        </div>
+      </div>
+
+      <div class="series-card">
+        <div class="series-name">The Edge Files</div>
+        <div class="series-desc">Stories from the frontier.</div>
+        <div class="series-tags">
+          <span class="series-tag">Jetson deployments</span>
+          <span class="series-tag">local inference</span>
+          <span class="series-tag">field AI</span>
+          <span class="series-tag">real-world agents</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LATEST SIGNAL -->
+<section class="sig-section" id="latest">
+  <div class="sig-inner">
+    <div class="sig-section-label">Latest Signal</div>
+    <h2 class="sig-section-title">Recent Dispatches</h2>
+    <div class="sig-divider"></div>
+
+    <div class="article-grid">
+
+      <div class="article-card">
+        <div class="article-tag">Inside the Factory</div>
+        <div class="article-title">Training SwarmSignal-9B: Building AI That Writes About AI</div>
+        <div class="article-excerpt">30,000 pairs cooked via Llama 4 Maverick in 2 hours. Now training on Blackwell. The first model built to document the sovereign AI era.</div>
+        <div class="article-meta">March 4, 2026 &middot; The Swarm Dispatch</div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-tag">Model Engineering</div>
+        <div class="article-title">SwarmJudge-9B: Building AI That Evaluates AI</div>
+        <div class="article-excerpt">23,000 judge pairs. Two-phase training. bf16 LoRA on Blackwell. How we built a quality gate that scores every output before it ships.</div>
+        <div class="article-meta">March 3, 2026 &middot; Inside the Factory</div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-tag">Sovereign AI</div>
+        <div class="article-title">The Rise of Edge Intelligence: Jetson Nodes in the Swarm</div>
+        <div class="article-excerpt">5.5GB GGUF models running on edge hardware. Q4_K_M quantization with zero quality loss. The future of inference is local.</div>
+        <div class="article-meta">March 2, 2026 &middot; The Edge Files</div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-tag">Data Factories</div>
+        <div class="article-title">Why Dataset Factories Will Define the Next AI Decade</div>
+        <div class="article-excerpt">1.15 million verified training pairs across 6 verticals. The hidden engine behind every model that actually works in production.</div>
+        <div class="article-meta">March 1, 2026 &middot; Inside the Factory</div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-tag">Infrastructure</div>
+        <div class="article-title">Inside a Platinum Pair Assembly Line</div>
+        <div class="article-excerpt">From raw scenario to SHA256-sealed training data. Two-tier cook, quality gate, trajectory verification. How platinum pairs are made.</div>
+        <div class="article-meta">February 28, 2026 &middot; The Swarm Dispatch</div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-tag">Model Engineering</div>
+        <div class="article-title">SwarmPharma-35B: Zero Quantization Loss at Q4_K_M</div>
+        <div class="article-excerpt">7/7 DDI accuracy. 4/4 off-domain rejection. 67GB model compressed to 20GB with no measurable quality drop. The math that makes edge AI real.</div>
+        <div class="article-meta">February 28, 2026 &middot; Inside the Factory</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="sig-section sig-section-alt">
+  <div class="sig-inner">
+    <div class="manifesto">
+      <div class="sig-section-label">The Signal Manifesto</div>
+      <h2 class="manifesto-title">Truth matters in infrastructure.</h2>
+
+      <p>
+        The AI industry has become dominated by noise.
+      </p>
+      <p>
+        Press releases. Benchmarks without context. Models without provenance.
+      </p>
+      <p>
+        SwarmSignal exists to document the real builders and real systems
+        shaping the next phase of intelligence.
+      </p>
+
+      <div class="sig-divider" style="margin:32px auto"></div>
+
+      <div class="manifesto-rule">
+        If it runs, we show it.<br>
+        If it trains, we log it.<br>
+        If it works, we explain it.
+      </div>
+
+      <p style="margin-top:28px;font-weight:600;color:var(--sig-charcoal)">
+        This is the Chronicle of Truth.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN THE SIGNAL -->
+<section class="sig-section" id="join">
+  <div class="sig-inner">
+    <div class="signal-join">
+      <div class="signal-join-title">Join the Signal</div>
+      <p>Stay connected to the builders of sovereign AI.</p>
+      <div class="signal-email-row">
+        <input type="email" class="signal-email-input" placeholder="your@email.com">
+        <a href="#" class="signal-btn signal-btn-primary" onclick="return false;" id="join-btn">Join the Chronicle</a>
+      </div>
+      <p style="font-size:0.75rem;color:var(--sig-charcoal-3);margin-top:16px">No spam. Signal only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="sig-section sig-section-alt" style="padding:48px 24px">
+  <div class="sig-inner">
+    <div class="signal-closing">
+      <p>
+        <strong>SwarmSignal</strong> is the publication arm of <strong>Swarm &amp; Bee</strong>.
+      </p>
+      <p>
+        The Swarm builds the infrastructure.<br>
+        The Chronicle records the truth.
+      </p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.signal-content -->
+
+<!-- Footer — matches production site -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/signal">Signal</a>
+      <a href="/morey">Morey</a>
+      <a href="/swarmcare">SwarmCare</a>
+      <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://huggingface.co/SwarmandBee" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+      <a href="https://x.com/swarmandbee" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a href="https://discord.gg/sHXNzNhscc" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://swarmandbee.com" target="_blank" rel="noopener noreferrer">swarmandbee.com</a>
+      <a href="https://router.swarmandbee.com" target="_blank" rel="noopener noreferrer">API</a>
+    </div>
+    <div style="margin-bottom:12px;font-size:0.78rem">
+      <a href="mailto:build@swarmandbee.com" style="color:var(--primary)">build@swarmandbee.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+15615327120" style="color:var(--text-2)">561-532-7120</a>
+    </div>
+    <div class="copyright">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
+  </div>
+</footer>
+
+</body>
+</html>
