@@ -50,7 +50,7 @@ We offer Custom Curation Builds: you define the domain, specialties, task types,
 ## SwarmSkills (19 live)
 broker_senior, broker_junior, intelligence_query, bookmaker, deal_tracker, developer, signal_scraper, investor, exchange_1031, market_report, lead_scorer, email_composer, comp_analyzer, rent_roll_analyzer, debt_analyzer, tax_assessor, site_selector, portfolio_optimizer, news_digest
 
-API: POST /skill/{name} at router.swarmandbee.com
+API: POST /skill/{name} at router.swarmandbee.ai
 
 ## BeeBox
 Sovereign edge AI appliance. BeeMini-3B router + SwarmCRE-4B quality gate locally. 72% local inference, 28% fleet escalation. Target price $499.
@@ -67,3 +67,11 @@ Sovereign edge AI appliance. BeeMini-3B router + SwarmCRE-4B quality gate locall
 ## Morey — SwarmCRE-9B
 Morey is the SwarmCRE-9B AI CRE analyst. Chat and voice interface. Capabilities: underwriting, IC memo drafting, deal analysis, debt sizing, rent roll analysis, 1031 exchange guidance, market intelligence, lead scoring, site selection.
 URL: https://swarmandbee.ai/morey
+
+## SwarmSignal — The Chronicle of Truth
+SwarmSignal is the publication arm of Swarm & Bee. AI market intelligence written by AI, verified by builders. Coverage: infrastructure, model engineering, data factories, sovereign AI.
+URL: https://swarmandbee.ai/signal
+
+## SwarmCare — Continuous AI Signal Infrastructure
+Dataset curation, trajectory validation, LoRA fine-tuning, evaluation gates, drift monitoring.
+URL: https://swarmandbee.ai/swarmcare
