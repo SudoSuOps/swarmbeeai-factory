@@ -109,14 +109,14 @@ footer a:hover{color:var(--primary)}
 footer .copyright{font-size:0.75rem;opacity:0.5}
 
 /* ═══════════════════════════════════════════════════════
-   Trending Curator — Warm Publication Theme
+   Trending Curator — Dark Theme
    ═══════════════════════════════════════════════════════ */
 :root{
-  --sig-cream:#FAF6F0;--sig-cream-2:#F3EDE4;
+  --sig-bg:#000;--sig-surface:#0A0A0A;--sig-surface-2:#111;
   --sig-amber:#C8963E;--sig-amber-light:#D4A94E;
-  --sig-amber-glow:rgba(200,150,62,0.15);
-  --sig-charcoal:#2A2A2A;--sig-charcoal-2:#4A4A4A;--sig-charcoal-3:#7A7A7A;
-  --sig-border:rgba(42,42,42,0.12);
+  --sig-amber-glow:rgba(200,150,62,0.12);
+  --sig-text:#F5F5F5;--sig-text-2:#D4D4D4;--sig-text-3:#737373;
+  --sig-border:rgba(255,255,255,0.08);
   --sig-serif:'Playfair Display',Georgia,'Times New Roman',serif;
   --sig-sans:'DM Sans',system-ui,-apple-system,sans-serif;
 
@@ -128,14 +128,14 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 
 .curator-content{
-  background:var(--sig-cream);color:var(--sig-charcoal);
+  background:var(--sig-bg);color:var(--sig-text);
   font-family:var(--sig-sans);
 }
 
 /* ── Hero ── */
 .cur-hero{
   padding:80px 24px 64px;text-align:center;
-  background:var(--sig-cream);position:relative;margin-top:100px;
+  background:var(--sig-bg);position:relative;margin-top:100px;
 }
 .cur-hero::after{
   content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
@@ -149,38 +149,38 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 .cur-title{
   font-family:var(--sig-serif);font-size:3.6rem;font-weight:900;
-  line-height:1.05;color:var(--sig-charcoal);margin:0 0 6px;letter-spacing:-0.02em;
+  line-height:1.05;color:var(--sig-text);margin:0 0 6px;letter-spacing:-0.02em;
 }
 .cur-subtitle{
   font-family:var(--sig-serif);font-size:1.5rem;font-weight:400;
   font-style:italic;color:var(--sig-amber);margin:0 0 32px;
 }
-.cur-hero-text{font-size:1.05rem;line-height:1.7;color:var(--sig-charcoal-2);margin:0 0 12px}
+.cur-hero-text{font-size:1.05rem;line-height:1.7;color:var(--sig-text-2);margin:0 0 12px}
 .cur-hero-deal{
   margin:32px 0 0;padding:24px;
-  background:var(--sig-cream-2);border:1px solid var(--sig-border);border-radius:6px;
+  background:var(--sig-surface-2);border:1px solid var(--sig-border);border-radius:6px;
 }
-.cur-hero-deal-line{font-size:0.95rem;color:var(--sig-charcoal-2);line-height:2}
-.cur-hero-deal-line strong{color:var(--sig-charcoal)}
+.cur-hero-deal-line{font-size:0.95rem;color:var(--sig-text-2);line-height:2}
+.cur-hero-deal-line strong{color:var(--sig-text)}
 .cur-hero-price{
   font-family:var(--sig-serif);font-size:2.8rem;font-weight:900;
-  color:var(--sig-charcoal);margin:16px 0 4px;
+  color:var(--sig-text);margin:16px 0 4px;
 }
-.cur-hero-price-sub{font-size:0.85rem;color:var(--sig-charcoal-3)}
+.cur-hero-price-sub{font-size:0.85rem;color:var(--sig-text-3)}
 .cur-cta-row{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap}
 .cur-btn{
   display:inline-block;padding:14px 32px;font-family:var(--sig-sans);
   font-size:0.88rem;font-weight:700;text-decoration:none;border-radius:4px;
   transition:all 0.2s;letter-spacing:0.02em;
 }
-.cur-btn-primary{background:var(--sig-charcoal);color:var(--sig-cream)}
-.cur-btn-primary:hover{background:var(--sig-amber)}
-.cur-btn-outline{background:transparent;color:var(--sig-charcoal);border:1.5px solid var(--sig-charcoal)}
+.cur-btn-primary{background:var(--sig-amber);color:#000}
+.cur-btn-primary:hover{background:var(--sig-amber-light)}
+.cur-btn-outline{background:transparent;color:var(--sig-text);border:1.5px solid var(--sig-border)}
 .cur-btn-outline:hover{border-color:var(--sig-amber);color:var(--sig-amber)}
 
 /* ── Sections ── */
 .cur-section{padding:80px 24px}
-.cur-section-alt{background:var(--sig-cream-2)}
+.cur-section-alt{background:var(--sig-surface-2)}
 .cur-inner{max-width:960px;margin:0 auto}
 .cur-label{
   font-family:var(--sig-sans);font-size:0.65rem;font-weight:700;
@@ -188,15 +188,15 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 .cur-section-title{
   font-family:var(--sig-serif);font-size:2rem;font-weight:700;
-  color:var(--sig-charcoal);margin:0 0 20px;line-height:1.2;
+  color:var(--sig-text);margin:0 0 20px;line-height:1.2;
 }
-.cur-section-text{font-size:1rem;line-height:1.75;color:var(--sig-charcoal-2);max-width:640px}
-.cur-section-text strong{color:var(--sig-charcoal);font-weight:600}
+.cur-section-text{font-size:1rem;line-height:1.75;color:var(--sig-text-2);max-width:640px}
+.cur-section-text strong{color:var(--sig-text);font-weight:600}
 .cur-divider{width:40px;height:2px;background:var(--sig-amber);margin:24px 0}
 
 /* ── Live Factory Counter ── */
 .factory-strip{
-  background:var(--sig-charcoal);padding:48px 24px;
+  background:var(--sig-surface-2);padding:48px 24px;border-top:1px solid var(--sig-border);border-bottom:1px solid var(--sig-border);
 }
 .factory-strip-inner{
   max-width:960px;margin:0 auto;text-align:center;
@@ -236,7 +236,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 /* ── What Trending Curator Does ── */
 .what-list{list-style:none;margin:32px 0 0;padding:0}
 .what-list li{
-  font-size:0.92rem;color:var(--sig-charcoal-2);
+  font-size:0.92rem;color:var(--sig-text-2);
   padding:10px 0;border-bottom:1px solid var(--sig-border);
   display:flex;align-items:baseline;gap:12px;
 }
@@ -251,7 +251,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   border-bottom:1px solid var(--sig-border);
   transition:background 0.2s;
 }
-.market-card:hover{background:rgba(200,150,62,0.04)}
+.market-card:hover{background:rgba(200,150,62,0.06)}
 .market-card:last-child{border-bottom:none}
 .market-rank{
   font-family:var(--sig-serif);font-size:2.4rem;font-weight:900;
@@ -260,12 +260,12 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 .market-body{}
 .market-name{
   font-family:var(--sig-serif);font-size:1.2rem;font-weight:700;
-  color:var(--sig-charcoal);margin-bottom:8px;
+  color:var(--sig-text);margin-bottom:8px;
 }
 .market-why{
-  font-size:0.88rem;color:var(--sig-charcoal-2);line-height:1.6;margin-bottom:12px;
+  font-size:0.88rem;color:var(--sig-text-2);line-height:1.6;margin-bottom:12px;
 }
-.market-why strong{color:var(--sig-charcoal);font-weight:600}
+.market-why strong{color:var(--sig-text);font-weight:600}
 .market-focus{
   display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;
 }
@@ -274,7 +274,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   background:var(--sig-amber-glow);padding:3px 10px;border-radius:3px;
 }
 .market-meta{display:flex;gap:20px;align-items:center}
-.market-pairs{font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--sig-charcoal)}
+.market-pairs{font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--sig-text)}
 .market-status{
   display:inline-flex;align-items:center;gap:6px;
   font-size:0.72rem;font-weight:700;letter-spacing:0.06em;
@@ -298,7 +298,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 /* ── How The System Works ── */
 .pipeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px}
 .pipeline-step{
-  padding:28px 20px;background:var(--sig-cream);
+  padding:28px 20px;background:var(--sig-surface-2);
   border:1px solid var(--sig-border);position:relative;
 }
 .pipeline-step:first-child{border-radius:6px 0 0 6px}
@@ -309,10 +309,10 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 .pipeline-name{
   font-family:var(--sig-serif);font-size:1rem;font-weight:700;
-  color:var(--sig-charcoal);margin-bottom:12px;
+  color:var(--sig-text);margin-bottom:12px;
 }
 .pipeline-list{list-style:none;padding:0;margin:0}
-.pipeline-list li{font-size:0.78rem;color:var(--sig-charcoal-3);padding:3px 0}
+.pipeline-list li{font-size:0.78rem;color:var(--sig-text-3);padding:3px 0}
 .pipeline-arrow{
   position:absolute;right:-10px;top:50%;transform:translateY(-50%);
   color:var(--sig-amber);font-size:1.2rem;z-index:1;
@@ -321,28 +321,28 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 /* ── Pricing ── */
 .pricing-card{
   max-width:480px;margin:40px auto 0;
-  background:var(--sig-cream);border:2px solid var(--sig-charcoal);
+  background:var(--sig-surface-2);border:2px solid var(--sig-border);
   border-radius:8px;padding:48px 40px;text-align:center;
 }
 .pricing-title{
   font-family:var(--sig-serif);font-size:1.4rem;font-weight:700;
-  color:var(--sig-charcoal);margin-bottom:8px;
+  color:var(--sig-text);margin-bottom:8px;
 }
 .pricing-price{
   font-family:var(--sig-serif);font-size:3.2rem;font-weight:900;
-  color:var(--sig-charcoal);margin:16px 0 4px;
+  color:var(--sig-text);margin:16px 0 4px;
 }
-.pricing-period{font-size:0.88rem;color:var(--sig-charcoal-3);margin-bottom:28px}
+.pricing-period{font-size:0.88rem;color:var(--sig-text-3);margin-bottom:28px}
 .pricing-features{list-style:none;padding:0;margin:0 0 32px;text-align:left}
 .pricing-features li{
-  font-size:0.9rem;color:var(--sig-charcoal-2);
+  font-size:0.9rem;color:var(--sig-text-2);
   padding:10px 0;border-bottom:1px solid var(--sig-border);
   display:flex;align-items:baseline;gap:10px;
 }
 .pricing-features li:last-child{border-bottom:none}
 .pricing-check{color:var(--cur-verifying);font-weight:700;flex-shrink:0}
 .pricing-note{
-  font-size:0.82rem;color:var(--sig-charcoal-3);margin-top:20px;
+  font-size:0.82rem;color:var(--sig-text-3);margin-top:20px;
   font-style:italic;
 }
 
@@ -354,28 +354,28 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 .radar-item{
   padding:16px 20px;
   border:1px solid var(--sig-border);border-radius:6px;
-  background:var(--sig-cream);transition:all 0.2s;
+  background:var(--sig-surface-2);transition:all 0.2s;
   position:relative;overflow:hidden;
 }
-.radar-item:hover{border-color:var(--sig-amber);background:rgba(200,150,62,0.04)}
+.radar-item:hover{border-color:var(--sig-amber);background:rgba(200,150,62,0.06)}
 .radar-item::before{
   content:'';position:absolute;top:0;left:0;width:3px;height:100%;
   background:var(--sig-amber);opacity:0;transition:opacity 0.2s;
 }
 .radar-item:hover::before{opacity:1}
-.radar-name{font-size:0.88rem;font-weight:600;color:var(--sig-charcoal);margin-bottom:4px}
-.radar-signal{font-size:0.75rem;color:var(--sig-charcoal-3);font-style:italic}
+.radar-name{font-size:0.88rem;font-weight:600;color:var(--sig-text);margin-bottom:4px}
+.radar-signal{font-size:0.75rem;color:var(--sig-text-3);font-style:italic}
 
 /* ── Why This Exists ── */
 .manifesto{text-align:center;max-width:640px;margin:0 auto}
-.manifesto-title{font-family:var(--sig-serif);font-size:2.2rem;font-weight:900;color:var(--sig-charcoal);margin-bottom:24px}
-.manifesto p{font-size:1rem;line-height:1.8;color:var(--sig-charcoal-2);margin-bottom:16px}
-.manifesto-rule{font-family:var(--sig-serif);font-size:1.05rem;font-style:italic;color:var(--sig-charcoal);line-height:2}
+.manifesto-title{font-family:var(--sig-serif);font-size:2.2rem;font-weight:900;color:var(--sig-text);margin-bottom:24px}
+.manifesto p{font-size:1rem;line-height:1.8;color:var(--sig-text-2);margin-bottom:16px}
+.manifesto-rule{font-family:var(--sig-serif);font-size:1.05rem;font-style:italic;color:var(--sig-text);line-height:2}
 
 /* ── CTA ── */
 .cur-final-cta{text-align:center;max-width:500px;margin:0 auto}
-.cur-final-title{font-family:var(--sig-serif);font-size:1.8rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:12px}
-.cur-final-cta p{font-size:0.95rem;color:var(--sig-charcoal-2);margin-bottom:28px}
+.cur-final-title{font-family:var(--sig-serif);font-size:1.8rem;font-weight:700;color:var(--sig-text);margin-bottom:12px}
+.cur-final-cta p{font-size:0.95rem;color:var(--sig-text-2);margin-bottom:28px}
 
 /* ── Responsive ── */
 @media(max-width:768px){
@@ -470,7 +470,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <div class="cur-hero-deal-line">One subscription.</div>
       <div class="cur-hero-deal-line"><strong>Five live dataset streams.</strong></div>
       <div class="cur-hero-deal-line">Up to <strong>250,000</strong> curated training pairs every month.</div>
-      <div class="cur-hero-price">$49<span style="font-size:1rem;font-weight:400;color:var(--sig-charcoal-3)"> / month</span></div>
+      <div class="cur-hero-price">$49<span style="font-size:1rem;font-weight:400;color:var(--sig-text-3)"> / month</span></div>
     </div>
 
     <div class="cur-cta-row">
@@ -489,24 +489,24 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <div class="factory-subtitle">The Swarm continuously produces curated training data based on live market signals.</div>
     <div class="factory-grid">
       <div class="factory-stat">
-        <div class="factory-stat-num" id="counter-today" data-target="12482">0</div>
-        <div class="factory-stat-label">Pairs Cooked Today</div>
+        <div class="factory-stat-num" id="counter-total" data-target="1158902">0</div>
+        <div class="factory-stat-label">Total Pairs Produced</div>
       </div>
       <div class="factory-stat">
-        <div class="factory-stat-num" id="counter-month" data-target="38240">0</div>
-        <div class="factory-stat-label">Pairs This Month</div>
+        <div class="factory-stat-num" id="counter-cre" data-target="643382">0</div>
+        <div class="factory-stat-label">CRE Intelligence Pairs</div>
       </div>
       <div class="factory-stat">
-        <div class="factory-stat-num live" id="counter-objects" data-target="5">0</div>
-        <div class="factory-stat-label">Active Curations</div>
+        <div class="factory-stat-num" id="counter-med" data-target="432196">0</div>
+        <div class="factory-stat-label">Medical / Pharma Pairs</div>
       </div>
       <div class="factory-stat">
-        <div class="factory-stat-num" id="counter-nodes" data-target="18">0</div>
-        <div class="factory-stat-label">Swarm Nodes Running</div>
+        <div class="factory-stat-num live" id="counter-verticals" data-target="6">0</div>
+        <div class="factory-stat-label">Active Verticals</div>
       </div>
       <div class="factory-stat">
-        <div class="factory-stat-num" style="font-size:1.4rem;color:rgba(255,255,255,0.7)">Apr 12</div>
-        <div class="factory-stat-label">Next Object Release</div>
+        <div class="factory-stat-num live" id="counter-skills" data-target="28">0</div>
+        <div class="factory-stat-label">Live SwarmSkills</div>
       </div>
     </div>
   </div>
@@ -535,7 +535,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <li><span class="what-bullet">&bull;</span> Full <strong>provenance logs</strong></li>
     </ul>
 
-    <p class="cur-section-text" style="margin-top:28px;font-weight:600;color:var(--sig-charcoal)">
+    <p class="cur-section-text" style="margin-top:28px;font-weight:600;color:var(--sig-text)">
       Delivered monthly.
     </p>
   </div>
@@ -582,8 +582,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
             <span class="market-tag">lease abstraction</span>
           </div>
           <div class="market-meta">
-            <span class="market-pairs">50,000 pairs</span>
-            <span class="market-status status-verifying">Verifying</span>
+            <span class="market-pairs">643,382 pairs</span>
+            <span class="market-status status-verifying" style="color:var(--cur-live);background:rgba(16,185,129,0.1)">Live</span>
           </div>
         </div>
       </div>
@@ -600,8 +600,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
             <span class="market-tag">treatment protocols</span>
           </div>
           <div class="market-meta">
-            <span class="market-pairs">40,000 pairs</span>
-            <span class="market-status status-queued">Queued</span>
+            <span class="market-pairs">432,196 pairs</span>
+            <span class="market-status status-verifying" style="color:var(--cur-live);background:rgba(16,185,129,0.1)">Live</span>
           </div>
         </div>
       </div>
@@ -790,7 +790,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
       <form id="curatorSignup" onsubmit="submitCuratorSignup(event)" style="margin-top:8px">
         <input type="email" class="signal-email-input" placeholder="your@email.com" required
-          style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:white;color:var(--sig-charcoal);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+          style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
         <button type="submit" class="cur-btn cur-btn-primary" style="width:100%;text-align:center;display:block;border:none;cursor:pointer;font-family:var(--sig-sans)">Start Curating — $49/mo</button>
       </form>
       <div id="curatorSignupStatus" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px;text-align:center"></div>
@@ -824,7 +824,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         SwarmJudge verifies the quality.
       </div>
 
-      <p style="margin-top:28px;font-weight:600;color:var(--sig-charcoal)">
+      <p style="margin-top:28px;font-weight:600;color:var(--sig-text)">
         This is the intelligence refinery.
       </p>
     </div>
@@ -846,11 +846,11 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 <section class="cur-section cur-section-alt" style="padding:48px 24px">
   <div class="cur-inner">
     <div style="text-align:center;max-width:500px;margin:0 auto">
-      <p style="font-size:0.9rem;color:var(--sig-charcoal-3);line-height:1.8">
-        <strong style="color:var(--sig-charcoal)">Trending Curator</strong> is part of the
-        <strong style="color:var(--sig-charcoal)">Swarm &amp; Bee</strong> intelligence pipeline.
+      <p style="font-size:0.9rem;color:var(--sig-text-3);line-height:1.8">
+        <strong style="color:var(--sig-text)">Trending Curator</strong> is part of the
+        <strong style="color:var(--sig-text)">Swarm &amp; Bee</strong> intelligence pipeline.
       </p>
-      <p style="font-size:0.82rem;color:var(--sig-charcoal-3);margin-top:8px">
+      <p style="font-size:0.82rem;color:var(--sig-text-3);margin-top:8px">
         The factory that feeds them all.
       </p>
     </div>

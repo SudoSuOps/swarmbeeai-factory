@@ -103,27 +103,27 @@ footer a:hover{color:var(--primary)}
 footer .copyright{font-size:0.75rem;opacity:0.5}
 
 /* ═══════════════════════════════════════════════════════
-   SwarmSignal — Warm Publication Theme
+   SwarmSignal — Dark Publication Theme
    ═══════════════════════════════════════════════════════ */
 :root{
-  --sig-cream:#FAF6F0;--sig-cream-2:#F3EDE4;
+  --sig-bg:#000;--sig-surface:#0A0A0A;--sig-surface-2:#111;
   --sig-amber:#C8963E;--sig-amber-light:#D4A94E;
-  --sig-amber-glow:rgba(200,150,62,0.15);
-  --sig-charcoal:#2A2A2A;--sig-charcoal-2:#4A4A4A;--sig-charcoal-3:#7A7A7A;
-  --sig-border:rgba(42,42,42,0.12);
+  --sig-amber-glow:rgba(200,150,62,0.12);
+  --sig-text:#F5F5F5;--sig-text-2:#D4D4D4;--sig-text-3:#737373;
+  --sig-border:rgba(255,255,255,0.08);
   --sig-serif:'Playfair Display',Georgia,'Times New Roman',serif;
   --sig-sans:'DM Sans',system-ui,-apple-system,sans-serif;
 }
 
-/* Signal content area — warm cream */
+/* Signal content area — dark */
 .signal-content{
-  background:var(--sig-cream);color:var(--sig-charcoal);
+  background:var(--sig-bg);color:var(--sig-text);
   font-family:var(--sig-sans);
 }
 
 /* ── Daily Signal Strip ── */
 .daily-strip{
-  background:var(--sig-charcoal);padding:14px 24px;
+  background:var(--sig-surface-2);padding:14px 24px;
   display:flex;align-items:center;gap:20px;overflow-x:auto;
   margin-top:100px;
 }
@@ -143,7 +143,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 /* ── Hero ── */
 .signal-hero{
   padding:80px 24px 60px;text-align:center;
-  background:var(--sig-cream);position:relative;
+  background:var(--sig-bg);position:relative;
 }
 .signal-hero::after{
   content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
@@ -157,29 +157,29 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 .signal-title{
   font-family:var(--sig-serif);font-size:3.6rem;font-weight:900;
-  line-height:1.05;color:var(--sig-charcoal);margin:0 0 6px;letter-spacing:-0.02em;
+  line-height:1.05;color:var(--sig-text);margin:0 0 6px;letter-spacing:-0.02em;
 }
 .signal-subtitle{
   font-family:var(--sig-serif);font-size:1.5rem;font-weight:400;
   font-style:italic;color:var(--sig-amber);margin:0 0 32px;
 }
-.signal-hero-text{font-size:1.05rem;line-height:1.7;color:var(--sig-charcoal-2);margin:0 0 12px}
-.signal-hero-punch{font-size:0.95rem;font-weight:600;color:var(--sig-charcoal);line-height:2;margin:20px 0 0}
-.signal-hero-punch span{display:inline-block;margin:0 8px;color:var(--sig-charcoal-3)}
+.signal-hero-text{font-size:1.05rem;line-height:1.7;color:var(--sig-text-2);margin:0 0 12px}
+.signal-hero-punch{font-size:0.95rem;font-weight:600;color:var(--sig-text);line-height:2;margin:20px 0 0}
+.signal-hero-punch span{display:inline-block;margin:0 8px;color:var(--sig-text-3)}
 .signal-cta-row{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
 .signal-btn{
   display:inline-block;padding:12px 28px;font-family:var(--sig-sans);
   font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:4px;
   transition:all 0.2s;letter-spacing:0.02em;
 }
-.signal-btn-primary{background:var(--sig-charcoal);color:var(--sig-cream)}
-.signal-btn-primary:hover{background:var(--sig-amber)}
-.signal-btn-outline{background:transparent;color:var(--sig-charcoal);border:1.5px solid var(--sig-charcoal)}
+.signal-btn-primary{background:var(--sig-amber);color:#000}
+.signal-btn-primary:hover{background:var(--sig-amber-light)}
+.signal-btn-outline{background:transparent;color:var(--sig-text);border:1.5px solid var(--sig-border)}
 .signal-btn-outline:hover{border-color:var(--sig-amber);color:var(--sig-amber)}
 
 /* ── Sections ── */
 .sig-section{padding:80px 24px}
-.sig-section-alt{background:var(--sig-cream-2)}
+.sig-section-alt{background:var(--sig-surface-2)}
 .sig-inner{max-width:900px;margin:0 auto}
 .sig-section-label{
   font-family:var(--sig-sans);font-size:0.65rem;font-weight:700;
@@ -187,69 +187,69 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 }
 .sig-section-title{
   font-family:var(--sig-serif);font-size:2rem;font-weight:700;
-  color:var(--sig-charcoal);margin:0 0 20px;line-height:1.2;
+  color:var(--sig-text);margin:0 0 20px;line-height:1.2;
 }
-.sig-section-text{font-size:1rem;line-height:1.75;color:var(--sig-charcoal-2);max-width:640px}
-.sig-section-text strong{color:var(--sig-charcoal);font-weight:600}
+.sig-section-text{font-size:1rem;line-height:1.75;color:var(--sig-text-2);max-width:640px}
+.sig-section-text strong{color:var(--sig-text);font-weight:600}
 .sig-divider{width:40px;height:2px;background:var(--sig-amber);margin:24px 0}
 
 /* ── Pillar Grid ── */
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;margin-top:40px}
 .pillar-card{
-  background:var(--sig-cream);border:1px solid var(--sig-border);
+  background:var(--sig-surface-2);border:1px solid var(--sig-border);
   border-radius:6px;padding:32px 28px;transition:border-color 0.2s;
 }
 .pillar-card:hover{border-color:var(--sig-amber)}
 .pillar-num{font-family:var(--sig-serif);font-size:2.4rem;font-weight:900;color:var(--sig-amber);line-height:1;margin-bottom:12px}
-.pillar-name{font-family:var(--sig-serif);font-size:1.25rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:8px}
-.pillar-desc{font-size:0.88rem;font-style:italic;color:var(--sig-charcoal-3);margin-bottom:16px}
+.pillar-name{font-family:var(--sig-serif);font-size:1.25rem;font-weight:700;color:var(--sig-text);margin-bottom:8px}
+.pillar-desc{font-size:0.88rem;font-style:italic;color:var(--sig-text-3);margin-bottom:16px}
 .pillar-topics{list-style:none;padding:0;margin:0}
-.pillar-topics li{font-size:0.82rem;color:var(--sig-charcoal-2);padding:4px 0;border-bottom:1px solid var(--sig-border)}
+.pillar-topics li{font-size:0.82rem;color:var(--sig-text-2);padding:4px 0;border-bottom:1px solid var(--sig-border)}
 .pillar-topics li:last-child{border-bottom:none}
 
 /* ── Series Grid ── */
 .series-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-top:36px}
-.series-card{border-left:3px solid var(--sig-amber);padding:24px 24px 24px 28px;background:var(--sig-cream-2);border-radius:0 6px 6px 0}
-.series-name{font-family:var(--sig-serif);font-size:1.1rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:6px}
-.series-desc{font-size:0.85rem;color:var(--sig-charcoal-3);margin-bottom:14px;font-style:italic}
+.series-card{border-left:3px solid var(--sig-amber);padding:24px 24px 24px 28px;background:var(--sig-surface-2);border-radius:0 6px 6px 0}
+.series-name{font-family:var(--sig-serif);font-size:1.1rem;font-weight:700;color:var(--sig-text);margin-bottom:6px}
+.series-desc{font-size:0.85rem;color:var(--sig-text-3);margin-bottom:14px;font-style:italic}
 .series-tags{display:flex;flex-wrap:wrap;gap:6px}
 .series-tag{font-size:0.72rem;font-weight:500;color:var(--sig-amber);background:var(--sig-amber-glow);padding:3px 10px;border-radius:3px}
 
 /* ── Article Cards ── */
 .article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:36px}
 .article-card{
-  background:var(--sig-cream);border:1px solid var(--sig-border);
+  background:var(--sig-surface-2);border:1px solid var(--sig-border);
   border-radius:6px;padding:28px 24px;transition:all 0.2s;cursor:pointer;
 }
 .article-card:hover{border-color:var(--sig-amber);box-shadow:0 4px 20px rgba(200,150,62,0.08)}
 .article-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sig-amber);margin-bottom:10px}
-.article-title{font-family:var(--sig-serif);font-size:1.15rem;font-weight:700;color:var(--sig-charcoal);line-height:1.35;margin-bottom:10px}
-.article-excerpt{font-size:0.85rem;color:var(--sig-charcoal-3);line-height:1.6}
-.article-meta{margin-top:14px;font-size:0.72rem;color:var(--sig-charcoal-3)}
+.article-title{font-family:var(--sig-serif);font-size:1.15rem;font-weight:700;color:var(--sig-text);line-height:1.35;margin-bottom:10px}
+.article-excerpt{font-size:0.85rem;color:var(--sig-text-3);line-height:1.6}
+.article-meta{margin-top:14px;font-size:0.72rem;color:var(--sig-text-3)}
 
 /* ── Manifesto ── */
 .manifesto{text-align:center;max-width:640px;margin:0 auto}
-.manifesto-title{font-family:var(--sig-serif);font-size:2.2rem;font-weight:900;color:var(--sig-charcoal);margin-bottom:24px}
-.manifesto p{font-size:1rem;line-height:1.8;color:var(--sig-charcoal-2);margin-bottom:16px}
-.manifesto-rule{font-family:var(--sig-serif);font-size:1.05rem;font-style:italic;color:var(--sig-charcoal);line-height:2}
+.manifesto-title{font-family:var(--sig-serif);font-size:2.2rem;font-weight:900;color:var(--sig-text);margin-bottom:24px}
+.manifesto p{font-size:1rem;line-height:1.8;color:var(--sig-text-2);margin-bottom:16px}
+.manifesto-rule{font-family:var(--sig-serif);font-size:1.05rem;font-style:italic;color:var(--sig-text);line-height:2}
 
 /* ── Join / CTA ── */
 .signal-join{text-align:center;max-width:500px;margin:0 auto}
-.signal-join-title{font-family:var(--sig-serif);font-size:1.8rem;font-weight:700;color:var(--sig-charcoal);margin-bottom:12px}
-.signal-join p{font-size:0.95rem;color:var(--sig-charcoal-2);margin-bottom:28px}
+.signal-join-title{font-family:var(--sig-serif);font-size:1.8rem;font-weight:700;color:var(--sig-text);margin-bottom:12px}
+.signal-join p{font-size:0.95rem;color:var(--sig-text-2);margin-bottom:28px}
 .signal-email-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .signal-email-input{
   padding:12px 18px;font-size:0.88rem;font-family:var(--sig-sans);
   border:1.5px solid var(--sig-border);border-radius:4px;
-  background:white;color:var(--sig-charcoal);width:260px;outline:none;transition:border-color 0.2s;
+  background:var(--sig-surface-2);color:var(--sig-text);width:260px;outline:none;transition:border-color 0.2s;
 }
 .signal-email-input:focus{border-color:var(--sig-amber)}
-.signal-email-input::placeholder{color:var(--sig-charcoal-3)}
+.signal-email-input::placeholder{color:var(--sig-text-3)}
 
 /* ── Closing Block ── */
 .signal-closing{text-align:center;max-width:500px;margin:0 auto}
-.signal-closing p{font-size:0.9rem;color:var(--sig-charcoal-3);line-height:1.8}
-.signal-closing strong{color:var(--sig-charcoal)}
+.signal-closing p{font-size:0.9rem;color:var(--sig-text-3);line-height:1.8}
+.signal-closing strong{color:var(--sig-text)}
 
 /* ── Responsive ── */
 @media(max-width:768px){
@@ -580,7 +580,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         If it works, we explain it.
       </div>
 
-      <p style="margin-top:28px;font-weight:600;color:var(--sig-charcoal)">
+      <p style="margin-top:28px;font-weight:600;color:var(--sig-text)">
         This is the Chronicle of Truth.
       </p>
     </div>
@@ -598,7 +598,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <button type="submit" class="signal-btn signal-btn-primary" id="join-btn">Join the Chronicle</button>
       </form>
       <div id="signalSignupStatus" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px"></div>
-      <p style="font-size:0.75rem;color:var(--sig-charcoal-3);margin-top:12px">No spam. Signal only.</p>
+      <p style="font-size:0.75rem;color:var(--sig-text-3);margin-top:12px">No spam. Signal only.</p>
     </div>
   </div>
 </section>
