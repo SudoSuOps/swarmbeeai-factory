@@ -406,6 +406,8 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
   <div class="topbar-right">
+    <a href="/dashboard" id="navDashLink" style="display:none;color:#f59e0b;font-size:0.82rem;text-decoration:none;font-weight:600;margin-right:12px">Dashboard</a>
+    <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:#f59e0b;font-size:0.82rem;text-decoration:none;margin-right:12px">Sign In</a>
     <span class="status-dot"></span>
     <span class="status-text">online · 22 tok/s</span>
   </div>
@@ -724,6 +726,8 @@ fetch(API_BASE + '/health')
   })
   .catch(() => {});
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
 
 </body>
 </html>

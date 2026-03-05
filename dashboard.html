@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Swarm & Bee</title>
+<meta name="description" content="Your Swarm & Bee dashboard. API keys, credit balance, pair inventory, usage stats, and billing.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000;--surface:#0A0A0A;--surface-2:#111;--surface-3:#1A1A1A;
+  --border:#222;--border-2:#333;
+  --primary:#f59e0b;--primary-dim:#d97706;--accent:#10b981;--danger:#ef4444;
+  --text:#fff;--text-2:#d4d4d4;--text-3:#737373;
+  --max-w:1100px;--radius:8px;
+  --font:'DM Sans',system-ui,sans-serif;--heading:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* ── Top Bar ── */
+.dash-topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:56px;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  backdrop-filter:blur(12px);
+}
+.dash-logo{font-family:var(--heading);font-weight:700;font-size:1.1rem}
+.dash-logo span{color:var(--primary)}
+.dash-topbar-right{display:flex;align-items:center;gap:16px}
+.dash-user{font-size:0.82rem;color:var(--text-3)}
+.dash-tier-badge{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:3px 10px;border-radius:4px;background:rgba(245,158,11,0.15);color:var(--primary);
+}
+.dash-logout{
+  font-size:0.78rem;color:var(--text-3);background:none;border:1px solid var(--border);
+  padding:5px 14px;border-radius:4px;cursor:pointer;transition:all 0.2s;font-family:var(--font);
+}
+.dash-logout:hover{border-color:var(--danger);color:var(--danger)}
+
+/* ── Layout ── */
+.dash-container{max-width:var(--max-w);margin:0 auto;padding:80px 24px 60px}
+
+/* ── Tabs ── */
+.dash-tabs{
+  display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:32px;overflow-x:auto;
+}
+.dash-tab{
+  padding:12px 20px;font-size:0.85rem;font-weight:600;color:var(--text-3);
+  cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;
+  white-space:nowrap;font-family:var(--heading);background:none;border-top:none;border-left:none;border-right:none;
+}
+.dash-tab:hover{color:var(--text-2)}
+.dash-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.dash-panel{display:none}
+.dash-panel.active{display:block}
+
+/* ── Cards ── */
+.dash-card{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px 24px;margin-bottom:20px;
+}
+.dash-card-title{
+  font-family:var(--heading);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:16px;
+}
+
+/* ── API Key ── */
+.api-key-display{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--border);border-radius:6px;
+  padding:14px 18px;font-family:var(--mono);font-size:0.88rem;color:var(--text-2);
+}
+.api-key-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all}
+.api-key-btn{
+  background:none;border:1px solid var(--border);color:var(--text-3);
+  padding:6px 14px;border-radius:4px;cursor:pointer;font-size:0.75rem;
+  font-family:var(--font);font-weight:600;transition:all 0.2s;flex-shrink:0;
+}
+.api-key-btn:hover{border-color:var(--primary);color:var(--primary)}
+
+/* ── Stats Grid ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px}
+.stat-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;text-align:center;
+}
+.stat-num{font-family:var(--mono);font-size:1.8rem;font-weight:700;color:var(--text);line-height:1;margin-bottom:6px}
+.stat-num.amber{color:var(--primary)}
+.stat-num.green{color:var(--accent)}
+.stat-label{font-size:0.72rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em}
+
+/* ── Usage Chart ── */
+.usage-bars{display:flex;align-items:flex-end;gap:6px;height:120px;margin:20px 0}
+.usage-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.usage-bar{
+  width:100%;min-height:2px;background:var(--primary);border-radius:3px 3px 0 0;
+  transition:height 0.3s;
+}
+.usage-bar-label{font-size:0.62rem;color:var(--text-3)}
+
+/* ── Inventory ── */
+.inv-vertical{margin-bottom:24px}
+.inv-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;
+}
+.inv-header:hover .inv-name{color:var(--primary)}
+.inv-name{font-family:var(--heading);font-size:1.1rem;font-weight:700;transition:color 0.2s}
+.inv-count{font-family:var(--mono);font-size:0.88rem;color:var(--primary);font-weight:700}
+.inv-toggle{color:var(--text-3);font-size:1.2rem;transition:transform 0.2s}
+.inv-toggle.open{transform:rotate(180deg)}
+.inv-specialties{display:none;padding:0;margin:0;list-style:none}
+.inv-specialties.open{display:block}
+.inv-spec{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0 10px 20px;border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:0.85rem;
+}
+.inv-spec:last-child{border-bottom:none}
+.inv-spec-name{color:var(--text-2);flex:1}
+.inv-spec-count{font-family:var(--mono);font-size:0.78rem;color:var(--text-3);margin-right:16px}
+.inv-dl-btn{
+  background:none;border:1px solid var(--border);color:var(--text-3);
+  padding:4px 12px;border-radius:4px;cursor:pointer;font-size:0.72rem;
+  font-family:var(--font);font-weight:600;transition:all 0.2s;
+}
+.inv-dl-btn:hover{border-color:var(--accent);color:var(--accent)}
+.inv-dl-btn:disabled{opacity:0.3;cursor:not-allowed}
+
+/* ── Billing ── */
+.billing-plan{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;border-bottom:1px solid var(--border);
+}
+.billing-plan-name{font-family:var(--heading);font-size:1rem;font-weight:700}
+.billing-plan-price{font-family:var(--mono);font-size:1.2rem;color:var(--primary);font-weight:700}
+.billing-btn{
+  display:inline-block;padding:10px 24px;font-size:0.85rem;font-weight:700;
+  background:var(--primary);color:#000;border:none;border-radius:6px;cursor:pointer;
+  font-family:var(--heading);transition:background 0.2s;margin-top:16px;
+}
+.billing-btn:hover{background:var(--primary-dim)}
+.billing-btn-outline{
+  background:none;border:1px solid var(--border);color:var(--text-2);
+}
+.billing-btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+
+/* ── Code Block ── */
+.code-block{
+  background:var(--surface);border:1px solid var(--border);border-radius:6px;
+  padding:18px 20px;font-family:var(--mono);font-size:0.78rem;
+  color:var(--text-2);overflow-x:auto;line-height:1.7;white-space:pre;margin:12px 0;
+}
+.code-label{font-size:0.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+
+/* ── Empty State ── */
+.empty-state{text-align:center;padding:60px 20px}
+.empty-state h3{font-family:var(--heading);font-size:1.4rem;margin-bottom:12px}
+.empty-state p{color:var(--text-3);font-size:0.92rem;margin-bottom:24px}
+
+/* ── Loading ── */
+.loading{color:var(--text-3);font-size:0.85rem;padding:20px 0}
+.loading::after{content:'';display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--primary);border-radius:50%;margin-left:8px;animation:spin 0.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Login Gate ── */
+.login-gate{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:80vh;text-align:center;
+}
+.login-gate h2{font-family:var(--heading);font-size:2rem;margin-bottom:12px}
+.login-gate p{color:var(--text-3);font-size:0.95rem;margin-bottom:32px}
+.login-gate-btn{
+  padding:14px 36px;font-size:0.92rem;font-weight:700;background:var(--primary);color:#000;
+  border:none;border-radius:6px;cursor:pointer;font-family:var(--heading);transition:background 0.2s;
+}
+.login-gate-btn:hover{background:var(--primary-dim)}
+
+/* ── Checkout Success Banner ── */
+.success-banner{
+  background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);
+  color:var(--accent);padding:16px 20px;border-radius:var(--radius);margin-bottom:24px;
+  font-size:0.88rem;font-weight:600;display:none;
+}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .dash-container{padding:70px 16px 40px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-topbar-right{gap:8px}
+  .dash-user{display:none}
+  .api-key-display{flex-direction:column;align-items:stretch}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .dash-tabs{gap:0}
+  .dash-tab{padding:10px 14px;font-size:0.78rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="dash-topbar">
+  <a href="/" class="dash-logo">swarm<span>&</span>bee</a>
+  <div class="dash-topbar-right">
+    <span class="dash-user" id="dashUser"></span>
+    <span class="dash-tier-badge" id="dashTier">Free</span>
+    <button class="dash-logout" onclick="swarmAuth.logout();window.location.href='/';">Sign Out</button>
+  </div>
+</div>
+
+<!-- Login Gate (shown when not authenticated) -->
+<div class="login-gate" id="loginGate">
+  <h2>Sign in to your dashboard</h2>
+  <p>Access your API keys, pair inventory, usage stats, and billing.</p>
+  <button class="login-gate-btn" onclick="swarmAuth.showLoginModal('login')">Sign In</button>
+  <p style="margin-top:16px;font-size:0.82rem;color:var(--text-3)">
+    Don't have an account? <a href="#" onclick="swarmAuth.showLoginModal('signup')" style="color:var(--primary);font-weight:600">Create one</a>
+  </p>
+</div>
+
+<!-- Dashboard (shown when authenticated) -->
+<div class="dash-container" id="dashContent" style="display:none">
+
+  <!-- Checkout Success Banner -->
+  <div class="success-banner" id="successBanner">
+    Subscription activated! Your API key and credits are ready below.
+  </div>
+
+  <!-- Tabs -->
+  <div class="dash-tabs">
+    <button class="dash-tab active" onclick="switchTab('overview',this)">Overview</button>
+    <button class="dash-tab" onclick="switchTab('datasets',this)">Datasets</button>
+    <button class="dash-tab" onclick="switchTab('usage',this)">Usage</button>
+    <button class="dash-tab" onclick="switchTab('billing',this)">Billing</button>
+    <button class="dash-tab" onclick="switchTab('quickstart',this)">Quick Start</button>
+  </div>
+
+  <!-- ═══ OVERVIEW TAB ═══ -->
+  <div class="dash-panel active" id="panel-overview">
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num amber" id="statBalance">—</div>
+        <div class="stat-label">Credits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statUsed7d">—</div>
+        <div class="stat-label">Used (7 days)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num green" id="statSkills">28</div>
+        <div class="stat-label">Live Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statRateLimit">—</div>
+        <div class="stat-label">Rate Limit/min</div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-card-title">Your API Key</div>
+      <div class="api-key-display">
+        <span class="api-key-text" id="apiKeyDisplay">No API key yet — subscribe to get one</span>
+        <button class="api-key-btn" id="apiKeyCopyBtn" onclick="copyApiKey()" style="display:none">Copy</button>
+        <button class="api-key-btn" id="apiKeyRevealBtn" onclick="revealApiKey()" style="display:none">Reveal</button>
+      </div>
+      <p style="font-size:0.78rem;color:var(--text-3);margin-top:10px">
+        Use this key with <code style="color:var(--primary)">Authorization: Bearer YOUR_KEY</code> on any endpoint.
+      </p>
+    </div>
+
+    <div class="dash-card" id="noSubCard" style="display:none">
+      <div class="empty-state" style="padding:30px 0">
+        <h3>Get Started</h3>
+        <p>Subscribe to access 1.16M training pairs across 6 verticals and 28 SwarmSkills.</p>
+        <button class="billing-btn" onclick="swarmAuth.startCheckout('starter','cre')">Start Culture — $49/mo</button>
+        <span style="display:inline-block;margin:0 12px;color:var(--text-3)">or</span>
+        <button class="billing-btn" onclick="swarmAuth.startCheckout('pro','cre')">Start Moat — $99/mo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DATASETS TAB ═══ -->
+  <div class="dash-panel" id="panel-datasets">
+    <div class="dash-card">
+      <div class="dash-card-title">Pair Inventory</div>
+      <p style="font-size:0.85rem;color:var(--text-3);margin-bottom:20px">
+        Browse and download training pairs. Each download pulls up to 100 JSONL pairs.
+      </p>
+      <div id="inventoryContainer">
+        <div class="loading">Loading inventory</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ USAGE TAB ═══ -->
+  <div class="dash-panel" id="panel-usage">
+    <div class="dash-card">
+      <div class="dash-card-title">Credit Usage — Last 7 Days</div>
+      <div class="usage-bars" id="usageChart"></div>
+      <div id="usageByEndpoint" style="margin-top:20px"></div>
+    </div>
+  </div>
+
+  <!-- ═══ BILLING TAB ═══ -->
+  <div class="dash-panel" id="panel-billing">
+    <div class="dash-card">
+      <div class="dash-card-title">Current Plan</div>
+      <div class="billing-plan">
+        <div>
+          <div class="billing-plan-name" id="billingPlan">Free</div>
+          <div style="font-size:0.82rem;color:var(--text-3)" id="billingDesc">10 credits included</div>
+        </div>
+        <div class="billing-plan-price" id="billingPrice">$0</div>
+      </div>
+      <button class="billing-btn billing-btn-outline" onclick="swarmAuth.startCheckout('starter','cre')" id="upgradeBtn">
+        Upgrade to Culture — $49/mo
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ QUICK START TAB ═══ -->
+  <div class="dash-panel" id="panel-quickstart">
+    <div class="dash-card">
+      <div class="dash-card-title">Pull Training Pairs</div>
+      <div class="code-label">curl</div>
+      <div class="code-block" id="qsCurl">curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://api.swarmandbee.com/api/data/pull?vertical=cre&specialty=ic_memo&limit=100"</div>
+
+      <div class="code-label" style="margin-top:20px">Python</div>
+      <div class="code-block" id="qsPython">import requests
+
+API_KEY = "YOUR_API_KEY"
+resp = requests.get(
+    "https://api.swarmandbee.com/api/data/pull",
+    params={"vertical": "cre", "specialty": "ic_memo", "limit": 100},
+    headers={"Authorization": f"Bearer {API_KEY}"}
+)
+pairs = resp.json()["pairs"]
+print(f"Got {len(pairs)} pairs")</div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-card-title">Execute a Skill</div>
+      <div class="code-label">curl</div>
+      <div class="code-block">curl -X POST https://router.swarmandbee.com/skill/broker_senior \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{"data":{"address":"Alliance TX warehouse","sf":85000}}'</div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-card-title">Endpoints</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.82rem">
+        <div><code style="color:var(--primary)">GET</code> <a href="https://router.swarmandbee.com/skills" target="_blank" style="color:var(--text-2)">/skills</a></div>
+        <div><code style="color:var(--primary)">GET</code> <a href="https://router.swarmandbee.com/health" target="_blank" style="color:var(--text-2)">/health</a></div>
+        <div><code style="color:var(--accent)">POST</code> <span style="color:var(--text-2)">/skill/{name}</span></div>
+        <div><code style="color:var(--primary)">GET</code> <span style="color:var(--text-2)">/wallet/balance</span></div>
+        <div><code style="color:var(--primary)">GET</code> <span style="color:var(--text-2)">/api/data/catalog</span></div>
+        <div><code style="color:var(--primary)">GET</code> <span style="color:var(--text-2)">/api/data/pull</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /dash-container -->
+
+<!-- Supabase JS + Auth Module -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  var apiKey = null;
+  var apiKeyRevealed = false;
+  var walletData = null;
+
+  // ── Wait for auth, then load dashboard ──
+  function waitForAuth() {
+    if (typeof swarmAuth === 'undefined') {
+      setTimeout(waitForAuth, 100);
+      return;
+    }
+
+    // Check for checkout success
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('checkout') === 'success') {
+      document.getElementById('successBanner').style.display = 'block';
+    }
+
+    // Poll for auth state (Supabase init is async)
+    var checks = 0;
+    var interval = setInterval(function() {
+      checks++;
+      if (swarmAuth.isLoggedIn()) {
+        clearInterval(interval);
+        showDashboard();
+      } else if (checks > 20) {
+        clearInterval(interval);
+        showLoginGate();
+      }
+    }, 150);
+  }
+
+  function showLoginGate() {
+    document.getElementById('loginGate').style.display = 'flex';
+    document.getElementById('dashContent').style.display = 'none';
+  }
+
+  function showDashboard() {
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('dashContent').style.display = 'block';
+
+    var user = swarmAuth.getUser();
+    document.getElementById('dashUser').textContent = user.email || '';
+
+    // Load data
+    apiKey = swarmAuth.getApiKey();
+    loadWallet();
+    loadInventory();
+    loadUsage();
+    updateApiKeyDisplay();
+    updateQuickStart();
+  }
+
+  // ── Wallet / Balance ──
+  async function loadWallet() {
+    if (!apiKey) {
+      document.getElementById('statBalance').textContent = '0';
+      document.getElementById('statUsed7d').textContent = '0';
+      document.getElementById('statRateLimit').textContent = '60';
+      document.getElementById('dashTier').textContent = 'Free';
+      document.getElementById('noSubCard').style.display = 'block';
+      return;
+    }
+
+    try {
+      var res = await fetch('https://router.swarmandbee.com/wallet/balance', {
+        headers: { 'Authorization': 'Bearer ' + apiKey }
+      });
+      if (!res.ok) throw new Error('Wallet fetch failed');
+      var data = await res.json();
+      walletData = data;
+
+      document.getElementById('statBalance').textContent = (data.balance || 0).toLocaleString();
+      document.getElementById('statRateLimit').textContent = data.rate_limit || 60;
+
+      var tier = (data.tier || 'free').charAt(0).toUpperCase() + (data.tier || 'free').slice(1);
+      document.getElementById('dashTier').textContent = tier;
+      document.getElementById('billingPlan').textContent = tier === 'Starter' ? 'SwarmCare Culture' : tier === 'Pro' ? 'SwarmCare Moat' : 'Free';
+      document.getElementById('billingPrice').textContent = tier === 'Starter' ? '$49/mo' : tier === 'Pro' ? '$99/mo' : '$0';
+      document.getElementById('billingDesc').textContent = tier === 'Starter' ? '500 credits/month' : tier === 'Pro' ? '5,000 credits/month' : '10 credits included';
+
+      if (tier !== 'Free') {
+        document.getElementById('noSubCard').style.display = 'none';
+        document.getElementById('upgradeBtn').textContent = tier === 'Starter' ? 'Upgrade to Moat — $99/mo' : 'Manage Plan';
+      }
+    } catch(e) {
+      console.warn('Wallet load failed:', e);
+    }
+  }
+
+  // ── Usage Stats ──
+  async function loadUsage() {
+    if (!apiKey) {
+      document.getElementById('usageChart').innerHTML = '<p style="color:var(--text-3);font-size:0.85rem">Subscribe to see usage data.</p>';
+      return;
+    }
+
+    try {
+      var res = await fetch('https://router.swarmandbee.com/wallet/usage?days=7', {
+        headers: { 'Authorization': 'Bearer ' + apiKey }
+      });
+      if (!res.ok) return;
+      var data = await res.json();
+
+      document.getElementById('statUsed7d').textContent = (data.total_credits_used || 0).toLocaleString();
+
+      // Build bar chart
+      var byDay = data.by_day || [];
+      var maxCredits = Math.max.apply(null, byDay.map(function(d){ return d.credits || 0; }).concat([1]));
+      var chartHtml = '';
+      for (var i = 0; i < 7; i++) {
+        var day = byDay[i] || { date: '', credits: 0 };
+        var pct = Math.round((day.credits / maxCredits) * 100);
+        var label = day.date ? day.date.slice(5) : '';
+        chartHtml += '<div class="usage-bar-wrap"><div class="usage-bar" style="height:' + Math.max(pct, 2) + '%"></div><div class="usage-bar-label">' + label + '</div></div>';
+      }
+      document.getElementById('usageChart').innerHTML = chartHtml;
+
+      // Endpoint breakdown
+      var byEndpoint = data.by_endpoint || [];
+      if (byEndpoint.length) {
+        var epHtml = '<div style="font-size:0.82rem;color:var(--text-3)">';
+        byEndpoint.forEach(function(ep) {
+          epHtml += '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">';
+          epHtml += '<span style="color:var(--text-2)">' + ep.endpoint + '</span>';
+          epHtml += '<span style="font-family:var(--mono);color:var(--primary)">' + ep.credits + '</span>';
+          epHtml += '</div>';
+        });
+        epHtml += '</div>';
+        document.getElementById('usageByEndpoint').innerHTML = epHtml;
+      }
+    } catch(e) {
+      console.warn('Usage load failed:', e);
+    }
+  }
+
+  // ── Pair Inventory ──
+  async function loadInventory() {
+    var container = document.getElementById('inventoryContainer');
+    var verticals = ['cre', 'medical', 'aviation', 'core'];
+    var labels = { cre: 'CRE Intelligence', medical: 'Medical / Pharma', aviation: 'Aviation', core: 'Core' };
+    var html = '';
+
+    for (var i = 0; i < verticals.length; i++) {
+      var v = verticals[i];
+      try {
+        var res = await fetch('https://api.swarmandbee.com/api/data/catalog?vertical=' + v);
+        if (!res.ok) continue;
+        var data = await res.json();
+        if (!data.ok && !data.total_pairs) continue;
+
+        var total = data.total_pairs || 0;
+        var specs = data.specialties || [];
+        if (total === 0 && specs.length === 0) continue;
+
+        html += '<div class="inv-vertical">';
+        html += '<div class="inv-header" onclick="toggleVertical(this)">';
+        html += '<div><span class="inv-name">' + labels[v] + '</span></div>';
+        html += '<div style="display:flex;align-items:center;gap:16px">';
+        html += '<span class="inv-count">' + total.toLocaleString() + ' pairs</span>';
+        html += '<span class="inv-toggle">&#9660;</span>';
+        html += '</div></div>';
+        html += '<ul class="inv-specialties" data-vertical="' + v + '">';
+        specs.forEach(function(s) {
+          var name = s.name || s.specialty || 'unknown';
+          var count = s.count || s.total || 0;
+          html += '<li class="inv-spec">';
+          html += '<span class="inv-spec-name">' + name.replace(/_/g, ' ') + '</span>';
+          html += '<span class="inv-spec-count">' + count.toLocaleString() + '</span>';
+          html += '<button class="inv-dl-btn" onclick="downloadPairs(\'' + v + '\',\'' + name + '\')"' + (apiKey ? '' : ' disabled title="Subscribe first"') + '>Download</button>';
+          html += '</li>';
+        });
+        html += '</ul></div>';
+      } catch(e) {
+        console.warn('Catalog ' + v + ' failed:', e);
+      }
+    }
+
+    container.innerHTML = html || '<p style="color:var(--text-3)">No datasets available.</p>';
+  }
+
+  // ── Download Pairs ──
+  window.downloadPairs = async function(vertical, specialty) {
+    if (!apiKey) {
+      alert('Subscribe first to download training pairs.');
+      return;
+    }
+    try {
+      var res = await fetch('https://api.swarmandbee.com/api/data/pull?vertical=' + vertical + '&specialty=' + specialty + '&limit=100', {
+        headers: { 'Authorization': 'Bearer ' + apiKey }
+      });
+      var data = await res.json();
+      if (!data.ok && !data.pairs) {
+        alert(data.error || 'Download failed');
+        return;
+      }
+
+      // Convert pairs to JSONL and trigger download
+      var jsonl = (data.pairs || []).map(function(p) { return JSON.stringify(p); }).join('\n');
+      var blob = new Blob([jsonl], { type: 'application/jsonl' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = vertical + '_' + specialty + '_' + data.pairs.length + '.jsonl';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch(e) {
+      alert('Download error: ' + e.message);
+    }
+  };
+
+  // ── Toggle Vertical ──
+  window.toggleVertical = function(header) {
+    var list = header.nextElementSibling;
+    var toggle = header.querySelector('.inv-toggle');
+    list.classList.toggle('open');
+    toggle.classList.toggle('open');
+  };
+
+  // ── API Key Display ──
+  function updateApiKeyDisplay() {
+    var display = document.getElementById('apiKeyDisplay');
+    var copyBtn = document.getElementById('apiKeyCopyBtn');
+    var revealBtn = document.getElementById('apiKeyRevealBtn');
+
+    if (apiKey) {
+      display.textContent = apiKey.substring(0, 12) + '...' + apiKey.slice(-6);
+      copyBtn.style.display = '';
+      revealBtn.style.display = '';
+    }
+  }
+
+  window.copyApiKey = function() {
+    if (!apiKey) return;
+    navigator.clipboard.writeText(apiKey).then(function() {
+      var btn = document.getElementById('apiKeyCopyBtn');
+      btn.textContent = 'Copied!';
+      setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+    });
+  };
+
+  window.revealApiKey = function() {
+    var display = document.getElementById('apiKeyDisplay');
+    var btn = document.getElementById('apiKeyRevealBtn');
+    if (apiKeyRevealed) {
+      display.textContent = apiKey.substring(0, 12) + '...' + apiKey.slice(-6);
+      btn.textContent = 'Reveal';
+      apiKeyRevealed = false;
+    } else {
+      display.textContent = apiKey;
+      btn.textContent = 'Hide';
+      apiKeyRevealed = true;
+    }
+  };
+
+  function updateQuickStart() {
+    if (apiKey) {
+      var curl = document.getElementById('qsCurl');
+      var python = document.getElementById('qsPython');
+      if (curl) curl.textContent = curl.textContent.replace('YOUR_API_KEY', apiKey);
+      if (python) python.textContent = python.textContent.replace('YOUR_API_KEY', apiKey);
+    }
+  }
+
+  // ── Tab Switching ──
+  window.switchTab = function(tabId, btn) {
+    document.querySelectorAll('.dash-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.dash-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('panel-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  };
+
+  // ── Init ──
+  waitForAuth();
+})();
+</script>
+
+</body>
+</html>

@@ -708,6 +708,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="#architecture">Stack</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
+      <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
+      <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
   </div>
@@ -749,9 +751,10 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     </div>
 
     <div class="hero-signup">
-      <form class="signup-row" id="heroSignup" onsubmit="submitSignup(event,'hero')">
+      <form class="signup-row" id="heroSignup" onsubmit="handleHeroSignup(event)">
         <input type="email" class="signup-input" placeholder="your@email.com" required aria-label="Email for updates">
-        <button type="submit" class="signup-btn">Get Early Access</button>
+        <input type="password" class="signup-input" placeholder="Password (min 6 chars)" required minlength="6" aria-label="Password" style="margin-left:8px">
+        <button type="submit" class="signup-btn">Create Account</button>
       </form>
       <div class="signup-status" id="heroSignupStatus"></div>
       <div class="signup-note">Join 200+ builders. No spam. Signal only.</div>
@@ -1390,51 +1393,41 @@ async function submitContact(e){
   btn.textContent='Send Message';
 }
 
-async function submitSignup(e,source){
+async function handleHeroSignup(e){
   e.preventDefault();
   const form=e.target;
   const email=form.querySelector('input[type="email"]').value.trim();
+  const password=form.querySelector('input[type="password"]').value;
   const btn=form.querySelector('button[type="submit"]');
-  const statusId=source+'SignupStatus';
-  const status=document.getElementById(statusId);
-  if(!email)return;
+  const status=document.getElementById('heroSignupStatus');
+  if(!email||!password)return;
 
   btn.disabled=true;
-  const origText=btn.textContent;
-  btn.textContent='Joining...';
+  btn.textContent='Creating...';
   status.className='signup-status';
   status.style.display='none';
 
   try{
-    const embed={
-      title:'New Signup — swarmandbee.ai',
-      color:0x10b981,
-      fields:[
-        {name:'Email',value:email,inline:true},
-        {name:'Source',value:source,inline:true},
-        {name:'Page',value:window.location.pathname,inline:true}
-      ],
-      timestamp:new Date().toISOString(),
-      footer:{text:'swarmandbee.ai signup'}
-    };
-    const res=await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({embeds:[embed]})
-    });
-    if(res.ok||res.status===204){
-      status.className='signup-status success';
-      status.textContent='You\'re in. Welcome to the Swarm.';
+    await swarmAuth.signup(email,password);
+    try{await swarmAuth.login(email,password);}catch(_){}
+    status.className='signup-status success';
+    if(swarmAuth.isLoggedIn()){
+      status.textContent='Account created! Redirecting to dashboard...';
       status.style.display='inline-block';
-      form.querySelector('input[type="email"]').value='';
-    }else throw new Error(res.status);
+      setTimeout(function(){window.location.href='/dashboard';},1200);
+    }else{
+      status.textContent='Account created! Check email to confirm, then sign in.';
+      status.style.display='inline-block';
+    }
+    form.querySelector('input[type="email"]').value='';
+    form.querySelector('input[type="password"]').value='';
   }catch(err){
     status.className='signup-status error';
-    status.textContent='Failed. Email build@swarmandbee.com';
+    status.textContent=err.message||'Signup failed. Try signing in instead.';
     status.style.display='inline-block';
   }
   btn.disabled=false;
-  btn.textContent=origText;
+  btn.textContent='Create Account';
 }
 
 // API health check
@@ -1458,6 +1451,9 @@ async function submitSignup(e,source){
     });
 })();
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
 
 </main>
 

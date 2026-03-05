@@ -443,6 +443,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="/morey" style="color:var(--primary)">Morey</a>
       <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
       <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+      <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
+      <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
   </div>
@@ -791,6 +793,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <form id="curatorSignup" onsubmit="submitCuratorSignup(event)" style="margin-top:8px">
         <input type="email" class="signal-email-input" placeholder="your@email.com" required
           style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+        <input type="password" class="signal-email-input" placeholder="Password (min 6 chars)" required minlength="6"
+          style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
         <button type="submit" class="cur-btn cur-btn-primary" style="width:100%;text-align:center;display:block;border:none;cursor:pointer;font-family:var(--sig-sans)">Start Curating — $49/mo</button>
       </form>
       <div id="curatorSignupStatus" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px;text-align:center"></div>
@@ -946,52 +950,32 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
 async function submitCuratorSignup(e){
   e.preventDefault();
-  const form=e.target;
-  const email=form.querySelector('input[type="email"]').value.trim();
-  const btn=form.querySelector('button[type="submit"]');
-  const status=document.getElementById('curatorSignupStatus');
-  if(!email)return;
+  var form=e.target;
+  var email=form.querySelector('input[type="email"]').value.trim();
+  var password=form.querySelector('input[type="password"]').value;
+  var btn=form.querySelector('button[type="submit"]');
+  var status=document.getElementById('curatorSignupStatus');
+  if(!email||!password)return;
 
   btn.disabled=true;
   btn.textContent='Processing...';
   status.style.display='none';
 
   try{
-    const embed={
-      title:'Curator Subscription Interest',
-      color:0xD4A94E,
-      fields:[
-        {name:'Email',value:email,inline:true},
-        {name:'Plan',value:'Curator $49/mo',inline:true},
-        {name:'Source',value:'curator.html pricing',inline:true}
-      ],
-      timestamp:new Date().toISOString(),
-      footer:{text:'swarmandbee.ai/curator'}
-    };
-    const res=await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({embeds:[embed]})
-    });
-    if(res.ok||res.status===204){
-      status.style.display='block';
-      status.style.background='rgba(16,185,129,0.12)';
-      status.style.color='#059669';
-      status.style.border='1px solid rgba(16,185,129,0.2)';
-      status.textContent='You\'re in. We\'ll send your first dataset object shortly.';
-      form.querySelector('input[type="email"]').value='';
-    }else throw new Error(res.status);
+    await swarmAuth.signupAndCheckout(email,password,'starter','cre');
   }catch(err){
     status.style.display='block';
     status.style.background='rgba(239,68,68,0.1)';
     status.style.color='#ef4444';
     status.style.border='1px solid rgba(239,68,68,0.2)';
-    status.textContent='Failed. Email build@swarmandbee.com';
+    status.textContent=err.message||'Failed. Email build@swarmandbee.com';
+    btn.disabled=false;
+    btn.textContent='Start Curating — $49/mo';
   }
-  btn.disabled=false;
-  btn.textContent='Start Curating — $49/mo';
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
 
 </body>
 </html>

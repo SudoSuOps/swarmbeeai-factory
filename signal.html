@@ -309,6 +309,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="/morey" style="color:var(--primary)">Morey</a>
       <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
       <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+      <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
+      <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
   </div>
@@ -643,13 +645,15 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
 <script>
 async function submitSignalSignup(e){
   e.preventDefault();
-  const form=e.target;
-  const email=form.querySelector('input[type="email"]').value.trim();
-  const btn=document.getElementById('join-btn');
-  const status=document.getElementById('signalSignupStatus');
+  var form=e.target;
+  var email=form.querySelector('input[type="email"]').value.trim();
+  var btn=document.getElementById('join-btn');
+  var status=document.getElementById('signalSignupStatus');
   if(!email)return;
 
   btn.disabled=true;
@@ -657,29 +661,15 @@ async function submitSignalSignup(e){
   status.style.display='none';
 
   try{
-    const embed={
-      title:'SwarmSignal Signup',
-      color:0xC8963E,
-      fields:[
-        {name:'Email',value:email,inline:true},
-        {name:'Source',value:'SwarmSignal Chronicle',inline:true}
-      ],
-      timestamp:new Date().toISOString(),
-      footer:{text:'swarmandbee.ai/signal'}
-    };
-    const res=await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({embeds:[embed]})
-    });
-    if(res.ok||res.status===204){
-      status.style.display='inline-block';
-      status.style.background='rgba(16,185,129,0.12)';
-      status.style.color='#059669';
-      status.style.border='1px solid rgba(16,185,129,0.2)';
-      status.textContent='Welcome to the Chronicle. Signal incoming.';
-      form.querySelector('input[type="email"]').value='';
-    }else throw new Error(res.status);
+    // Show auth modal for account creation (email pre-filled)
+    swarmAuth.showLoginModal('signup');
+    var emailInput=document.getElementById('saEmail');
+    if(emailInput)emailInput.value=email;
+    status.style.display='inline-block';
+    status.style.background='rgba(16,185,129,0.12)';
+    status.style.color='#059669';
+    status.style.border='1px solid rgba(16,185,129,0.2)';
+    status.textContent='Create your account to join the Chronicle.';
   }catch(err){
     status.style.display='inline-block';
     status.style.background='rgba(239,68,68,0.1)';

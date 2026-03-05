@@ -408,6 +408,8 @@ a:hover { color: #fbbf24; }
     <a href="/curator">Curator</a>
     <a href="/morey">Morey</a>
     <a href="/swarmcare" class="active">SwarmCare</a>
+    <a href="/dashboard" id="navDashLink" style="display:none;color:#f59e0b;font-weight:600">Dashboard</a>
+    <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:#f59e0b">Sign In</a>
   </div>
 </nav>
 
@@ -513,7 +515,7 @@ a:hover { color: #fbbf24; }
         <li>Evaluation snapshot</li>
         <li>Starter Clawbot deployment</li>
       </ul>
-      <button class="plan-cta" onclick="openSwarmCareSignup('Foundation','Free')">Get Started Free</button>
+      <button class="plan-cta" onclick="handleSwarmCarePlan('free')">Get Started Free</button>
       <p class="plan-tagline">Start clean. Build correctly.</p>
     </div>
 
@@ -529,7 +531,7 @@ a:hover { color: #fbbf24; }
         <li>Drift monitoring</li>
         <li>Minor dataset injections</li>
       </ul>
-      <button class="plan-cta" onclick="openSwarmCareSignup('Culture','$49/mo')">Start Culture — $49/mo</button>
+      <button class="plan-cta" onclick="handleSwarmCarePlan('starter')">Start Culture — $49/mo</button>
       <p class="plan-tagline">Your agents evolve with your business. Signal stays aligned.</p>
     </div>
 
@@ -547,7 +549,7 @@ a:hover { color: #fbbf24; }
         <li>SwarmJudge evaluation gates</li>
         <li>Private model weights</li>
       </ul>
-      <button class="plan-cta featured-cta" onclick="openSwarmCareSignup('Moat','$99/mo')">Start Moat — $99/mo</button>
+      <button class="plan-cta featured-cta" onclick="handleSwarmCarePlan('pro')">Start Moat — $99/mo</button>
       <p class="plan-tagline">Your model becomes your competitive advantage.</p>
     </div>
 
@@ -644,7 +646,46 @@ a:hover { color: #fbbf24; }
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
 <script>
+var _scSelectedTier = 'free';
+
+function handleSwarmCarePlan(tier) {
+  _scSelectedTier = tier;
+  if (swarmAuth.isLoggedIn()) {
+    if (tier === 'free') {
+      window.location.href = '/dashboard';
+    } else {
+      swarmAuth.startCheckout(tier, 'cre');
+    }
+  } else {
+    // Show auth modal — after login/signup, checkout will happen
+    swarmAuth.showLoginModal('signup');
+    window._swarmAuthRedirect = tier === 'free' ? '/dashboard' : null;
+    // Override modal submit to chain checkout
+    var origHandler = swarmAuth.handleModalSubmit;
+    swarmAuth.handleModalSubmit = async function(e) {
+      e.preventDefault();
+      var email = document.getElementById('saEmail').value.trim();
+      var password = document.getElementById('saPassword').value;
+      var btn = document.getElementById('saSubmitBtn');
+      var errEl = document.getElementById('saModalError');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+      errEl.style.display = 'none';
+      try {
+        await swarmAuth.signupAndCheckout(email, password, _scSelectedTier, 'cre');
+      } catch (err) {
+        errEl.textContent = err.message || 'Something went wrong';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Create Account';
+      }
+    };
+  }
+}
+
 function openSwarmCareSignup(plan, price) {
   document.getElementById('scPlanLabel').textContent = plan + ' · ' + price;
   document.getElementById('scPlanInput').value = plan;
@@ -657,39 +698,22 @@ function closeModal() {
 
 async function submitSwarmCare(e) {
   e.preventDefault();
-  const form = e.target;
-  const data = Object.fromEntries(new FormData(form));
-  const btn = form.querySelector('button[type="submit"]');
-  const status = document.getElementById('scStatus');
+  var form = e.target;
+  var data = Object.fromEntries(new FormData(form));
+  var email = data.email;
+  var btn = form.querySelector('button[type="submit"]');
+  var status = document.getElementById('scStatus');
 
   btn.disabled = true;
   btn.textContent = 'Processing...';
   status.style.display = 'none';
 
   try {
-    const embed = {
-      title: 'SwarmCare Signup — ' + data.plan,
-      color: 0x10b981,
-      fields: [
-        { name: 'Name', value: data.name, inline: true },
-        { name: 'Email', value: data.email, inline: true },
-        { name: 'Plan', value: data.plan + ' (' + data.price + ')', inline: true }
-      ],
-      timestamp: new Date().toISOString(),
-      footer: { text: 'swarmandbee.ai/swarmcare' }
-    };
-    const res = await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ embeds: [embed] })
-    });
-    if (res.ok || res.status === 204) {
-      status.style.display = 'block';
-      status.style.background = 'rgba(16,185,129,0.15)';
-      status.style.color = '#10b981';
-      status.textContent = 'Request received. We\'ll reach out within 24 hours.';
-      form.reset();
-    } else throw new Error(res.status);
+    // Legacy modal form — redirect to auth modal
+    closeModal();
+    swarmAuth.showLoginModal('signup');
+    var emailInput = document.getElementById('saEmail');
+    if (emailInput) emailInput.value = email;
   } catch (err) {
     status.style.display = 'block';
     status.style.background = 'rgba(239,68,68,0.1)';
