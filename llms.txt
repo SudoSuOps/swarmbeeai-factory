@@ -11,7 +11,7 @@
 - GitHub: https://github.com/SudoSuOps
 - HuggingFace: https://huggingface.co/SwarmandBee
 - X/Twitter: https://x.com/swarmandbee
-- Discord: https://discord.gg/sHXNzNhscc
+- Discord: https://discord.gg/sNjJrND5eb
 
 ## Two Verticals
 
