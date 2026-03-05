@@ -46,7 +46,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -57,7 +57,7 @@
   --primary:#f59e0b;--primary-dim:#d97706;--accent:#10b981;
   --text:#fff;--text-2:#d4d4d4;--text-3:#737373;
   --max-w:1200px;--radius:12px;--radius-sm:8px;
-  --font:Inter,system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+  --font:'DM Sans',system-ui,sans-serif;--heading:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -83,7 +83,7 @@ nav{
   display:flex;align-items:center;padding:0 24px;
 }
 .nav-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}
+.logo{font-family:var(--heading);font-weight:700;font-size:1.15rem;letter-spacing:-0.03em}
 .logo span{color:var(--primary)}
 .nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500}
 .nav-links a{color:var(--text-2);transition:color 0.2s}
@@ -112,7 +112,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   --sig-charcoal:#2A2A2A;--sig-charcoal-2:#4A4A4A;--sig-charcoal-3:#7A7A7A;
   --sig-border:rgba(42,42,42,0.12);
   --sig-serif:'Playfair Display',Georgia,'Times New Roman',serif;
-  --sig-sans:'Inter',system-ui,-apple-system,sans-serif;
+  --sig-sans:'DM Sans',system-ui,-apple-system,sans-serif;
 }
 
 /* Signal content area — warm cream */
@@ -593,11 +593,12 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <div class="signal-join">
       <div class="signal-join-title">Join the Signal</div>
       <p>Stay connected to the builders of sovereign AI.</p>
-      <div class="signal-email-row">
-        <input type="email" class="signal-email-input" placeholder="your@email.com">
-        <a href="#" class="signal-btn signal-btn-primary" onclick="return false;" id="join-btn">Join the Chronicle</a>
-      </div>
-      <p style="font-size:0.75rem;color:var(--sig-charcoal-3);margin-top:16px">No spam. Signal only.</p>
+      <form class="signal-email-row" id="signalSignup" onsubmit="submitSignalSignup(event)">
+        <input type="email" class="signal-email-input" placeholder="your@email.com" required>
+        <button type="submit" class="signal-btn signal-btn-primary" id="join-btn">Join the Chronicle</button>
+      </form>
+      <div id="signalSignupStatus" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px"></div>
+      <p style="font-size:0.75rem;color:var(--sig-charcoal-3);margin-top:12px">No spam. Signal only.</p>
     </div>
   </div>
 </section>
@@ -642,5 +643,53 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   </div>
 </footer>
 
+<script>
+async function submitSignalSignup(e){
+  e.preventDefault();
+  const form=e.target;
+  const email=form.querySelector('input[type="email"]').value.trim();
+  const btn=document.getElementById('join-btn');
+  const status=document.getElementById('signalSignupStatus');
+  if(!email)return;
+
+  btn.disabled=true;
+  btn.textContent='Joining...';
+  status.style.display='none';
+
+  try{
+    const embed={
+      title:'SwarmSignal Signup',
+      color:0xC8963E,
+      fields:[
+        {name:'Email',value:email,inline:true},
+        {name:'Source',value:'SwarmSignal Chronicle',inline:true}
+      ],
+      timestamp:new Date().toISOString(),
+      footer:{text:'swarmandbee.ai/signal'}
+    };
+    const res=await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({embeds:[embed]})
+    });
+    if(res.ok||res.status===204){
+      status.style.display='inline-block';
+      status.style.background='rgba(16,185,129,0.12)';
+      status.style.color='#059669';
+      status.style.border='1px solid rgba(16,185,129,0.2)';
+      status.textContent='Welcome to the Chronicle. Signal incoming.';
+      form.querySelector('input[type="email"]').value='';
+    }else throw new Error(res.status);
+  }catch(err){
+    status.style.display='inline-block';
+    status.style.background='rgba(239,68,68,0.1)';
+    status.style.color='#ef4444';
+    status.style.border='1px solid rgba(239,68,68,0.2)';
+    status.textContent='Failed. Email build@swarmandbee.com';
+  }
+  btn.disabled=false;
+  btn.textContent='Join the Chronicle';
+}
+</script>
 </body>
 </html>

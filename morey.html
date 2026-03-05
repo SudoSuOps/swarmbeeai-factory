@@ -65,7 +65,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -74,7 +74,7 @@
   --gold:#f59e0b;--gold-dim:#d97706;--gold-glow:rgba(245,158,11,0.12);
   --emerald:#10b981;--emerald-dim:#059669;
   --text:#fff;--text-2:#c4c4c4;--text-3:#666;
-  --font:Inter,system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+  --font:'DM Sans',system-ui,sans-serif;--heading:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
 }
 html{height:100%}
 body{
@@ -187,7 +187,7 @@ a{color:inherit;text-decoration:none}
 @keyframes ringPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(1.08)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .welcome h2{
-  font-size:2rem;font-weight:900;letter-spacing:-0.03em;
+  font-family:var(--heading);font-size:2rem;font-weight:700;letter-spacing:-0.03em;
   background:linear-gradient(135deg,var(--gold),var(--text));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
@@ -505,6 +505,31 @@ const chatArea = document.getElementById('chatArea');
 const msgInput = document.getElementById('msgInput');
 const welcome = document.getElementById('welcome');
 const voiceBtn = document.getElementById('voiceBtn');
+const API_BASE = 'https://router.swarmandbee.com';
+
+// Skill routing based on keywords
+const SKILL_ROUTES = [
+  { pattern: /underwr|dcf|noi|cap.?rate.*calc|10.?year|irr|yield/i, skill: 'broker_senior', context: 'Underwriting analysis' },
+  { pattern: /ic.?memo|investment.?committee|deal.?memo/i, skill: 'broker_senior', context: 'IC memo preparation' },
+  { pattern: /debt|loan|cmbs|mortgage|lend|dscr|ltv/i, skill: 'debt_analyzer', context: 'Debt sizing analysis' },
+  { pattern: /rent.?roll|tenant|lease.*roll|occupancy.*detail/i, skill: 'rent_roll_analyzer', context: 'Rent roll analysis' },
+  { pattern: /1031|exchange|defer|capital.?gain/i, skill: 'exchange_1031', context: '1031 exchange guidance' },
+  { pattern: /comp|comparable|recent.?sale|market.?comp/i, skill: 'comp_analyzer', context: 'Comparable analysis' },
+  { pattern: /lead|prospect|score.*lead|qualify/i, skill: 'lead_scorer', context: 'Lead scoring' },
+  { pattern: /site|location|select.*site|where.*build/i, skill: 'site_selector', context: 'Site selection' },
+  { pattern: /portfolio|optimize|allocat|diversif/i, skill: 'portfolio_optimizer', context: 'Portfolio optimization' },
+  { pattern: /market.*report|market.*overview|submarket/i, skill: 'market_report', context: 'Market report' },
+  { pattern: /tax|assess|property.?tax|mill.?rate/i, skill: 'tax_assessor', context: 'Tax assessment analysis' },
+  { pattern: /email|letter|outreach|compose/i, skill: 'email_composer', context: 'Email composition' },
+  { pattern: /news|headline|signal|trend/i, skill: 'news_digest', context: 'News digest' },
+];
+
+function routeSkill(text) {
+  for (const route of SKILL_ROUTES) {
+    if (route.pattern.test(text)) return { skill: route.skill, context: route.context };
+  }
+  return { skill: 'intelligence_query', context: 'General CRE intelligence query' };
+}
 
 function autoResize(el){
   el.style.height='auto';
@@ -517,14 +542,12 @@ function sendStarter(el){
   sendMessage();
 }
 
-function sendMessage(){
+async function sendMessage(){
   const text = msgInput.value.trim();
   if(!text) return;
 
-  // Hide welcome on first message
   if(welcome){welcome.style.display='none'}
 
-  // User message
   appendMsg('user', text);
   msgInput.value='';
   msgInput.style.height='auto';
@@ -537,31 +560,116 @@ function sendMessage(){
   chatArea.appendChild(typing);
   chatArea.scrollTop=chatArea.scrollHeight;
 
-  // Simulate Morey response
-  setTimeout(()=>{
-    const t=document.getElementById('typing');
-    if(t)t.remove();
-    const responses = [
-      "I hear you. I'm trained on 643K CRE intelligence pairs — underwriting, IC memos, lease analysis, market signals, the whole playbook. Right now I'm still in the oven on Blackwell GPUs, but when I'm live? Give me the rent roll and 30 seconds.",
-      "That's my lane. 10 specialties — NNN, multifamily, industrial, flex, cold storage, data centers, you name it. SwarmCRE-9B is finishing Phase 2 training right now. I'll be running those numbers for you soon.",
-      "Good question. I don't guess — I run the math. 643,000 pairs of CRE training data, every one quality-gated by SwarmJudge. I'm almost done cooking. Hang tight.",
-      "Deal or dog — that's what I'm built to answer. I'm SwarmCRE-9B, training on RTX PRO 6000 Blackwell right now. When I come online, you type the address, I'll run the numbers. Mobile app coming soon too.",
-      "I see you. That's exactly the kind of analysis where I shine — no fluff, just numbers. The fleet is cooking right now. Phase 2 on Blackwell. I'll be ready to underwrite, size debt, and draft IC memos real soon.",
-    ];
-    appendMsg('morey', responses[Math.floor(Math.random()*responses.length)]);
-  },1500+Math.random()*1000);
+  const { skill, context } = routeSkill(text);
+
+  try {
+    const res = await fetch(API_BASE + '/skill/' + skill, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ input: text, context: context })
+    });
+
+    const t = document.getElementById('typing');
+    if(t) t.remove();
+
+    if (!res.ok) throw new Error('API ' + res.status);
+
+    const data = await res.json();
+    const formatted = formatResponse(data, skill);
+    appendMsg('morey', formatted, true);
+
+  } catch (err) {
+    const t = document.getElementById('typing');
+    if(t) t.remove();
+    appendMsg('morey', 'I hit a snag reaching the SwarmHQ fleet. The API might be warming up — try again in a moment, or email build@swarmandbee.com for direct access.\n\nError: ' + err.message);
+  }
 }
 
-function appendMsg(role, text){
+function formatResponse(data, skill) {
+  if (!data.success || !data.output) {
+    return 'The fleet returned an unexpected response. Let me try a different angle — rephrase your question and I\'ll route it again.';
+  }
+
+  const out = data.output;
+  let lines = [];
+
+  // Skill-specific formatting
+  if (skill === 'broker_senior') {
+    if (out.deal_verdict) lines.push('**Verdict:** ' + out.deal_verdict.toUpperCase());
+    if (out.pricing) {
+      const p = out.pricing;
+      if (p.cap_rate) lines.push('Cap Rate: ' + (p.cap_rate * 100).toFixed(1) + '%');
+      if (p.price_psf) lines.push('Price/SF: $' + p.price_psf);
+      if (p.value_range) lines.push('Value Range: $' + num(p.value_range[0]) + ' - $' + num(p.value_range[1]));
+      if (p.basis) lines.push('\n' + p.basis);
+    }
+    if (out.risk_assessment) {
+      lines.push('\n**Risk Score:** ' + out.risk_assessment.score + '/100');
+      if (out.risk_assessment.flags) out.risk_assessment.flags.forEach(f => lines.push('- ' + f));
+    }
+    if (out.deal_structure) {
+      const d = out.deal_structure;
+      if (d.recommended_offer) lines.push('\n**Recommended Offer:** $' + num(d.recommended_offer));
+      if (d.target_irr) lines.push('Target IRR: ' + (d.target_irr * 100).toFixed(1) + '%');
+    }
+    if (out.next_steps) out.next_steps.forEach((s,i) => lines.push((i+1) + '. ' + s));
+  } else if (skill === 'intelligence_query') {
+    if (out.query_interpreted) lines.push('**Query:** ' + out.query_interpreted);
+    if (out.reasoning) lines.push('\n' + out.reasoning);
+    if (out.results && out.results.length) {
+      lines.push('\n**Results:**');
+      out.results.forEach(r => lines.push('- ' + r.summary + ' (relevance: ' + r.relevance + ')'));
+    }
+    if (out.suggested_queries) {
+      lines.push('\n**Follow-up:**');
+      out.suggested_queries.forEach(q => lines.push('- ' + q));
+    }
+  } else if (skill === 'debt_analyzer') {
+    if (out.loan_sizing) {
+      const l = out.loan_sizing;
+      if (l.max_loan) lines.push('**Max Loan:** $' + num(l.max_loan));
+      if (l.ltv) lines.push('LTV: ' + (l.ltv * 100).toFixed(0) + '%');
+      if (l.dscr) lines.push('DSCR: ' + l.dscr.toFixed(2) + 'x');
+    }
+    if (out.recommendation) lines.push('\n' + out.recommendation);
+  } else {
+    // Generic: dump key fields
+    for (const [k, v] of Object.entries(out)) {
+      if (k === 'skill') continue;
+      if (typeof v === 'string') lines.push('**' + k.replace(/_/g,' ') + ':** ' + v);
+      else if (typeof v === 'number') lines.push('**' + k.replace(/_/g,' ') + ':** ' + v);
+      else if (Array.isArray(v) && v.length && typeof v[0] === 'string') {
+        lines.push('**' + k.replace(/_/g,' ') + ':**');
+        v.forEach(item => lines.push('- ' + item));
+      }
+    }
+  }
+
+  if (lines.length === 0) {
+    return JSON.stringify(out, null, 2);
+  }
+
+  return lines.join('\n');
+}
+
+function num(n) {
+  return Number(n).toLocaleString('en-US');
+}
+
+function appendMsg(role, text, isFormatted){
   const div = document.createElement('div');
   div.className = 'msg msg-'+role;
   const avatar = role==='morey' ? 'M' : 'Y';
-  div.innerHTML = `
-    <div class="msg-avatar">${avatar}</div>
-    <div class="msg-body">${escapeHtml(text)}</div>
-  `;
+  const bodyContent = isFormatted ? formatMarkdown(text) : escapeHtml(text);
+  div.innerHTML = '<div class="msg-avatar">' + avatar + '</div><div class="msg-body">' + bodyContent + '</div>';
   chatArea.appendChild(div);
   chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+function formatMarkdown(text) {
+  return escapeHtml(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
 }
 
 function escapeHtml(str){
@@ -573,17 +681,48 @@ function escapeHtml(str){
 function toggleVoice(){
   voiceBtn.classList.toggle('recording');
   if(voiceBtn.classList.contains('recording')){
-    // Start recording visual
-    setTimeout(()=>{
-      voiceBtn.classList.remove('recording');
-      msgInput.value = "What's the going-in cap rate for Class A industrial in Dallas-Fort Worth?";
-      msgInput.focus();
-    }, 3000);
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        msgInput.value = transcript;
+        msgInput.focus();
+        voiceBtn.classList.remove('recording');
+      };
+      recognition.onerror = function() {
+        voiceBtn.classList.remove('recording');
+      };
+      recognition.onend = function() {
+        voiceBtn.classList.remove('recording');
+      };
+      recognition.start();
+    } else {
+      setTimeout(()=>{
+        voiceBtn.classList.remove('recording');
+        msgInput.value = "What's the going-in cap rate for Class A industrial in Dallas-Fort Worth?";
+        msgInput.focus();
+      }, 3000);
+    }
   }
 }
 
 // Focus input on load
 msgInput.focus();
+
+// Update status with real API health
+fetch(API_BASE + '/health')
+  .then(r => r.json())
+  .then(data => {
+    const statusText = document.querySelector('.status-text');
+    if (statusText && data.status === 'ok') {
+      statusText.textContent = 'online · ' + (data.model || 'Qwen3-30B').split('/').pop();
+    }
+  })
+  .catch(() => {});
 </script>
 
 </body>

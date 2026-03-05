@@ -55,7 +55,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,7 +74,8 @@
   --text-dim: #888;
   --text-mute: #555;
   --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --heading: 'Space Grotesk', system-ui, sans-serif;
 }
 
 body {
@@ -96,7 +97,7 @@ a:hover { color: #fbbf24; }
   padding: 0 2rem; height: 56px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.topbar-brand { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
+.topbar-brand { font-family: var(--heading); font-weight: 700; font-size: 1rem; letter-spacing: -0.03em; }
 .topbar-brand span { color: var(--gold); }
 .topbar-links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
 .topbar-links a { color: var(--text-dim); }
@@ -126,8 +127,9 @@ a:hover { color: #fbbf24; }
   margin-bottom: 2rem;
 }
 .hero h1 {
+  font-family: var(--heading);
   font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800; letter-spacing: -0.03em;
+  font-weight: 700; letter-spacing: -0.04em;
   line-height: 1.1; margin-bottom: 1.5rem;
 }
 .hero h1 em {
@@ -153,7 +155,7 @@ a:hover { color: #fbbf24; }
 .section-dark { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 100%; }
 .section-dark .section-inner { max-width: 960px; margin: 0 auto; }
 .section h2 {
-  font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;
+  font-family: var(--heading); font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
 .section h2 span { color: var(--gold); }
@@ -297,7 +299,7 @@ a:hover { color: #fbbf24; }
   text-align: center; padding: 5rem 2rem;
 }
 .cta-block h2 {
-  font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+  font-family: var(--heading); font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
   letter-spacing: -0.03em;
 }
 .cta-block p {
@@ -326,6 +328,57 @@ a:hover { color: #fbbf24; }
 .footer-copy {
   font-size: 0.75rem; color: var(--text-mute);
   font-family: var(--mono);
+}
+
+/* Plan CTAs */
+.plan-cta {
+  display: block; width: 100%; padding: 0.7rem 1.5rem;
+  font-family: var(--heading); font-size: 0.85rem; font-weight: 600;
+  background: var(--surface-3); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; transition: all 0.2s; margin-top: 1.2rem;
+  letter-spacing: -0.01em; text-align: center;
+}
+.plan-cta:hover { border-color: var(--gold); color: var(--gold); }
+.featured-cta {
+  background: var(--gold); color: #000; border-color: var(--gold);
+}
+.featured-cta:hover { background: #fbbf24; border-color: #fbbf24; color: #000; }
+
+/* Signup Modal */
+.sc-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+}
+.sc-modal-overlay.open { display: flex; }
+.sc-modal {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2.5rem; max-width: 420px; width: 90%;
+  text-align: center;
+}
+.sc-modal h3 { font-family: var(--heading); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.sc-modal .sc-plan-label { font-family: var(--mono); font-size: 0.82rem; color: var(--gold); margin-bottom: 1.5rem; }
+.sc-modal input {
+  width: 100%; padding: 0.75rem 1rem; font-size: 0.88rem; font-family: var(--sans);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text); outline: none; margin-bottom: 0.75rem;
+}
+.sc-modal input:focus { border-color: var(--gold); }
+.sc-modal input::placeholder { color: var(--text-mute); }
+.sc-modal button[type="submit"] {
+  width: 100%; padding: 0.75rem; font-family: var(--heading); font-size: 0.88rem; font-weight: 600;
+  background: var(--gold); color: #000; border: none; border-radius: 6px;
+  cursor: pointer; transition: background 0.2s;
+}
+.sc-modal button[type="submit"]:hover { background: #fbbf24; }
+.sc-modal .sc-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; color: var(--text-mute); font-size: 1.2rem; cursor: pointer;
+}
+.sc-modal .sc-status {
+  font-size: 0.82rem; font-family: var(--mono); margin-top: 0.75rem; display: none;
+  padding: 0.5rem; border-radius: 4px;
 }
 
 /* Responsive */
@@ -460,6 +513,7 @@ a:hover { color: #fbbf24; }
         <li>Evaluation snapshot</li>
         <li>Starter Clawbot deployment</li>
       </ul>
+      <button class="plan-cta" onclick="openSwarmCareSignup('Foundation','Free')">Get Started Free</button>
       <p class="plan-tagline">Start clean. Build correctly.</p>
     </div>
 
@@ -475,6 +529,7 @@ a:hover { color: #fbbf24; }
         <li>Drift monitoring</li>
         <li>Minor dataset injections</li>
       </ul>
+      <button class="plan-cta" onclick="openSwarmCareSignup('Culture','$49/mo')">Start Culture — $49/mo</button>
       <p class="plan-tagline">Your agents evolve with your business. Signal stays aligned.</p>
     </div>
 
@@ -492,6 +547,7 @@ a:hover { color: #fbbf24; }
         <li>SwarmJudge evaluation gates</li>
         <li>Private model weights</li>
       </ul>
+      <button class="plan-cta featured-cta" onclick="openSwarmCareSignup('Moat','$99/mo')">Start Moat — $99/mo</button>
       <p class="plan-tagline">Your model becomes your competitive advantage.</p>
     </div>
 
@@ -508,7 +564,8 @@ a:hover { color: #fbbf24; }
         <li>Edge appliance integration</li>
         <li>Agent economy architecture</li>
       </ul>
-      <p class="plan-tagline">For teams building AI as core infrastructure. <a href="mailto:build@swarmandbee.com">Contact us.</a></p>
+      <a href="mailto:build@swarmandbee.com" class="plan-cta" style="display:block;text-align:center;text-decoration:none">Contact Us</a>
+      <p class="plan-tagline">For teams building AI as core infrastructure.</p>
     </div>
   </div>
 </section>
@@ -552,7 +609,7 @@ a:hover { color: #fbbf24; }
 <section class="cta-block">
   <h2>Continuous.</h2>
   <p>Real Compute. Real Objects. Real Signal.</p>
-  <a href="mailto:build@swarmandbee.com" class="cta-btn">Get Started</a>
+  <a href="mailto:build@swarmandbee.com" class="cta-btn" style="font-family:var(--heading)">Get Started</a>
 </section>
 
 <!-- Footer -->
@@ -570,5 +627,78 @@ a:hover { color: #fbbf24; }
   <div class="footer-copy">&copy; 2026 Swarm & Bee. All rights reserved.</div>
 </footer>
 
+<!-- Signup Modal -->
+<div class="sc-modal-overlay" id="scModal" onclick="if(event.target===this)closeModal()">
+  <div class="sc-modal" style="position:relative">
+    <button class="sc-close" onclick="closeModal()">&times;</button>
+    <h3>Get Started with SwarmCare</h3>
+    <div class="sc-plan-label" id="scPlanLabel">Foundation · Free</div>
+    <form id="scForm" onsubmit="submitSwarmCare(event)">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <input type="hidden" name="plan" id="scPlanInput">
+      <input type="hidden" name="price" id="scPriceInput">
+      <button type="submit">Request Access</button>
+    </form>
+    <div class="sc-status" id="scStatus"></div>
+  </div>
+</div>
+
+<script>
+function openSwarmCareSignup(plan, price) {
+  document.getElementById('scPlanLabel').textContent = plan + ' · ' + price;
+  document.getElementById('scPlanInput').value = plan;
+  document.getElementById('scPriceInput').value = price;
+  document.getElementById('scModal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('scModal').classList.remove('open');
+}
+
+async function submitSwarmCare(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const btn = form.querySelector('button[type="submit"]');
+  const status = document.getElementById('scStatus');
+
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  status.style.display = 'none';
+
+  try {
+    const embed = {
+      title: 'SwarmCare Signup — ' + data.plan,
+      color: 0x10b981,
+      fields: [
+        { name: 'Name', value: data.name, inline: true },
+        { name: 'Email', value: data.email, inline: true },
+        { name: 'Plan', value: data.plan + ' (' + data.price + ')', inline: true }
+      ],
+      timestamp: new Date().toISOString(),
+      footer: { text: 'swarmandbee.ai/swarmcare' }
+    };
+    const res = await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ embeds: [embed] })
+    });
+    if (res.ok || res.status === 204) {
+      status.style.display = 'block';
+      status.style.background = 'rgba(16,185,129,0.15)';
+      status.style.color = '#10b981';
+      status.textContent = 'Request received. We\'ll reach out within 24 hours.';
+      form.reset();
+    } else throw new Error(res.status);
+  } catch (err) {
+    status.style.display = 'block';
+    status.style.background = 'rgba(239,68,68,0.1)';
+    status.style.color = '#ef4444';
+    status.textContent = 'Failed. Email build@swarmandbee.com';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Request Access';
+}
+</script>
 </body>
 </html>
