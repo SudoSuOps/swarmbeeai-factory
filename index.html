@@ -1,589 +1,1492 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swarm & Bee AI — Every Request Routed. Every Output Judged.</title>
-  <meta name="description" content="SwarmRouter-4B classifies every request. SwarmJudge-27B gates every output. Block-0 manufacturing platform for AI.">
-  <link rel="canonical" href="https://swarmandbee.ai/">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  <meta property="og:title" content="Swarm & Bee AI — Every Request Routed. Every Output Judged.">
-  <meta property="og:description" content="SwarmRouter-4B classifies every request. SwarmJudge-27B gates every output. Block-0 manufacturing platform.">
-  <meta property="og:url" content="https://swarmandbee.ai/">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swarm & Bee — Vertical AI & Platinum Data Curation</title>
+<meta name="description" content="Vertical AI models on 128 RTX PRO 6000 GPUs. 1.2M platinum training pairs. SwarmCRE commercial real estate intelligence. Custom curation builds. We own the racks.">
+<meta name="keywords" content="vertical AI, commercial real estate AI, CRE intelligence, custom data curation, AI training data, fine-tuned LLM, SwarmCRE, Qwen3.5, sovereign compute, RTX PRO 6000, GGUF, edge AI, AI agent, SwarmSkills, platinum pairs, data quality, model training, Unsloth, llama.cpp, BeeBox">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Swarm & Bee">
+<meta name="theme-color" content="#f59e0b">
+<link rel="canonical" href="https://swarmandbee.ai/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Swarm & Bee">
+<meta property="og:title" content="Swarm & Bee — Real Compute. Real Objects. Real Signal.">
+<meta property="og:description" content="Vertical AI models and platinum-grade data curation. 128 RTX PRO 6000 GPUs, 1.2M curated pairs, 28 SwarmSkills. SwarmCRE commercial real estate intelligence from 0.8B edge to 122B Founder.">
+<meta property="og:url" content="https://swarmandbee.ai/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://swarmandbee.ai/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Swarm & Bee — Real Compute. Real Objects. Real Signal. 1.2M Platinum Pairs, 128 RTX 6000 GPUs, 12TB VRAM, 28 SwarmSkills">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@swarmandbee">
+<meta name="twitter:creator" content="@swarmandbee">
+<meta name="twitter:title" content="Swarm & Bee — Real Compute. Real Objects. Real Signal.">
+<meta name="twitter:description" content="Vertical AI models and platinum-grade data curation. 128 RTX PRO 6000 GPUs, 12TB VRAM, 1.2M curated pairs. We own the racks. We cook the rails.">
+<meta name="twitter:image" content="https://swarmandbee.ai/og-image.svg">
+<meta name="twitter:image:alt" content="Swarm & Bee — Real Compute. Real Objects. Real Signal.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Swarm & Bee",
+  "alternateName": ["SwarmandBee", "Swarm and Bee", "SwarmCRE"],
+  "url": "https://swarmandbee.ai",
+  "logo": "https://swarmandbee.ai/logo.png",
+  "description": "Swarm & Bee builds vertical AI models and curates platinum-grade training data for commercial real estate. 128 RTX PRO 6000 GPUs, 12TB VRAM, sovereign compute.",
+  "email": "build@swarmandbee.com",
+  "telephone": "+1-561-532-7120",
+  "sameAs": [
+    "https://x.com/swarmandbee",
+    "https://github.com/SudoSuOps",
+    "https://huggingface.co/SwarmandBee",
+    "https://discord.gg/sNjJrND5eb",
+    "https://swarmandbee.com"
+  ],
+  "foundingDate": "2025",
+  "knowsAbout": [
+    "Commercial Real Estate AI",
+    "Vertical AI Models",
+    "Data Curation",
+    "Fine-tuning Large Language Models",
+    "Edge AI Deployment",
+    "NVIDIA GPU Computing",
+    "Qwen3.5 Models"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Swarm & Bee",
+  "url": "https://swarmandbee.ai",
+  "description": "Vertical AI, sovereign compute, and agent-native infrastructure"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "SwarmCRE-9B Morey",
+  "description": "9.5B parameter Mamba-Transformer CRE analyst. Underwriting, IC memos, deal analysis, market intelligence. Trained on 643K platinum-grade CRE pairs.",
+  "brand": {"@type": "Brand", "name": "Swarm & Bee"},
+  "category": "AI Model",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/PreOrder",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Custom Curation Builds",
+  "provider": {"@type": "Organization", "name": "Swarm & Bee"},
+  "description": "Custom platinum-grade training data curation for any vertical. 8-step SwarmCurator pipeline, 128 RTX PRO 6000 GPUs, delivered as JSONL with CoVe scores and trajectory labels.",
+  "serviceType": "AI Data Curation",
+  "areaServed": "Worldwide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Swarm & Bee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Swarm & Bee builds vertical AI models and curates platinum-grade training data. We own 128 RTX PRO 6000 Blackwell GPUs (12TB VRAM) and run the full stack — from data generation to model training to edge deployment. Our first vertical is commercial real estate (SwarmCRE), with medical, aviation, and custom verticals available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is SwarmCRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SwarmCRE is a commercial real estate AI franchise — a family of models from 0.8B (edge/IoT) to 122B (Founder FTW). The flagship is SwarmCRE-9B Morey, a Mamba-Transformer hybrid trained on 643K platinum CRE pairs. It handles underwriting, IC memos, deal analysis, debt sizing, 1031 exchanges, market intelligence, and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Swarm & Bee training data different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every training pair passes an 8-step SwarmCurator pipeline: Source, Grind, Schema, CoVe (Chain of Verification), Judge (PASS/FAIL), Trajectory, Cross-Validation, and Platinum promotion. The final verdict is unappeallable — 0% override rate across 1.2M pairs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you build custom training data for my vertical?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Swarm & Bee offers Custom Curation Builds for any domain — CRE, pharma, aviation, legal, finance, or something new. You define the specialties, task types, and volume. We run the full 8-step pipeline on 128 GPUs. You receive platinum JSONL with CoVe scores, trajectory labels, and train/eval splits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is BeeBox?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BeeBox is a sovereign edge AI appliance that runs BeeMini-3B (skill router) and SwarmCRE-4B (quality gate) locally. It handles 72% of requests on-device and escalates 28% to the SwarmHQ GPU fleet. Target price: $499."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do SwarmSkills work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmJudge."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050505;--surface:#111;--surface-2:#0a0a0a;--border:#1a1a1a;
+  --primary:#e8a317;--primary-dim:#c48a0f;--accent:#10b981;--accent-dim:#059669;
+  --text:#f0f0f0;--text-2:#b0b0b0;--text-3:#666;
+  --max-w:1200px;--radius:10px;--radius-sm:6px;
+  --font:'DM Sans',system-ui,sans-serif;--heading:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Ecosystem Bar */
+.eco-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:36px;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  font-size:0.75rem;color:var(--text-3);backdrop-filter:blur(12px);
+}
+.eco-bar a{transition:color 0.2s}
+.eco-bar a:hover{color:var(--primary)}
+.eco-bar .sep{opacity:0.3}
+
+/* Nav */
+nav{
+  position:fixed;top:36px;left:0;right:0;z-index:99;
+  height:64px;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;max-width:100%;
+}
+.nav-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--heading);font-weight:700;font-size:1.15rem;letter-spacing:-0.03em}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+/* Sections */
+section{padding:80px 24px}
+.container{max-width:var(--max-w);margin:0 auto}
+.section-label{
+  text-transform:uppercase;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.08em;color:var(--accent);margin-bottom:12px;text-align:center;
+}
+.section-title{font-family:var(--heading);font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px;letter-spacing:-0.03em}
+.section-sub{
+  font-size:1.05rem;color:var(--text-2);text-align:center;
+  max-width:640px;margin:0 auto 48px;line-height:1.7;
+}
+
+/* Hero */
+.hero{
+  padding:172px 24px 80px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(245,158,11,0.08) 0%,transparent 60%);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--surface);border:1px solid var(--border);
+  padding:6px 16px;border-radius:20px;font-size:0.82rem;
+  color:var(--accent);margin-bottom:24px;
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{
+  font-family:var(--heading);font-size:clamp(2.5rem,6vw,4rem);font-weight:700;line-height:1.08;
+  letter-spacing:-0.04em;margin-bottom:20px;
+}
+.hero h1 .gradient{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{font-size:1.15rem;color:var(--text-2);max-width:600px;margin:0 auto 40px;line-height:1.7}
+
+/* Curation manifesto */
+.curation{
+  max-width:640px;margin:0 auto 48px;text-align:left;
+  padding:32px 36px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.curation::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+}
+.curation .cur-lead{
+  font-size:0.95rem;color:var(--text-2);line-height:1.8;margin-bottom:20px;
+}
+.curation .cur-lead strong{color:var(--text);font-weight:700}
+.curation .cur-stats{
+  font-size:0.88rem;font-family:var(--mono);color:var(--primary);
+  font-weight:700;margin-bottom:24px;line-height:1.8;
+}
+.curation .cur-why{
+  font-size:0.82rem;color:var(--text-3);font-style:italic;
+  margin-bottom:4px;text-transform:uppercase;letter-spacing:0.06em;
+  font-style:normal;font-weight:600;
+}
+.curation .cur-lines{
+  font-size:0.92rem;color:var(--text-2);line-height:2;margin-bottom:20px;
+}
+.curation .cur-lines em{font-style:normal;color:var(--text);font-weight:600}
+.curation .cur-stamp{
+  font-size:0.95rem;font-weight:800;color:var(--primary);
+  letter-spacing:-0.01em;line-height:1.8;
+}
+
+/* Stats Row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:720px;margin:0 auto}
+.stat{text-align:center}
+.stat-value{font-family:var(--heading);font-size:1.8rem;font-weight:700;color:var(--primary);letter-spacing:-0.02em}
+.stat-label{font-size:0.78rem;color:var(--text-3);margin-top:2px;text-transform:uppercase;letter-spacing:0.04em}
+
+/* Product Cards */
+.products{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.product-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px 24px;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;
+}
+.product-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.product-card .bar{position:absolute;top:0;left:0;right:0;height:3px}
+.product-card .icon{font-size:1.8rem;margin-bottom:16px}
+.product-card h3{font-family:var(--heading);font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.product-card p{font-size:0.88rem;color:var(--text-2);line-height:1.6;margin-bottom:20px}
+.product-card .card-stats{display:flex;gap:16px;margin-bottom:20px}
+.product-card .card-stat{font-size:0.75rem;color:var(--text-3)}
+.product-card .card-stat strong{color:var(--text);font-weight:700;display:block;font-size:0.95rem}
+.card-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.85rem;font-weight:600;color:var(--primary);transition:gap 0.2s;
+}
+.card-link:hover{gap:10px}
+
+/* Fleet */
+.fleet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.fleet-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:center;transition:border-color 0.2s,transform 0.2s;
+}
+.fleet-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.fleet-card .model-icon{font-size:1.4rem;margin-bottom:10px}
+.fleet-card h4{font-family:var(--heading);font-size:0.95rem;font-weight:700;margin-bottom:4px}
+.fleet-card .params{font-size:0.75rem;color:var(--primary);font-family:var(--mono);margin-bottom:8px}
+.fleet-card .role{font-size:0.78rem;color:var(--text-3);line-height:1.5}
+.fleet-card .tag{
+  display:inline-block;margin-top:10px;padding:3px 10px;border-radius:12px;
+  font-size:0.7rem;font-weight:600;
+}
+.tag-early{background:rgba(245,158,11,0.15);color:var(--primary)}
+.tag-live{background:rgba(16,185,129,0.15);color:var(--accent)}
+.tag-soon{background:rgba(212,212,212,0.1);color:var(--text-3)}
+.tag-ceo{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(16,185,129,0.15));color:var(--primary);border:1px solid rgba(245,158,11,0.25)}
+
+/* Hero CTAs */
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin:36px 0 48px;flex-wrap:wrap}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border-radius:var(--radius-sm);
+  font-family:var(--heading);font-size:0.92rem;font-weight:700;transition:all 0.2s;text-decoration:none;
+  letter-spacing:-0.01em;
+}
+.hero-cta.primary{background:var(--primary);color:#000;border:2px solid var(--primary)}
+.hero-cta.primary:hover{background:var(--primary-dim);border-color:var(--primary-dim)}
+.hero-cta.secondary{background:transparent;color:var(--text);border:2px solid var(--border)}
+.hero-cta.secondary:hover{border-color:var(--primary);color:var(--primary)}
+
+/* Who We Are */
+.founders{
+  text-align:center;padding:48px 24px;
+  border-top:1px solid var(--border);
+}
+.founders-inner{
+  max-width:640px;margin:0 auto;
+  font-size:0.95rem;color:var(--text-2);line-height:1.8;
+}
+.founders-inner strong{color:var(--text);font-weight:700}
+.founders-inner .founder-name{
+  display:block;margin-top:16px;font-size:1rem;font-weight:800;
+  color:var(--primary);letter-spacing:-0.01em;
+}
+.founders-inner .founder-title{
+  font-size:0.78rem;color:var(--text-3);text-transform:uppercase;
+  letter-spacing:0.06em;font-weight:600;
+}
+
+/* Social Proof */
+.proof{text-align:center;padding:48px 24px;border-top:1px solid var(--border)}
+.proof-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;
+  max-width:840px;margin:0 auto;
+}
+.proof-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:left;
+}
+.proof-card .pf-quote{font-size:0.85rem;color:var(--text-2);line-height:1.7;margin-bottom:12px;font-style:italic}
+.proof-card .pf-stat{font-size:1.3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
+.proof-card .pf-label{font-size:0.72rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px}
+
+/* FAQ */
+.faq{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  font-family:var(--heading);font-size:0.95rem;font-weight:600;color:var(--text);cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--primary);font-weight:400;transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;
+  font-size:0.88rem;color:var(--text-2);line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:300px;padding-top:12px}
+
+/* SwarmCurator */
+.curator{text-align:center}
+.curator-headline{
+  font-size:1.1rem;color:var(--text-2);max-width:680px;margin:0 auto 48px;line-height:1.7;text-align:center;
+}
+.curator-headline strong{color:var(--primary);font-weight:700}
+.curator-headline em{color:var(--accent);font-style:normal;font-weight:600}
+
+/* Pipeline */
+.pipeline{
+  display:flex;align-items:stretch;gap:0;max-width:960px;margin:0 auto 48px;
+  position:relative;
+}
+.pipe-step{
+  flex:1;text-align:center;padding:20px 8px;position:relative;
+  border:1px solid var(--border);background:var(--surface);
+  transition:border-color 0.3s,background 0.3s;
+}
+.pipe-step:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.pipe-step:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.pipe-step:hover{border-color:var(--primary);background:var(--surface-2)}
+.pipe-step:not(:last-child)::after{
+  content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+  width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;
+  border-left:8px solid var(--border);z-index:2;
+}
+.pipe-step:hover::after{border-left-color:var(--primary)}
+.pipe-num{
+  font-size:0.65rem;font-weight:800;color:var(--primary);font-family:var(--mono);
+  background:rgba(245,158,11,0.1);width:20px;height:20px;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:6px;
+}
+.pipe-icon{font-size:1.1rem;display:block;margin-bottom:4px}
+.pipe-name{font-size:0.72rem;font-weight:700;color:var(--text);display:block}
+.pipe-desc{font-size:0.62rem;color:var(--text-3);display:block;margin-top:2px;line-height:1.4}
+
+/* Final stamp */
+.pipe-step.platinum{
+  background:linear-gradient(180deg,rgba(245,158,11,0.08),rgba(245,158,11,0.02));
+  border-color:var(--primary);
+}
+.pipe-step.platinum .pipe-num{background:var(--primary);color:#000}
+
+/* Curator stats */
+.curator-stats{
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+  padding:24px 0;
+}
+.cur-stat{text-align:center}
+.cur-stat .cs-val{font-size:1.3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
+.cur-stat .cs-lbl{font-size:0.68rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px}
+
+/* Verdict bar */
+.verdict-bar{
+  max-width:640px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 28px;font-family:var(--mono);font-size:0.78rem;
+  text-align:left;color:var(--text-2);line-height:1.8;
+}
+.verdict-bar .vb-pass{color:var(--accent);font-weight:700}
+.verdict-bar .vb-fail{color:#ef4444;font-weight:700}
+.verdict-bar .vb-gold{color:var(--primary);font-weight:700}
+
+/* Custom Builds */
+.custom-build{
+  max-width:800px;margin:48px auto 0;
+  background:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(16,185,129,0.04));
+  border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius);
+  padding:36px 32px;position:relative;overflow:hidden;
+}
+.custom-build::before{
+  content:'CUSTOM BUILD';position:absolute;top:16px;right:20px;
+  font-size:0.62rem;font-weight:800;letter-spacing:0.1em;
+  color:var(--primary);font-family:var(--mono);
+  background:rgba(245,158,11,0.1);padding:4px 10px;border-radius:8px;
+}
+.custom-build h3{font-family:var(--heading);font-size:1.2rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.02em}
+.custom-build .cb-sub{font-size:0.92rem;color:var(--text-2);line-height:1.7;margin-bottom:24px}
+.custom-build .cb-sub strong{color:var(--primary)}
+.cb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.cb-item{
+  background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:16px;
+}
+.cb-item .cb-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.cb-item .cb-val{font-size:0.85rem;color:var(--text);font-weight:600;line-height:1.5}
+.cb-item .cb-desc{font-size:0.72rem;color:var(--text-3);margin-top:4px;line-height:1.5}
+.cb-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;border-radius:var(--radius-sm);
+  background:var(--primary);color:#000;font-weight:700;font-size:0.88rem;
+  border:none;cursor:pointer;transition:background 0.2s;text-decoration:none;
+}
+.cb-cta:hover{background:var(--primary-dim)}
+
+/* Skills */
+.skills{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.skill-chip{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px 16px;font-size:0.82rem;font-weight:500;
+  display:flex;align-items:center;gap:8px;transition:border-color 0.2s;
+}
+.skill-chip:hover{border-color:var(--primary)}
+.skill-chip .sk-icon{font-size:1rem;flex-shrink:0}
+.skill-chip .sk-name{font-family:var(--mono);font-size:0.78rem;color:var(--text-2)}
+
+/* BeeBox */
+.beebox{text-align:center}
+.beebox-visual{
+  max-width:640px;margin:0 auto 40px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;font-family:var(--mono);font-size:0.82rem;line-height:1.8;
+  color:var(--text-2);text-align:left;
+}
+.beebox-visual .hl{color:var(--primary)}
+.beebox-visual .acc{color:var(--accent)}
+.beebox-specs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:560px;margin:0 auto;
+}
+.beebox-spec{text-align:center}
+.beebox-spec .val{font-size:1.4rem;font-weight:800;color:var(--primary)}
+.beebox-spec .lbl{font-size:0.75rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em}
+
+/* Architecture */
+.arch{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.arch-diagram{
+  max-width:800px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;font-family:var(--mono);font-size:0.78rem;line-height:1.9;
+  color:var(--text-2);overflow-x:auto;white-space:pre;
+}
+.arch-diagram .layer{color:var(--primary);font-weight:700}
+.arch-diagram .comp{color:var(--accent)}
+.arch-diagram .dim{color:var(--text-3)}
+
+/* Built With */
+.built-with{text-align:center}
+.stack-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;
+  max-width:960px;margin:0 auto;
+}
+.stack-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 20px;text-align:left;transition:border-color 0.2s,transform 0.2s;
+}
+.stack-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.stack-card .sc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stack-card .sc-icon{font-size:1.3rem}
+.stack-card .sc-name{font-size:0.95rem;font-weight:700}
+.stack-card .sc-tag{
+  font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:8px;
+  background:rgba(245,158,11,0.1);color:var(--primary);font-family:var(--mono);
+  margin-left:auto;
+}
+.stack-card .sc-desc{font-size:0.78rem;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+.stack-card .sc-models{font-size:0.7rem;color:var(--text-3);font-family:var(--mono);line-height:1.7}
+.stack-card .sc-models span{color:var(--accent)}
+.stack-card a{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.75rem;font-weight:600;color:var(--primary);margin-top:8px;transition:gap 0.2s;
+}
+.stack-card a:hover{gap:8px}
+
+/* Contact */
+.contact{text-align:center}
+.contact-form{
+  max-width:560px;margin:0 auto;
+  display:flex;flex-direction:column;gap:14px;
+}
+.contact-form input,.contact-form textarea,.contact-form select{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px 16px;color:var(--text);font-family:var(--font);font-size:0.88rem;
+  outline:none;transition:border-color 0.2s;width:100%;
+}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--primary)}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-3)}
+.contact-form select{appearance:none;cursor:pointer;color:var(--text-2)}
+.contact-form select option{background:var(--surface);color:var(--text)}
+.contact-row{display:flex;gap:14px}
+.contact-form textarea{resize:vertical;min-height:100px;line-height:1.6}
+.btn-submit{
+  padding:14px 32px;border-radius:var(--radius-sm);border:none;
+  background:var(--primary);color:#000;font-family:var(--font);
+  font-size:0.9rem;font-weight:700;cursor:pointer;
+  transition:background 0.2s,transform 0.1s;
+}
+.btn-submit:hover{background:var(--primary-dim)}
+.btn-submit:active{transform:scale(0.98)}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed}
+.form-status{
+  font-size:0.82rem;font-family:var(--mono);padding:12px;
+  border-radius:var(--radius-sm);display:none;
+}
+.form-status.success{display:block;background:rgba(16,185,129,0.1);color:var(--accent);border:1px solid rgba(16,185,129,0.2)}
+.form-status.error{display:block;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
+
+/* Footer */
+footer{
+  padding:48px 24px;border-top:1px solid var(--border);
+  text-align:center;font-size:0.82rem;color:var(--text-3);
+}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+footer a{transition:color 0.2s}
+footer a:hover{color:var(--primary)}
+footer .copyright{font-size:0.75rem;opacity:0.5}
+
+/* Hero Signup */
+.hero-signup{margin-top:32px;text-align:center}
+.signup-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.signup-input{
+  padding:12px 18px;font-size:0.88rem;font-family:var(--font);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--text);outline:none;width:260px;transition:border-color 0.2s;
+}
+.signup-input:focus{border-color:var(--primary)}
+.signup-input::placeholder{color:var(--text-3)}
+.signup-btn{
+  padding:12px 24px;font-size:0.85rem;font-weight:700;font-family:var(--heading);
+  background:var(--primary);color:#000;border:none;border-radius:var(--radius-sm);
+  cursor:pointer;transition:background 0.2s,transform 0.1s;letter-spacing:0.01em;
+}
+.signup-btn:hover{background:var(--primary-dim)}
+.signup-btn:active{transform:scale(0.98)}
+.signup-btn:disabled{opacity:0.5;cursor:not-allowed}
+.signup-note{font-size:0.72rem;color:var(--text-3);margin-top:10px;font-family:var(--mono)}
+.signup-status{
+  font-size:0.82rem;font-family:var(--mono);padding:8px 16px;margin-top:8px;
+  border-radius:var(--radius-sm);display:none;
+}
+.signup-status.success{display:inline-block;background:rgba(16,185,129,0.1);color:var(--accent);border:1px solid rgba(16,185,129,0.2)}
+.signup-status.error{display:inline-block;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
+
+/* Live Status Pulse */
+.live-pulse{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.72rem;font-family:var(--mono);color:var(--accent);
+  margin-top:16px;
+}
+.live-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 8px rgba(16,185,129,0.5);animation:livePulse 2s infinite;
+}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* Responsive */
+@media(max-width:768px){
+  .eco-bar{gap:12px;font-size:0.68rem;padding:0 12px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:64px;left:0;right:0;
+    background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);
+    padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);
+  }
+  .hero{padding:132px 16px 60px}
+  .hero h1{font-size:2rem}
+  .stats{grid-template-columns:repeat(2,1fr);gap:16px}
+  .product-grid{grid-template-columns:1fr}
+  .fleet-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .beebox-specs{grid-template-columns:1fr}
+  .pipeline{flex-wrap:wrap;gap:4px}
+  .pipe-step{flex:0 0 calc(25% - 3px);border-radius:var(--radius-sm) !important}
+  .pipe-step::after{display:none}
+  .pipe-desc{display:none}
+  .curator-stats{gap:20px}
+  .verdict-bar{font-size:0.68rem;padding:16px}
+  .cb-grid{grid-template-columns:1fr}
+  .custom-build{padding:24px 20px}
+  .custom-build::before{position:static;display:inline-block;margin-bottom:12px}
+  .contact-row{flex-direction:column;gap:14px}
+  .signup-row{flex-direction:column;align-items:center}
+  .signup-input{width:100%;max-width:300px}
+  section{padding:60px 16px}
+  .section-title{font-size:1.6rem}
+}
+@media(max-width:480px){
+  .eco-bar{display:none}
+  nav{top:0}
+  .hero{padding:108px 12px 48px}
+  .hero h1{font-size:1.7rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .fleet-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .pipe-step{flex:0 0 calc(50% - 2px)}
+}
+</style>
 </head>
 <body>
 
-<nav class="topbar">
-  <a href="/" class="topbar-logo">swarm<span class="dot">&</span>bee<span class="dot">.ai</span></a>
-  <div class="topbar-nav">
-    <a href="/swarmmed">medical</a>
-    <a href="/swarmpharma">pharma</a>
-    <a href="/swarmaviation">aviation</a>
-    <a href="/signal">signal</a>
-    <a href="/factory">factory</a>
-    <a href="/models">models</a>
-    <a href="/docs">docs</a>
-    <a href="/compute">compute</a>
-  </div>
-  <div class="topbar-right">
-    <div class="topbar-status">
-      <span class="status-dot warn"></span>
-      <span>block-0 training</span>
+<!-- Ecosystem Bar -->
+<div class="eco-bar">
+  <a href="/signal" style="color:#C8963E">Signal</a>
+  <span class="sep">|</span>
+  <a href="/curator">Curator</a>
+  <span class="sep">|</span>
+  <a href="/morey" style="color:#f59e0b">Morey</a>
+  <span class="sep">|</span>
+  <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+  <span class="sep">|</span>
+  <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+  <span class="sep">|</span>
+  <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <span class="sep">|</span>
+  <a href="/hedera" style="color:#8B5CF6">Hedera</a>
+  <span class="sep">|</span>
+  <a href="https://discord.gg/sNjJrND5eb" target="_blank" rel="noopener noreferrer">Discord</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">swarm<span>&</span>bee</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/signal" style="color:#C8963E">Signal</a>
+      <a href="/curator">Curator</a>
+      <a href="/morey" style="color:var(--primary)">Morey</a>
+      <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+      <a href="/hedera" style="color:#8B5CF6">Hedera</a>
+      <a href="/swarmmed" style="color:#06b6d4">Medical</a>
+      <a href="/swarmpharma" style="color:#ec4899">Pharma</a>
+      <a href="/swarmaviation" style="color:#f97316">Aviation</a>
+      <a href="#products">Products</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#skills">Skills</a>
+      <a href="#beebox">BeeBox</a>
+      <a href="#architecture">Stack</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
+      <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
     </div>
-    <a href="https://swarmandbee.com" class="topbar-link">swarmandbee.com &rarr;</a>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
 
+<main>
+
+<!-- Hero -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge">Block Zero — SwarmRouter + SwarmJudge training now</div>
-    <h1>Every Request <span class="hero-accent">Routed</span>.<br>Every Output <span class="hero-accent">Judged</span>.</h1>
-    <p class="hero-sub">
-      SwarmRouter-4B classifies domain, complexity, and risk in one call.<br>
-      SwarmJudge-27B gates every output before it ships. No vague feedback — PASS or FAIL with issues and fixes.
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Systems Online</div>
+    <h1>Real Compute. Real Objects.<br><span class="gradient">Real Signal.</span></h1>
+
+    <div class="curation">
+      <div class="cur-lead">
+        <strong>Vertical AI.</strong><br>
+        <strong>Sovereign compute.</strong><br>
+        <strong>Agent-native infrastructure.</strong>
+      </div>
+      <div class="cur-stats">
+        1.2M curated pairs.<br>
+        128 RTX PRO 6000 GPUs.
+      </div>
+      <div class="cur-why">Why curation?</div>
+      <div class="cur-lines">
+        Because <em>scale without discipline</em> is noise.<br>
+        Because <em>evals don't fix</em> bad inputs.<br>
+        Because <em>signal must be assembled.</em>
+      </div>
+      <div class="cur-stamp">
+        We own the racks.<br>
+        We cook the rails.
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="/morey" class="hero-cta primary">Talk to Morey &rarr;</a>
+      <a href="#contact" class="hero-cta secondary">Request a Build</a>
+    </div>
+
+    <div class="hero-signup">
+      <form class="signup-row" id="heroSignup" onsubmit="handleHeroSignup(event)">
+        <input type="email" class="signup-input" placeholder="your@email.com" required aria-label="Email for updates">
+        <input type="password" class="signup-input" placeholder="Password (min 6 chars)" required minlength="6" aria-label="Password" style="margin-left:8px">
+        <button type="submit" class="signup-btn">Create Account</button>
+      </form>
+      <div class="signup-status" id="heroSignupStatus"></div>
+      <div class="signup-note">Join 200+ builders. No spam. Signal only.</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">1.2M</div>
+        <div class="stat-label">Training Pairs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">128</div>
+        <div class="stat-label">RTX 6000 GPUs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">12TB</div>
+        <div class="stat-label">VRAM</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">28</div>
+        <div class="stat-label">SwarmSkills</div>
+      </div>
+    </div>
+
+    <div class="live-pulse" id="apiStatus">
+      <span class="live-dot"></span>
+      <span id="apiStatusText">Checking API...</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-label">Ecosystem</div>
+    <h2 class="section-title">Two Verticals. One Stack.</h2>
+    <p class="section-sub">We build LLMs and we curate the data that trains them. Same infrastructure, same quality gate, same sovereign compute.</p>
+    <div class="product-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto">
+
+      <a href="https://swarmandbee.com/cre" class="product-card" target="_blank" rel="noopener noreferrer">
+        <div class="bar" style="background:var(--primary)"></div>
+        <div class="icon">&#129302;</div>
+        <h3>Build — LLM</h3>
+        <p>Fine-tuned vertical models from 0.8B to 122B. Trained on sovereign compute, quality-gated by SwarmJudge, deployed from cloud to edge.</p>
+        <div class="card-stats">
+          <div class="card-stat"><strong>7</strong> models</div>
+          <div class="card-stat"><strong>128</strong> GPUs</div>
+          <div class="card-stat"><strong>12TB</strong> VRAM</div>
+        </div>
+        <span class="card-link">Open Platform &rarr;</span>
+      </a>
+
+      <a href="#curator" class="product-card">
+        <div class="bar" style="background:var(--accent)"></div>
+        <div class="icon">&#128081;</div>
+        <h3>Curation</h3>
+        <p>8-step SwarmCurator pipeline. Platinum pairs only. Unappeallable verdicts. Scale without discipline is noise — we assemble signal.</p>
+        <div class="card-stats">
+          <div class="card-stat"><strong>1.2M</strong> pairs</div>
+          <div class="card-stat"><strong>85+</strong> specialties</div>
+          <div class="card-stat"><strong>0%</strong> override</div>
+        </div>
+        <span class="card-link">See Pipeline &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SwarmCurator -->
+<section class="curator" id="curator">
+  <div class="container">
+    <div class="section-label">Data Quality</div>
+    <h2 class="section-title">SwarmCurator</h2>
+    <p class="curator-headline">
+      Every pair in the Gold Vault passes an <strong>8-step curation pipeline</strong>.
+      No shortcuts. No overrides. The final verdict is <em>unappeallable</em> —
+      if it doesn't hit Platinum, it doesn't ship.
     </p>
-    <div style="display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap">
-      <a href="/judge" style="display:inline-block;padding:10px 24px;background:var(--primary);color:var(--bg);border-radius:var(--radius);font-weight:700;font-size:0.88rem;text-decoration:none">Ask the Judge &rarr;</a>
-      <a href="/router" style="display:inline-block;padding:10px 24px;background:transparent;color:var(--primary);border:1px solid var(--primary);border-radius:var(--radius);font-weight:700;font-size:0.88rem;text-decoration:none">Try the Router &rarr;</a>
+
+    <div class="pipeline">
+      <div class="pipe-step">
+        <span class="pipe-num">1</span>
+        <span class="pipe-icon">&#128268;</span>
+        <span class="pipe-name">Source</span>
+        <span class="pipe-desc">Raw generation via Together.ai cooks &amp; domain grinders</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">2</span>
+        <span class="pipe-icon">&#9881;</span>
+        <span class="pipe-name">Grind</span>
+        <span class="pipe-desc">Specialty tagging, domain formatting, task typing</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">3</span>
+        <span class="pipe-icon">&#128203;</span>
+        <span class="pipe-name">Schema</span>
+        <span class="pipe-desc">Structural validation, JSON schema, field completeness</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">4</span>
+        <span class="pipe-icon">&#128270;</span>
+        <span class="pipe-name">CoVe</span>
+        <span class="pipe-desc">Chain of Verification — 5 criteria, scored 1-10</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">5</span>
+        <span class="pipe-icon">&#9878;</span>
+        <span class="pipe-name">Judge</span>
+        <span class="pipe-desc">SwarmJudge PASS/FAIL verdict on every pair</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">6</span>
+        <span class="pipe-icon">&#128736;</span>
+        <span class="pipe-name">Trajectory</span>
+        <span class="pipe-desc">Multi-step reasoning path verified end-to-end</span>
+      </div>
+      <div class="pipe-step">
+        <span class="pipe-num">7</span>
+        <span class="pipe-icon">&#128256;</span>
+        <span class="pipe-name">Cross-Val</span>
+        <span class="pipe-desc">Dedup, consistency check, adversarial probing</span>
+      </div>
+      <div class="pipe-step platinum">
+        <span class="pipe-num">8</span>
+        <span class="pipe-icon">&#128081;</span>
+        <span class="pipe-name">Platinum</span>
+        <span class="pipe-desc">Final promotion. Unappeallable. Ships to training.</span>
+      </div>
     </div>
+
+    <div class="curator-stats">
+      <div class="cur-stat"><div class="cs-val">1.2M</div><div class="cs-lbl">Platinum Pairs</div></div>
+      <div class="cur-stat"><div class="cs-val">8</div><div class="cs-lbl">Pipeline Steps</div></div>
+      <div class="cur-stat"><div class="cs-val">5</div><div class="cs-lbl">CoVe Criteria</div></div>
+      <div class="cur-stat"><div class="cs-val">85+</div><div class="cs-lbl">Specialties</div></div>
+      <div class="cur-stat"><div class="cs-val">0%</div><div class="cs-lbl">Override Rate</div></div>
+    </div>
+
+    <div class="verdict-bar">
+<span class="vb-gold">SwarmCurator</span> verdict pipeline:
+  accuracy       <span class="vb-pass">9.2</span>  │  completeness  <span class="vb-pass">9.4</span>
+  structure      <span class="vb-pass">9.7</span>  │  relevance     <span class="vb-pass">9.1</span>
+  sft_quality    <span class="vb-pass">9.5</span>  │  trajectory    <span class="vb-pass">VERIFIED</span>
+  ──────────────────────────────────────────
+  verdict: <span class="vb-pass">PLATINUM PROMOTED</span>  │  override: <span class="vb-fail">DENIED</span>
+  status:  unappeallable  │  ships to training
+    </div>
+
+    <div class="custom-build">
+      <h3>Custom Curation Builds</h3>
+      <p class="cb-sub">CRE, pharma, aviation, legal, finance — <strong>any vertical</strong>. You bring the model spec. We build the dataset. Same 8-step SwarmCurator pipeline, tuned to <strong>your domain, your taxonomy, your quality bar</strong>. Platinum pairs delivered — ready to train.</p>
+      <div class="cb-grid">
+        <div class="cb-item">
+          <div class="cb-label">You Define</div>
+          <div class="cb-val">Domain, specialties, task types, volume</div>
+          <div class="cb-desc">Tell us the vertical, the model size, and what the pairs need to do.</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">We Build</div>
+          <div class="cb-val">Generate, grind, validate, judge, promote</div>
+          <div class="cb-desc">Full 8-step pipeline on our 128-GPU sovereign compute. No third-party data.</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">You Ship</div>
+          <div class="cb-val">Platinum pairs, eval sets, training configs</div>
+          <div class="cb-desc">Delivered as JSONL with CoVe scores, trajectory labels, and train/eval splits.</div>
+        </div>
+      </div>
+      <a href="#contact" class="cb-cta">Request a Custom Build &rarr;</a>
+    </div>
+
   </div>
 </section>
 
-<!-- Status strip -->
-<div class="stats-strip">
-  <div class="stat-item">
-    <span class="stat-num" style="color:var(--warn)">training</span>
-    <span class="stat-label">SwarmRouter-4B</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" style="color:var(--warn)">training</span>
-    <span class="stat-label">SwarmJudge-27B</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">7</span>
-    <span class="stat-label">Model Slots</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">68,179</span>
-    <span class="stat-label">Router Pairs Sealed</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">103,931</span>
-    <span class="stat-label">Judge Pairs Training</span>
-  </div>
-</div>
+<!-- Fleet -->
+<section class="fleet-section" id="fleet">
+  <div class="container">
+    <div class="section-label">Model Fleet</div>
+    <h2 class="section-title">The Fleet</h2>
+    <p class="section-sub">The SwarmCRE franchise — from 0.8B edge to 122B Founder. 128 RTX PRO 6000 GPUs. 12TB VRAM. We own the racks. We cook the rails.</p>
+    <div class="fleet-grid">
 
-<!-- Live Cook Bar -->
-<div id="home-cook-bar" style="background:var(--bg-2);border-bottom:1px solid var(--border);padding:9px 24px;display:flex;align-items:center;gap:20px;font-size:0.75rem;overflow:hidden;flex-wrap:wrap">
-  <span style="color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;font-size:0.65rem;font-weight:700;flex-shrink:0">LIVE COOK</span>
-  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-    <span id="hcb-judge-dot" style="width:8px;height:8px;border-radius:50%;background:var(--warn);display:inline-block;box-shadow:0 0 5px var(--warn)"></span>
-    <span style="color:var(--text-2)">SwarmJudge-27B</span>
-    <span id="hcb-judge-prog" style="color:var(--warn);font-weight:700">—%</span>
-    <span id="hcb-judge-step" style="color:var(--text-3)">step pending</span>
-    <span id="hcb-judge-eta" style="color:var(--text-2)">~38h</span>
-  </div>
-  <span style="color:var(--border);flex-shrink:0">·</span>
-  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-    <span id="hcb-router-dot" style="width:8px;height:8px;border-radius:50%;background:var(--warn);display:inline-block;box-shadow:0 0 5px var(--warn)"></span>
-    <span style="color:var(--text-2)">SwarmRouter-4B</span>
-    <span id="hcb-router-prog" style="color:var(--warn);font-weight:700">—%</span>
-    <span id="hcb-router-step" style="color:var(--text-3)">step pending</span>
-    <span id="hcb-router-eta" style="color:var(--text-2)">~10h</span>
-  </div>
-  <span style="color:var(--border);flex-shrink:0">·</span>
-  <span id="hcb-total" style="color:var(--text-3);flex-shrink:0">1,158,902 pairs in R2</span>
-  <a href="/factory" style="margin-left:auto;color:var(--primary);font-weight:700;font-size:0.72rem;text-decoration:none;flex-shrink:0">factory &rarr;</a>
-</div>
-
-<!-- Pipeline Loop -->
-<section class="section alt">
-  <div class="section-inner">
-    <h2 style="text-align:center;margin-bottom:8px">The Block-0 Loop</h2>
-    <p class="section-sub" style="text-align:center">Every build follows the same discipline — no exceptions.</p>
-
-    <div class="pipeline-loop">
-      <div><span class="arrow">→</span> <span class="node">Request</span> <span class="arrow">arrives at</span> <span class="node">SwarmRouter-4B</span></div>
-      <div style="padding-left:20px"><span class="arrow">↳</span> classifies: domain · complexity · risk_level · proposal_required</div>
-      <div><span class="arrow">→</span> <span class="gate">proposal gate</span> <span class="arrow">(pharma + safety: always · high-risk: required)</span></div>
-      <div><span class="arrow">→</span> <span class="node">Worker Model</span> <span class="arrow">executes the task</span></div>
-      <div><span class="arrow">→</span> <span class="node">SwarmJudge-27B</span> <span class="arrow">scores output: accuracy · completeness · structure · relevance · sft_quality</span></div>
-      <div><span class="arrow">→</span> verdict: <span class="seal">PASS</span> <span class="arrow">(score ≥ 20, accuracy ≥ 4) →</span> <span class="seal">seal · ship · done</span></div>
-      <div style="padding-left:20px"><span class="arrow">or</span> <span class="gate">FAIL</span> <span class="arrow">→ issues named → fixes prescribed → targeted retrain</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 7-Slot Lineup -->
-<section class="section">
-  <div class="section-inner">
-    <h2 style="margin-bottom:8px">Block-0 Model Lineup</h2>
-    <p class="section-sub">7 slots. Router decides. Judge gates. Specialists execute.</p>
-
-    <div class="slot-grid">
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 1</div>
-        <div class="slot-name">SwarmRouter-4B</div>
-        <div class="slot-domain">Routing &amp; Classification</div>
-        <div class="slot-meta">
-          <span class="slot-tag router">router</span>
-          <span class="slot-tag" style="color:var(--warn);border-color:rgba(210,153,34,0.4)">training</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen3.5-4B-Base · 68,179 pairs · whale 3090</div>
+      <div class="fleet-card" style="border-color:rgba(245,158,11,0.4);background:linear-gradient(180deg,#111,#0a0a0a)">
+        <div class="model-icon">&#127775;</div>
+        <h4>SwarmCRE-122B</h4>
+        <div class="params">122B · fp8 · 2 GPUs</div>
+        <div class="role">The Founder. Full-stack CRE reasoning, multi-document synthesis, portfolio-level strategy. Runs on our own racks. FTW.</div>
+        <span class="tag tag-ceo">Founder FTW</span>
       </div>
 
-      <div class="slot-card">
-        <div class="slot-num">SLOT 2</div>
-        <div class="slot-name">SwarmJudge-27B</div>
-        <div class="slot-domain">Quality Gate</div>
-        <div class="slot-meta">
-          <span class="slot-tag judge">judge</span>
-          <span class="slot-tag" style="color:var(--warn);border-color:rgba(210,153,34,0.4)">training</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen3.5-27B · 103,931 pairs · Blackwell 96GB</div>
-      </div>
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 3</div>
-        <div class="slot-name">SwarmPharma-35B</div>
-        <div class="slot-domain">Clinical Pharmacology</div>
-        <div class="slot-meta">
-          <span class="slot-tag spec">specialist</span>
-          <span class="slot-tag" style="color:var(--accent);border-color:rgba(63,185,80,0.4)">sealed</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen3.5-35B · 25,629 pairs · v1 2026-02-28</div>
-      </div>
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 4</div>
-        <div class="slot-name">SwarmCRE-35B</div>
-        <div class="slot-domain">Commercial Real Estate</div>
-        <div class="slot-meta">
-          <span class="slot-tag spec">specialist</span>
-          <span class="slot-tag">pending</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen3.5-35B · blocked by Judge seal + budget gate</div>
-      </div>
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 5</div>
-        <div class="slot-name">SwarmMed-14B</div>
-        <div class="slot-domain">Medical Clinical Decision</div>
-        <div class="slot-meta">
-          <span class="slot-tag spec">specialist</span>
-          <span class="slot-tag">pending</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen-class 14B · 432,196 pairs available · blocked by Judge</div>
-      </div>
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 6</div>
-        <div class="slot-name">SwarmResearch-32B</div>
-        <div class="slot-domain">Safety &amp; Research</div>
-        <div class="slot-meta">
-          <span class="slot-tag spec">specialist</span>
-          <span class="slot-tag">pending</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Qwen2.5-32B · aviation + core · blocked by Judge</div>
-      </div>
-
-      <div class="slot-card">
-        <div class="slot-num">SLOT 7</div>
-        <div class="slot-name">research-8b</div>
-        <div class="slot-domain">General / Fallback</div>
-        <div class="slot-meta">
-          <span class="slot-tag">general</span>
-          <span class="slot-tag" style="color:#a371f7;border-color:rgba(163,113,247,0.4)">conditional</span>
-        </div>
-        <div style="font-size:0.72rem;color:var(--text-3);margin-top:10px">Judge eval required before activation</div>
-      </div>
-
-    </div>
-
-    <p style="text-align:center;margin-top:24px">
-      <a href="/models" style="font-size:0.82rem;font-weight:600;color:var(--primary)">Full model cards &rarr;</a>
-    </p>
-  </div>
-</section>
-
-<!-- Build Discipline -->
-<section class="section alt">
-  <div class="section-inner">
-    <h2 style="margin-bottom:8px">Build Discipline</h2>
-    <p class="section-sub">Block-0 is the foundation. The judge is the gate. No model ships without a sealed verdict.</p>
-
-    <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">
-      <div class="card">
-        <div class="card-tag" style="color:var(--primary)">Step 1</div>
-        <h3>Block-0</h3>
-        <p>Train fresh on sealed, SHA256-verified data. No recycled weights. Clean start every build.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warn)">Step 2</div>
-        <h3>Evaluate</h3>
-        <p>SwarmJudge-27B runs acceptance tests. 5 criteria × 1-5. PASS threshold: score ≥ 20, accuracy ≥ 4.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">Step 3 — PASS</div>
-        <h3>Seal &amp; Ship</h3>
-        <p>Block-0 IS v1. SHA256 sealed. Recorded in R2 + Supabase. Immutable build record.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--danger)">Step 3 — FAIL</div>
-        <h3>Diagnose &amp; Fix</h3>
-        <p>Issues named. Fixes prescribed. Targeted retrain only — no blind re-runs. That becomes v1.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- What You Receive -->
-<section class="section">
-  <div class="section-inner">
-    <h2 style="margin-bottom:8px">What You Receive</h2>
-    <p class="section-sub">Full disclosure. Every order ships the same complete package. No surprises, no hidden formats, no "contact sales for details."</p>
-
-    <!-- Order manifest box -->
-    <div style="margin:28px 0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg)">
-      <!-- Header -->
-      <div style="padding:16px 24px; background:rgba(255,255,255,0.03); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-        <div>
-          <span style="font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted)">Order Manifest</span>
-          <h3 style="margin:4px 0 0 0; font-size:17px">Example: CRE Underwriting &mdash; 35,000 pairs</h3>
-        </div>
-        <span style="font-size:12px; padding:4px 12px; border:1px solid var(--accent); border-radius:4px; color:var(--accent)">SEALED</span>
-      </div>
-
-      <!-- 5 Format files -->
-      <div style="padding:20px 24px; border-bottom:1px solid var(--border)">
-        <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:14px">5 Delivery Formats &mdash; Train + Eval Split Each</div>
-        <div style="display:grid; gap:10px; font-size:13px; font-family:var(--mono,monospace)">
-          <div style="display:flex; justify-content:space-between; padding:8px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <div><span style="color:var(--accent)">1.</span> <strong>ChatML</strong> &mdash; cre_underwriting_train.chatml.jsonl</div>
-            <span style="color:var(--muted); font-size:12px">OpenAI API, TRL, Unsloth, Axolotl</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; padding:8px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <div><span style="color:var(--accent)">2.</span> <strong>Alpaca</strong> &mdash; cre_underwriting_train.alpaca.jsonl</div>
-            <span style="color:var(--muted); font-size:12px">LLaMA-Factory, HuggingFace trainers</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; padding:8px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <div><span style="color:var(--accent)">3.</span> <strong>ShareGPT</strong> &mdash; cre_underwriting_train.sharegpt.jsonl</div>
-            <span style="color:var(--muted); font-size:12px">FastChat, Vicuna, multi-turn trainers</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; padding:8px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <div><span style="color:var(--accent)">4.</span> <strong>OpenAI</strong> &mdash; cre_underwriting_train.openai.jsonl</div>
-            <span style="color:var(--muted); font-size:12px">Direct upload to gpt-4o fine-tuning</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; padding:8px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <div><span style="color:var(--accent)">5.</span> <strong>Completion</strong> &mdash; cre_underwriting_train.completion.jsonl</div>
-            <span style="color:var(--muted); font-size:12px">Legacy pipelines, custom training loops</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Eval split -->
-      <div style="padding:16px 24px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:13px">
-        <div>
-          <strong>Train / Eval Split</strong>
-          <span style="color:var(--muted)"> &mdash; All 5 formats include both splits</span>
-        </div>
-        <div style="text-align:right; font-family:var(--mono,monospace); font-size:12px">
-          <span style="color:var(--accent)">33,250 train</span> &nbsp;/&nbsp; <span>1,750 eval</span>
-          <div style="color:var(--muted); font-size:11px">Hash-based split. Reproducible. No data leakage.</div>
-        </div>
-      </div>
-
-      <!-- Provenance docs -->
-      <div style="padding:20px 24px; border-bottom:1px solid var(--border)">
-        <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:14px">Provenance &amp; Verification</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px">
-          <div style="padding:12px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <strong>DATA_CARD.json</strong>
-            <div style="color:var(--muted); font-size:12px; margin-top:4px">Quality metrics, model lineage, gate pass rates, avg response length, signal sources, generation model ID</div>
-          </div>
-          <div style="padding:12px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <strong>guarantee.json</strong>
-            <div style="color:var(--muted); font-size:12px; margin-top:4px">Merkle root of every pair. SHA-256 sealed. Optional Hedera HCS on-chain timestamp. Tamper-evident.</div>
-          </div>
-          <div style="padding:12px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <strong>README.txt</strong>
-            <div style="color:var(--muted); font-size:12px; margin-top:4px">Quickstart for Python, Unsloth, OpenAI API. Copy, paste, train. Under 5 minutes to first training run.</div>
-          </div>
-          <div style="padding:12px 14px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid var(--border)">
-            <strong>Per-Pair Metadata</strong>
-            <div style="color:var(--muted); font-size:12px; margin-top:4px">Every pair carries: source, order_id, vertical, model, quality gate result, content fingerprint. Full audit trail.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quality disclosure -->
-      <div style="padding:20px 24px">
-        <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:14px">Quality Disclosure</div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; font-size:13px">
-          <div>
-            <div style="font-size:22px; font-weight:700; color:var(--accent)">5-Step</div>
-            <div style="color:var(--muted); font-size:12px">Trajectory verified: Identify, Calculate, Analyze, Evaluate, Recommend</div>
-          </div>
-          <div>
-            <div style="font-size:22px; font-weight:700; color:var(--accent)">5,800+</div>
-            <div style="color:var(--muted); font-size:12px">Avg chars per response. Institutional depth, not summaries.</div>
-          </div>
-          <div>
-            <div style="font-size:22px; font-weight:700; color:var(--accent)">6 Gates</div>
-            <div style="color:var(--muted); font-size:12px">Deterministic: length, trajectory, financial content, dedup, degeneration, schema</div>
-          </div>
-          <div>
-            <div style="font-size:22px; font-weight:700; color:var(--accent)">Signal</div>
-            <div style="color:var(--muted); font-size:12px">Every pair grounded in real market signals. Not synthetic prompts.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-size:13px; color:var(--muted); text-align:center; margin-top:12px">
-      This is what ships. Every order. Every vertical. No upgrade required for additional formats.<br>
-      Your team picks the framework &mdash; the data is ready.
-    </p>
-  </div>
-</section>
-
-<!-- CRE Inventory — 31 Boxes -->
-<section class="section">
-  <div class="section-inner">
-    <h2 style="margin-bottom:8px">CRE Pair Inventory</h2>
-    <p class="section-sub">665,152 verified pairs across 31 task type boxes. Every pair labeled, deduped, quality-gated. This is what's on the shelf.</p>
-
-    <!-- Inventory stats bar -->
-    <div style="display:flex; gap:24px; margin:20px 0 28px 0; flex-wrap:wrap">
-      <div style="text-align:center">
-        <div style="font-size:28px; font-weight:700; color:var(--accent)">665,152</div>
-        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted)">Verified Pairs</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px; font-weight:700; color:var(--accent)">31</div>
-        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted)">Task Type Boxes</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px; font-weight:700; color:var(--accent)">5</div>
-        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted)">Delivery Formats</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:28px; font-weight:700; color:var(--accent)">239K</div>
-        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted)">Duplicates Removed</div>
-      </div>
-    </div>
-
-    <!-- Core CRE Boxes -->
-    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:14px">Core CRE Skills &mdash; Institutional Foundation</div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">170,588 pairs</div>
-        <h3>Underwriting</h3>
-        <p>NOI, cap rate, DSCR, LTV, debt yield calculations. Teaches your model to underwrite deals the way a senior analyst does &mdash; showing all work with real numbers.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">91,149 pairs</div>
-        <h3>Market Comps</h3>
-        <p>Comparable property analysis with adjustments. Your model learns to identify, select, and normalize comps across asset types, markets, and timeframes.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">89,720 pairs</div>
-        <h3>Lease Reasoning</h3>
-        <p>Tenant analysis, escalation structures, renewal probability. Teaches lease-level thinking &mdash; from NNN to gross, from roll risk to portfolio impact.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">87,823 pairs</div>
-        <h3>IC Memos</h3>
-        <p>Investment committee memoranda. Full deal narrative: thesis, market context, risk factors, financial projections, and recommendation with conviction.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">56,289 pairs</div>
-        <h3>Lease Abstracts</h3>
-        <p>Structured extraction from lease documents. Key dates, financial terms, options, restrictions &mdash; parsed into machine-readable format.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">56,171 pairs</div>
-        <h3>T12 Normalization</h3>
-        <p>Trailing 12-month operating statement normalization. Revenue line items, expense categories, adjustments &mdash; standardized for underwriting.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">41,534 pairs</div>
-        <h3>Risk Triage</h3>
-        <p>Structured risk assessment: identify top risks, rate severity and likelihood, prescribe specific mitigation strategies. Institutional risk framework.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">25,880 pairs</div>
-        <h3>Tax Analysis</h3>
-        <p>Property tax assessment, appeal strategies, abatement analysis. Teaches your model the tax implications that affect every deal&rsquo;s NOI.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--accent)">24,839 pairs</div>
-        <h3>1031 Exchange</h3>
-        <p>Like-kind exchange structuring, timeline compliance, identification rules. The tax-deferred disposition strategy every investor needs.</p>
-      </div>
-    </div>
-
-    <!-- Capital Markets Boxes -->
-    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin:28px 0 14px 0">Capital Markets &mdash; Debt, Structure, Disposition</div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">566 pairs</div>
-        <h3>Stress Testing</h3>
-        <p>Interest rate shocks, vacancy scenarios, cap rate expansion. Your model learns to break deals before the market does.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">563 pairs</div>
-        <h3>Refi Analysis</h3>
-        <p>Refinance feasibility, rate comparison, prepayment analysis. When to hold, when to refi, and how to structure the new stack.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">560 pairs</div>
-        <h3>Debt Sizing</h3>
-        <p>Loan sizing by DSCR, LTV, and debt yield constraints. Teaches the math lenders actually use to size proceeds.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">560 pairs</div>
-        <h3>Capital Structure</h3>
-        <p>Senior, mezz, preferred equity, JV waterfall. Full stack analysis &mdash; who gets paid, in what order, at what returns.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">559 pairs</div>
-        <h3>Bridge-to-Perm</h3>
-        <p>Transitional lending analysis. Bridge loan terms, takeout feasibility, construction-to-stabilization timelines.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--warning, #f0b429)">557 pairs</div>
-        <h3>Disposition Analysis</h3>
-        <p>Exit strategy evaluation. Hold vs sell, timing, broker selection, marketing strategy, and net proceeds modeling.</p>
-      </div>
-    </div>
-
-    <!-- New Economy Boxes -->
-    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin:28px 0 14px 0">New Economy CRE &mdash; Tokenization, DeFi, Digital Assets</div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">1,208 pairs</div>
-        <h3>Tokenization</h3>
-        <p>Real estate tokenization structures. ERC-1400, HTS, fractional ownership, compliance frameworks, and investor access.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">1,009 pairs</div>
-        <h3>Token Structure</h3>
-        <p>Cap table on-chain, distribution waterfalls, smart contract architecture for real estate securities.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">505 pairs</div>
-        <h3>Carbon Tokenization</h3>
-        <p>Carbon credit tokenization for CRE. ESG compliance, offset verification, and green building incentive structures.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">505 pairs</div>
-        <h3>DeFi Collateral</h3>
-        <p>Real estate as DeFi collateral. Lending protocols, LTV ratios, liquidation mechanics for tokenized property.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">505 pairs</div>
-        <h3>Stablecoin Analysis</h3>
-        <p>Real estate-backed stablecoins. Reserve structures, peg mechanisms, and regulatory considerations.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag" style="color:var(--info, #4299e1)">505 pairs</div>
-        <h3>RWA Comparison</h3>
-        <p>Real World Asset protocol analysis. Comparing tokenization platforms, fee structures, and investor protections.</p>
-      </div>
-    </div>
-
-    <p style="font-size:13px; color:var(--muted); text-align:center; margin-top:24px">
-      Every box available individually or as a complete vertical package.<br>
-      Custom box requests available for enterprise clients.
-    </p>
-  </div>
-</section>
-
-<!-- Quick links -->
-<section class="section">
-  <div class="section-inner">
-    <h2 style="margin-bottom:16px">Platform</h2>
-    <div class="card-grid">
-      <a href="/router" class="card" style="text-decoration:none">
-        <div class="card-tag">SwarmRouter-4B</div>
-        <h3>Live Routing Demo</h3>
-        <p>Type any query. Domain, complexity, risk, model slot, proposal gate — classified in one call.</p>
-        <span class="card-link">/router &rarr;</span>
+      <a href="/morey" class="fleet-card" style="border-color:var(--primary)">
+        <div class="model-icon">&#128081;</div>
+        <h4>SwarmCRE-9B "Morey"</h4>
+        <div class="params">9.5B · Mamba-Transformer</div>
+        <div class="role">The flagship. CRE underwriting, IC memos, deal analysis. Chat &amp; voice. The workhorse.</div>
+        <span class="tag tag-early">Early Access</span>
       </a>
-      <a href="/judge" class="card" style="text-decoration:none">
-        <div class="card-tag">SwarmJudge-27B</div>
-        <h3>Ask the Judge</h3>
-        <p>Score any AI output. Chat, voice, or work session mode. PASS/FAIL with issues and fixes.</p>
-        <span class="card-link">/judge &rarr;</span>
-      </a>
-      <a href="/factory" class="card" style="text-decoration:none">
-        <div class="card-tag">Block-0 Pipeline</div>
-        <h3>Factory Floor</h3>
-        <p>Live training progress. Phase tracker. Sealed build registry with SHA256 manifests.</p>
-        <span class="card-link">/factory &rarr;</span>
-      </a>
-      <a href="/models" class="card" style="text-decoration:none">
-        <div class="card-tag">7 Slots</div>
-        <h3>Model Cards</h3>
-        <p>Full specs: base model, training config, pairs, eval results, build ID, R2 path.</p>
-        <span class="card-link">/models &rarr;</span>
-      </a>
-      <a href="/build" class="card" style="text-decoration:none">
-        <div class="card-tag">API</div>
-        <h3>Start Building</h3>
-        <p>Route any query, execute skills, check wallet. cURL + Python + Node examples.</p>
-        <span class="card-link">/build &rarr;</span>
-      </a>
-      <a href="/compute" class="card" style="text-decoration:none">
-        <div class="card-tag">Live Status</div>
-        <h3>Compute</h3>
-        <p>GPU cluster status. swarmrails (3090 Ti + Blackwell 96GB), whale (3090 24GB). Utilization, ETA.</p>
-        <span class="card-link">/compute &rarr;</span>
-      </a>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#9878;</div>
+        <h4>SwarmCRE-4B</h4>
+        <div class="params">4B · Compact</div>
+        <div class="role">Edge-grade CRE intelligence. Fits Jetson Orin Nano and BeeBox. Full quality gate.</div>
+        <span class="tag tag-early">Early Access</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128640;</div>
+        <h4>SwarmCRE-2B</h4>
+        <div class="params">2B · Micro</div>
+        <div class="role">Ultra-light CRE analyst. Runs on 2GB VRAM. Desktop and mobile ready.</div>
+        <span class="tag tag-early">Early Access</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128029;</div>
+        <h4>SwarmCRE-0.8B</h4>
+        <div class="params">0.8B · Nano</div>
+        <div class="role">Smallest CRE model. CPU inference. Embedded devices, IoT, on-prem appliances.</div>
+        <span class="tag tag-soon">Coming Soon</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128301;</div>
+        <h4>BeeMini-3B</h4>
+        <div class="params">3B · Router</div>
+        <div class="role">Skill routing, domain classification. 98.3% valid JSON, 1.8GB Q4. Runs on anything.</div>
+        <span class="tag tag-live">Live</span>
+      </div>
+
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-left">Swarm &amp; Bee AI — Block-0 manufacturing platform</div>
+<!-- SwarmSkills -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Agent Economy</div>
+    <h2 class="section-title">28 SwarmSkills</h2>
+    <p class="section-sub">Each skill is schema-validated, quality-gated by SwarmJudge, and callable via a single API endpoint. Every output becomes training data. Two verticals live.</p>
+
+    <div style="margin-bottom:8px;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary)">Commercial Real Estate &middot; 19 Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="sk-icon">&#128188;</span><span class="sk-name">broker_senior</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128100;</span><span class="sk-name">broker_junior</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128269;</span><span class="sk-name">intelligence_query</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127922;</span><span class="sk-name">bookmaker</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128203;</span><span class="sk-name">deal_tracker</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128187;</span><span class="sk-name">developer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128225;</span><span class="sk-name">signal_scraper</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128176;</span><span class="sk-name">investor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128259;</span><span class="sk-name">exchange_1031</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128202;</span><span class="sk-name">market_report</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127919;</span><span class="sk-name">lead_scorer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#9993;</span><span class="sk-name">email_composer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128200;</span><span class="sk-name">comp_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128196;</span><span class="sk-name">rent_roll_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#127974;</span><span class="sk-name">debt_analyzer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128181;</span><span class="sk-name">tax_assessor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128205;</span><span class="sk-name">site_selector</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128640;</span><span class="sk-name">portfolio_optimizer</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128240;</span><span class="sk-name">news_digest</span></div>
+    </div>
+
+    <div style="margin:24px 0 8px;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#10b981">Pharma &amp; Clinical &middot; 9 Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="sk-icon">&#128138;</span><span class="sk-name">drug_interaction</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128203;</span><span class="sk-name">med_reconciliation</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128290;</span><span class="sk-name">dose_calculator</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#129656;</span><span class="sk-name">anticoag_advisor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#9888;</span><span class="sk-name">allergy_check</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#129516;</span><span class="sk-name">pgx_advisor</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128680;</span><span class="sk-name">adverse_event</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128118;</span><span class="sk-name">pregnancy_safety</span></div>
+      <div class="skill-chip"><span class="sk-icon">&#128137;</span><span class="sk-name">med_safety</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BeeBox -->
+<section class="beebox" id="beebox">
+  <div class="container">
+    <div class="section-label">Edge Compute</div>
+    <h2 class="section-title">BeeBox</h2>
+    <p class="section-sub">A sovereign AI appliance on your desk. Local inference, plug-and-play skills, and fleet escalation when you need it.</p>
+    <div class="beebox-visual">
+<span class="hl">┌─────────────────────────────────────────────┐</span>
+<span class="hl">│</span>  <span class="acc">BeeBox</span>  ·  Sovereign Edge AI                <span class="hl">│</span>
+<span class="hl">├─────────────────────────────────────────────┤</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">BeeMini-3B</span>   → Routes every request        <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">Judge-4B</span>     → Quality gate (local)        <span class="hl">│</span>
+<span class="hl">│</span>  <span class="acc">Skill Store</span>  → Plug-and-play skills        <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  72% local  ·  28% fleet escalation         <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">│</span>  ─── fleet call ──→ <span class="hl">SwarmHQ (9B+)</span>           <span class="hl">│</span>
+<span class="hl">│</span>  ←── response ────  <span class="hl">GPU Cluster</span>             <span class="hl">│</span>
+<span class="hl">│</span>                                             <span class="hl">│</span>
+<span class="hl">└─────────────────────────────────────────────┘</span>
+    </div>
+    <div class="beebox-specs">
+      <div class="beebox-spec">
+        <div class="val">$499</div>
+        <div class="lbl">Target Price</div>
+      </div>
+      <div class="beebox-spec">
+        <div class="val">2-4B</div>
+        <div class="lbl">Local Models</div>
+      </div>
+      <div class="beebox-spec">
+        <div class="val">16 TOPS</div>
+        <div class="lbl">NPU Accel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="arch" id="architecture">
+  <div class="container">
+    <div class="section-label">Infrastructure</div>
+    <h2 class="section-title">The Stack</h2>
+    <p class="section-sub">From raw data to edge inference — every layer is purpose-built.</p>
+    <div class="arch-diagram"><span class="layer">EDGE</span>         BeeBox · Jetson · Mac Mini · Zima
+             BeeMini-3B router → Judge-4B gate
+             <span class="dim">Q4_K_M GGUF · 2-6GB VRAM · USB4/10GbE</span>
+
+<span class="layer">API</span>          router.swarmandbee.com
+             <span class="comp">POST /skill/{name}</span> → route → execute → judge → store
+             <span class="dim">Cloudflare Workers · D1 · R2 · Vectorize</span>
+
+<span class="layer">COMPUTE</span>      128× RTX PRO 6000 Blackwell · 96GB each · 12,288GB VRAM
+             <span class="comp">We own the racks. We cook the rails.</span>
+             <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM · fp8 inference</span>
+
+<span class="layer">FLEET</span>        SwarmCRE-122B Founder FTW · 9B × 9 · 4B · 2B · 0.8B edge
+             <span class="comp">SwarmCurator</span> 8-step pipeline → Platinum pairs only
+             <span class="dim">Mamba-Transformer · MoE · Q4_K_M GGUF · sovereign</span>
+
+<span class="layer">DATA</span>         Gold Vault · 1.2M pairs · 85+ specialties
+             <span class="comp">R2 buckets</span>: sb-cre · sb-medical · sb-aviation · sb-core · sb-drone
+             <span class="dim">CoVe verification · SwarmJudge PASS/FAIL · trajectory labels</span>
+
+<span class="layer">TRAIN</span>        Factory · Together.ai cooks · Blackwell training
+             <span class="comp">Phase pipeline</span>: generate → judge → promote → train → eval
+             <span class="dim">Qwen3.5 base · LoRA r=64 · packing · multi-phase</span></div>
+  </div>
+</section>
+
+<!-- Built With -->
+<section class="built-with" id="built-with">
+  <div class="container">
+    <div class="section-label">Powered By</div>
+    <h2 class="section-title">Built With</h2>
+    <p class="section-sub">Local sovereignty. Open-source foundation. Every tool in the stack is chosen because we own the signal — not rent it.</p>
+    <div class="stack-grid">
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#129302;</span>
+          <span class="sc-name">Qwen3.5</span>
+          <span class="sc-tag">BASE</span>
+        </div>
+        <div class="sc-desc">Alibaba's Qwen3.5 family — Mamba-Transformer hybrids and MoE architectures. The base brain for every SwarmCRE model.</div>
+        <div class="sc-models">
+          <span>Qwen3.5-122B</span> · Founder FTW, fp8, 2 GPUs<br>
+          <span>Qwen3.5-9B</span> · Mamba-Transformer flagship<br>
+          <span>Qwen3.5-4B</span> · Compact edge<br>
+          <span>Qwen2.5-3B</span> · BeeMini router<br>
+          <span>Qwen3.5-0.8B</span> · Nano, CPU inference
+        </div>
+        <a href="https://huggingface.co/Qwen" target="_blank" rel="noopener noreferrer">Qwen on HuggingFace &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#9889;</span>
+          <span class="sc-name">Unsloth</span>
+          <span class="sc-tag">TRAIN</span>
+        </div>
+        <div class="sc-desc">1.5x faster fine-tuning, 50% less VRAM. Every LoRA adapter in the fleet is trained with Unsloth on Blackwell GPUs.</div>
+        <div class="sc-models">
+          <span>bf16 LoRA r=64</span> · full precision<br>
+          <span>packing=True</span> · 6x throughput<br>
+          <span>FA2</span> · Flash Attention 2<br>
+          <span>5GB VRAM</span> · min for Qwen3.5-2B LoRA
+        </div>
+        <a href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128038;</span>
+          <span class="sc-name">llama.cpp</span>
+          <span class="sc-tag">SERVE</span>
+        </div>
+        <div class="sc-desc">GGUF quantization and inference for edge deployment. Every model ships as Q4_K_M for BeeBox, Jetson, and desktop.</div>
+        <div class="sc-models">
+          <span>Q4_K_M</span> · primary quant format<br>
+          <span>llama-server</span> · GPU inference<br>
+          <span>llama-quantize</span> · model export<br>
+          <span>sm_86 / sm_120</span> · Ampere + Blackwell
+        </div>
+        <a href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#9729;</span>
+          <span class="sc-name">Cloudflare</span>
+          <span class="sc-tag">EDGE</span>
+        </div>
+        <div class="sc-desc">Workers, D1, R2, Vectorize, Pages. The entire API layer and data plane runs on Cloudflare's edge network.</div>
+        <div class="sc-models">
+          <span>Workers</span> · SwarmSkills runtime<br>
+          <span>D1</span> · events, entities, memory<br>
+          <span>R2</span> · Gold Vault storage<br>
+          <span>Vectorize</span> · BGE-Base embeddings
+        </div>
+        <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Docs &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128640;</span>
+          <span class="sc-name">Together.ai</span>
+          <span class="sc-tag">COOK</span>
+        </div>
+        <div class="sc-desc">Serverless inference API for data cooking. Generates and judges millions of pairs through the SwarmCurator pipeline.</div>
+        <div class="sc-models">
+          <span>Qwen3-Next-80B-A3B</span> · generation<br>
+          <span>Qwen3-235B-A22B</span> · quality rewrite<br>
+          <span>Llama-4-Maverick</span> · judge verdicts<br>
+          <span>15 workers</span> · per cook run
+        </div>
+        <a href="https://www.together.ai" target="_blank" rel="noopener noreferrer">together.ai &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#128187;</span>
+          <span class="sc-name">NVIDIA</span>
+          <span class="sc-tag">GPU</span>
+        </div>
+        <div class="sc-desc">128 RTX PRO 6000 Blackwell GPUs. 96GB each. 12,288GB total VRAM. We own the racks. We cook the rails.</div>
+        <div class="sc-models">
+          <span>RTX PRO 6000</span> · 96GB, sm_120<br>
+          <span>RTX 3090 Ti</span> · 24GB, sm_86<br>
+          <span>Jetson Orin Nano</span> · 8GB, edge<br>
+          <span>CUDA 12.8+</span> · Blackwell support
+        </div>
+        <a href="https://www.nvidia.com" target="_blank" rel="noopener noreferrer">nvidia.com &rarr;</a>
+      </div>
+
+      <div class="stack-card">
+        <div class="sc-head">
+          <span class="sc-icon">&#9889;</span>
+          <span class="sc-name">Supabase</span>
+          <span class="sc-tag">DB</span>
+        </div>
+        <div class="sc-desc">Postgres backend for training runs, model registry, and operational state. Auth, realtime, and storage in one platform.</div>
+        <div class="sc-models">
+          <span>training_runs</span> · job tracking &amp; status<br>
+          <span>model_registry</span> · artifacts &amp; versions<br>
+          <span>Auth</span> · API key management<br>
+          <span>Realtime</span> · live training updates
+        </div>
+        <a href="https://supabase.com" target="_blank" rel="noopener noreferrer">supabase.com &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Who We Are -->
+<section class="founders" id="team">
+  <div class="container">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Builder-Owned. Signal-Obsessed.</h2>
+    <div class="founders-inner">
+      We don't rent GPUs by the hour. We <strong>own the racks</strong>, <strong>build the models</strong>, and <strong>curate every pair</strong> ourselves.
+      Swarm & Bee was founded to prove that vertical AI wins when you control the full stack — from raw data to edge inference.
+      No middlemen. No synthetic shortcuts. Just disciplined signal at scale.
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof / By the Numbers -->
+<section class="proof">
+  <div class="container">
+    <div class="section-label">By the Numbers</div>
+    <h2 class="section-title">The Signal Is Real</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="pf-stat">643K</div>
+        <div class="pf-label">CRE Platinum Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"Math-verified. Every underwriting calc checked."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">432K</div>
+        <div class="pf-label">Medical Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"85 specialties. Trajectory-enhanced. DDI-verified."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">45K</div>
+        <div class="pf-label">Aviation Pairs</div>
+        <div class="pf-quote" style="margin-top:8px">"157 specialties. Operational relevance scored."</div>
+      </div>
+      <div class="proof-card">
+        <div class="pf-stat">0%</div>
+        <div class="pf-label">Override Rate</div>
+        <div class="pf-quote" style="margin-top:8px">"The SwarmJudge verdict is final. Unappeallable."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is Swarm & Bee?</div>
+        <div class="faq-a">Swarm & Bee builds vertical AI models and curates platinum-grade training data. We own 128 RTX PRO 6000 Blackwell GPUs (12TB VRAM) and run the full stack — from data generation to model training to edge deployment. Our first vertical is commercial real estate (SwarmCRE), with medical, aviation, and custom verticals available.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is SwarmCRE?</div>
+        <div class="faq-a">SwarmCRE is our commercial real estate AI franchise — a family of models from 0.8B (edge/IoT) to 122B (Founder FTW). The flagship is SwarmCRE-9B "Morey," a Mamba-Transformer hybrid trained on 643K platinum CRE pairs. It handles underwriting, IC memos, deal analysis, debt sizing, 1031 exchanges, market intelligence, and more via chat or voice.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What makes your training data different?</div>
+        <div class="faq-a">Every training pair passes our 8-step SwarmCurator pipeline: Source, Grind, Schema, CoVe (Chain of Verification — 5 criteria scored 1-10), Judge (PASS/FAIL verdict), Trajectory (multi-step reasoning), Cross-Validation (dedup + adversarial probing), and Platinum promotion. The final verdict is unappeallable — 0% override rate across 1.2M pairs.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Can you build custom training data for my vertical?</div>
+        <div class="faq-a">Yes. We offer Custom Curation Builds for any domain — CRE, pharma, aviation, legal, finance, or something new. You define the specialties, task types, and volume. We run the full 8-step pipeline on 128 GPUs. You receive platinum JSONL with CoVe scores, trajectory labels, and train/eval splits. Contact us to scope a build.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What is BeeBox?</div>
+        <div class="faq-a">BeeBox is our sovereign edge AI appliance — a plug-and-play device that runs BeeMini-3B (skill router) and SwarmCRE-4B (quality gate) locally. It handles 72% of requests on-device and escalates 28% to the SwarmHQ GPU fleet. Target price: $499. Designed for brokerages, investors, and teams who want CRE AI without cloud dependency.</div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">How do SwarmSkills work?</div>
+        <div class="faq-a">SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmJudge and becomes training data for the next model generation.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Build With Us</h2>
+    <p class="section-sub">Interested in SwarmCRE, the API, BeeBox, or joining the fleet? Drop a line.</p>
+    <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+      <div class="contact-row">
+        <input type="text" name="name" placeholder="Name" required aria-label="Your name">
+        <input type="email" name="email" placeholder="Email" required aria-label="Your email">
+      </div>
+      <select name="interest" required aria-label="Area of interest">
+        <option value="" disabled selected>What are you interested in?</option>
+        <option value="SwarmCRE Platform">SwarmCRE Platform</option>
+        <option value="Morey (Chat/Voice)">Morey — Chat & Voice</option>
+        <option value="API Access">API Access</option>
+        <option value="BeeBox Edge Device">BeeBox Edge Device</option>
+        <option value="Custom Curation Build">Custom Curation Build</option>
+        <option value="Partnership">Partnership / Integration</option>
+        <option value="Investment">Investment</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea name="message" placeholder="Tell us what you're building..." rows="4" required aria-label="Your message"></textarea>
+      <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+<script>
+async function submitContact(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('formStatus');
+  const data=Object.fromEntries(new FormData(form));
+
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  status.className='form-status';
+  status.style.display='none';
+
+  try{
+    const embed={
+      title:'New Contact — swarmandbee.ai',
+      color:0xf59e0b,
+      fields:[
+        {name:'Name',value:data.name,inline:true},
+        {name:'Email',value:data.email,inline:true},
+        {name:'Interest',value:data.interest,inline:false},
+        {name:'Message',value:data.message,inline:false}
+      ],
+      timestamp:new Date().toISOString(),
+      footer:{text:'swarmandbee.ai contact form'}
+    };
+    const res=await fetch('https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({embeds:[embed]})
+    });
+    if(res.ok||res.status===204){
+      status.className='form-status success';
+      status.textContent='Message sent. We\'ll be in touch.';
+      status.style.display='block';
+      form.reset();
+    }else{
+      throw new Error('Discord returned '+res.status);
+    }
+  }catch(err){
+    status.className='form-status error';
+    status.textContent='Failed to send. Email us at build@swarmandbee.com';
+    status.style.display='block';
+  }
+  btn.disabled=false;
+  btn.textContent='Send Message';
+}
+
+async function handleHeroSignup(e){
+  e.preventDefault();
+  const form=e.target;
+  const email=form.querySelector('input[type="email"]').value.trim();
+  const password=form.querySelector('input[type="password"]').value;
+  const btn=form.querySelector('button[type="submit"]');
+  const status=document.getElementById('heroSignupStatus');
+  if(!email||!password)return;
+
+  btn.disabled=true;
+  btn.textContent='Creating...';
+  status.className='signup-status';
+  status.style.display='none';
+
+  try{
+    await swarmAuth.signup(email,password);
+    try{await swarmAuth.login(email,password);}catch(_){}
+    status.className='signup-status success';
+    if(swarmAuth.isLoggedIn()){
+      status.textContent='Account created! Redirecting to dashboard...';
+      status.style.display='inline-block';
+      setTimeout(function(){window.location.href='/dashboard';},1200);
+    }else{
+      status.textContent='Account created! Check email to confirm, then sign in.';
+      status.style.display='inline-block';
+    }
+    form.querySelector('input[type="email"]').value='';
+    form.querySelector('input[type="password"]').value='';
+  }catch(err){
+    status.className='signup-status error';
+    status.textContent=err.message||'Signup failed. Try signing in instead.';
+    status.style.display='inline-block';
+  }
+  btn.disabled=false;
+  btn.textContent='Create Account';
+}
+
+// API health check
+(function(){
+  const statusEl=document.getElementById('apiStatusText');
+  const dotEl=document.querySelector('#apiStatus .live-dot');
+  fetch('https://router.swarmandbee.com/skills',{mode:'cors'})
+    .then(r=>r.json())
+    .then(data=>{
+      const count=Array.isArray(data)?data.length:(data.skills?data.skills.length:0);
+      if(count>0){
+        statusEl.textContent=count+' skills live · API operational';
+      }else{
+        statusEl.textContent='API operational';
+      }
+    })
+    .catch(()=>{
+      statusEl.textContent='28 skills deployed · swarmrails online';
+      dotEl.style.background='var(--primary)';
+      dotEl.style.boxShadow='0 0 8px rgba(232,163,23,0.5)';
+    });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
     <div class="footer-links">
-      <a href="/router">router</a>
-      <a href="/judge">judge</a>
-      <a href="/factory">factory</a>
-      <a href="/models">models</a>
-      <a href="/docs">docs</a>
-      <a href="https://swarmandbee.com">swarmandbee.com</a>
-      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+      <a href="/signal" style="color:#C8963E">Signal</a>
+      <a href="/curator">Curator</a>
+      <a href="/hedera">Hedera</a>
+      <a href="/swarmmed">Medical</a>
+      <a href="/swarmpharma">Pharma</a>
+      <a href="/swarmaviation">Aviation</a>
+      <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://huggingface.co/SwarmandBee" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+      <a href="https://x.com/swarmandbee" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a href="https://discord.gg/sNjJrND5eb" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
     </div>
+    <div style="margin-bottom:12px;font-size:0.78rem">
+      <a href="mailto:build@swarmandbee.com" style="color:var(--primary)">build@swarmandbee.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+15615327120" style="color:var(--text-2)">561-532-7120</a>
+    </div>
+    <div class="copyright">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
   </div>
 </footer>
 
-<script src="app.js"></script>
-<script>
-(async function homeCookPoll() {
-  try {
-    const res = await fetch('https://router.swarmandbee.com/compute/status', { signal: AbortSignal.timeout(5000) });
-    if (!res.ok) throw new Error(res.status);
-    const d = await res.json();
-    const judge  = d?.training?.find?.(t => t.model === 'swarmjudge-27b')  || {};
-    const router = d?.training?.find?.(t => t.model === 'swarmrouter-4b')  || {};
-    const total  = d?.totals?.total_pairs;
-    const set = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
-    if (judge.pct  != null) set('hcb-judge-prog',  judge.pct  + '%');
-    if (judge.step != null) set('hcb-judge-step',  'step ' + judge.step.toLocaleString());
-    if (judge.eta  != null) set('hcb-judge-eta',   judge.eta);
-    if (router.pct  != null) set('hcb-router-prog', router.pct + '%');
-    if (router.step != null) set('hcb-router-step', 'step ' + router.step.toLocaleString());
-    if (router.eta  != null) set('hcb-router-eta',  router.eta);
-    if (total)               set('hcb-total', total.toLocaleString() + ' pairs in R2');
-  } catch (_) {}
-  setTimeout(homeCookPoll, 60000); // refresh every 60s on homepage
-})();
-</script>
 </body>
 </html>
