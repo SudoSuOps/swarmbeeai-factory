@@ -150,7 +150,7 @@
       "name": "How do SwarmSkills work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmJudge."
+        "text": "SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmCurator."
       }
     }
   ]
@@ -805,7 +805,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <div class="bar" style="background:var(--primary)"></div>
         <div class="icon">&#129302;</div>
         <h3>Build — LLM</h3>
-        <p>Fine-tuned vertical models from 0.8B to 122B. Trained on sovereign compute, quality-gated by SwarmJudge, deployed from cloud to edge.</p>
+        <p>Fine-tuned vertical models from 2B to 35B. Trained on sovereign compute, quality-gated by 6 deterministic gates, deployed from cloud to edge.</p>
         <div class="card-stats">
           <div class="card-stat"><strong>7</strong> models</div>
           <div class="card-stat"><strong>128</strong> GPUs</div>
@@ -871,7 +871,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
         <span class="pipe-num">5</span>
         <span class="pipe-icon">&#9878;</span>
         <span class="pipe-name">Judge</span>
-        <span class="pipe-desc">SwarmJudge PASS/FAIL verdict on every pair</span>
+        <span class="pipe-desc">SwarmCurator PASS/FAIL verdict on every pair</span>
       </div>
       <div class="pipe-step">
         <span class="pipe-num">6</span>
@@ -942,55 +942,72 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="section-label">Model Fleet</div>
     <h2 class="section-title">The Fleet</h2>
-    <p class="section-sub">The SwarmCRE franchise — from 0.8B edge to 122B Founder. 128 RTX PRO 6000 GPUs. 12TB VRAM. We own the racks. We cook the rails.</p>
+    <p class="section-sub">Vertical AI models trained on sovereign compute. 1.24M platinum pairs. RTX PRO 6000 Blackwell + RTX 3090 Ti. Every model earns its slot.</p>
     <div class="fleet-grid">
 
+      <!-- TRAINED & SEALED -->
+      <a href="/swarmpharma" class="fleet-card" style="border-color:rgba(236,72,153,0.5);background:linear-gradient(180deg,#111,#0a0a0a)">
+        <div class="model-icon">&#128138;</div>
+        <h4>SwarmPharma-35B</h4>
+        <div class="params">Qwen3.5-35B-A3B · bf16 LoRA</div>
+        <div class="role">Clinical pharmacology. DDI detection, dosing, PK/PD, 5-step trajectory. 25,629 pairs. Zero quantization loss.</div>
+        <span class="tag tag-live">Sealed v1</span>
+      </a>
+
       <div class="fleet-card" style="border-color:rgba(245,158,11,0.4);background:linear-gradient(180deg,#111,#0a0a0a)">
-        <div class="model-icon">&#127775;</div>
-        <h4>SwarmCRE-122B</h4>
-        <div class="params">122B · fp8 · 2 GPUs</div>
-        <div class="role">The Founder. Full-stack CRE reasoning, multi-document synthesis, portfolio-level strategy. Runs on our own racks. FTW.</div>
-        <span class="tag tag-ceo">Founder FTW</span>
+        <div class="model-icon">&#127963;</div>
+        <h4>SwarmCRE-35B</h4>
+        <div class="params">Qwen3.5-35B-A3B · bf16 LoRA</div>
+        <div class="role">Commercial real estate. Underwriting, IC memos, deal analysis. 643K CRE pairs. v2 training in progress.</div>
+        <span class="tag tag-early">Training v3</span>
+      </div>
+
+      <div class="fleet-card" style="border-color:rgba(6,182,212,0.4)">
+        <div class="model-icon">&#129658;</div>
+        <h4>SwarmCurator-27B</h4>
+        <div class="params">Qwen3.5-27B · Q8_0 · Blackwell</div>
+        <div class="role">Quality gate + curation. Absorbs judge role. CRE, medical, aviation pair generation. 96GB VRAM.</div>
+        <span class="tag tag-live">Live on GPU 1</span>
+      </div>
+
+      <div class="fleet-card" style="border-color:rgba(16,185,129,0.4)">
+        <div class="model-icon">&#128270;</div>
+        <h4>SwarmCurator-9B</h4>
+        <div class="params">Qwen3.5-9B · F16 · 3090 Ti</div>
+        <div class="role">Ops specialist. 46K pairs (methodology + pipeline ops). Research, safety, signal generation.</div>
+        <span class="tag tag-live">Live on GPU 0</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128218;</div>
+        <h4>SwarmResearch-32B</h4>
+        <div class="params">Qwen2.5-32B · bf16 LoRA</div>
+        <div class="role">Safety &amp; research. 35,499 pairs. Multi-domain analysis, aviation, core verticals.</div>
+        <span class="tag tag-early">Trained v1</span>
       </div>
 
       <a href="/morey" class="fleet-card" style="border-color:var(--primary)">
         <div class="model-icon">&#128081;</div>
         <h4>SwarmCRE-9B "Morey"</h4>
-        <div class="params">9.5B · Mamba-Transformer</div>
-        <div class="role">The flagship. CRE underwriting, IC memos, deal analysis. Chat &amp; voice. The workhorse.</div>
-        <span class="tag tag-early">Early Access</span>
+        <div class="params">Qwen3.5-9B · Chat &amp; Voice</div>
+        <div class="role">The CRE flagship. Underwriting, IC memos, deal analysis. 28 SwarmSkills. Live API.</div>
+        <span class="tag tag-live">Live</span>
       </a>
-
-      <div class="fleet-card">
-        <div class="model-icon">&#9878;</div>
-        <h4>SwarmCRE-4B</h4>
-        <div class="params">4B · Compact</div>
-        <div class="role">Edge-grade CRE intelligence. Fits Jetson Orin Nano and BeeBox. Full quality gate.</div>
-        <span class="tag tag-early">Early Access</span>
-      </div>
-
-      <div class="fleet-card">
-        <div class="model-icon">&#128640;</div>
-        <h4>SwarmCRE-2B</h4>
-        <div class="params">2B · Micro</div>
-        <div class="role">Ultra-light CRE analyst. Runs on 2GB VRAM. Desktop and mobile ready.</div>
-        <span class="tag tag-early">Early Access</span>
-      </div>
-
-      <div class="fleet-card">
-        <div class="model-icon">&#128029;</div>
-        <h4>SwarmCRE-0.8B</h4>
-        <div class="params">0.8B · Nano</div>
-        <div class="role">Smallest CRE model. CPU inference. Embedded devices, IoT, on-prem appliances.</div>
-        <span class="tag tag-soon">Coming Soon</span>
-      </div>
 
       <div class="fleet-card">
         <div class="model-icon">&#128301;</div>
         <h4>BeeMini-3B</h4>
-        <div class="params">3B · Router</div>
-        <div class="role">Skill routing, domain classification. 98.3% valid JSON, 1.8GB Q4. Runs on anything.</div>
+        <div class="params">Qwen2.5-3B · Q4_K_M · 1.8GB</div>
+        <div class="role">Skill router. 98.3% valid JSON, 79.7% domain accuracy. 60K pairs. Runs on anything.</div>
         <span class="tag tag-live">Live</span>
+      </div>
+
+      <div class="fleet-card">
+        <div class="model-icon">&#128225;</div>
+        <h4>SwarmSignal-2B</h4>
+        <div class="params">Qwen3.5-2B · Q4_K_M · Jetson</div>
+        <div class="role">Edge signal classifier. P1-P5 priority scoring. 15-min cycles. Jetson Orin Nano 8GB.</div>
+        <span class="tag tag-live">Live on Edge</span>
       </div>
 
     </div>
@@ -1002,7 +1019,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <div class="container">
     <div class="section-label">Agent Economy</div>
     <h2 class="section-title">28 SwarmSkills</h2>
-    <p class="section-sub">Each skill is schema-validated, quality-gated by SwarmJudge, and callable via a single API endpoint. Every output becomes training data. Two verticals live.</p>
+    <p class="section-sub">Each skill is schema-validated, quality-gated by SwarmCurator, and callable via a single API endpoint. Every output becomes training data. Two verticals live.</p>
 
     <div style="margin-bottom:8px;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary)">Commercial Real Estate &middot; 19 Skills</div>
     <div class="skills-grid">
@@ -1099,13 +1116,13 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
              <span class="comp">We own the racks. We cook the rails.</span>
              <span class="dim">bf16 LoRA · Unsloth · llama.cpp · vLLM · fp8 inference</span>
 
-<span class="layer">FLEET</span>        SwarmCRE-122B Founder FTW · 9B × 9 · 4B · 2B · 0.8B edge
+<span class="layer">FLEET</span>        SwarmPharma-35B · SwarmCRE-35B · Curator-27B · Curator-9B · BeeMini-3B · Signal-2B
              <span class="comp">SwarmCurator</span> 8-step pipeline → Platinum pairs only
              <span class="dim">Mamba-Transformer · MoE · Q4_K_M GGUF · sovereign</span>
 
 <span class="layer">DATA</span>         Gold Vault · 1.2M pairs · 85+ specialties
              <span class="comp">R2 buckets</span>: sb-cre · sb-medical · sb-aviation · sb-core · sb-drone
-             <span class="dim">CoVe verification · SwarmJudge PASS/FAIL · trajectory labels</span>
+             <span class="dim">CoVe verification · 6 deterministic gates · trajectory labels</span>
 
 <span class="layer">TRAIN</span>        Factory · Together.ai cooks · Blackwell training
              <span class="comp">Phase pipeline</span>: generate → judge → promote → train → eval
@@ -1275,7 +1292,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <div class="proof-card">
         <div class="pf-stat">0%</div>
         <div class="pf-label">Override Rate</div>
-        <div class="pf-quote" style="margin-top:8px">"The SwarmJudge verdict is final. Unappeallable."</div>
+        <div class="pf-quote" style="margin-top:8px">"Six deterministic gates. No LLM judge. Code decides."</div>
       </div>
     </div>
   </div>
@@ -1315,7 +1332,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">How do SwarmSkills work?</div>
-        <div class="faq-a">SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmJudge and becomes training data for the next model generation.</div>
+        <div class="faq-a">SwarmSkills are schema-validated AI agent skills callable via a single API endpoint: POST /skill/{name} at router.swarmandbee.com. There are 28 live skills across CRE and pharma verticals — from broker analysis to drug interaction screening. Every skill output is quality-gated by SwarmCurator and becomes training data for the next model generation.</div>
       </div>
 
     </div>
