@@ -11,7 +11,7 @@
 
   const SUPABASE_URL = 'https://gizwfmgowyfadmvjjitb.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdpendmbWdvd3lmYWRtdmpqaXRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxMTk5OTQsImV4cCI6MjA4NzY5NTk5NH0.2yfADZ83GHk0lNlanwOWPieV3sgrCGStdiGNAFEBqAI';
-  const API_BASE = 'https://api.swarmandbee.com';
+  const API_BASE = 'https://api.swarmandbee.ai';
   const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1479111054570033152/O8PUHYDZ-XFoxmFjTLFrqly5xn8l84l_oy_6AfIEgKvYaijz6pJrLQiaOjQyYMj-mYhM';
 
   let sb = null;
