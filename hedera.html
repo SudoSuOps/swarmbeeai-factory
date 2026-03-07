@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedera Network — Zero-Trust Provenance | Swarm & Bee</title>
+<meta name="description" content="Swarm & Bee anchors AI training data integrity on the Hedera network. Merkle-verified pairs, HCS on-chain provenance, and quality guarantees verified on HashScan. swarmandbee.hbar mainnet.">
+<meta name="keywords" content="Hedera, HCS, Hedera Consensus Service, AI provenance, Merkle tree, on-chain verification, swarmandbee.hbar, HashScan, zero-trust, quality guarantee, training data integrity, HTS, Hedera Token Service">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Swarm & Bee">
+<meta name="theme-color" content="#8B5CF6">
+<link rel="canonical" href="https://swarmandbee.ai/hedera">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Swarm & Bee">
+<meta property="og:title" content="Hedera Network — Zero-Trust AI Data Provenance">
+<meta property="og:description" content="Every training pair batch is Merkle-verified and anchored on Hedera Consensus Service. Customers verify integrity on HashScan. No trust required — math proves it.">
+<meta property="og:url" content="https://swarmandbee.ai/hedera">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@swarmandbee">
+<meta name="twitter:title" content="Hedera Network — Zero-Trust AI Data Provenance">
+<meta name="twitter:description" content="Merkle-verified training pairs anchored on Hedera HCS. Verify any pair against the on-chain root. swarmandbee.hbar mainnet.">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Hedera Network — Zero-Trust Provenance",
+  "description": "Swarm & Bee uses Hedera Consensus Service to anchor AI training data integrity on-chain. Every batch includes a Merkle root, quality gate results, and a HashScan verification link.",
+  "url": "https://swarmandbee.ai/hedera",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Swarm & Bee",
+    "url": "https://swarmandbee.ai"
+  }
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   Base — matches production site nav/footer
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --bg:#000;--surface:#111;--border:#222;
+  --primary:#f59e0b;--primary-dim:#d97706;--accent:#10b981;
+  --text:#fff;--text-2:#d4d4d4;--text-3:#737373;
+  --max-w:1200px;--radius:12px;--radius-sm:8px;
+  --font:'DM Sans',system-ui,sans-serif;--heading:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* Ecosystem Bar */
+.eco-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:36px;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  font-size:0.75rem;color:var(--text-3);backdrop-filter:blur(12px);
+}
+.eco-bar a{transition:color 0.2s}
+.eco-bar a:hover{color:var(--primary)}
+.eco-bar .sep{opacity:0.3}
+
+/* Nav */
+nav{
+  position:fixed;top:36px;left:0;right:0;z-index:99;
+  height:64px;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;
+}
+.nav-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--heading);font-weight:700;font-size:1.15rem;letter-spacing:-0.03em}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+/* Footer */
+footer{
+  padding:48px 24px;border-top:1px solid var(--border);
+  text-align:center;font-size:0.82rem;color:var(--text-3);
+  background:var(--bg);
+}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+footer a{transition:color 0.2s}
+footer a:hover{color:var(--primary)}
+footer .copyright{font-size:0.75rem;opacity:0.5}
+
+/* ═══════════════════════════════════════════════════════
+   Hedera Page — Purple Accent Theme
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --hd-purple:#8B5CF6;--hd-purple-light:#A78BFA;
+  --hd-purple-glow:rgba(139,92,246,0.12);
+  --hd-surface:#0A0A0A;--hd-surface-2:#111;
+  --hd-text:#F5F5F5;--hd-text-2:#D4D4D4;--hd-text-3:#737373;
+  --hd-border:rgba(255,255,255,0.08);
+  --hd-serif:'Playfair Display',Georgia,serif;
+  --hd-sans:'DM Sans',system-ui,sans-serif;
+}
+
+.hedera-content{background:var(--bg);color:var(--hd-text);font-family:var(--hd-sans)}
+
+/* Hero */
+.hd-hero{
+  padding:80px 24px 64px;text-align:center;
+  background:var(--bg);position:relative;margin-top:100px;
+}
+.hd-hero::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:60px;height:2px;background:var(--hd-purple);
+}
+.hd-hero-inner{max-width:720px;margin:0 auto}
+.hd-badge{
+  display:inline-block;font-family:var(--hd-sans);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--hd-purple);margin-bottom:28px;
+}
+.hd-title{
+  font-family:var(--hd-serif);font-size:3.4rem;font-weight:900;
+  line-height:1.05;color:var(--hd-text);margin:0 0 6px;letter-spacing:-0.02em;
+}
+.hd-subtitle{
+  font-family:var(--hd-serif);font-size:1.4rem;font-weight:400;
+  font-style:italic;color:var(--hd-purple);margin:0 0 32px;
+}
+.hd-hero-text{font-size:1.05rem;line-height:1.7;color:var(--hd-text-2);margin:0 0 12px}
+
+/* Sections */
+.hd-section{padding:80px 24px}
+.hd-section-alt{background:var(--hd-surface-2)}
+.hd-inner{max-width:960px;margin:0 auto}
+.hd-label{
+  font-family:var(--hd-sans);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--hd-purple);margin-bottom:12px;
+}
+.hd-section-title{
+  font-family:var(--hd-serif);font-size:2rem;font-weight:700;
+  color:var(--hd-text);margin:0 0 20px;line-height:1.2;
+}
+.hd-section-text{font-size:1rem;line-height:1.75;color:var(--hd-text-2);max-width:640px}
+.hd-section-text strong{color:var(--hd-text);font-weight:600}
+.hd-divider{width:40px;height:2px;background:var(--hd-purple);margin:24px 0}
+
+/* Identity Card */
+.hd-identity{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;
+}
+.hd-id-card{
+  padding:32px 28px;background:var(--hd-surface-2);
+  border:1px solid var(--hd-border);border-radius:8px;
+}
+.hd-id-label{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--hd-purple);margin-bottom:8px}
+.hd-id-value{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--hd-text);word-break:break-all}
+.hd-id-sub{font-size:0.78rem;color:var(--hd-text-3);margin-top:6px}
+
+/* Stats Grid */
+.hd-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px;
+}
+.hd-stat{
+  padding:28px 20px;background:var(--hd-surface-2);
+  border:1px solid var(--hd-border);text-align:center;
+}
+.hd-stat:first-child{border-radius:8px 0 0 8px}
+.hd-stat:last-child{border-radius:0 8px 8px 0}
+.hd-stat-num{
+  font-family:var(--hd-serif);font-size:2rem;font-weight:900;
+  color:var(--hd-purple);line-height:1;margin-bottom:6px;
+}
+.hd-stat-label{font-size:0.75rem;color:var(--hd-text-3);font-weight:500;text-transform:uppercase;letter-spacing:0.08em}
+
+/* Services Grid */
+.hd-services{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;
+}
+.hd-service{
+  padding:28px 24px;background:var(--hd-surface-2);
+  border:1px solid var(--hd-border);border-radius:8px;
+  transition:border-color 0.2s;
+}
+.hd-service:hover{border-color:var(--hd-purple)}
+.hd-service-name{
+  font-family:var(--hd-serif);font-size:1.1rem;font-weight:700;
+  color:var(--hd-text);margin-bottom:8px;
+}
+.hd-service-tag{
+  display:inline-block;font-size:0.65rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--hd-purple);background:var(--hd-purple-glow);
+  padding:3px 10px;border-radius:3px;margin-bottom:12px;
+}
+.hd-service-desc{font-size:0.85rem;color:var(--hd-text-3);line-height:1.6}
+
+/* Flow Diagram */
+.hd-flow{margin-top:40px}
+.hd-flow-step{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--hd-border);
+}
+.hd-flow-step:last-child{border-bottom:none}
+.hd-flow-num{
+  flex-shrink:0;width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--hd-purple-glow);border:1px solid rgba(139,92,246,0.3);
+  border-radius:50%;font-family:var(--mono);font-size:0.82rem;
+  font-weight:700;color:var(--hd-purple);
+}
+.hd-flow-content{flex:1}
+.hd-flow-title{font-weight:700;color:var(--hd-text);margin-bottom:4px}
+.hd-flow-desc{font-size:0.85rem;color:var(--hd-text-3);line-height:1.6}
+
+/* Code Block */
+.hd-code{
+  margin-top:32px;padding:24px;background:#0D0D0D;
+  border:1px solid var(--hd-border);border-radius:6px;
+  font-family:var(--mono);font-size:0.78rem;line-height:1.8;
+  color:var(--hd-text-2);overflow-x:auto;white-space:pre;
+}
+.hd-code .comment{color:var(--hd-text-3)}
+.hd-code .key{color:var(--hd-purple-light)}
+.hd-code .str{color:#34D399}
+.hd-code .bool{color:#F59E0B}
+
+/* Responsive */
+@media(max-width:768px){
+  .eco-bar{gap:12px;font-size:0.68rem;padding:0 12px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:64px;left:0;right:0;
+    background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);
+    padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);
+  }
+  .hd-title{font-size:2.4rem}
+  .hd-subtitle{font-size:1.1rem}
+  .hd-section{padding:60px 20px}
+  .hd-identity{grid-template-columns:1fr}
+  .hd-stats{grid-template-columns:repeat(2,1fr)}
+  .hd-stat{border-radius:0!important}
+  .hd-services{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .eco-bar{display:none}
+  nav{top:0}
+  .hd-title{font-size:2rem}
+  .hd-hero{padding:60px 16px 48px;margin-top:64px}
+  .hd-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Ecosystem Bar -->
+<div class="eco-bar">
+  <a href="/">Home</a>
+  <span class="sep">|</span>
+  <a href="/signal" style="color:#C8963E">Signal</a>
+  <span class="sep">|</span>
+  <a href="/curator">Curator</a>
+  <span class="sep">|</span>
+  <a href="/morey" style="color:#f59e0b">Morey</a>
+  <span class="sep">|</span>
+  <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+  <span class="sep">|</span>
+  <a href="/hedera" style="color:#8B5CF6;font-weight:600">Hedera</a>
+  <span class="sep">|</span>
+  <a href="https://discord.gg/sNjJrND5eb" target="_blank" rel="noopener noreferrer">Discord</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">swarm<span>&</span>bee</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/signal" style="color:#C8963E">Signal</a>
+      <a href="/curator">Curator</a>
+      <a href="/morey" style="color:var(--primary)">Morey</a>
+      <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
+      <a href="/hedera" style="color:#8B5CF6;font-weight:600">Hedera</a>
+      <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
+      <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEDERA CONTENT
+     ═══════════════════════════════════════════════════════ -->
+<div class="hedera-content">
+
+<!-- HERO -->
+<section class="hd-hero">
+  <div class="hd-hero-inner">
+    <div class="hd-badge">Swarm &amp; Bee &middot; On-Chain Provenance</div>
+    <h1 class="hd-title">Hedera Network</h1>
+    <div class="hd-subtitle">Zero-Trust Data Integrity.</div>
+    <p class="hd-hero-text">
+      Every training pair batch we deliver is fingerprinted, Merkle-verified,
+      and anchored on <strong>Hedera Consensus Service</strong>.
+    </p>
+    <p class="hd-hero-text">
+      No trust required. The math proves integrity. Verify it yourself on <strong>HashScan</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     WHY HEDERA
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section hd-section-alt">
+  <div class="hd-inner">
+    <div class="hd-label">Why We're Here</div>
+    <h2 class="hd-section-title">The Trust Problem in AI Training Data</h2>
+    <div class="hd-divider"></div>
+    <p class="hd-section-text">
+      AI models are only as good as their training data. But when you buy training pairs,
+      you're trusting the seller that the data is quality-gated, untampered, and complete.
+      <strong>Trust-me isn't good enough for enterprise.</strong>
+    </p>
+    <p class="hd-section-text" style="margin-top:16px">
+      We anchor every batch on Hedera &mdash; the public, proof-of-stake network governed by
+      Google, IBM, Dell, FedEx, Deutsche Telekom, and LG. Its entire codebase lives under the
+      <strong>Linux Foundation</strong> as Project Hiero. No vendor lock-in. No proprietary black boxes.
+    </p>
+
+    <div class="hd-stats">
+      <div class="hd-stat">
+        <div class="hd-stat-num">$0.0001</div>
+        <div class="hd-stat-label">Per Anchor</div>
+      </div>
+      <div class="hd-stat">
+        <div class="hd-stat-num">10K</div>
+        <div class="hd-stat-label">TPS</div>
+      </div>
+      <div class="hd-stat">
+        <div class="hd-stat-num">3s</div>
+        <div class="hd-stat-label">Finality</div>
+      </div>
+      <div class="hd-stat">
+        <div class="hd-stat-num">&infin;</div>
+        <div class="hd-stat-label">Immutable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     OUR IDENTITY
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section">
+  <div class="hd-inner">
+    <div class="hd-label">Publisher Identity</div>
+    <h2 class="hd-section-title">swarmandbee.hbar</h2>
+    <div class="hd-divider"></div>
+    <p class="hd-section-text">
+      Our on-chain identity is verifiable on both Hedera and Ethereum.
+      Every quality guarantee we issue is signed by this identity.
+    </p>
+
+    <div class="hd-identity">
+      <div class="hd-id-card">
+        <div class="hd-id-label">Hedera Identity</div>
+        <div class="hd-id-value">swarmandbee.hbar</div>
+        <div class="hd-id-sub">Mainnet &middot; Operator 0.0.10291827</div>
+      </div>
+      <div class="hd-id-card">
+        <div class="hd-id-label">Ethereum Identity</div>
+        <div class="hd-id-value">swarmandbee.eth</div>
+        <div class="hd-id-sub">ENS Domain &middot; Cross-chain via Axelar</div>
+      </div>
+      <div class="hd-id-card">
+        <div class="hd-id-label">AI Studio</div>
+        <div class="hd-id-value">8 Registered Agents</div>
+        <div class="hd-id-sub">PASETO v4 authenticated &middot; CRE Broker Agent active</div>
+      </div>
+      <div class="hd-id-card">
+        <div class="hd-id-label">Open Source</div>
+        <div class="hd-id-value">Project Hiero</div>
+        <div class="hd-id-sub">Linux Foundation Decentralized Trust &middot; hiero-sdk-python</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     WHAT WE USE
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section hd-section-alt">
+  <div class="hd-inner">
+    <div class="hd-label">Infrastructure</div>
+    <h2 class="hd-section-title">Hedera Services We Use</h2>
+    <div class="hd-divider"></div>
+
+    <div class="hd-services">
+      <div class="hd-service">
+        <div class="hd-service-tag">Active</div>
+        <div class="hd-service-name">Consensus Service (HCS)</div>
+        <div class="hd-service-desc">
+          Immutable timestamped messages. We publish Merkle roots here &mdash;
+          one message per batch, $0.0001 each. Verifiable on HashScan forever.
+        </div>
+      </div>
+      <div class="hd-service">
+        <div class="hd-service-tag">Active</div>
+        <div class="hd-service-name">Token Service (HTS)</div>
+        <div class="hd-service-desc">
+          Native token creation without smart contracts.
+          5 tokens minted on mainnet for pair batch receipts and access control.
+        </div>
+      </div>
+      <div class="hd-service">
+        <div class="hd-service-tag">Active</div>
+        <div class="hd-service-name">AI Studio</div>
+        <div class="hd-service-desc">
+          Agent registration and authentication.
+          8 agents registered with PASETO v4 tokens for on-chain operations.
+        </div>
+      </div>
+      <div class="hd-service">
+        <div class="hd-service-tag">Planned</div>
+        <div class="hd-service-name">Decentralized Identity</div>
+        <div class="hd-service-desc">
+          DID-based publisher verification. Verifiable Credentials for
+          swarmandbee.hbar as a certified data publisher.
+        </div>
+      </div>
+      <div class="hd-service">
+        <div class="hd-service-tag">Planned</div>
+        <div class="hd-service-name">MCP Server</div>
+        <div class="hd-service-desc">
+          Model Context Protocol server exposing our Hedera bridge as tools.
+          Any MCP client can seal builds on-chain natively.
+        </div>
+      </div>
+      <div class="hd-service">
+        <div class="hd-service-tag">Available</div>
+        <div class="hd-service-name">HashSphere</div>
+        <div class="hd-service-desc">
+          Private Hedera for regulated enterprise customers.
+          Data residency + dedicated support for banks, REITs, and insurers.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section">
+  <div class="hd-inner">
+    <div class="hd-label">Verification Flow</div>
+    <h2 class="hd-section-title">How Zero-Trust Delivery Works</h2>
+    <div class="hd-divider"></div>
+
+    <div class="hd-flow">
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">1</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">Pairs pass 6 quality gates</div>
+          <div class="hd-flow-desc">JSON valid, output length, numeric verify, concept present, dedup, degenerate check. Code gates &mdash; no subjective scoring.</div>
+        </div>
+      </div>
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">2</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">SHA-256 fingerprint per pair</div>
+          <div class="hd-flow-desc">Every question + answer is normalized and hashed. Unique fingerprint for every training pair in the batch.</div>
+        </div>
+      </div>
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">3</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">Merkle tree built from all fingerprints</div>
+          <div class="hd-flow-desc">20,000 pair hashes &rarr; binary tree &rarr; single 64-char root hash. Any pair can be verified against this root.</div>
+        </div>
+      </div>
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">4</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">Merkle root published to Hedera HCS</div>
+          <div class="hd-flow-desc">One immutable message per batch. Timestamped by Hedera consensus. Cost: $0.0001. Permanent.</div>
+        </div>
+      </div>
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">5</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">Customer receives pairs + guarantee.json</div>
+          <div class="hd-flow-desc">The guarantee includes Merkle root, gate pass rates, Hedera transaction ID, and a HashScan verification link.</div>
+        </div>
+      </div>
+      <div class="hd-flow-step">
+        <div class="hd-flow-num">6</div>
+        <div class="hd-flow-content">
+          <div class="hd-flow-title">Verify any pair independently</div>
+          <div class="hd-flow-desc">Pick any pair. Hash it. Check inclusion proof against the on-chain Merkle root. Math proves integrity. Zero trust required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     GUARANTEE SAMPLE
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section hd-section-alt">
+  <div class="hd-inner">
+    <div class="hd-label">Customer Artifact</div>
+    <h2 class="hd-section-title">What You Get: guarantee.json</h2>
+    <div class="hd-divider"></div>
+    <p class="hd-section-text">
+      Every pair delivery includes this manifest. It's your receipt, your proof, and your audit trail.
+    </p>
+
+    <div class="hd-code">{
+  <span class="key">"product"</span>: <span class="str">"SwarmCurator Pro"</span>,
+  <span class="key">"domain"</span>: <span class="str">"cre"</span>,
+  <span class="key">"pairs"</span>: {
+    <span class="key">"total"</span>: 20000,
+    <span class="key">"merkle_root"</span>: <span class="str">"a1b2c3d4e5f6..."</span>,
+    <span class="key">"sha256_file"</span>: <span class="str">"9f8e7d6c5b4a..."</span>
+  },
+  <span class="key">"quality_guarantee"</span>: {
+    <span class="key">"gates_passed"</span>: 6,
+    <span class="key">"overall_pass_rate"</span>: 0.97,
+    <span class="key">"cove_threshold"</span>: <span class="str">"20/25, all criteria >= 3, accuracy >= 4"</span>
+  },
+  <span class="key">"provenance"</span>: {
+    <span class="key">"hedera_tx_id"</span>: <span class="str">"0.0.10291827@1709827200.000"</span>,
+    <span class="key">"hedera_topic_id"</span>: <span class="str">"0.0.8111068"</span>,
+    <span class="key">"verify_url"</span>: <span class="str">"https://hashscan.io/mainnet/transaction/..."</span>,
+    <span class="key">"merkle_root_on_chain"</span>: <span class="bool">true</span>
+  },
+  <span class="key">"identity"</span>: {
+    <span class="key">"publisher"</span>: <span class="str">"Swarm & Bee"</span>,
+    <span class="key">"hedera_id"</span>: <span class="str">"swarmandbee.hbar"</span>,
+    <span class="key">"ens"</span>: <span class="str">"swarmandbee.eth"</span>
+  }
+}</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSYSTEM
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section">
+  <div class="hd-inner">
+    <div class="hd-label">Ecosystem</div>
+    <h2 class="hd-section-title">Part of Something Bigger</h2>
+    <div class="hd-divider"></div>
+    <p class="hd-section-text">
+      Hedera is governed by the world's leading enterprises and backed by the Linux Foundation.
+      We build on open-source infrastructure with institutional-grade trust.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:40px">
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">Governing Council</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">Google, IBM, Dell, FedEx, Deutsche Telekom, LG</div>
+      </div>
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">DeFi TVL</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">$208M+ and growing</div>
+      </div>
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">Agent Economy</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">$470M+ GDP (Feb 2026)</div>
+      </div>
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">Cross-Chain</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">Axelar bridge to 60+ chains</div>
+      </div>
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">Carbon Markets</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">$1.1B via B4ECarbon</div>
+      </div>
+      <div style="padding:20px;background:var(--hd-surface-2);border:1px solid var(--hd-border);border-radius:6px;text-align:center">
+        <div style="font-size:0.88rem;font-weight:700;color:var(--hd-text);margin-bottom:4px">Open Source</div>
+        <div style="font-size:0.75rem;color:var(--hd-text-3)">91 repos under Linux Foundation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════════════════ -->
+<section class="hd-section hd-section-alt">
+  <div class="hd-inner" style="text-align:center;max-width:600px">
+    <h2 style="font-family:var(--hd-serif);font-size:1.8rem;font-weight:700;color:var(--hd-text);margin-bottom:12px">Verified Data. On-Chain Proof.</h2>
+    <p style="font-size:0.95rem;color:var(--hd-text-2);margin-bottom:28px">
+      Start receiving Merkle-verified training pairs with Hedera-anchored quality guarantees.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="/curator#pricing" style="display:inline-block;padding:14px 32px;background:var(--hd-purple);color:#fff;font-weight:700;border-radius:4px;font-size:0.88rem;transition:background 0.2s">Start at $20/mo</a>
+      <a href="https://hashscan.io/mainnet/account/0.0.10291827" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 32px;background:transparent;color:var(--hd-text);border:1.5px solid var(--hd-border);border-radius:4px;font-size:0.88rem;transition:border-color 0.2s">View on HashScan</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.hedera-content -->
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/signal">Signal</a>
+      <a href="/curator">Curator</a>
+      <a href="/morey">Morey</a>
+      <a href="/swarmcare">SwarmCare</a>
+      <a href="/hedera" style="color:var(--primary)">Hedera</a>
+      <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://huggingface.co/SwarmandBee" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+      <a href="https://x.com/swarmandbee" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a href="https://discord.gg/sNjJrND5eb" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+    </div>
+    <div style="margin-bottom:12px;font-size:0.78rem">
+      <a href="mailto:build@swarmandbee.com" style="color:var(--primary)">build@swarmandbee.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+15615327120" style="color:var(--text-2)">561-532-7120</a>
+    </div>
+    <div class="copyright">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/auth.js"></script>
+
+</body>
+</html>

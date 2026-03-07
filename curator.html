@@ -39,13 +39,26 @@
   "description": "Live dataset intelligence. The Swarm monitors the global AI ecosystem and identifies the highest demand training data opportunities in real time.",
   "url": "https://swarmandbee.ai/curator",
   "brand": {"@type": "Organization", "name": "Swarm & Bee", "url": "https://swarmandbee.ai"},
-  "offers": {
-    "@type": "Offer",
-    "price": "49",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "priceValidUntil": "2027-12-31"
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "SwarmCurator",
+      "price": "20",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "description": "20,000 platinum training pairs per month with Hedera quality guarantee"
+    },
+    {
+      "@type": "Offer",
+      "name": "Full Access",
+      "price": "49",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "description": "250,000 curated training pairs per month across 5 live dataset streams"
+    }
+  ]
 }
 </script>
 
@@ -320,9 +333,8 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
 
 /* ── Pricing ── */
 .pricing-card{
-  max-width:480px;margin:40px auto 0;
   background:var(--sig-surface-2);border:2px solid var(--sig-border);
-  border-radius:8px;padding:48px 40px;text-align:center;
+  border-radius:8px;padding:40px 32px;text-align:center;
 }
 .pricing-title{
   font-family:var(--sig-serif);font-size:1.4rem;font-weight:700;
@@ -397,8 +409,11 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   .pipeline-grid{grid-template-columns:1fr 1fr;gap:12px}
   .pipeline-step{border-radius:6px!important}
   .pipeline-arrow{display:none}
-  .pricing-card{padding:36px 24px}
+  .pricing-card{padding:28px 20px}
   .radar-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  #pricing .cur-inner > div{grid-template-columns:1fr!important;max-width:400px!important}
 }
 @media(max-width:480px){
   .eco-bar{display:none}
@@ -428,7 +443,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   <span class="sep">|</span>
   <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
   <span class="sep">|</span>
-  <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+  <a href="/hedera" style="color:#8B5CF6">Hedera</a>
   <span class="sep">|</span>
   <a href="https://discord.gg/sNjJrND5eb" target="_blank" rel="noopener noreferrer">Discord</a>
 </div>
@@ -442,7 +457,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="/curator" style="color:#D4A94E;font-weight:600">Curator</a>
       <a href="/morey" style="color:var(--primary)">Morey</a>
       <a href="/swarmcare" style="color:#10b981">SwarmCare</a>
-      <a href="https://router.swarmandbee.ai" target="_blank" rel="noopener noreferrer">API</a>
+      <a href="/hedera" style="color:#8B5CF6">Hedera</a>
       <a href="/dashboard" id="navDashLink" style="display:none;color:var(--primary);font-weight:600">Dashboard</a>
       <a href="#" id="navSignInLink" onclick="swarmAuth.showLoginModal('signup');return false" style="color:var(--primary)">Sign In</a>
     </div>
@@ -469,10 +484,11 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     </p>
 
     <div class="cur-hero-deal">
-      <div class="cur-hero-deal-line">One subscription.</div>
-      <div class="cur-hero-deal-line"><strong>Five live dataset streams.</strong></div>
-      <div class="cur-hero-deal-line">Up to <strong>250,000</strong> curated training pairs every month.</div>
-      <div class="cur-hero-price">$49<span style="font-size:1rem;font-weight:400;color:var(--sig-text-3)"> / month</span></div>
+      <div class="cur-hero-deal-line">Zero-trust pair delivery.</div>
+      <div class="cur-hero-deal-line"><strong>Hedera-anchored quality guarantee.</strong></div>
+      <div class="cur-hero-deal-line">From <strong>20,000</strong> to <strong>250,000</strong> platinum pairs every month.</div>
+      <div class="cur-hero-price">$20<span style="font-size:1rem;font-weight:400;color:var(--sig-text-3)"> / month</span></div>
+      <div style="font-size:0.82rem;color:var(--sig-text-3);margin-top:4px">Starting at 20K pairs &middot; Merkle-verified &middot; On-chain provenance</div>
     </div>
 
     <div class="cur-cta-row">
@@ -775,34 +791,70 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <h2 class="cur-section-title" style="text-align:center">Curator Subscription</h2>
     <div class="cur-divider" style="margin:24px auto"></div>
 
-    <div class="pricing-card">
-      <div class="pricing-title">Full Access</div>
-      <div class="pricing-price">$49</div>
-      <div class="pricing-period">per month</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;margin:0 auto">
 
-      <ul class="pricing-features">
-        <li><span class="pricing-check">&check;</span> Access to all curated datasets</li>
-        <li><span class="pricing-check">&check;</span> Up to 250,000 training pairs per month</li>
-        <li><span class="pricing-check">&check;</span> 5 live dataset streams</li>
-        <li><span class="pricing-check">&check;</span> Monthly object releases</li>
-        <li><span class="pricing-check">&check;</span> Continuous signal updates</li>
-        <li><span class="pricing-check">&check;</span> JSONL format with provenance</li>
-        <li><span class="pricing-check">&check;</span> SwarmJudge validation scoring</li>
-      </ul>
+      <!-- $20/mo — SwarmCurator -->
+      <div class="pricing-card" style="position:relative">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--sig-amber);color:#000;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:3px">Most Popular</div>
+        <div class="pricing-title">SwarmCurator</div>
+        <div class="pricing-price">$20</div>
+        <div class="pricing-period">per month</div>
 
-      <form id="curatorSignup" onsubmit="submitCuratorSignup(event)" style="margin-top:8px">
-        <input type="email" class="signal-email-input" placeholder="your@email.com" required
-          style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
-        <input type="password" class="signal-email-input" placeholder="Password (min 6 chars)" required minlength="6"
-          style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
-        <button type="submit" class="cur-btn cur-btn-primary" style="width:100%;text-align:center;display:block;border:none;cursor:pointer;font-family:var(--sig-sans)">Start Curating — $49/mo</button>
-      </form>
-      <div id="curatorSignupStatus" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px;text-align:center"></div>
+        <ul class="pricing-features">
+          <li><span class="pricing-check">&check;</span> <strong>20,000</strong> platinum training pairs</li>
+          <li><span class="pricing-check">&check;</span> 1 vertical dataset stream</li>
+          <li><span class="pricing-check">&check;</span> 6-gate quality verified</li>
+          <li><span class="pricing-check">&check;</span> Hedera on-chain guarantee</li>
+          <li><span class="pricing-check">&check;</span> Merkle proof per pair</li>
+          <li><span class="pricing-check">&check;</span> JSONL + guarantee.json</li>
+          <li><span class="pricing-check">&check;</span> HashScan verification link</li>
+        </ul>
 
-      <div class="pricing-note">
-        No per-dataset pricing. One subscription. Full access.
+        <form id="curatorSignup20" onsubmit="submitCuratorSignup20(event)" style="margin-top:8px">
+          <input type="email" class="signal-email-input" placeholder="your@email.com" required
+            style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+          <input type="password" class="signal-email-input" placeholder="Password (min 6 chars)" required minlength="6"
+            style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+          <button type="submit" class="cur-btn cur-btn-primary" style="width:100%;text-align:center;display:block;border:none;cursor:pointer;font-family:var(--sig-sans)">Start — $20/mo</button>
+        </form>
+        <div id="curatorSignupStatus20" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px;text-align:center"></div>
+
+        <div class="pricing-note">
+          20K pairs + on-chain quality proof. Zero trust required.
+        </div>
       </div>
-    </div>
+
+      <!-- $49/mo — Full Access -->
+      <div class="pricing-card">
+        <div class="pricing-title">Full Access</div>
+        <div class="pricing-price">$49</div>
+        <div class="pricing-period">per month</div>
+
+        <ul class="pricing-features">
+          <li><span class="pricing-check">&check;</span> <strong>250,000</strong> training pairs per month</li>
+          <li><span class="pricing-check">&check;</span> 5 live dataset streams</li>
+          <li><span class="pricing-check">&check;</span> All verticals included</li>
+          <li><span class="pricing-check">&check;</span> Monthly object releases</li>
+          <li><span class="pricing-check">&check;</span> Hedera on-chain guarantee</li>
+          <li><span class="pricing-check">&check;</span> Continuous signal updates</li>
+          <li><span class="pricing-check">&check;</span> Priority pair delivery</li>
+        </ul>
+
+        <form id="curatorSignup49" onsubmit="submitCuratorSignup49(event)" style="margin-top:8px">
+          <input type="email" class="signal-email-input" placeholder="your@email.com" required
+            style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+          <input type="password" class="signal-email-input" placeholder="Password (min 6 chars)" required minlength="6"
+            style="width:100%;padding:12px 18px;font-size:0.88rem;border:1.5px solid var(--sig-border);border-radius:4px;background:var(--sig-surface-2);color:var(--sig-text);outline:none;margin-bottom:10px;font-family:var(--sig-sans)">
+          <button type="submit" class="cur-btn cur-btn-primary" style="width:100%;text-align:center;display:block;border:none;cursor:pointer;font-family:var(--sig-sans)">Start Curating — $49/mo</button>
+        </form>
+        <div id="curatorSignupStatus49" style="font-size:0.82rem;margin-top:12px;display:none;padding:8px 16px;border-radius:4px;text-align:center"></div>
+
+        <div class="pricing-note">
+          Everything. Every vertical. Every stream.
+        </div>
+      </div>
+
+    </div><!-- /.pricing-grid -->
   </div>
 </section>
 
@@ -841,7 +893,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
     <div class="cur-final-cta">
       <h2 class="cur-final-title">Join the Swarm.</h2>
       <p>Build with the datasets shaping the next generation of AI.</p>
-      <a href="#pricing" class="cur-btn cur-btn-primary">Start Curating — $49/mo</a>
+      <a href="#pricing" class="cur-btn cur-btn-primary">Start at $20/mo</a>
     </div>
   </div>
 </section>
@@ -871,6 +923,7 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
       <a href="/curator" style="color:var(--primary)">Curator</a>
       <a href="/morey">Morey</a>
       <a href="/swarmcare">SwarmCare</a>
+      <a href="/hedera">Hedera</a>
       <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://huggingface.co/SwarmandBee" target="_blank" rel="noopener noreferrer">HuggingFace</a>
       <a href="https://x.com/swarmandbee" target="_blank" rel="noopener noreferrer">X / Twitter</a>
@@ -948,31 +1001,31 @@ footer .copyright{font-size:0.75rem;opacity:0.5}
   }
 })();
 
-async function submitCuratorSignup(e){
+function curatorSignupHandler(e, tier, btnLabel, statusId){
   e.preventDefault();
   var form=e.target;
   var email=form.querySelector('input[type="email"]').value.trim();
   var password=form.querySelector('input[type="password"]').value;
   var btn=form.querySelector('button[type="submit"]');
-  var status=document.getElementById('curatorSignupStatus');
+  var status=document.getElementById(statusId);
   if(!email||!password)return;
 
   btn.disabled=true;
   btn.textContent='Processing...';
   status.style.display='none';
 
-  try{
-    await swarmAuth.signupAndCheckout(email,password,'starter','cre');
-  }catch(err){
+  swarmAuth.signupAndCheckout(email,password,tier,'cre').catch(function(err){
     status.style.display='block';
     status.style.background='rgba(239,68,68,0.1)';
     status.style.color='#ef4444';
     status.style.border='1px solid rgba(239,68,68,0.2)';
     status.textContent=err.message||'Failed. Email build@swarmandbee.com';
     btn.disabled=false;
-    btn.textContent='Start Curating — $49/mo';
-  }
+    btn.textContent=btnLabel;
+  });
 }
+function submitCuratorSignup20(e){ curatorSignupHandler(e,'curator','Start — $20/mo','curatorSignupStatus20'); }
+function submitCuratorSignup49(e){ curatorSignupHandler(e,'starter','Start Curating — $49/mo','curatorSignupStatus49'); }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/auth.js"></script>
