@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#050505;--surface:#111;--surface-2:#0a0a0a;--border:#1a1a1a;--primary:#e8a317;--primary-dim:#c48a0f;--accent:#10b981;--accent-dim:#059669;--text:#f0f0f0;--text-2:#b0b0b0;--text-3:#666;--max-w:1200px;--radius:10px;--radius-sm:6px;--font:"DM Sans",system-ui,sans-serif;--heading:"Space Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",monospace;--bg-2:#0a0a0a;--code-bg:#0d1117;--sans:"DM Sans",system-ui,sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
     .aviation-hero {
       padding: 120px 24px 60px;
       text-align: center;
@@ -238,25 +239,20 @@
 </head>
 <body>
 
-<!-- ═══ TOPBAR ═══ -->
-<nav class="topbar">
-  <a href="/" class="topbar-logo">swarm<span class="dot">&</span>bee<span class="dot">.ai</span></a>
-  <div class="topbar-nav">
-    <a href="/">home</a>
-    <a href="/swarmmed">swarmmed</a>
-    <a href="/swarmpharma">swarmpharma</a>
-    <a href="/swarmaviation" class="active">swarmaviation</a>
-    <a href="/models">models</a>
-    <a href="/factory">factory</a>
-    <a href="/compute">compute</a>
-    <a href="/docs">docs</a>
-  </div>
-  <div class="topbar-right">
-    <div class="topbar-status">
-      <span class="status-dot"></span>
-      <span>sb-aviation live</span>
+<!-- ═══ NAV ═══ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:99;height:56px;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;display:flex;align-items:center;padding:0 24px">
+  <div style="max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between">
+    <a href="/" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f0f0;text-decoration:none">swarm<span style="color:#e8a317">&amp;</span>bee</a>
+    <div style="display:flex;gap:24px;font-size:0.85rem;font-weight:500">
+      <a href="/signal" style="color:#C8963E;text-decoration:none">Signal</a>
+      <a href="/curator" style="color:#b0b0b0;text-decoration:none">Curator</a>
+      <a href="/morey" style="color:#e8a317;text-decoration:none">Morey</a>
+      <a href="/swarmcare" style="color:#10b981;text-decoration:none">SwarmCare</a>
+      <a href="/hedera" style="color:#8B5CF6;text-decoration:none">Hedera</a>
+      <a href="/swarmmed" style="color:#06b6d4;text-decoration:none">Medical</a>
+      <a href="/swarmpharma" style="color:#ec4899;text-decoration:none">Pharma</a>
+      <a href="/swarmaviation" style="color:#f97316;text-decoration:none">Aviation</a>
     </div>
-    <a href="https://swarmandbee.com" class="topbar-link">swarmandbee.com &rarr;</a>
   </div>
 </nav>
 
@@ -803,20 +799,20 @@
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-left">Swarm &amp; Bee AI &mdash; Aviation training data. Mission-critical quality.</div>
-    <div class="footer-links">
-      <a href="/">home</a>
-      <a href="/swarmmed">swarmmed</a>
-      <a href="/swarmpharma">swarmpharma</a>
-      <a href="/swarmaviation">swarmaviation</a>
-      <a href="/models">models</a>
-      <a href="/factory">factory</a>
-      <a href="/docs">docs</a>
-      <a href="https://swarmandbee.com">swarmandbee.com</a>
-      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+<footer style="border-top:1px solid #1a1a1a;padding:32px 24px;text-align:center">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;font-size:0.82rem;margin-bottom:16px">
+      <a href="/signal" style="color:#C8963E;text-decoration:none">Signal</a>
+      <a href="/curator" style="color:#b0b0b0;text-decoration:none">Curator</a>
+      <a href="/hedera" style="color:#b0b0b0;text-decoration:none">Hedera</a>
+      <a href="/swarmmed" style="color:#b0b0b0;text-decoration:none">Medical</a>
+      <a href="/swarmpharma" style="color:#b0b0b0;text-decoration:none">Pharma</a>
+      <a href="/swarmaviation" style="color:#b0b0b0;text-decoration:none">Aviation</a>
+      <a href="https://github.com/SudoSuOps" target="_blank" style="color:#b0b0b0;text-decoration:none">GitHub</a>
+      <a href="https://huggingface.co/SwarmandBee" target="_blank" style="color:#b0b0b0;text-decoration:none">HuggingFace</a>
+      <a href="https://discord.gg/sNjJrND5eb" target="_blank" style="color:#b0b0b0;text-decoration:none">Discord</a>
     </div>
+    <div style="font-size:0.75rem;color:#666">&copy; 2026 Swarm &amp; Bee. Infrastructure for Intelligence.</div>
   </div>
 </footer>
 
