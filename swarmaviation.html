@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwarmAviation — 45,222 Verified Aviation Training Pairs | Swarm & Bee AI</title>
+  <meta name="description" content="45,222 CoVe-promoted aviation training pairs across 50+ specialties. Safety compliance, flight ops, pilot training, MRO, ATC. Platinum-tier quality.">
+  <link rel="canonical" href="https://swarmandbee.ai/swarmaviation">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F41D;</text></svg>">
+  <meta property="og:title" content="SwarmAviation — 45,222 Verified Aviation Training Pairs">
+  <meta property="og:description" content="CoVe-promoted platinum-tier aviation training data. 50+ specialties from safety compliance to ATC. Mission-critical AI training data.">
+  <meta property="og:url" content="https://swarmandbee.ai/swarmaviation">
+  <meta property="og:type" content="website">
+  <style>
+    .aviation-hero {
+      padding: 120px 24px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .aviation-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .aviation-hero-inner { max-width: 760px; margin: 0 auto; position: relative; }
+    .aviation-badge {
+      display: inline-block;
+      background: var(--surface);
+      color: var(--danger);
+      font-size: 0.70rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(248,81,73,0.3);
+      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .aviation-hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      font-family: var(--sans);
+    }
+    .aviation-hero .hero-sub {
+      color: var(--text-2);
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+      line-height: 1.7;
+      font-family: var(--sans);
+    }
+    .critical-note {
+      display: inline-block;
+      background: rgba(248,81,73,0.06);
+      border: 1px solid rgba(248,81,73,0.2);
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+    .critical-note strong { color: var(--danger); }
+    .specialty-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .specialty-card:hover { border-color: var(--primary); }
+    .specialty-card h3 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-family: var(--sans);
+      color: var(--text);
+    }
+    .specialty-card p {
+      color: var(--text-2);
+      font-size: 0.80rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .pair-count {
+      display: inline-block;
+      font-size: 0.70rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+    }
+    .pair-count.high {
+      color: var(--accent);
+      background: rgba(63,185,80,0.1);
+    }
+    .pair-count.mid {
+      color: var(--primary);
+      background: rgba(88,166,255,0.1);
+    }
+    .pair-count.low {
+      color: var(--warn);
+      background: rgba(210,153,34,0.1);
+    }
+    .pair-count.micro {
+      color: var(--text-2);
+      background: rgba(139,148,158,0.1);
+    }
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .specialty-grid-sm {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .category-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .category-label .cat-icon { margin-right: 6px; }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .quality-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .quality-card .q-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      font-family: var(--mono);
+    }
+    .quality-card .q-label {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .quality-card .q-desc {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    .pipeline-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pipeline-step:last-child { border-bottom: none; }
+    .pipeline-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .pipeline-step h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      font-family: var(--sans);
+    }
+    .pipeline-step p {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .delivery-format {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-family: var(--mono);
+      align-items: center;
+    }
+    .delivery-format .fmt-name { font-weight: 700; color: var(--text); }
+    .delivery-format .fmt-tools { font-size: 0.72rem; color: var(--text-3); }
+    .additional-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .additional-specs .spec-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      color: var(--text-3);
+      background: var(--bg);
+    }
+    @media (max-width: 768px) {
+      .aviation-hero { padding: 96px 16px 48px; }
+      .specialty-grid { grid-template-columns: 1fr; }
+      .specialty-grid-sm { grid-template-columns: 1fr; }
+      .quality-grid { grid-template-columns: 1fr 1fr; }
+      .delivery-format { flex-direction: column; gap: 4px; }
+    }
+    @media (max-width: 480px) {
+      .aviation-hero { padding: 80px 12px 40px; }
+      .quality-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<nav class="topbar">
+  <a href="/" class="topbar-logo">swarm<span class="dot">&</span>bee<span class="dot">.ai</span></a>
+  <div class="topbar-nav">
+    <a href="/">home</a>
+    <a href="/swarmmed">swarmmed</a>
+    <a href="/swarmpharma">swarmpharma</a>
+    <a href="/swarmaviation" class="active">swarmaviation</a>
+    <a href="/models">models</a>
+    <a href="/factory">factory</a>
+    <a href="/compute">compute</a>
+    <a href="/docs">docs</a>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-status">
+      <span class="status-dot"></span>
+      <span>sb-aviation live</span>
+    </div>
+    <a href="https://swarmandbee.com" class="topbar-link">swarmandbee.com &rarr;</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="aviation-hero">
+  <div class="aviation-hero-inner">
+    <div class="aviation-badge">Mission-Critical Training Data &mdash; Aviation Vertical</div>
+    <h1>
+      <span class="hero-accent">45,222</span> Verified Aviation Pairs.<br>
+      Zero Tolerance for Error.
+    </h1>
+    <p class="hero-sub">
+      Aviation is not suggestions. It is checklists, regulations, and procedures where incorrect outputs cost lives.<br>
+      Every pair in this dataset is CoVe-promoted to platinum tier. 50+ specialties. FAR compliance to METAR interpretation.<br>
+      If your model gives aviation advice, this is the data it trains on &mdash; or it does not ship.
+    </p>
+    <div class="critical-note">
+      <strong>SAFETY NOTICE:</strong> Aviation training data demands a higher standard. Every pair undergoes 2-stage verification
+      (Llama-70B rewrite + Qwen-235B scoring). Accuracy threshold: &ge;4/5. No exceptions. No waivers.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS STRIP ═══ -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-num">45,222</span>
+    <span class="stat-label">Verified Pairs</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">50+</span>
+    <span class="stat-label">Specialties</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" style="color:var(--accent)">Platinum</span>
+    <span class="stat-label">CoVe-Promoted Tier</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">sb-aviation</span>
+    <span class="stat-label">R2 Bucket</span>
+  </div>
+</div>
+
+<!-- ═══ PRIMARY SPECIALTIES ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Core Flight Specialties</h2>
+    <p class="section-sub">High-volume training domains. These form the structural backbone of aviation AI competence &mdash; the areas where model failure is measured in accident reports, not user complaints.</p>
+
+    <div class="category-label" style="color:var(--danger)"><span class="cat-icon">&#9632;</span> HIGH-VOLUME CORE &mdash; 14,241 pairs</div>
+    <div class="specialty-grid">
+
+      <div class="specialty-card">
+        <div class="pair-count high">8,282 pairs</div>
+        <h3>safety-compliance</h3>
+        <p>FAR compliance verification, Safety Management Systems (SMS) implementation, audit protocol design, OSHA aviation workplace standards, hazard identification and risk matrices. Teaches AI to interpret and apply the regulatory framework that keeps aircraft in the air and people alive.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count high">2,581 pairs</div>
+        <h3>flight-ops</h3>
+        <p>Flight planning with weight &amp; balance calculations, fuel management and reserve computation, MEL dispatch decisions, operational procedures for Part 91/121/135. Trains models on the operational math and decision logic that governs every departure.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count high">2,496 pairs</div>
+        <h3>pilot-training</h3>
+        <p>Ground school curriculum delivery, checkride preparation and evaluation, instrument proficiency standards, Crew Resource Management (CRM) scenarios. Builds AI that can assess readiness, identify knowledge gaps, and deliver training content at FAA standards.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count mid">882 pairs</div>
+        <h3>mro</h3>
+        <p>Maintenance, Repair, and Overhaul operations. Airworthiness Directive (AD) compliance tracking, inspection interval management, MEL/CDL administration, return-to-service documentation. Trains AI on the maintenance logic that determines whether an aircraft is legal to fly.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGULATORY & ATC ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--primary)"><span class="cat-icon">&#9632;</span> REGULATIONS &amp; AIRSPACE &mdash; 729 pairs</div>
+    <div class="specialty-grid">
+
+      <div class="specialty-card">
+        <div class="pair-count mid">375 pairs</div>
+        <h3>regulations</h3>
+        <p>14 CFR interpretation across all parts (61, 91, 121, 135, 141, 145). ICAO Annex compliance, bilateral aviation agreements, EASA cross-reference. Teaches AI to parse regulatory language and deliver operationally correct answers to complex compliance questions.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count mid">348 pairs</div>
+        <h3>atc</h3>
+        <p>Air traffic control procedures and phraseology, radar and non-radar separation standards, approach sequencing, ATIS interpretation, pilot-controller communication protocols. Trains models on the precise language and procedures that govern controlled airspace.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">6 pairs</div>
+        <h3>air-traffic-control</h3>
+        <p>Advanced ATC scenarios including TRACON operations, sector handoff procedures, and high-density traffic management. Specialist extension of core ATC procedures for terminal radar approach control.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TECHNICAL & WEATHER ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--warn)"><span class="cat-icon">&#9632;</span> TECHNICAL SYSTEMS &amp; METEOROLOGY &mdash; 130 pairs</div>
+    <div class="specialty-grid">
+
+      <div class="specialty-card">
+        <div class="pair-count low">80 pairs</div>
+        <h3>technical</h3>
+        <p>Aircraft systems theory: hydraulic, pneumatic, electrical, and flight control architectures. Avionics integration, glass cockpit operation, powerplant fundamentals (reciprocating and turbine). Teaches AI the engineering-level systems knowledge required for troubleshooting and instruction.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count low">50 pairs</div>
+        <h3>weather</h3>
+        <p>Aviation meteorology: METAR and TAF decoding, convective SIGMET interpretation, icing and turbulence assessment, mountain wave recognition, microburst avoidance procedures. Trains models to translate raw weather data into go/no-go pilot decisions.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPERATIONS & MANAGEMENT ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--accent)"><span class="cat-icon">&#9632;</span> OPERATIONS &amp; MANAGEMENT &mdash; 23 pairs</div>
+    <div class="specialty-grid-sm">
+
+      <div class="specialty-card">
+        <div class="pair-count micro">10 pairs</div>
+        <h3>airport-management</h3>
+        <p>Airport operations, ground handling coordination, terminal management procedures, NOTAMs, and aerodrome certification standards.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">7 pairs</div>
+        <h3>drones</h3>
+        <p>Part 107 remote pilot operations, airspace authorization (LAANC), waiver applications, and UAS certification requirements.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">6 pairs</div>
+        <h3>ground-handling</h3>
+        <p>Ramp safety protocols, aircraft marshalling signals, pushback procedures, de-icing operations, and FOD prevention programs.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SAFETY & RISK ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--danger)"><span class="cat-icon">&#9632;</span> SAFETY, RISK &amp; HUMAN FACTORS &mdash; 12 pairs</div>
+    <div class="specialty-grid-sm">
+
+      <div class="specialty-card">
+        <div class="pair-count micro">5 pairs</div>
+        <h3>risk-assessment</h3>
+        <p>FRAT (Flight Risk Assessment Tool) methodology, threat and error management, operational risk quantification for dispatch and go/no-go decisions.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">4 pairs</div>
+        <h3>safety-management</h3>
+        <p>SMS implementation frameworks, safety culture development, voluntary and mandatory reporting systems, safety promotion programs.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">3 pairs</div>
+        <h3>human-factors</h3>
+        <p>CRM principles, SHELL model application, error chain analysis, fatigue risk management, and situational awareness training.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPECIALIZED TRAINING ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--primary)"><span class="cat-icon">&#9632;</span> SPECIALIZED TRAINING &amp; MEDICAL &mdash; 15 pairs</div>
+    <div class="specialty-grid-sm">
+
+      <div class="specialty-card">
+        <div class="pair-count micro">4 pairs</div>
+        <h3>airport-planning</h3>
+        <p>Airport master planning, runway capacity analysis, environmental impact assessments, obstruction evaluation, and land-use compatibility studies.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">4 pairs</div>
+        <h3>flight-simulator</h3>
+        <p>FSTD qualification standards (FFS, FTD, AATD levels), simulator fidelity requirements, training device regulatory approval process.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">4 pairs</div>
+        <h3>instrument-rating</h3>
+        <p>IFR procedures, approach plate interpretation (Jeppesen/FAA), holding pattern entry, missed approach procedures, and alternate planning.</p>
+      </div>
+
+      <div class="specialty-card">
+        <div class="pair-count micro">3 pairs</div>
+        <h3>aviation-medicine</h3>
+        <p>Aeromedical certification (Class I/II/III), BasicMed qualifications, hypoxia recognition, spatial disorientation, and pilot fitness-for-duty evaluation.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ADDITIONAL SPECIALTIES ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="category-label" style="color:var(--text-3)"><span class="cat-icon">&#9632;</span> 30+ ADDITIONAL SPECIALTIES</div>
+    <p style="color:var(--text-2);font-size:0.82rem;line-height:1.6;margin-bottom:20px;font-family:var(--sans)">
+      The remaining specialties span the full scope of aviation operations. Each contains verified,
+      platinum-tier pairs covering niche but critical domains. Together they represent the long tail of
+      aviation competence that separates a general-purpose model from one that actually understands the industry.
+    </p>
+    <div class="additional-specs">
+      <span class="spec-tag">crew-resource-management</span>
+      <span class="spec-tag">aviation-management</span>
+      <span class="spec-tag">operations-research</span>
+      <span class="spec-tag">cargo-operations</span>
+      <span class="spec-tag">emergency-procedures</span>
+      <span class="spec-tag">flight-dispatch</span>
+      <span class="spec-tag">aviation-security</span>
+      <span class="spec-tag">aerodynamics</span>
+      <span class="spec-tag">navigation</span>
+      <span class="spec-tag">aircraft-performance</span>
+      <span class="spec-tag">cabin-safety</span>
+      <span class="spec-tag">accident-investigation</span>
+      <span class="spec-tag">aviation-law</span>
+      <span class="spec-tag">military-aviation</span>
+      <span class="spec-tag">helicopter-ops</span>
+      <span class="spec-tag">space-operations</span>
+      <span class="spec-tag">aviation-insurance</span>
+      <span class="spec-tag">fuel-management</span>
+      <span class="spec-tag">noise-abatement</span>
+      <span class="spec-tag">wildlife-management</span>
+      <span class="spec-tag">runway-safety</span>
+      <span class="spec-tag">aviation-english</span>
+      <span class="spec-tag">fatigue-management</span>
+      <span class="spec-tag">flight-data-analysis</span>
+      <span class="spec-tag">aviation-cybersecurity</span>
+      <span class="spec-tag">sustainable-aviation</span>
+      <span class="spec-tag">air-charter</span>
+      <span class="spec-tag">aerial-survey</span>
+      <span class="spec-tag">agricultural-aviation</span>
+      <span class="spec-tag">banner-tow-ops</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUALITY PIPELINE ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Quality Pipeline</h2>
+    <p class="section-sub">Aviation data goes through the same CoVe (Chain-of-Verification) promotion pipeline as all Swarm &amp; Bee verticals &mdash; with zero tolerance thresholds.</p>
+
+    <div class="quality-grid" style="margin-bottom:32px">
+      <div class="quality-card">
+        <div class="q-num" style="color:var(--accent)">79.4%</div>
+        <div class="q-label">Pass Rate</div>
+        <div class="q-desc">15,236 promoted from 19,181 candidates. The 20.6% that failed were killed, not downgraded.</div>
+      </div>
+      <div class="quality-card">
+        <div class="q-num" style="color:var(--primary)">&ge;4/5</div>
+        <div class="q-label">Accuracy Floor</div>
+        <div class="q-desc">No pair ships with accuracy below 4. In aviation, "mostly correct" is the same as wrong.</div>
+      </div>
+      <div class="quality-card">
+        <div class="q-num" style="color:var(--warn)">&ge;20/25</div>
+        <div class="q-label">Total Score</div>
+        <div class="q-desc">5 criteria &times; 5 points: accuracy, completeness, structure, relevance, SFT quality.</div>
+      </div>
+      <div class="quality-card">
+        <div class="q-num" style="color:var(--danger)">2-Stage</div>
+        <div class="q-label">CoVe Process</div>
+        <div class="q-desc">Stage 1: Llama-70B rewrite for clarity. Stage 2: Qwen-235B scoring against 5 criteria.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--sans);font-size:0.95rem;margin-bottom:16px">Verification Pipeline</h3>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px">
+
+      <div class="pipeline-step">
+        <div class="pipeline-num">1</div>
+        <div>
+          <h4>Raw Generation</h4>
+          <p>Aviation Q&amp;A pairs generated from curated specialty prompts. Grounded in FAA publications, AIM, AC series, and ICAO documentation.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-num">2</div>
+        <div>
+          <h4>Deterministic Gates</h4>
+          <p>6 hard gates: JSON schema validity, output length (&ge;500 chars), numeric content verification, concept presence, deduplication (MD5 fingerprint), degeneration detection.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-num">3</div>
+        <div>
+          <h4>Llama-70B Rewrite</h4>
+          <p>Stage 1 CoVe: Llama-3.3-70B-Instruct rewrites each answer for technical precision and instructional clarity while preserving regulatory accuracy.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-num">4</div>
+        <div>
+          <h4>Qwen-235B Scoring</h4>
+          <p>Stage 2 CoVe: Qwen-235B-A22B scores on 5 criteria (1-5 each). Hard cutoffs: accuracy &ge;4, all criteria &ge;3, total &ge;20/25. Binary result: PASS or KILL.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-num">5</div>
+        <div>
+          <h4>Platinum Promotion</h4>
+          <p>Passing pairs promoted to platinum tier. SHA-256 sealed. Pushed to R2 bucket <code style="color:var(--primary)">sb-aviation</code>. Tamper-evident, audit-ready.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT SHIPS ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">What Ships</h2>
+    <p class="section-sub">Same package as every Swarm &amp; Bee vertical. 5 formats, train/eval split, full provenance. Your framework, our data.</p>
+
+    <div style="margin:24px 0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg)">
+
+      <!-- Header -->
+      <div style="padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3)">Delivery Manifest</div>
+          <div style="font-size:0.95rem;font-weight:700;font-family:var(--sans);margin-top:2px">SwarmAviation &mdash; 45,222 pairs</div>
+        </div>
+        <span style="font-size:0.68rem;font-weight:700;padding:3px 10px;border:1px solid var(--accent);border-radius:var(--radius-sm);color:var(--accent)">SEALED</span>
+      </div>
+
+      <!-- 5 Formats -->
+      <div style="padding:20px;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:12px">5 Delivery Formats &mdash; Train + Eval Split Each</div>
+        <div style="display:grid;gap:8px">
+          <div class="delivery-format">
+            <div><span style="color:var(--accent)">1.</span> <span class="fmt-name">ChatML</span> &mdash; aviation_train.chatml.jsonl</div>
+            <span class="fmt-tools">OpenAI API, TRL, Unsloth, Axolotl</span>
+          </div>
+          <div class="delivery-format">
+            <div><span style="color:var(--accent)">2.</span> <span class="fmt-name">Alpaca</span> &mdash; aviation_train.alpaca.jsonl</div>
+            <span class="fmt-tools">LLaMA-Factory, HuggingFace trainers</span>
+          </div>
+          <div class="delivery-format">
+            <div><span style="color:var(--accent)">3.</span> <span class="fmt-name">ShareGPT</span> &mdash; aviation_train.sharegpt.jsonl</div>
+            <span class="fmt-tools">FastChat, Vicuna, multi-turn trainers</span>
+          </div>
+          <div class="delivery-format">
+            <div><span style="color:var(--accent)">4.</span> <span class="fmt-name">OpenAI</span> &mdash; aviation_train.openai.jsonl</div>
+            <span class="fmt-tools">Direct upload to gpt-4o fine-tuning</span>
+          </div>
+          <div class="delivery-format">
+            <div><span style="color:var(--accent)">5.</span> <span class="fmt-name">Completion</span> &mdash; aviation_train.completion.jsonl</div>
+            <span class="fmt-tools">Legacy pipelines, custom training loops</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Train/Eval -->
+      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
+        <div>
+          <strong>Train / Eval Split</strong>
+          <span style="color:var(--text-3)"> &mdash; All 5 formats include both splits</span>
+        </div>
+        <div style="text-align:right;font-family:var(--mono);font-size:0.78rem">
+          <span style="color:var(--accent)">42,961 train</span> &nbsp;/&nbsp; <span>2,261 eval</span>
+          <div style="color:var(--text-3);font-size:0.68rem">95/5 hash-based split. Reproducible. No data leakage.</div>
+        </div>
+      </div>
+
+      <!-- Provenance -->
+      <div style="padding:20px;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:12px">Provenance &amp; Verification</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.82rem">
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius);border:1px solid var(--border)">
+            <strong>DATA_CARD.json</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Quality metrics, model lineage, gate pass rates, specialty distribution, generation model ID, CoVe scores</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius);border:1px solid var(--border)">
+            <strong>guarantee.json</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Merkle root of every pair. SHA-256 sealed. Optional Hedera HCS on-chain timestamp. Tamper-evident.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius);border:1px solid var(--border)">
+            <strong>README.txt</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Quickstart for Python, Unsloth, OpenAI API. Copy, paste, train. Under 5 minutes to first training run.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius);border:1px solid var(--border)">
+            <strong>Per-Pair Metadata</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">source, order_id, vertical, specialty, model, quality gate result, CoVe score, content fingerprint</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quality Disclosure -->
+      <div style="padding:20px">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:12px">Quality Disclosure</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:0.82rem">
+          <div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">50+</div>
+            <div style="color:var(--text-3);font-size:0.72rem">Aviation specialties from safety-compliance to agricultural-aviation</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">79.4%</div>
+            <div style="color:var(--text-3);font-size:0.72rem">CoVe pass rate. Failed pairs killed, not recycled.</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">6 Gates</div>
+            <div style="color:var(--text-3);font-size:0.72rem">Deterministic: length, schema, numeric, concept, dedup, degeneration</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">2-Stage</div>
+            <div style="color:var(--text-3);font-size:0.72rem">Llama-70B rewrite + Qwen-235B scoring. No shortcuts.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:0.78rem;color:var(--text-3);text-align:center;margin-top:12px">
+      This is what ships. Every order. Specialty filtering available &mdash; request safety-compliance only, flight-ops only, or the full 45K package.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ TERMINAL SAMPLE ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Sample Pair</h2>
+    <p class="section-sub">What a platinum-tier aviation training pair looks like. This is the quality floor, not the ceiling.</p>
+
+    <div class="terminal" style="max-width:720px">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">sb-aviation / safety-compliance / pair_example.jsonl</span>
+      </div>
+      <div class="terminal-body">
+<span class="comment">// ChatML format &mdash; one of 5 delivery formats</span>
+{
+  <span class="key">"messages"</span>: [
+    {
+      <span class="key">"role"</span>: <span class="string">"system"</span>,
+      <span class="key">"content"</span>: <span class="string">"You are an aviation safety specialist..."</span>
+    },
+    {
+      <span class="key">"role"</span>: <span class="string">"user"</span>,
+      <span class="key">"content"</span>: <span class="string">"A Part 121 carrier's SMS has identified a</span>
+      <span class="string">recurring trend of unstabilized approaches at</span>
+      <span class="string">KDEN Runway 16R. Three events in 30 days, all</span>
+      <span class="string">during gusty crosswind conditions. What corrective</span>
+      <span class="string">actions should the Safety Review Board mandate?"</span>
+    },
+    {
+      <span class="key">"role"</span>: <span class="string">"assistant"</span>,
+      <span class="key">"content"</span>: <span class="string">"Based on the trend analysis of three</span>
+      <span class="string">unstabilized approaches at KDEN 16R within 30 days,</span>
+      <span class="string">the Safety Review Board should mandate the following</span>
+      <span class="string">corrective actions under 14 CFR 5.51(c):\n\n</span>
+      <span class="string">1. IMMEDIATE: Issue Operations Bulletin requiring</span>
+      <span class="string">mandatory go-around if not stabilized by 1,000 AGL</span>
+      <span class="string">in gusty conditions (vs standard 500 AGL)...</span>
+      <span class="string">\n\n[2,400+ chars of regulatory-grounded response]"</span>
+    }
+  ],
+  <span class="key">"metadata"</span>: {
+    <span class="key">"vertical"</span>: <span class="string">"aviation"</span>,
+    <span class="key">"specialty"</span>: <span class="string">"safety-compliance"</span>,
+    <span class="key">"cove_score"</span>: <span class="number">23</span>,
+    <span class="key">"accuracy"</span>: <span class="number">5</span>,
+    <span class="key">"tier"</span>: <span class="string">"platinum"</span>
+  }
+}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ USE CASES ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">What This Trains</h2>
+    <p class="section-sub">These are not toy demos. These are the aviation AI capabilities that matter.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-tag" style="color:var(--danger)">Safety-Critical</div>
+        <h3>Regulatory Compliance Engines</h3>
+        <p>AI that can interpret 14 CFR, identify applicable regulations for a given operation, and flag compliance gaps. The model that tells you what you missed before the FAA does.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag" style="color:var(--primary)">Operations</div>
+        <h3>Flight Planning Assistants</h3>
+        <p>Weight &amp; balance verification, fuel burn computation, alternate planning with weather integration. Models that do the math pilots rely on.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag" style="color:var(--warn)">Training</div>
+        <h3>Ground School AI Tutors</h3>
+        <p>Checkride prep, instrument knowledge testing, CRM scenario generation. AI that teaches to FAA Airman Certification Standards, not generic aviation trivia.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag" style="color:var(--accent)">Maintenance</div>
+        <h3>MRO Decision Support</h3>
+        <p>AD compliance tracking, inspection scheduling, MEL dispatch guidance. The model that knows whether this aircraft is airworthy &mdash; and can cite why.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag" style="color:var(--primary)">ATC</div>
+        <h3>Controller Training Systems</h3>
+        <p>Phraseology validation, separation standard verification, scenario-based ATC training. Building AI that speaks the language of controlled airspace correctly.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag" style="color:var(--warn)">Weather</div>
+        <h3>Aviation Weather Briefing</h3>
+        <p>METAR/TAF interpretation, convective hazard assessment, icing probability analysis. Models that translate raw meteorological data into pilot-actionable decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">Swarm &amp; Bee AI &mdash; Aviation training data. Mission-critical quality.</div>
+    <div class="footer-links">
+      <a href="/">home</a>
+      <a href="/swarmmed">swarmmed</a>
+      <a href="/swarmpharma">swarmpharma</a>
+      <a href="/swarmaviation">swarmaviation</a>
+      <a href="/models">models</a>
+      <a href="/factory">factory</a>
+      <a href="/docs">docs</a>
+      <a href="https://swarmandbee.com">swarmandbee.com</a>
+      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwarmMed — 434,882 Verified Medical Training Pairs | Swarm & Bee AI</title>
+  <meta name="description" content="434,882 verified medical AI training pairs across 92 specialties. Platinum-tier data for clinical reasoning, pharmacology, imaging, and board prep.">
+  <link rel="canonical" href="https://swarmandbee.ai/swarmmed">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+  <meta property="og:title" content="SwarmMed — 434,882 Verified Medical Training Pairs">
+  <meta property="og:description" content="92 specialties. 19 textbook sources. Platinum-tier medical AI training data.">
+  <meta property="og:url" content="https://swarmandbee.ai/swarmmed">
+  <meta property="og:type" content="website">
+  <style>
+    /* ═══ SWARMMED PAGE-SPECIFIC STYLES ═══ */
+    .med-hero {
+      padding: 100px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .med-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .med-badge {
+      display: inline-block;
+      background: rgba(248, 81, 73, 0.08);
+      color: #f87171;
+      font-size: 0.70rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(248, 81, 73, 0.25);
+      margin-bottom: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .med-hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      font-family: var(--sans);
+    }
+    .med-accent {
+      background: linear-gradient(135deg, #f87171, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .med-hero-sub {
+      color: var(--text-2);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      font-family: var(--sans);
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+
+    /* Stats bar */
+    .med-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 28px 24px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .med-stat {
+      text-align: center;
+    }
+    .med-stat-num {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: var(--mono);
+    }
+    .med-stat-num.plat {
+      color: #f87171;
+    }
+    .med-stat-label {
+      display: block;
+      font-size: 0.70rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* Section headers */
+    .group-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .group-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: var(--sans);
+      color: var(--text);
+    }
+    .group-count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-3);
+      font-family: var(--mono);
+    }
+
+    /* Specialty cards */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .spec-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      transition: border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .spec-card:hover {
+      border-color: var(--primary);
+    }
+    .spec-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .spec-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: var(--sans);
+      color: var(--text);
+    }
+    .spec-tier {
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .spec-tier.platinum {
+      color: #f87171;
+      background: rgba(248, 81, 73, 0.08);
+      border: 1px solid rgba(248, 81, 73, 0.25);
+    }
+    .spec-tier.gold {
+      color: var(--warn);
+      background: rgba(210, 153, 34, 0.08);
+      border: 1px solid rgba(210, 153, 34, 0.25);
+    }
+    .spec-count {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+    .spec-desc {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* Model cards */
+    .med-model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .med-model-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.15s;
+    }
+    .med-model-card:hover {
+      border-color: var(--primary);
+    }
+    .med-model-name {
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--sans);
+      margin-bottom: 4px;
+    }
+    .med-model-base {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      font-family: var(--mono);
+      margin-bottom: 10px;
+    }
+    .med-model-desc {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .med-model-specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .med-model-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .med-model-tag.sealed {
+      border-color: rgba(63, 185, 80, 0.4);
+      color: var(--accent);
+    }
+    .med-model-tag.training {
+      border-color: rgba(210, 153, 34, 0.4);
+      color: var(--warn);
+    }
+
+    /* Imaging assets */
+    .imaging-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .imaging-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: border-color 0.15s;
+    }
+    .imaging-card:hover {
+      border-color: var(--primary);
+    }
+    .imaging-name {
+      font-size: 0.90rem;
+      font-weight: 700;
+      font-family: var(--sans);
+      margin-bottom: 4px;
+    }
+    .imaging-meta {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .imaging-desc {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* Delivery section */
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+    }
+    .delivery-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .delivery-item:hover {
+      border-color: var(--primary);
+    }
+    .delivery-num {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: var(--mono);
+      margin-bottom: 2px;
+    }
+    .delivery-label {
+      font-size: 0.72rem;
+      color: var(--text-2);
+      font-family: var(--sans);
+    }
+
+    /* CTA */
+    .med-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .med-cta a {
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: var(--mono);
+    }
+    .med-cta-primary {
+      background: var(--primary);
+      color: var(--bg) !important;
+    }
+    .med-cta-primary:hover {
+      background: var(--accent);
+      text-decoration: none !important;
+    }
+    .med-cta-outline {
+      background: transparent;
+      color: var(--primary) !important;
+      border: 1px solid var(--primary);
+    }
+    .med-cta-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent) !important;
+      text-decoration: none !important;
+    }
+
+    /* Sub-specialties compact list */
+    .subspecs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .subspec-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--text-3);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 3px 10px;
+      font-family: var(--mono);
+    }
+
+    /* Format row */
+    .format-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-family: var(--mono);
+    }
+    .format-row + .format-row {
+      margin-top: 8px;
+    }
+    .format-num {
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .format-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .format-desc {
+      color: var(--text-3);
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 768px) {
+      .med-hero { padding: 80px 16px 40px; }
+      .med-stats { gap: 24px; padding: 20px 16px; }
+      .spec-grid { grid-template-columns: 1fr; }
+      .med-model-grid { grid-template-columns: 1fr; }
+      .imaging-grid { grid-template-columns: 1fr; }
+      .delivery-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .med-hero { padding: 72px 12px 32px; }
+      .delivery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<nav class="topbar">
+  <a href="/" class="topbar-logo">swarm<span class="dot">&</span>bee<span class="dot">.ai</span></a>
+  <div class="topbar-nav">
+    <a href="/">home</a>
+    <a href="/swarmmed" class="active">swarmmed</a>
+    <a href="/swarmpharma">swarmpharma</a>
+    <a href="/swarmaviation">swarmaviation</a>
+    <a href="/models">models</a>
+    <a href="/factory">factory</a>
+    <a href="/docs">docs</a>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-status">
+      <span class="status-dot"></span>
+      <span>data available</span>
+    </div>
+    <a href="https://swarmandbee.com" class="topbar-link">swarmandbee.com &rarr;</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="med-hero">
+  <div class="med-hero-inner">
+    <div class="med-badge">Medical AI Training Data &mdash; Platinum Tier</div>
+    <h1>434,882 <span class="med-accent">Verified Medical Pairs</span><br>Across 92 Specialties</h1>
+    <p class="med-hero-sub">
+      Textbook-grade clinical reasoning, pharmacology, foundational science, and board preparation data.
+      Every pair quality-gated, SHA-256 sealed, and ready for fine-tuning.
+    </p>
+    <div class="med-cta">
+      <a href="/build" class="med-cta-primary">Request Access &rarr;</a>
+      <a href="/models" class="med-cta-outline">View Trained Models &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="med-stats">
+  <div class="med-stat">
+    <span class="med-stat-num">434,882</span>
+    <span class="med-stat-label">Verified Pairs</span>
+  </div>
+  <div class="med-stat">
+    <span class="med-stat-num">92</span>
+    <span class="med-stat-label">Specialties</span>
+  </div>
+  <div class="med-stat">
+    <span class="med-stat-num">19</span>
+    <span class="med-stat-label">Textbooks Sourced</span>
+  </div>
+  <div class="med-stat">
+    <span class="med-stat-num plat">Platinum</span>
+    <span class="med-stat-label">Quality Tier</span>
+  </div>
+</div>
+
+<!-- ═══ CLINICAL MEDICINE ═══ -->
+<section class="section">
+  <div class="section-inner">
+
+    <div class="group-header">
+      <h3>Clinical Medicine</h3>
+      <span class="group-count">220,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Internal Medicine</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">99,551 pairs</span>
+        <span class="spec-desc">Differential diagnosis, management protocols, Harrison's-grade clinical reasoning. The backbone of clinical AI training.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Surgery</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">43,051 pairs</span>
+        <span class="spec-desc">Perioperative assessment, surgical decision-making, Schwartz's-grade procedures. Pre-op workup through post-op management.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Neurology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">39,296 pairs</span>
+        <span class="spec-desc">Neurological examination, stroke protocols, Adams-grade neuro reasoning. Localization, differential, and acute management.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Cardiology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">14,064 pairs</span>
+        <span class="spec-desc">ECG interpretation, hemodynamic assessment, interventional protocols. ACS pathways to structural heart disease.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Emergency Medicine</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">1,041 pairs</span>
+        <span class="spec-desc">Acute management, trauma protocols, triage decision-making. Time-critical reasoning under clinical uncertainty.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Critical Care</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">142 pairs</span>
+        <span class="spec-desc">ICU management, ventilation protocols, sepsis pathways. High-acuity physiological reasoning and multi-organ support.</span>
+      </div>
+    </div>
+
+    <!-- ═══ WOMEN'S HEALTH & OBSTETRICS ═══ -->
+    <div class="group-header">
+      <h3>Women's Health &amp; Obstetrics</h3>
+      <span class="group-count">51,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Obstetrics</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">27,531 pairs</span>
+        <span class="spec-desc">Prenatal care, labor management, Williams-grade obstetric reasoning. Antenatal risk stratification through postpartum care.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Women's Health</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">23,825 pairs</span>
+        <span class="spec-desc">Reproductive health, Novak's-grade gynecological assessment. Hormonal management, screening protocols, and preventive care.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Gynecology</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">490 pairs</span>
+        <span class="spec-desc">Surgical gynecology, endometriosis management, fertility assessment. Operative planning and reproductive endocrinology.</span>
+      </div>
+    </div>
+
+    <!-- ═══ PHARMACOLOGY & DRUG SCIENCE ═══ -->
+    <div class="group-header">
+      <h3>Pharmacology &amp; Drug Science</h3>
+      <span class="group-count">22,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Pharmacology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">23,432 pairs</span>
+        <span class="spec-desc">Drug interactions, pharmacokinetics, Katzung-grade mechanisms. ADME, receptor pharmacology, and therapeutic index analysis.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Drug Safety</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">3 pairs</span>
+        <span class="spec-desc">Adverse event detection, pharmacovigilance. Seed data for signal detection and FAERS-grade safety reasoning.</span>
+      </div>
+    </div>
+
+    <!-- ═══ FOUNDATIONAL SCIENCES ═══ -->
+    <div class="group-header">
+      <h3>Foundational Sciences</h3>
+      <span class="group-count">84,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Cell Biology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">21,130 pairs</span>
+        <span class="spec-desc">Molecular mechanisms, Alberts-grade cell biology. Signal transduction, cell cycle regulation, and organelle function.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Pathology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">17,402 pairs</span>
+        <span class="spec-desc">Histopathological diagnosis, Robbins-grade disease mechanisms. Cellular injury, inflammation, neoplasia, and organ pathology.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Immunology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">14,264 pairs</span>
+        <span class="spec-desc">Immune response, autoimmunity, Janeway-grade immunological reasoning. Innate and adaptive immunity, hypersensitivity, immunodeficiency.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Histology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">13,104 pairs</span>
+        <span class="spec-desc">Tissue identification, Ross-grade microscopic anatomy. Epithelial, connective, muscle, and nervous tissue classification.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Physiology</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">13,064 pairs</span>
+        <span class="spec-desc">Organ system function, Levy-grade physiological reasoning. Cardiovascular, renal, respiratory, and neurophysiology.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Anatomy</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">9,065 pairs</span>
+        <span class="spec-desc">Structural anatomy, clinical correlations, Gray's-grade anatomical reasoning. Surface, cross-sectional, and surgical anatomy.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Biochemistry</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">5,797 pairs</span>
+        <span class="spec-desc">Metabolic pathways, enzyme kinetics, Lippincott-grade biochemistry. Glycolysis, TCA, oxidative phosphorylation, and inborn errors.</span>
+      </div>
+    </div>
+
+    <!-- ═══ MENTAL HEALTH ═══ -->
+    <div class="group-header">
+      <h3>Mental Health</h3>
+      <span class="group-count">12,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Psychiatry</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">14,513 pairs</span>
+        <span class="spec-desc">DSM-5 criteria, psychopharmacology, treatment planning. Mood disorders, psychosis, anxiety, and substance use assessment.</span>
+      </div>
+    </div>
+
+    <!-- ═══ PEDIATRICS ═══ -->
+    <div class="group-header">
+      <h3>Pediatrics</h3>
+      <span class="group-count">13,000+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Pediatrics</span>
+          <span class="spec-tier platinum">PLATINUM</span>
+        </div>
+        <span class="spec-count">14,987 pairs</span>
+        <span class="spec-desc">Growth assessment, Nelson's-grade pediatric reasoning. Developmental milestones, neonatal care, and pediatric emergencies.</span>
+      </div>
+    </div>
+
+    <!-- ═══ RADIOLOGY & IMAGING ═══ -->
+    <div class="group-header">
+      <h3>Radiology &amp; Imaging</h3>
+      <span class="group-count">5,800+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Neuroradiology</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">6,073 pairs</span>
+        <span class="spec-desc">MRI interpretation, lumbar spine pathology, structured radiology reports. Brain and spine imaging with clinical correlation.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Radiology</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">744 pairs</span>
+        <span class="spec-desc">Chest X-ray, CT interpretation, systematic reporting. Pattern recognition and differential imaging diagnosis.</span>
+      </div>
+    </div>
+
+    <!-- ═══ ONCOLOGY ═══ -->
+    <div class="group-header">
+      <h3>Oncology</h3>
+      <span class="group-count">650+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">Oncology</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">650 pairs</span>
+        <span class="spec-desc">Tumor staging, treatment protocols, clinical trial reasoning. NCCN guidelines, chemo regimens, and survivorship planning.</span>
+      </div>
+    </div>
+
+    <!-- ═══ EXAM PREPARATION ═══ -->
+    <div class="group-header">
+      <h3>Exam Preparation</h3>
+      <span class="group-count">6,600+ pairs</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">USMLE Step 2 CK</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">4,092 pairs</span>
+        <span class="spec-desc">Clinical science, Step 2 CK board preparation. Case-based reasoning, diagnosis, and next-best-step questions.</span>
+      </div>
+      <div class="spec-card">
+        <div class="spec-top">
+          <span class="spec-name">USMLE Step 1</span>
+          <span class="spec-tier gold">GOLD</span>
+        </div>
+        <span class="spec-count">2,565 pairs</span>
+        <span class="spec-desc">Basic science, Step 1 board preparation. Integrated pathophysiology, pharmacology, and foundational science questions.</span>
+      </div>
+    </div>
+
+    <!-- ═══ SUB-SPECIALTIES ═══ -->
+    <div class="group-header">
+      <h3>30+ Sub-Specialties</h3>
+      <span class="group-count">Additional coverage</span>
+    </div>
+    <p style="font-size:0.82rem; color:var(--text-2); margin-bottom:16px; font-family:var(--sans); line-height:1.6">
+      Beyond the major specialty blocks above, the SwarmMed dataset includes verified pairs across 30+ additional clinical and research sub-specialties. Each sub-specialty is labeled, quality-gated, and available individually or as part of the complete medical vertical.
+    </p>
+    <div class="subspecs" style="margin-bottom:48px">
+      <span class="subspec-tag">endocrinology (910)</span>
+      <span class="subspec-tag">infectious-disease (545)</span>
+      <span class="subspec-tag">geriatrics (531)</span>
+      <span class="subspec-tag">pulmonology (517)</span>
+      <span class="subspec-tag">gastroenterology</span>
+      <span class="subspec-tag">nephrology</span>
+      <span class="subspec-tag">dermatology</span>
+      <span class="subspec-tag">rheumatology</span>
+      <span class="subspec-tag">hematology</span>
+      <span class="subspec-tag">ophthalmology</span>
+      <span class="subspec-tag">otolaryngology</span>
+      <span class="subspec-tag">urology</span>
+      <span class="subspec-tag">orthopedics</span>
+      <span class="subspec-tag">anesthesiology</span>
+      <span class="subspec-tag">palliative-care</span>
+      <span class="subspec-tag">sports-medicine</span>
+      <span class="subspec-tag">allergy-immunology</span>
+      <span class="subspec-tag">vascular-surgery</span>
+      <span class="subspec-tag">plastic-surgery</span>
+      <span class="subspec-tag">pain-medicine</span>
+      <span class="subspec-tag">medical-genetics</span>
+      <span class="subspec-tag">nuclear-medicine</span>
+      <span class="subspec-tag">toxicology</span>
+      <span class="subspec-tag">preventive-medicine</span>
+      <span class="subspec-tag">rehabilitation</span>
+      <span class="subspec-tag">occupational-medicine</span>
+      <span class="subspec-tag">sleep-medicine</span>
+      <span class="subspec-tag">clinical-informatics</span>
+      <span class="subspec-tag">forensic-medicine</span>
+      <span class="subspec-tag">tropical-medicine</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ TRAINED MODELS ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Trained Models</h2>
+    <p class="section-sub">Production models fine-tuned on SwarmMed data. Sealed, evaluated, and deployment-ready.</p>
+
+    <div class="med-model-grid">
+      <div class="med-model-card">
+        <div class="med-model-name">SwarmPharma-35B v1</div>
+        <div class="med-model-base">Qwen3.5-35B-A3B &mdash; bf16 LoRA r=64</div>
+        <p class="med-model-desc">
+          Clinical pharmacology specialist. 5-step trajectory reasoning: IDENTIFY &rarr; MECHANISM &rarr; ASSESS &rarr; CALCULATE &rarr; RECOMMEND.
+          Drug-drug interactions, pharmacokinetic calculations, dosage optimization. Zero quantization loss at Q4_K_M.
+        </p>
+        <div class="med-model-specs">
+          <span class="med-model-tag sealed">sealed v1</span>
+          <span class="med-model-tag">25,629 pairs</span>
+          <span class="med-model-tag">5-step trajectory</span>
+          <span class="med-model-tag">GGUF Q4_K_M</span>
+          <span class="med-model-tag">22 tok/s (3090 Ti)</span>
+        </div>
+      </div>
+
+      <div class="med-model-card">
+        <div class="med-model-name">SwarmMed-Vision-4B</div>
+        <div class="med-model-base">MedMO-4B (Qwen3-VL) &mdash; multimodal</div>
+        <p class="med-model-desc">
+          Medical imaging specialist. Trained on 14,474 vision pairs covering spine pathology, brain tumor segmentation, and structured radiology report generation. Multimodal input: DICOM-derived images + clinical context.
+        </p>
+        <div class="med-model-specs">
+          <span class="med-model-tag training">training</span>
+          <span class="med-model-tag">14,474 vision pairs</span>
+          <span class="med-model-tag">spine + brain imaging</span>
+          <span class="med-model-tag">Qwen3-VL base</span>
+        </div>
+      </div>
+
+      <div class="med-model-card">
+        <div class="med-model-name">King v2</div>
+        <div class="med-model-base">Qwen2.5-7B-Instruct &mdash; medical adapter</div>
+        <p class="med-model-desc">
+          General-purpose medical reasoning adapter. Broad clinical coverage across internal medicine, surgery, and foundational sciences. Lightweight deployment target for edge and mobile inference.
+        </p>
+        <div class="med-model-specs">
+          <span class="med-model-tag sealed">sealed v2</span>
+          <span class="med-model-tag">7B params</span>
+          <span class="med-model-tag">medical adapter</span>
+          <span class="med-model-tag">edge-ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMAGING ASSETS ═══ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Imaging Assets</h2>
+    <p class="section-sub">Raw medical imaging datasets used for vision model training and evaluation. Research-grade, multi-institutional sources.</p>
+
+    <div class="imaging-grid">
+      <div class="imaging-card">
+        <div class="imaging-name">Brain Tumor (BraTS)</div>
+        <div class="imaging-meta">484 NIfTI scans &mdash; 7.6 GB</div>
+        <p class="imaging-desc">Multi-institutional brain tumor segmentation challenge data. T1, T1-Gd, T2, FLAIR sequences with expert annotations. Glioma grading and volumetric analysis.</p>
+      </div>
+      <div class="imaging-card">
+        <div class="imaging-name">VinDr-SpineXR</div>
+        <div class="imaging-meta">10,466 images &mdash; 8 pathology classes</div>
+        <p class="imaging-desc">Lumbar spine X-ray dataset with radiologist annotations. Disc degeneration, spondylolisthesis, foraminal stenosis, vertebral fracture, and 4 additional pathology classes.</p>
+      </div>
+      <div class="imaging-card">
+        <div class="imaging-name">ECG Databases (PhysioNet)</div>
+        <div class="imaging-meta">15+ databases &mdash; multi-lead waveforms</div>
+        <p class="imaging-desc">Comprehensive ECG signal collections from PhysioNet. Arrhythmia detection, ST-segment analysis, and QT interval measurement across diverse patient populations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DELIVERY ═══ -->
+<section class="section alt">
+  <div class="section-inner">
+    <h2 style="margin-bottom:8px">Delivery</h2>
+    <p class="section-sub">Every order ships in 5 formats with train/eval splits, provenance docs, and tamper-evident verification.</p>
+
+    <!-- Delivery stats -->
+    <div class="delivery-grid" style="margin-bottom:32px">
+      <div class="delivery-item">
+        <div class="delivery-num">5</div>
+        <div class="delivery-label">Output Formats</div>
+      </div>
+      <div class="delivery-item">
+        <div class="delivery-num">95/5</div>
+        <div class="delivery-label">Train / Eval Split</div>
+      </div>
+      <div class="delivery-item">
+        <div class="delivery-num">SHA-256</div>
+        <div class="delivery-label">Sealed Guarantee</div>
+      </div>
+      <div class="delivery-item">
+        <div class="delivery-num">DATA_CARD</div>
+        <div class="delivery-label">Full Provenance</div>
+      </div>
+    </div>
+
+    <!-- Format list -->
+    <div style="margin:0 0 24px 0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--bg)">
+      <div style="padding:14px 20px; background:rgba(255,255,255,0.03); border-bottom:1px solid var(--border)">
+        <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:1.2px; color:var(--text-3); font-weight:700">5 Delivery Formats &mdash; All Include Train + Eval Split</span>
+      </div>
+      <div style="padding:16px 20px; display:grid; gap:8px">
+        <div class="format-row">
+          <div><span class="format-num">1.</span> <span class="format-name">ChatML</span> &mdash; swarmmed_train.chatml.jsonl</div>
+          <span class="format-desc">OpenAI API, TRL, Unsloth, Axolotl</span>
+        </div>
+        <div class="format-row">
+          <div><span class="format-num">2.</span> <span class="format-name">Alpaca</span> &mdash; swarmmed_train.alpaca.jsonl</div>
+          <span class="format-desc">LLaMA-Factory, HuggingFace trainers</span>
+        </div>
+        <div class="format-row">
+          <div><span class="format-num">3.</span> <span class="format-name">ShareGPT</span> &mdash; swarmmed_train.sharegpt.jsonl</div>
+          <span class="format-desc">FastChat, Vicuna, multi-turn</span>
+        </div>
+        <div class="format-row">
+          <div><span class="format-num">4.</span> <span class="format-name">OpenAI</span> &mdash; swarmmed_train.openai.jsonl</div>
+          <span class="format-desc">Direct gpt-4o fine-tuning upload</span>
+        </div>
+        <div class="format-row">
+          <div><span class="format-num">5.</span> <span class="format-name">Completion</span> &mdash; swarmmed_train.completion.jsonl</div>
+          <span class="format-desc">Legacy pipelines, custom loops</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quality disclosure -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px">
+        <div style="font-size:1.3rem; font-weight:800; color:var(--accent); font-family:var(--mono)">DATA_CARD.json</div>
+        <div style="font-size:0.78rem; color:var(--text-2); margin-top:6px; line-height:1.5">Quality metrics, model lineage, gate pass rates, specialty distribution, generation model ID.</div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px">
+        <div style="font-size:1.3rem; font-weight:800; color:var(--accent); font-family:var(--mono)">guarantee.json</div>
+        <div style="font-size:0.78rem; color:var(--text-2); margin-top:6px; line-height:1.5">Merkle root of every pair. SHA-256 sealed. Optional Hedera HCS on-chain timestamp. Tamper-evident.</div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px">
+        <div style="font-size:1.3rem; font-weight:800; color:var(--accent); font-family:var(--mono)">6 Gates</div>
+        <div style="font-size:0.78rem; color:var(--text-2); margin-top:6px; line-height:1.5">Deterministic quality: JSON validity, output length, numeric verify, concept presence, dedup, degeneration.</div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px">
+        <div style="font-size:1.3rem; font-weight:800; color:var(--accent); font-family:var(--mono)">Per-Pair</div>
+        <div style="font-size:0.78rem; color:var(--text-2); margin-top:6px; line-height:1.5">Every pair carries: source, order_id, specialty, model, quality gate result, content fingerprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">Swarm &amp; Bee AI &mdash; Medical AI Training Data</div>
+    <div class="footer-links">
+      <a href="/">home</a>
+      <a href="/swarmmed">swarmmed</a>
+      <a href="/swarmpharma">swarmpharma</a>
+      <a href="/swarmaviation">swarmaviation</a>
+      <a href="/models">models</a>
+      <a href="/factory">factory</a>
+      <a href="https://swarmandbee.com">swarmandbee.com</a>
+      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js"></script>
+</body>
+</html>

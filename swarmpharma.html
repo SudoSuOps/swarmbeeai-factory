@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwarmPharma -- Pharmaceutical AI Training Data | Swarm & Bee AI</title>
+  <meta name="description" content="50,000 pharmacology-focused training pairs. 16 task types. 5-step trajectory methodology. SwarmPharma-35B trained and sealed. Drug intelligence for AI.">
+  <link rel="canonical" href="https://swarmandbee.ai/swarmpharma">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F41D;</text></svg>">
+  <meta property="og:title" content="SwarmPharma -- Pharmaceutical AI Training Data">
+  <meta property="og:description" content="50,000 pharmacology pairs. 16 task types. 5-step trajectory. SwarmPharma-35B sealed. Drug intelligence for AI.">
+  <meta property="og:url" content="https://swarmandbee.ai/swarmpharma">
+  <meta property="og:type" content="website">
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       SwarmPharma -- Pharmaceutical Vertical Override
+       Clinical precision. Dark terminal. Green vitals.
+       ═══════════════════════════════════════════════════════ */
+
+    /* Pharma accent palette */
+    :root {
+      --pharma-green: #3fb950;
+      --pharma-green-dim: rgba(63, 185, 80, 0.12);
+      --pharma-blue: #58a6ff;
+      --pharma-blue-dim: rgba(88, 166, 255, 0.10);
+      --pharma-cyan: #56d4dd;
+      --pharma-cyan-dim: rgba(86, 212, 221, 0.10);
+      --pharma-warn: #d29922;
+      --pharma-warn-dim: rgba(210, 153, 34, 0.10);
+    }
+
+    /* Trajectory pipeline */
+    .trajectory-pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 28px 20px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      margin: 32px 0;
+    }
+    .trajectory-step {
+      text-align: center;
+      flex-shrink: 0;
+      padding: 12px 16px;
+    }
+    .trajectory-step-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 6px;
+    }
+    .trajectory-step-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--pharma-green);
+      font-family: var(--mono);
+      padding: 6px 14px;
+      background: var(--pharma-green-dim);
+      border: 1px solid rgba(63, 185, 80, 0.25);
+      border-radius: var(--radius-sm);
+    }
+    .trajectory-step-detail {
+      font-size: 0.68rem;
+      color: var(--text-3);
+      margin-top: 6px;
+      max-width: 120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .trajectory-arrow {
+      color: var(--text-3);
+      font-size: 1rem;
+      flex-shrink: 0;
+      padding: 0 4px;
+    }
+
+    /* Task type cards -- pharma specific */
+    .pharma-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pharma-card:hover {
+      border-color: var(--pharma-green);
+      box-shadow: 0 0 20px rgba(63, 185, 80, 0.06);
+    }
+    .pharma-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .pharma-card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+    .pharma-card-tag.core {
+      color: var(--pharma-green);
+      background: var(--pharma-green-dim);
+      border: 1px solid rgba(63, 185, 80, 0.2);
+    }
+    .pharma-card-tag.clinical {
+      color: var(--pharma-blue);
+      background: var(--pharma-blue-dim);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+    .pharma-card-tag.safety {
+      color: #f85149;
+      background: rgba(248, 81, 73, 0.10);
+      border: 1px solid rgba(248, 81, 73, 0.2);
+    }
+    .pharma-card-tag.patient {
+      color: var(--pharma-cyan);
+      background: var(--pharma-cyan-dim);
+      border: 1px solid rgba(86, 212, 221, 0.2);
+    }
+    .pharma-card-tag.regulatory {
+      color: var(--pharma-warn);
+      background: var(--pharma-warn-dim);
+      border: 1px solid rgba(210, 153, 34, 0.2);
+    }
+    .pharma-card h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      font-family: var(--sans);
+    }
+    .pharma-card-code {
+      font-size: 0.70rem;
+      font-family: var(--mono);
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+    .pharma-card p {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-family: var(--sans);
+    }
+    .pharma-card-why {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-3);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* Model spec panel */
+    .model-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .model-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .model-panel-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: var(--sans);
+    }
+    .model-panel-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+    }
+    .model-panel-badge.sealed {
+      color: var(--accent);
+      background: rgba(63, 185, 80, 0.12);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+    }
+    .model-panel-body { padding: 20px 24px; }
+    .model-panel-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      font-size: 0.82rem;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.4);
+    }
+    .model-panel-row:last-child { border-bottom: none; }
+    .model-panel-row span:first-child { color: var(--text-3); }
+    .model-panel-row span:last-child { color: var(--text); font-weight: 500; text-align: right; }
+
+    /* Eval results grid */
+    .eval-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .eval-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .eval-box-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--pharma-green);
+      font-family: var(--mono);
+      line-height: 1.1;
+    }
+    .eval-box-label {
+      font-size: 0.68rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* Source data panel */
+    .source-panel {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .source-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.4);
+      font-size: 0.85rem;
+    }
+    .source-row:last-child { border-bottom: none; }
+    .source-name { color: var(--text); font-weight: 600; }
+    .source-count {
+      font-family: var(--mono);
+      font-weight: 700;
+      color: var(--pharma-green);
+    }
+    .source-desc { font-size: 0.75rem; color: var(--text-3); margin-top: 2px; }
+
+    /* Section label for pharma */
+    .pharma-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pharma-green);
+      margin-bottom: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .trajectory-pipeline { flex-wrap: wrap; gap: 8px; }
+      .trajectory-arrow { display: none; }
+      .eval-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .eval-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     TOPBAR
+     ═══════════════════════════════════════════════════════ -->
+<nav class="topbar">
+  <a href="/" class="topbar-logo">swarm<span class="dot">&</span>bee<span class="dot">.ai</span></a>
+  <div class="topbar-nav">
+    <a href="/">home</a>
+    <a href="/swarmmed">swarmmed</a>
+    <a href="/swarmpharma" class="active">swarmpharma</a>
+    <a href="/swarmaviation">swarmaviation</a>
+    <a href="/models">models</a>
+    <a href="/factory">factory</a>
+    <a href="/docs">docs</a>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-status">
+      <span class="status-dot"></span>
+      <span>SwarmPharma-35B sealed</span>
+    </div>
+    <a href="https://swarmandbee.com" class="topbar-link">swarmandbee.com &rarr;</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Pharmaceutical AI Training Data -- Sealed &amp; Verified</div>
+    <h1>Swarm<span class="hero-accent">Pharma</span></h1>
+    <p class="hero-sub">
+      50,000 pharmacology-focused training pairs. 16 task types. 5-step trajectory methodology.<br>
+      From drug interactions to pediatric dosing -- clinical-grade intelligence for pharmaceutical AI.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+      <a href="#task-types" style="display:inline-block;padding:10px 24px;background:var(--primary);color:var(--bg);border-radius:var(--radius);font-weight:700;font-size:0.88rem;text-decoration:none">16 Task Types &rarr;</a>
+      <a href="#model" style="display:inline-block;padding:10px 24px;background:transparent;color:var(--primary);border:1px solid var(--primary);border-radius:var(--radius);font-weight:700;font-size:0.88rem;text-decoration:none">SwarmPharma-35B &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     STATS STRIP
+     ═══════════════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-num">~50,000</span>
+    <span class="stat-label">Pharma Pairs</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">16</span>
+    <span class="stat-label">Task Types</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5-Step</span>
+    <span class="stat-label">Trajectory</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" style="color:var(--accent)">sealed</span>
+    <span class="stat-label">SwarmPharma-35B</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     5-STEP TRAJECTORY METHODOLOGY
+     ═══════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="pharma-section-label">Methodology</div>
+    <h2>5-Step Trajectory in Every Output</h2>
+    <p class="section-sub">Every trajectory-enhanced pair follows the same clinical reasoning chain. No shortcuts. No hallucinated conclusions. Each step is verified.</p>
+
+    <div class="trajectory-pipeline">
+      <div class="trajectory-step">
+        <div class="trajectory-step-num">Step 1</div>
+        <div class="trajectory-step-name">IDENTIFY</div>
+        <div class="trajectory-step-detail">Drug, patient, context parameters</div>
+      </div>
+      <span class="trajectory-arrow">&rarr;</span>
+      <div class="trajectory-step">
+        <div class="trajectory-step-num">Step 2</div>
+        <div class="trajectory-step-name">MECHANISM</div>
+        <div class="trajectory-step-detail">Receptor, pathway, molecular target</div>
+      </div>
+      <span class="trajectory-arrow">&rarr;</span>
+      <div class="trajectory-step">
+        <div class="trajectory-step-num">Step 3</div>
+        <div class="trajectory-step-name">ASSESS</div>
+        <div class="trajectory-step-detail">Risk, severity, clinical significance</div>
+      </div>
+      <span class="trajectory-arrow">&rarr;</span>
+      <div class="trajectory-step">
+        <div class="trajectory-step-num">Step 4</div>
+        <div class="trajectory-step-name">CALCULATE</div>
+        <div class="trajectory-step-detail">Dosing, PK params, adjustments</div>
+      </div>
+      <span class="trajectory-arrow">&rarr;</span>
+      <div class="trajectory-step">
+        <div class="trajectory-step-num">Step 5</div>
+        <div class="trajectory-step-name">RECOMMEND</div>
+        <div class="trajectory-step-detail">Action, monitoring, alternatives</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:16px">
+      <p style="font-size:0.82rem;color:var(--text-2);max-width:640px;margin:0 auto;line-height:1.6">
+        The trajectory methodology ensures your model doesn't just produce answers -- it produces reasoning chains. Every output traces the clinical logic from drug identification through mechanism analysis to a concrete recommendation with monitoring parameters.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     DATA SOURCES
+     ═══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="pharma-section-label">Data Provenance</div>
+    <h2>Where the Pairs Come From</h2>
+    <p class="section-sub">Two verified sources. No synthetic-only generation. Textbook ground truth combined with trajectory-enhanced clinical pairs.</p>
+
+    <div class="source-panel">
+      <div class="source-row">
+        <div>
+          <div class="source-name">Katzung's Basic &amp; Clinical Pharmacology</div>
+          <div class="source-desc">The gold standard pharmacology textbook. Core drug knowledge, mechanisms, therapeutic principles.</div>
+        </div>
+        <div class="source-count">22,083 pairs</div>
+      </div>
+      <div class="source-row">
+        <div>
+          <div class="source-name">Trajectory-Enhanced Pairs (R2: sb-medical/trajectory/)</div>
+          <div class="source-desc">5-step methodology. 27 shards. 16 pharma task types. Labeled trajectory=true v1. Verified and sealed.</div>
+        </div>
+        <div class="source-count">28,624 pairs</div>
+      </div>
+      <div class="source-row" style="border-bottom:none;padding-top:16px;border-top:2px solid var(--border)">
+        <div>
+          <div class="source-name" style="color:var(--pharma-green)">Total Pharmacology Pairs</div>
+        </div>
+        <div class="source-count" style="font-size:1.1rem">~50,707 pairs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     16 TASK TYPES
+     ═══════════════════════════════════════════════════════ -->
+<section class="section alt" id="task-types">
+  <div class="section-inner">
+    <div class="pharma-section-label">Task Types</div>
+    <h2>16 Pharmaceutical Task Types</h2>
+    <p class="section-sub">Each task type teaches a distinct pharmacological capability. Every pair is trajectory-verified and quality-gated.</p>
+
+    <!-- Core Pharmacology -->
+    <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:14px;font-weight:700">Core Pharmacology -- Drug Mechanisms &amp; Interactions</div>
+    <div class="card-grid" style="margin-bottom:32px">
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag core">Core</span>
+        </div>
+        <h3>Drug Interaction Analysis</h3>
+        <div class="pharma-card-code">drug_interaction_analysis</div>
+        <p>Multi-drug interaction assessment, DDI severity grading, contraindication identification, and interaction cascade analysis across polypharmacy regimens.</p>
+        <div class="pharma-card-why">Why it matters: Drug-drug interactions cause 125,000+ hospitalizations per year. Your model needs to catch what humans miss in complex medication lists.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag core">Core</span>
+        </div>
+        <h3>Mechanism of Action</h3>
+        <div class="pharma-card-code">mechanism_of_action</div>
+        <p>Receptor binding profiles, signal transduction pathways, molecular target identification, and downstream pharmacodynamic effects at the cellular level.</p>
+        <div class="pharma-card-why">Why it matters: Understanding MOA is the foundation of all pharmacology. A model that can explain receptor-level mechanics can reason about novel drug combinations.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag core">Core</span>
+        </div>
+        <h3>Drug Metabolism</h3>
+        <div class="pharma-card-code">drug_metabolism</div>
+        <p>CYP450 enzyme interactions, phase I/II metabolic pathways, genetic polymorphism effects (CYP2D6, CYP2C19), and metabolite activity profiles.</p>
+        <div class="pharma-card-why">Why it matters: 75% of drugs are metabolized by CYP450 enzymes. Genetic polymorphisms create 10-100x dosing variability. Your model must understand this machinery.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag core">Core</span>
+        </div>
+        <h3>Drug Class Comparison</h3>
+        <div class="pharma-card-code">drug_class_comparison</div>
+        <p>Therapeutic class analysis, head-to-head efficacy comparison, side effect profiles, cost-effectiveness evaluation, and guideline-based selection criteria.</p>
+        <div class="pharma-card-why">Why it matters: Clinicians choose between drugs within the same class constantly. Your model needs to articulate the clinical rationale for one agent over another.</div>
+      </div>
+
+    </div>
+
+    <!-- Clinical Practice -->
+    <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:14px;font-weight:700">Clinical Practice -- Dosing, Monitoring &amp; PK/PD</div>
+    <div class="card-grid" style="margin-bottom:32px">
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag clinical">Clinical</span>
+        </div>
+        <h3>Pharmacokinetic Modeling</h3>
+        <div class="pharma-card-code">pharmacokinetic_modeling</div>
+        <p>ADME parameter estimation, dose-response curve analysis, PK/PD modeling, compartmental analysis, and bioavailability calculations across patient populations.</p>
+        <div class="pharma-card-why">Why it matters: PK modeling drives every dosing decision. Teaching your model ADME fundamentals means it can reason about drug behavior in any patient context.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag clinical">Clinical</span>
+        </div>
+        <h3>Dosing Optimization</h3>
+        <div class="pharma-card-code">dosing_optimization</div>
+        <p>Weight-based dosing calculations, renal/hepatic dose adjustments (CrCl, Child-Pugh), therapeutic window management, and loading/maintenance dose protocols.</p>
+        <div class="pharma-card-why">Why it matters: Wrong dosing is the #1 medication error category. Your model must calculate adjustments for organ impairment, body weight, and drug levels.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag clinical">Clinical</span>
+        </div>
+        <h3>Therapeutic Monitoring</h3>
+        <div class="pharma-card-code">therapeutic_monitoring</div>
+        <p>TDM protocol design, drug level interpretation (trough/peak), dose titration strategies, narrow therapeutic index management, and monitoring frequency protocols.</p>
+        <div class="pharma-card-why">Why it matters: Drugs like vancomycin, lithium, and warfarin have razor-thin therapeutic windows. Models that interpret levels and titrate doses save lives.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag clinical">Clinical</span>
+        </div>
+        <h3>Formulation Analysis</h3>
+        <div class="pharma-card-code">formulation_analysis</div>
+        <p>Drug delivery system comparison, bioavailability profiling, extended-release vs IR analysis, route of administration selection, and formulation-specific pharmacokinetics.</p>
+        <div class="pharma-card-why">Why it matters: The same drug in different formulations can have dramatically different PK profiles. Your model needs to distinguish ER from IR, IV from PO, patch from tablet.</div>
+      </div>
+
+    </div>
+
+    <!-- Safety & Pharmacovigilance -->
+    <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:14px;font-weight:700">Safety &amp; Pharmacovigilance -- Risk Assessment &amp; Surveillance</div>
+    <div class="card-grid" style="margin-bottom:32px">
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag safety">Safety</span>
+        </div>
+        <h3>Adverse Event Detection</h3>
+        <div class="pharma-card-code">adverse_event_detection</div>
+        <p>Side effect profiling, pharmacovigilance signal detection, adverse reaction severity grading, causality assessment (Naranjo scale), and reporting protocol generation.</p>
+        <div class="pharma-card-why">Why it matters: Post-market adverse events are the leading cause of drug withdrawals. A pharmacovigilance-aware model catches signals before they become crises.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag safety">Safety</span>
+        </div>
+        <h3>Drug Safety Assessment</h3>
+        <div class="pharma-card-code">drug_safety_assessment</div>
+        <p>Black box warning interpretation, REMS program requirements, risk-benefit analysis frameworks, and contraindication assessment for complex patient scenarios.</p>
+        <div class="pharma-card-why">Why it matters: 350+ drugs carry black box warnings. Your model must understand REMS obligations and articulate risk-benefit ratios with clinical precision.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag safety">Safety</span>
+        </div>
+        <h3>Pregnancy Drug Safety</h3>
+        <div class="pharma-card-code">pregnancy_drug_safety</div>
+        <p>FDA pregnancy categories, teratogenicity risk assessment, lactation safety evaluation, trimester-specific contraindications, and safer alternative recommendations.</p>
+        <div class="pharma-card-why">Why it matters: 90% of pregnant women take at least one medication. Teratogenicity assessment requires specialized knowledge that general models consistently get wrong.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag safety">Safety</span>
+        </div>
+        <h3>Regulatory Review</h3>
+        <div class="pharma-card-code">regulatory_review</div>
+        <p>FDA approval pathway analysis (NDA, BLA, 505(b)(2)), labeling requirements, post-market surveillance obligations, and regulatory timeline estimation.</p>
+        <div class="pharma-card-why">Why it matters: The regulatory pathway determines a drug's market trajectory. Your model needs to navigate NDA vs ANDA vs 505(b)(2) with precision.</div>
+      </div>
+
+    </div>
+
+    <!-- Special Populations & Patient Care -->
+    <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:14px;font-weight:700">Special Populations &amp; Patient Care -- Age-Specific &amp; Education</div>
+    <div class="card-grid" style="margin-bottom:32px">
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag patient">Patient</span>
+        </div>
+        <h3>Pediatric Dosing</h3>
+        <div class="pharma-card-code">pediatric_dosing</div>
+        <p>Weight-based dose calculations (mg/kg), age-appropriate formulation selection, developmental pharmacokinetics, and neonatal/infant-specific adjustments.</p>
+        <div class="pharma-card-why">Why it matters: Children are not small adults. Immature hepatic/renal function, different body composition, and developmental PK changes demand specialized dosing logic.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag patient">Patient</span>
+        </div>
+        <h3>Geriatric Pharmacology</h3>
+        <div class="pharma-card-code">geriatric_pharmacology</div>
+        <p>Beers criteria application, polypharmacy management, age-related PK/PD changes, fall risk assessment from medications, and deprescribing protocols.</p>
+        <div class="pharma-card-why">Why it matters: Adults 65+ take an average of 5+ medications. The Beers criteria alone flag 30+ drug classes to avoid. Your model must navigate this complexity.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag patient">Patient</span>
+        </div>
+        <h3>Patient Counseling</h3>
+        <div class="pharma-card-code">patient_counseling</div>
+        <p>Medication adherence strategies, patient education content generation, lifestyle-drug interaction guidance, and health literacy-appropriate communication.</p>
+        <div class="pharma-card-why">Why it matters: 50% of medications are not taken as prescribed. Teaching your model to generate clear, actionable patient guidance directly impacts therapeutic outcomes.</div>
+      </div>
+
+      <div class="pharma-card">
+        <div class="pharma-card-header">
+          <span class="pharma-card-tag clinical">Clinical</span>
+        </div>
+        <h3>Clinical Trial Design</h3>
+        <div class="pharma-card-code">clinical_trial_design</div>
+        <p>Protocol design methodology, primary/secondary endpoint selection, statistical power calculations, inclusion/exclusion criteria, and adaptive trial frameworks.</p>
+        <div class="pharma-card-why">Why it matters: 90% of clinical trials fail. Better trial design -- endpoints, power, patient selection -- is the highest-leverage intervention in drug development.</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SWARMPHARMA-35B MODEL
+     ═══════════════════════════════════════════════════════ -->
+<section class="section" id="model">
+  <div class="section-inner">
+    <div class="pharma-section-label">Trained Model</div>
+    <h2>SwarmPharma-35B v1</h2>
+    <p class="section-sub">Sealed February 28, 2026. Trained on RTX PRO 6000 Blackwell. Zero quantization loss at Q4_K_M.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
+      <!-- Model Specs -->
+      <div class="model-panel">
+        <div class="model-panel-header">
+          <h3>Training Configuration</h3>
+          <span class="model-panel-badge sealed">SEALED</span>
+        </div>
+        <div class="model-panel-body">
+          <div class="model-panel-row"><span>Base Model</span><span>Qwen3.5-35B-A3B</span></div>
+          <div class="model-panel-row"><span>Method</span><span>bf16 LoRA r=64 alpha=32</span></div>
+          <div class="model-panel-row"><span>Training Pairs</span><span>25,629 pairs</span></div>
+          <div class="model-panel-row"><span>Eval Pairs</span><span>1,348 pairs</span></div>
+          <div class="model-panel-row"><span>Final Train Loss</span><span style="color:var(--pharma-green)">0.337</span></div>
+          <div class="model-panel-row"><span>Training Time</span><span>13.56 hours</span></div>
+          <div class="model-panel-row"><span>Steps</span><span>2,402</span></div>
+          <div class="model-panel-row"><span>Step Time</span><span>20.3s/step</span></div>
+          <div class="model-panel-row"><span>Hardware</span><span>RTX PRO 6000 Blackwell (96GB)</span></div>
+          <div class="model-panel-row"><span>Sealed Date</span><span>2026-02-28 08:59 UTC</span></div>
+        </div>
+      </div>
+
+      <!-- GGUF / Deployment -->
+      <div class="model-panel">
+        <div class="model-panel-header">
+          <h3>Deployment Artifacts</h3>
+          <span class="model-panel-badge sealed">VERIFIED</span>
+        </div>
+        <div class="model-panel-body">
+          <div class="model-panel-row"><span>Merged Model</span><span>67GB, 14 shards bf16</span></div>
+          <div class="model-panel-row"><span>GGUF</span><span>swarmpharma-35b-v1-q4_k_m.gguf</span></div>
+          <div class="model-panel-row"><span>GGUF Size</span><span>20GB</span></div>
+          <div class="model-panel-row"><span>Quantization</span><span>Q4_K_M</span></div>
+          <div class="model-panel-row"><span>Inference Speed</span><span>22 tok/s @ -ngl 20</span></div>
+          <div class="model-panel-row"><span>Quantization Loss</span><span style="color:var(--pharma-green)">Zero</span></div>
+          <div class="model-panel-row"><span>Think Mode</span><span>reasoning_content (Qwen3.5)</span></div>
+          <div class="model-panel-row"><span>Trajectory</span><span>5-step in every output</span></div>
+          <div class="model-panel-row"><span>SHA256</span><span style="font-size:0.70rem;font-family:var(--mono)">4c522a92e9cd...</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eval Results -->
+    <div class="pharma-section-label" style="margin-top:32px">Evaluation Results</div>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:16px;font-family:var(--sans)">Tested at both fp16 (Blackwell) and Q4_K_M (3090 Ti via llama-server). Identical accuracy across both precision levels.</p>
+
+    <div class="eval-grid">
+      <div class="eval-box">
+        <div class="eval-box-num">7/7</div>
+        <div class="eval-box-label">DDI Accuracy</div>
+      </div>
+      <div class="eval-box">
+        <div class="eval-box-num">4/4</div>
+        <div class="eval-box-label">Off-Domain Rejection</div>
+      </div>
+      <div class="eval-box">
+        <div class="eval-box-num">5/5</div>
+        <div class="eval-box-label">JSON Format</div>
+      </div>
+      <div class="eval-box">
+        <div class="eval-box-num">0</div>
+        <div class="eval-box-label">Quantization Loss</div>
+      </div>
+      <div class="eval-box">
+        <div class="eval-box-num">22</div>
+        <div class="eval-box-label">tok/s Q4_K_M</div>
+      </div>
+      <div class="eval-box">
+        <div class="eval-box-num">29</div>
+        <div class="eval-box-label">tok/s fp16</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TERMINAL DEMO -- SAMPLE PAIR
+     ═══════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="pharma-section-label">Sample Output</div>
+    <h2>What a Pharma Pair Looks Like</h2>
+    <p class="section-sub">Every trajectory-enhanced pair follows the 5-step reasoning chain. This is what your model learns to produce.</p>
+
+    <div class="terminal" style="max-width:800px;margin:24px auto 0">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">swarmpharma-35b-v1 -- drug_interaction_analysis</span>
+      </div>
+      <div class="terminal-body">
+<span class="comment">// User prompt</span>
+<span class="prompt">$</span> <span class="cmd">Assess the interaction between warfarin and fluconazole
+   in a 72-year-old patient with atrial fibrillation and
+   recent Candida infection. Current INR: 2.4</span>
+
+<span class="comment">// Model output (trajectory-verified)</span>
+
+<span class="key">[IDENTIFY]</span> <span class="string">Patient: 72yo, AF on warfarin (INR 2.4), new
+  fluconazole for Candida. Polypharmacy risk: geriatric +
+  narrow therapeutic index drug + CYP inhibitor.</span>
+
+<span class="key">[MECHANISM]</span> <span class="string">Fluconazole is a potent CYP2C9 inhibitor
+  (Ki = 7.0 uM). Warfarin S-enantiomer (3-5x more potent)
+  is primarily metabolized by CYP2C9. Inhibition reduces
+  S-warfarin clearance by 40-70%, causing INR elevation.</span>
+
+<span class="key">[ASSESS]</span> <span class="string">Severity: MAJOR. Clinical significance: HIGH.
+  Expected INR rise: 1.5-3.0 units over 3-7 days.
+  Bleeding risk: elevated (HAS-BLED score increases).
+  Age &gt;65 compounds risk (reduced hepatic reserve).</span>
+
+<span class="key">[CALCULATE]</span> <span class="string">Recommended warfarin dose reduction: 25-50%.
+  If current dose 5mg/day, reduce to 2.5-3.75mg/day.
+  Monitor INR at day 3, 7, 14 after fluconazole start.
+  Target INR: 2.0-3.0 (AF indication).</span>
+
+<span class="key">[RECOMMEND]</span> <span class="string">1) Reduce warfarin dose by 30-50% on day 1
+  of fluconazole. 2) INR check at 72h, then twice weekly.
+  3) Consider shorter fluconazole course if possible.
+  4) Alternative: topical antifungal if non-systemic
+  infection. 5) Hold warfarin if INR &gt;4.0.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     DELIVERY FORMATS
+     ═══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="pharma-section-label">Delivery</div>
+    <h2>What You Receive</h2>
+    <p class="section-sub">Every pharma data order ships with 5 formats, full provenance, and drug interaction lineage in the DATA_CARD.</p>
+
+    <div style="margin:28px 0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg)">
+      <!-- Header -->
+      <div style="padding:16px 24px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3)">Delivery Manifest</span>
+          <h3 style="margin:4px 0 0;font-size:1rem;font-family:var(--sans)">SwarmPharma -- 50,000 Pharmacology Pairs</h3>
+        </div>
+        <span style="font-size:0.72rem;padding:4px 12px;border:1px solid var(--accent);border-radius:var(--radius-sm);color:var(--accent);font-weight:700">SEALED</span>
+      </div>
+
+      <!-- 5 formats -->
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:14px;font-weight:700">5 Delivery Formats -- Train + Eval Split Each</div>
+        <div style="display:grid;gap:10px;font-size:0.82rem;font-family:var(--mono)">
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div><span style="color:var(--accent)">1.</span> <strong>ChatML</strong> -- swarmpharma_train.chatml.jsonl</div>
+            <span style="color:var(--text-3);font-size:0.75rem">OpenAI API, TRL, Unsloth, Axolotl</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div><span style="color:var(--accent)">2.</span> <strong>Alpaca</strong> -- swarmpharma_train.alpaca.jsonl</div>
+            <span style="color:var(--text-3);font-size:0.75rem">LLaMA-Factory, HuggingFace trainers</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div><span style="color:var(--accent)">3.</span> <strong>ShareGPT</strong> -- swarmpharma_train.sharegpt.jsonl</div>
+            <span style="color:var(--text-3);font-size:0.75rem">FastChat, Vicuna, multi-turn trainers</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div><span style="color:var(--accent)">4.</span> <strong>OpenAI</strong> -- swarmpharma_train.openai.jsonl</div>
+            <span style="color:var(--text-3);font-size:0.75rem">Direct upload to gpt-4o fine-tuning</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <div><span style="color:var(--accent)">5.</span> <strong>Completion</strong> -- swarmpharma_train.completion.jsonl</div>
+            <span style="color:var(--text-3);font-size:0.75rem">Legacy pipelines, custom training loops</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Provenance -->
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:14px;font-weight:700">Provenance &amp; Verification</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.82rem">
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <strong>DATA_CARD.json</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Drug interaction provenance, source textbook references, trajectory verification status, quality gate scores, task type distribution, model lineage.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <strong>guarantee.json</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Merkle root of every pair. SHA-256 sealed. Tamper-evident provenance chain from source material to final training pair.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <strong>README.txt</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Quickstart for Python, Unsloth, OpenAI API. Copy, paste, train. Under 5 minutes to first pharma training run.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)">
+            <strong>Per-Pair Metadata</strong>
+            <div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Every pair carries: task_type, trajectory=true, source (Katzung/trajectory), quality gate result, content fingerprint, drug entities.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quality disclosure -->
+      <div style="padding:20px 24px">
+        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:14px;font-weight:700">Quality Disclosure</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:0.82rem">
+          <div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--pharma-green);font-family:var(--mono)">5-Step</div>
+            <div style="color:var(--text-3);font-size:0.75rem">Trajectory verified: IDENTIFY, MECHANISM, ASSESS, CALCULATE, RECOMMEND</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--pharma-green);font-family:var(--mono)">16 Types</div>
+            <div style="color:var(--text-3);font-size:0.75rem">Complete pharmaceutical task coverage from DDI to pediatric dosing</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--pharma-green);font-family:var(--mono)">6 Gates</div>
+            <div style="color:var(--text-3);font-size:0.75rem">Deterministic: length, trajectory, content, dedup, degeneration, schema</div>
+          </div>
+          <div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--pharma-green);font-family:var(--mono)">Katzung</div>
+            <div style="color:var(--text-3);font-size:0.75rem">Gold standard textbook source. Not synthetic-only. Real pharmacology ground truth.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:12px">
+      This is what ships. Every pharma data order. All 16 task types included.<br>
+      Your team picks the framework -- the data is ready.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     R2 STORAGE DETAILS
+     ═══════════════════════════════════════════════════════ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="pharma-section-label">Infrastructure</div>
+    <h2>R2 Storage &amp; Build Artifacts</h2>
+    <p class="section-sub">All pharma data is sealed in Cloudflare R2 with SHA-256 verification. Frozen snapshots are immutable.</p>
+
+    <div class="code-container" style="max-width:700px">
+      <div class="code-header">
+        <span class="lang">R2 BUCKET LAYOUT</span>
+        <span>sb-medical</span>
+      </div>
+      <div class="code-content">
+<span class="comment"># Trajectory-enhanced pharma pairs</span>
+<span class="key">sb-medical/trajectory/</span>
+  <span class="string">28,624 pairs</span> &middot; <span class="number">27 shards</span> &middot; labeled <span class="key">trajectory=true v1</span>
+
+<span class="comment"># Core medical + pharma base</span>
+<span class="key">sb-medical/</span>
+  <span class="string">~432,196 total pairs</span> (403,572 base + 28,624 trajectory)
+  <span class="number">85 specialties</span>
+
+<span class="comment"># Build artifacts (swarmrails)</span>
+<span class="key">/data2/swarmpharma-35b/frozen-v1/</span>
+  adapter + tokenizer + config + logs + <span class="key">SHA256</span>
+
+<span class="key">/data2/swarmpharma-35b/models/</span>
+  swarmpharma-35b-v1-merged/   <span class="comment"># 67GB, 14 shards bf16</span>
+  gguf/swarmpharma-35b-v1-q4_k_m.gguf  <span class="comment"># 20GB</span>
+
+<span class="comment"># GGUF SHA256</span>
+<span class="number">4c522a92e9cda7c67efab2f6af27a6545c4ea174fe2b6bec24f6b9667f144a4b</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">SwarmPharma -- 50,000 pharmaceutical training pairs &middot; Swarm &amp; Bee AI</div>
+    <div class="footer-links">
+      <a href="/">home</a>
+      <a href="/swarmmed">swarmmed</a>
+      <a href="/swarmpharma">swarmpharma</a>
+      <a href="/swarmaviation">swarmaviation</a>
+      <a href="/models">models</a>
+      <a href="/factory">factory</a>
+      <a href="https://swarmandbee.com">swarmandbee.com</a>
+      <a href="https://huggingface.co/SwarmandBee">HuggingFace</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
