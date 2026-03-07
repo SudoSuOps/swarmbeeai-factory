@@ -465,13 +465,16 @@ print(f"Got {len(pairs)} pairs")</div>
 
       var tier = (data.tier || 'free').charAt(0).toUpperCase() + (data.tier || 'free').slice(1);
       document.getElementById('dashTier').textContent = tier;
-      document.getElementById('billingPlan').textContent = tier === 'Starter' ? 'SwarmCare Culture' : tier === 'Pro' ? 'SwarmCare Moat' : 'Free';
-      document.getElementById('billingPrice').textContent = tier === 'Starter' ? '$49/mo' : tier === 'Pro' ? '$99/mo' : '$0';
-      document.getElementById('billingDesc').textContent = tier === 'Starter' ? '500 credits/month' : tier === 'Pro' ? '5,000 credits/month' : '10 credits included';
+      var planName = tier === 'Curator' ? 'SwarmCurator' : tier === 'Starter' ? 'SwarmCurator Full Access' : tier === 'Pro' ? 'SwarmCRE Pro' : 'Free';
+      var planPrice = tier === 'Curator' ? '$20/mo' : tier === 'Starter' ? '$49/mo' : tier === 'Pro' ? '$299/mo' : '$0';
+      var planDesc = tier === 'Curator' ? '20,000 pairs/month + Hedera guarantee' : tier === 'Starter' ? '250,000 pairs/month, 5 streams' : tier === 'Pro' ? '5,000 credits/month' : '10 credits included';
+      document.getElementById('billingPlan').textContent = planName;
+      document.getElementById('billingPrice').textContent = planPrice;
+      document.getElementById('billingDesc').textContent = planDesc;
 
       if (tier !== 'Free') {
         document.getElementById('noSubCard').style.display = 'none';
-        document.getElementById('upgradeBtn').textContent = tier === 'Starter' ? 'Upgrade to Moat — $99/mo' : 'Manage Plan';
+        document.getElementById('upgradeBtn').textContent = tier === 'Curator' ? 'Upgrade to Full Access — $49/mo' : tier === 'Starter' ? 'Upgrade to Pro — $299/mo' : 'Manage Plan';
       }
     } catch(e) {
       console.warn('Wallet load failed:', e);
